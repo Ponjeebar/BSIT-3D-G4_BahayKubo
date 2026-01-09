@@ -276,6 +276,7 @@
     left: 0;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    transition: padding 0.3s ease;
 }
 
 
@@ -388,8 +389,10 @@
 .login-page .branding-logo {
     width: 150px;
     height: 150px;
+    max-width: 100%;
     object-fit: contain;
     filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.15));
+    transition: width 0.3s ease, height 0.3s ease;
 }
 
 .login-page .signup-branding h1 {
@@ -495,8 +498,10 @@
 .signup-branding-text .branding-logo {
     width: 150px;
     height: 150px;
+    max-width: 100%;
     object-fit: contain;
     filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.15));
+    transition: width 0.3s ease, height 0.3s ease;
 }
 
 .login-page .branding-text-line {
@@ -538,6 +543,7 @@
     margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 2px;
+    transition: font-size 0.3s ease;
 }
 
 .login-page .welcome-text {
@@ -650,6 +656,8 @@
     cursor: pointer;
     transition: all 0.3s ease;
     margin-bottom: 20px;
+    min-height: 44px;
+    touch-action: manipulation;
 }
 
 .submit-btn:hover {
@@ -681,13 +689,42 @@
 /* Responsive Design */
 /* Tablet and below */
 @media (max-width: 1024px) {
+    .login-page .container {
+        padding: 15px;
+    }
+    
     .login-page .form-wrapper {
         width: 95%;
         max-width: 900px;
+        height: 550px;
+    }
+    
+    .login-page .form-panel {
+        padding: 50px 40px;
     }
     
     .login-page h2 {
         font-size: 36px;
+    }
+    
+    .login-page .branding-logo {
+        width: 130px;
+        height: 130px;
+    }
+    
+    .signup-branding-text .branding-logo {
+        width: 130px;
+        height: 130px;
+    }
+    
+    .login-page .login-branding-text {
+        top: 8px;
+        left: 8px;
+    }
+    
+    .signup-branding-text {
+        bottom: -25px;
+        right: 12px;
     }
 }
 
@@ -699,7 +736,7 @@
         padding-top: 30px;
     }
 
-    .login-page     .login-page .form-wrapper {
+    .login-page .form-wrapper {
         flex-direction: column;
         height: auto;
         max-height: none;
@@ -741,7 +778,27 @@
 
     .login-page .login-branding-text,
     .login-page .signup-branding-text {
-        display: none;
+        display: block;
+        position: relative;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        text-align: center;
+        padding: 20px 0;
+        margin-bottom: 20px;
+    }
+    
+    .login-page .branding-logo {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+    }
+    
+    .signup-branding-text .branding-logo {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
     }
 
     .login-page h2 {
@@ -833,8 +890,9 @@
 
     .login-page input[type="text"],
     .login-page input[type="password"] {
-        padding: 10px 12px;
+        padding: 12px 14px;
         font-size: 14px;
+        min-height: 44px;
     }
 
     .login-page .form-options {
@@ -853,6 +911,7 @@
         padding: 14px;
         font-size: 15px;
         margin-bottom: 15px;
+        min-height: 44px;
     }
 
     .login-page .signup-link,
@@ -863,16 +922,59 @@
     .login-page .checkbox-label {
         font-size: 13px;
     }
+    
+    .login-page .branding-logo {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .signup-branding-text .branding-logo {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .login-page .login-branding-text,
+    .login-page .signup-branding-text {
+        padding: 15px 0;
+        margin-bottom: 15px;
+    }
 }
 
 /* Extra Small Devices */
 @media (max-width: 375px) {
+    .login-page .container {
+        padding: 8px;
+        padding-top: max(15px, env(safe-area-inset-top, 15px));
+    }
+    
     .login-page .form-panel {
         padding: 25px 15px;
     }
 
     .login-page h2 {
         font-size: 24px;
+        letter-spacing: 0.5px;
+    }
+    
+    .login-page .welcome-text {
+        font-size: 11px;
+        margin-bottom: 18px;
+    }
+    
+    .login-page .branding-logo {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .signup-branding-text .branding-logo {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .login-page .login-branding-text,
+    .login-page .signup-branding-text {
+        padding: 10px 0;
+        margin-bottom: 10px;
     }
 
     .login-page .welcome-text {
