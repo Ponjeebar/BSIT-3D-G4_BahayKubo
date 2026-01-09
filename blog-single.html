@@ -1,0 +1,2580 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>BAHAY KUBO Resort - Blog Single</title>
+    <link rel="icon" type="image/png" href="logo/logo.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+      /* Profile Dropdown Enhanced Styles */
+      #profileDropdown {
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 5px;
+        padding: 8px 15px !important;
+      }
+      
+      #profileDropdown:hover {
+        color: #fff !important;
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: translateY(-1px);
+      }
+      
+      #profileDropdown:active {
+        transform: translateY(0);
+      }
+      
+      /* Enhanced Dropdown Menu */
+      .profile-dropdown-menu {
+        min-width: 200px;
+        padding: 8px 0 !important;
+        margin-top: 10px !important;
+        background: #fff;
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        opacity: 0;
+        transform: translateY(-15px) scale(0.9);
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        pointer-events: none;
+        overflow: visible;
+        transform-origin: top right;
+      }
+      
+      .profile-dropdown-menu.show {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+        animation: dropdownSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      
+      @keyframes dropdownSlideIn {
+        0% {
+          opacity: 0;
+          transform: translateY(-15px) scale(0.9);
+        }
+        50% {
+          transform: translateY(2px) scale(1.02);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      
+      .profile-dropdown-menu.show .dropdown-item {
+        animation: fadeInItem 0.4s ease forwards;
+        opacity: 0;
+      }
+      
+      .profile-dropdown-menu.show .dropdown-item:nth-child(1) {
+        animation-delay: 0.05s;
+      }
+      
+      .profile-dropdown-menu.show .dropdown-item:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      
+      @keyframes fadeInItem {
+        from {
+          opacity: 0;
+          transform: translateX(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      
+      .profile-dropdown-menu .dropdown-item {
+        padding: 12px 20px;
+        color: #333;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        border-left: 3px solid transparent;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:first-child {
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:last-child {
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+        padding-left: 25px;
+        transform: translateX(3px);
+      }
+      
+      .profile-dropdown-menu .dropdown-item:active {
+        background: #e9ecef;
+        transform: translateX(0);
+      }
+      
+      /* Hide My Profile submenu and logout by default (shown when logged in) */
+      .profile-dropdown-menu .profile-submenu-toggle,
+      .profile-dropdown-menu .logout-link {
+        display: none;
+      }
+      
+      /* Profile submenu styles */
+      .profile-submenu {
+        display: none;
+        position: absolute;
+        left: 100%;
+        top: 0;
+        min-width: 180px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        margin-left: 8px;
+        padding: 8px 0;
+        z-index: 10001;
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      
+      .profile-submenu-toggle.active .profile-submenu {
+        display: block;
+        opacity: 1;
+        transform: translateX(0);
+      }
+      
+      .profile-submenu-toggle.active i.fa-chevron-right {
+        transform: rotate(90deg);
+      }
+      
+      .profile-submenu .submenu-item {
+        padding: 10px 20px;
+        color: #333;
+        font-size: 14px;
+        font-weight: 500;
+        border-left: 3px solid transparent;
+        display: block;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        border-radius: 0;
+      }
+      
+      .profile-submenu .submenu-item:first-child {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+      
+      .profile-submenu .submenu-item:last-child {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      
+      .profile-submenu .submenu-item:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+        padding-left: 25px;
+        transform: translateX(3px);
+      }
+      
+      .profile-submenu-toggle {
+        user-select: none;
+        position: relative;
+        overflow: visible !important;
+      }
+      
+      .profile-dropdown-menu .profile-submenu-toggle {
+        overflow: visible;
+      }
+      
+      .profile-submenu-toggle:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+      }
+      
+      .profile-submenu-toggle:hover i.fa-chevron-right {
+        color: #21cc7a;
+      }
+      
+      .profile-submenu-toggle.active {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+      }
+      
+      /* Icon spacing for dropdown items */
+      .profile-dropdown-menu .dropdown-item::before {
+        content: '';
+        width: 4px;
+        height: 4px;
+        background: #21cc7a;
+        border-radius: 50%;
+        margin-right: 10px;
+        opacity: 0;
+        transition: all 0.2s ease;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:hover::before {
+        opacity: 1;
+        margin-right: 12px;
+      }
+      
+      /* Logout item special styling */
+      .profile-dropdown-menu .logout-link {
+        border-top: 1px solid #e9ecef;
+        margin-top: 0;
+        padding: 14px 20px 12px 20px;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        transition: all 0.2s ease;
+        border-left: 3px solid transparent;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .profile-dropdown-menu .logout-link:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%) !important;
+        color: #dc3545;
+        border-left-color: #dc3545;
+        border-top-color: transparent;
+        padding-left: 25px;
+        transform: translateX(3px);
+        margin-top: 0;
+      }
+      
+      .profile-dropdown-menu .logout-link::before {
+        background: #dc3545;
+      }
+      
+      /* Profile nav link styling */
+      .profile-nav-link {
+        color: rgba(255, 255, 255, 0.9) !important;
+      }
+      
+      /* Ensure profile dropdown is visible when navbar is scrolled */
+      .ftco-navbar-light.scrolled .profile-nav-link,
+      .ftco-navbar-light.scrolled.awake .profile-nav-link {
+        color: rgba(0, 0, 0, 0.9) !important;
+      }
+      
+      .ftco-navbar-light.scrolled .profile-nav-link span:last-child,
+      .ftco-navbar-light.scrolled.awake .profile-nav-link span:last-child {
+        color: rgba(0, 0, 0, 0.9) !important;
+      }
+      
+      .ftco-navbar-light.scrolled .nav-profile-picture,
+      .ftco-navbar-light.scrolled.awake .nav-profile-picture {
+        border-color: rgba(0, 0, 0, 0.2) !important;
+      }
+      
+      .ftco-navbar-light.scrolled .nav-profile-picture span,
+      .ftco-navbar-light.scrolled.awake .nav-profile-picture span {
+        color: #fff !important;
+      }
+      
+      /* Login link styling */
+      .login-nav-link {
+        color: rgba(255, 255, 255, 0.9) !important;
+        transition: color 0.3s ease;
+      }
+      
+      .ftco-navbar-light.scrolled .login-nav-link,
+      .ftco-navbar-light.scrolled.awake .login-nav-link {
+        color: rgba(0, 0, 0, 0.9) !important;
+      }
+      
+      /* Update border color for login link container when scrolled */
+      .ftco-navbar-light.scrolled #simpleLoginLink,
+      .ftco-navbar-light.scrolled.awake #simpleLoginLink {
+        border-left-color: rgba(0, 0, 0, 0.2) !important;
+      }
+      
+      /* Navigation collapse styling - show flex when menu is open */
+      #ftco-nav.show {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      /* On desktop (lg and up), always show flex (Bootstrap expands navbar on lg+) */
+      @media (min-width: 992px) {
+        #ftco-nav {
+          display: flex !important;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+      
+      /* On mobile, stack items vertically when menu is open */
+      @media (max-width: 991.98px) {
+        #ftco-nav.show {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        
+        #ftco-nav.show .navbar-nav {
+          width: 100%;
+          margin-bottom: 15px;
+        }
+        
+        #ftco-nav.show #profileDropdownContainer,
+        #ftco-nav.show #simpleLoginLink {
+          width: 100%;
+          margin-left: 0 !important;
+          padding-left: 0 !important;
+          border-left: none !important;
+          border-top: 1px solid rgba(255, 255, 255, 0.2);
+          padding-top: 15px;
+          margin-top: 15px;
+        }
+      }
+
+      /* Facebook-like Comment Styles */
+      .comment-section {
+        background: #fff;
+        border-radius: 8px;
+        padding: 0;
+      }
+
+      .comment-section h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1c1e21;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #e4e6eb;
+      }
+
+      /* Facebook-style Comment Form */
+      .fb-comment-form {
+        display: flex;
+        gap: 12px;
+        padding: 12px 16px;
+        border-bottom: 1px solid #e4e6eb;
+      }
+
+      .fb-comment-form .user-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        overflow: hidden;
+        background: #e4e6eb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        color: #65676b;
+        font-size: 16px;
+      }
+
+      .fb-comment-form .user-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .fb-comment-input-wrapper {
+        flex: 1;
+        position: relative;
+      }
+
+      .fb-comment-input {
+        width: 100%;
+        padding: 8px 12px;
+        border: none;
+        background: #f0f2f5;
+        border-radius: 20px;
+        font-size: 15px;
+        color: #1c1e21;
+        resize: none;
+        min-height: 40px;
+        max-height: 200px;
+        font-family: inherit;
+        transition: background 0.2s;
+      }
+
+      .fb-comment-input:focus {
+        outline: none;
+        background: #e4e6eb;
+      }
+
+      .fb-comment-input::placeholder {
+        color: #65676b;
+      }
+
+      .fb-comment-actions {
+        display: none;
+        padding: 8px 16px;
+        justify-content: flex-end;
+        gap: 8px;
+        border-top: 1px solid #e4e6eb;
+      }
+
+      .fb-comment-actions.show {
+        display: flex;
+      }
+
+      .fb-comment-btn {
+        padding: 6px 16px;
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .fb-comment-btn-cancel {
+        background: #e4e6eb;
+        color: #1c1e21;
+      }
+
+      .fb-comment-btn-cancel:hover {
+        background: #d8dadf;
+      }
+
+      .fb-comment-btn-post {
+        background: #21cc7a;
+        color: #fff;
+      }
+
+      .fb-comment-btn-post:hover {
+        background: #1ea862;
+      }
+
+      .fb-comment-btn-post:disabled {
+        background: #e4e6eb;
+        color: #bcc0c4;
+        cursor: not-allowed;
+      }
+
+      /* Facebook-style Comments List */
+      .comment-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .comment-list > li {
+        padding: 12px 16px;
+        border-bottom: 1px solid #e4e6eb;
+        display: flex;
+        gap: 12px;
+        transition: background 0.2s;
+      }
+
+      .comment-list > li:hover {
+        background: #f2f3f5;
+      }
+
+      .comment-list > li:last-child {
+        border-bottom: none;
+      }
+
+      .comment-list .vcard {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+      }
+
+      .comment-list .vcard img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .comment-list .comment-body {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .comment-list .comment-body h3 {
+        font-size: 15px;
+        font-weight: 600;
+        color: #050505;
+        margin: 0 0 4px 0;
+        display: inline;
+      }
+
+      .comment-list .comment-body p {
+        font-size: 15px;
+        color: #050505;
+        line-height: 1.33;
+        margin: 0 0 8px 0;
+        word-wrap: break-word;
+      }
+
+      .comment-list .comment-body .meta {
+        font-size: 13px;
+        color: #65676b;
+        margin-bottom: 8px;
+      }
+
+      .comment-actions {
+        display: flex;
+        gap: 16px;
+        margin-top: 4px;
+      }
+
+      .comment-action-btn {
+        background: none;
+        border: none;
+        color: #65676b;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        padding: 4px 8px;
+        border-radius: 4px;
+        transition: background 0.2s;
+      }
+
+      .comment-action-btn:hover {
+        background: #e4e6eb;
+        color: #050505;
+      }
+
+      .comment-action-btn.liked {
+        color: #21cc7a;
+      }
+
+      .comment-action-btn i {
+        margin-right: 4px;
+      }
+
+      .like-count {
+        font-size: 13px;
+        color: #65676b;
+        margin-left: 4px;
+      }
+
+      /* Nested Comments (Replies) */
+      .comment-list .children {
+        margin-left: 52px;
+        margin-top: 8px;
+        padding: 0;
+        list-style: none;
+      }
+
+      .comment-list .children > li {
+        padding: 8px 16px;
+        border-bottom: 1px solid #e4e6eb;
+      }
+
+      .comment-list .children .children {
+        margin-left: 52px;
+      }
+
+      /* Login Prompt */
+      .comment-login-prompt {
+        padding: 16px;
+        text-align: center;
+        background: #f0f2f5;
+        border-radius: 8px;
+        margin-top: 16px;
+      }
+
+      .comment-login-prompt p {
+        color: #65676b;
+        margin: 0 0 12px 0;
+      }
+
+      .comment-login-prompt a {
+        color: #21cc7a;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .comment-login-prompt a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="index.html">BAHAY <span>KUBO</span></a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav">
+	          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+	          <li class="nav-item"><a href="rooms.html" class="nav-link">Our Rooms</a></li>
+	          <li class="nav-item"><a href="restaurant.html" class="nav-link">Our Food</a></li>
+	          <li class="nav-item active"><a href="blog.html" class="nav-link">Blog</a></li>
+	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+	        </ul>
+	        <div class="nav-item dropdown" id="profileDropdownContainer" style="margin-left: 30px; position: relative; border-left: 1px solid rgba(255, 255, 255, 0.2); padding-left: 20px;">
+	          <a class="nav-link dropdown-toggle profile-nav-link" href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left: 0; padding-right: 20px; font-weight: 600; display: flex; align-items: center; gap: 10px;">
+	            <span class="nav-profile-picture" style="width: 32px; height: 32px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(255, 255, 255, 0.3); display: flex; align-items: center; justify-content: center; background: #21cc7a; flex-shrink: 0;">
+	              <span style="color: #fff; font-weight: 700; font-size: 14px; text-transform: uppercase;">GU</span>
+	            </span>
+	            <span>Profile (Guest)</span>
+	          </a>
+	          <div class="dropdown-menu dropdown-menu-right profile-dropdown-menu" aria-labelledby="profileDropdown" style="right: 0; left: auto;">
+	            <a class="dropdown-item" href="login.html">Login / Signup</a>
+	            <div class="dropdown-item profile-submenu-toggle" style="cursor: pointer; position: relative; justify-content: space-between;">
+	              <span>My Profile</span>
+	              <i class="fas fa-chevron-right" style="font-size: 12px; transition: transform 0.3s ease; margin-left: auto;"></i>
+	              <div class="profile-submenu">
+	                <a class="dropdown-item submenu-item" href="edit_profile.html">Edit Profile</a>
+	                <a class="dropdown-item submenu-item" href="transaction.html">Transaction</a>
+	              </div>
+	            </div>
+	            <a class="dropdown-item logout-link" href="#" onclick="handleLogout(); return false;">Log out</a>
+	          </div>
+	        </div>
+	        <div class="nav-item" id="simpleLoginLink" style="margin-left: 30px; position: relative; border-left: 1px solid rgba(255, 255, 255, 0.2); padding-left: 20px; display: none;">
+	          <a href="login.html" class="nav-link login-nav-link" style="font-weight: 600; padding-left: 0;">Log in</a>
+	        </div>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+		<div class="hero-wrap" style="background-image: url('images/bg_3.jpg');">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+          	<div class="text">
+	            <p class="breadcrumbs mb-2" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="blog.html">Blog</a></span> <span>Blog Single</span></p>
+	            <h1 class="mb-4 bread">Blog Single</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section ftco-degree-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 ftco-animate">
+            <h2 class="mb-3" id="blogTitle">Loading...</h2>
+            <div id="blogContent">
+              <p>Loading content...</p>
+            </div>
+            <div class="tag-widget post-tag-container mb-5 mt-5" id="blogTags">
+              <div class="tagcloud">
+                <!-- Tags will be loaded dynamically -->
+              </div>
+            </div>
+            
+            <div class="about-author d-flex p-4 bg-light">
+              <div class="bio align-self-md-center mr-4">
+                <img src="images/person_1.jpg" alt="Image placeholder" class="img-fluid mb-4">
+              </div>
+              <div class="desc align-self-md-center">
+                <h3>Admin</h3>
+                <p>Our team at Bahay Kubo Resort is dedicated to sharing the beauty of Filipino culture and hospitality through our blog posts. We hope you enjoy reading about our resort and the experiences we offer.</p>
+              </div>
+            </div>
+
+
+            <div class="pt-5 mt-5 comment-section">
+              <h3>6 Comments</h3>
+              
+              <!-- Facebook-style Comment Form -->
+              <div id="commentFormContainer">
+                <div class="fb-comment-form">
+                  <div class="user-avatar" id="commentUserAvatar">
+                    <span id="commentUserInitials">GU</span>
+                  </div>
+                  <div class="fb-comment-input-wrapper">
+                    <textarea class="fb-comment-input" id="fbCommentInput" placeholder="Write a comment..." rows="1"></textarea>
+                    <div class="fb-comment-actions" id="commentActions">
+                      <button type="button" class="fb-comment-btn fb-comment-btn-cancel" id="cancelComment">Cancel</button>
+                      <button type="button" class="fb-comment-btn fb-comment-btn-post" id="postComment">Comment</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="comment-login-prompt" id="commentLoginPrompt" style="display: none;">
+                  <p>Please <a href="login.html">log in</a> to leave a comment.</p>
+                </div>
+              </div>
+
+              <!-- Facebook-style Comments List -->
+              <ul class="comment-list">
+                <li class="comment">
+                  <div class="vcard bio">
+                    <img src="https://i.pravatar.cc/150?img=12" alt="Maria Santos">
+                  </div>
+                  <div class="comment-body">
+                    <h3>Maria Santos</h3>
+                    <p>We just spent our anniversary weekend at Bahay Kubo Resort and it was absolutely magical! The traditional Filipino architecture combined with modern amenities was perfect. The staff was so welcoming and the food at the restaurant was authentic and delicious. We especially loved the kare-kare and halo-halo! The pool area was peaceful and the rooms were clean and comfortable. Highly recommend for anyone looking for a unique Filipino experience!</p>
+                    <div class="meta">Dec. 15, 2024 at 3:45pm</div>
+                    <div class="comment-actions">
+                      <button class="comment-action-btn" onclick="toggleLike(this)">
+                        <i class="far fa-thumbs-up"></i> Like <span class="like-count">12</span>
+                      </button>
+                      <button class="comment-action-btn reply-btn" onclick="toggleReply(this)">
+                        <i class="far fa-comment"></i> Reply
+                      </button>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="comment">
+                  <div class="vcard bio">
+                    <img src="https://i.pravatar.cc/150?img=33" alt="James Chen">
+                  </div>
+                  <div class="comment-body">
+                    <h3>James Chen</h3>
+                    <p>As someone who loves Filipino culture, staying at Bahay Kubo Resort was a dream come true! The attention to detail in preserving the traditional bahay kubo design while providing modern comfort is impressive. The garden is beautifully maintained and perfect for morning walks. The restaurant serves the best adobo I've had outside of my lola's kitchen! Can't wait to come back with my family.</p>
+                    <div class="meta">Dec. 12, 2024 at 11:20am</div>
+                    <div class="comment-actions">
+                      <button class="comment-action-btn" onclick="toggleLike(this)">
+                        <i class="far fa-thumbs-up"></i> Like <span class="like-count">8</span>
+                      </button>
+                      <button class="comment-action-btn reply-btn" onclick="toggleReply(this)">
+                        <i class="far fa-comment"></i> Reply
+                      </button>
+                    </div>
+
+                    <ul class="children">
+                      <li class="comment">
+                        <div class="vcard bio">
+                          <img src="https://i.pravatar.cc/150?img=47" alt="Sarah Johnson">
+                        </div>
+                        <div class="comment-body">
+                          <h3>Sarah Johnson</h3>
+                          <p>I completely agree, James! My husband and I stayed there last month and we were blown away by the authentic Filipino hospitality. The staff even taught us how to make turon! The rooms are spacious and the air conditioning works perfectly. We loved waking up to the sound of birds instead of city traffic. It's truly a hidden gem!</p>
+                          <div class="meta">Dec. 13, 2024 at 9:15am</div>
+                          <div class="comment-actions">
+                            <button class="comment-action-btn" onclick="toggleLike(this)">
+                              <i class="far fa-thumbs-up"></i> Like <span class="like-count">5</span>
+                            </button>
+                            <button class="comment-action-btn reply-btn" onclick="toggleReply(this)">
+                              <i class="far fa-comment"></i> Reply
+                            </button>
+                          </div>
+
+                          <ul class="children">
+                            <li class="comment">
+                              <div class="vcard bio">
+                                <img src="https://i.pravatar.cc/150?img=5" alt="Roberto Dela Cruz">
+                              </div>
+                              <div class="comment-body">
+                                <h3>Roberto Dela Cruz</h3>
+                                <p>Sarah, you're so right about the hospitality! As a Filipino living abroad, staying at Bahay Kubo Resort felt like coming home. The traditional architecture brought back so many childhood memories. The lechon at the restaurant was incredible - crispy skin and tender meat. My kids loved the pool and the garden area. This resort truly captures the essence of Filipino culture and hospitality.</p>
+                                <div class="meta">Dec. 13, 2024 at 2:30pm</div>
+                                <div class="comment-actions">
+                                  <button class="comment-action-btn" onclick="toggleLike(this)">
+                                    <i class="far fa-thumbs-up"></i> Like <span class="like-count">3</span>
+                                  </button>
+                                  <button class="comment-action-btn reply-btn" onclick="toggleReply(this)">
+                                    <i class="far fa-comment"></i> Reply
+                                  </button>
+                                </div>
+
+                                <ul class="children">
+                                  <li class="comment">
+                                    <div class="vcard bio">
+                                      <img src="https://i.pravatar.cc/150?img=68" alt="Lisa Tan">
+                                    </div>
+                                    <div class="comment-body">
+                                      <h3>Lisa Tan</h3>
+                                      <p>Roberto, your comment made me emotional! I'm planning to bring my parents there next month. They're both in their 70s and I think they'll appreciate the traditional Filipino atmosphere. Are the rooms accessible for seniors? Also, do they have vegetarian options at the restaurant? Thanks in advance!</p>
+                                      <div class="meta">Dec. 14, 2024 at 4:10pm</div>
+                                      <div class="comment-actions">
+                                        <button class="comment-action-btn" onclick="toggleLike(this)">
+                                          <i class="far fa-thumbs-up"></i> Like <span class="like-count">2</span>
+                                        </button>
+                                        <button class="comment-action-btn reply-btn" onclick="toggleReply(this)">
+                                          <i class="far fa-comment"></i> Reply
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+
+                <li class="comment">
+                  <div class="vcard bio">
+                    <img src="https://i.pravatar.cc/150?img=51" alt="Michael Rodriguez">
+                  </div>
+                  <div class="comment-body">
+                    <h3>Michael Rodriguez</h3>
+                    <p>Just got back from a weekend getaway at Bahay Kubo Resort and I'm already planning my next visit! The resort exceeded all expectations. The traditional bahay kubo rooms are beautifully decorated with Filipino art and the beds are super comfortable. The restaurant's sinigang na hipon was the perfect comfort food after a long day. The staff went above and beyond to make our stay memorable. The location is also great - peaceful but not too far from the city. 10/10 would recommend!</p>
+                    <div class="meta">Dec. 10, 2024 at 6:30pm</div>
+                    <div class="comment-actions">
+                      <button class="comment-action-btn" onclick="toggleLike(this)">
+                        <i class="far fa-thumbs-up"></i> Like <span class="like-count">15</span>
+                      </button>
+                      <button class="comment-action-btn reply-btn" onclick="toggleReply(this)">
+                        <i class="far fa-comment"></i> Reply
+                      </button>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <!-- END comment-list -->
+            </div>
+
+          </div> <!-- .col-md-8 -->
+          <div class="col-lg-4 sidebar ftco-animate pl-md-5">
+            <div class="sidebar-box">
+              <form action="#" class="search-form">
+                <div class="form-group">
+                  <span class="icon fa fa-search"></span>
+                  <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
+                </div>
+              </form>
+            </div>
+            <div class="sidebar-box ftco-animate">
+              <div class="categories">
+                <h3>Categories</h3>
+                <li><a href="#">Architecture <span>(8)</span></a></li>
+                <li><a href="#">Bahay Kubo <span>(20)</span></a></li>
+                <li><a href="#">Culture <span>(12)</span></a></li>
+                <li><a href="#">Heritage <span>(10)</span></a></li>
+                <li><a href="#">Design <span>(9)</span></a></li>
+                <li><a href="#">Sustainability <span>(6)</span></a></li>
+              </div>
+            </div>
+
+            <div class="sidebar-box ftco-animate">
+              <h3>Recent Blog</h3>
+              <div id="recentBlogPosts">
+                <!-- Recent blog posts will be populated by JavaScript -->
+                <div class="block-21 mb-4 d-flex">
+                  <a class="blog-img mr-4" style="background-image: url('images/blog-1.jpg');"></a>
+                  <div class="text">
+                    <h3 class="heading"><a href="blog-single.html?id=1">The Traditional Architecture of Bahay Kubo</a></h3>
+                    <div class="meta">
+                      <div><a href="#"><span class="icon-calendar"></span> Dec. 15, 2024</a></div>
+                      <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                      <div><a href="#"><span class="icon-chat"></span> 12</a></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="block-21 mb-4 d-flex">
+                  <a class="blog-img mr-4" style="background-image: url('images/blog-2.jpg');"></a>
+                  <div class="text">
+                    <h3 class="heading"><a href="blog-single.html?id=2">Modern Comfort Meets Traditional Design</a></h3>
+                    <div class="meta">
+                      <div><a href="#"><span class="icon-calendar"></span> Dec. 10, 2024</a></div>
+                      <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                      <div><a href="#"><span class="icon-chat"></span> 8</a></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="block-21 mb-4 d-flex">
+                  <a class="blog-img mr-4" style="background-image: url('images/blog-3.jpg');"></a>
+                  <div class="text">
+                    <h3 class="heading"><a href="blog-single.html?id=3">The History Behind the Bahay Kubo</a></h3>
+                    <div class="meta">
+                      <div><a href="#"><span class="icon-calendar"></span> Dec. 5, 2024</a></div>
+                      <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                      <div><a href="#"><span class="icon-chat"></span> 15</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sidebar-box ftco-animate">
+              <h3>Tag Cloud</h3>
+              <div class="tagcloud">
+                <a href="#" class="tag-cloud-link">bahay kubo</a>
+                <a href="#" class="tag-cloud-link">filipino</a>
+                <a href="#" class="tag-cloud-link">architecture</a>
+                <a href="#" class="tag-cloud-link">bamboo</a>
+                <a href="#" class="tag-cloud-link">nipa palm</a>
+                <a href="#" class="tag-cloud-link">traditional</a>
+                <a href="#" class="tag-cloud-link">culture</a>
+                <a href="#" class="tag-cloud-link">heritage</a>
+                <a href="#" class="tag-cloud-link">sustainable</a>
+                <a href="#" class="tag-cloud-link">resort</a>
+              </div>
+            </div>
+
+            <div class="sidebar-box ftco-animate">
+              <h3>About Bahay Kubo</h3>
+              <p>Bahay Kubo Resort offers an authentic experience of traditional Filipino architecture and culture. Our resort preserves and promotes the heritage of the Bahay Kubo, a symbol of Filipino identity, resilience, and sustainable living. Stay with us and discover the beauty of traditional Filipino design.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section> <!-- .section -->
+
+    <style>
+      /* Reduce footer size to half */
+      .ftco-footer {
+        padding: 3em 0 !important;
+      }
+      
+      .ftco-footer .row.mb-5 {
+        margin-bottom: 1.5rem !important;
+      }
+      
+      .ftco-footer-widget {
+        margin-bottom: 1rem !important;
+      }
+      
+      .ftco-footer-widget h2 {
+        font-size: 16px !important;
+        margin-bottom: 12px !important;
+      }
+      
+      .ftco-footer-widget p {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+        margin-bottom: 15px !important;
+      }
+      
+      .ftco-footer-social {
+        margin-top: 1rem !important;
+      }
+      
+      .ftco-footer-social li {
+        margin-right: 8px !important;
+      }
+      
+      .ftco-footer-social li a {
+        height: 35px !important;
+        width: 35px !important;
+      }
+      
+      .ftco-footer-social li a span {
+        font-size: 16px !important;
+      }
+      
+      .ftco-footer-widget ul.list-unstyled li {
+        padding: 3px 0 !important;
+        font-size: 13px !important;
+      }
+      
+      .ftco-footer-widget ul.list-unstyled li a {
+        padding: 3px 0 !important;
+      }
+      
+      .block-23 ul li {
+        padding: 4px 0 !important;
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+      }
+      
+      .block-23 ul li .text {
+        font-size: 13px !important;
+      }
+      
+      .ftco-footer .row:last-child {
+        margin-top: 1rem !important;
+        padding-top: 1rem !important;
+      }
+      
+      .ftco-footer .row:last-child p {
+        font-size: 12px !important;
+        margin-bottom: 0 !important;
+      }
+    </style>
+
+    <footer class="ftco-footer ftco-section img" style="background-image: url(images/bg_4.jpg);">
+    	<div class="overlay"></div>
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">BAHAY KUBO</h2>
+              <p>More than a resort... an experience. Bahay Kubo Resort offers a unique blend of traditional Filipino architecture and modern amenities. Experience tranquility and connection with nature in our beautifully landscaped gardens, refreshing swimming pool, and renowned restaurant serving authentic Filipino cuisine.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Useful Links</h2>
+              <ul class="list-unstyled">
+                <li><a href="index.html" class="py-2 d-block">Home</a></li>
+                <li><a href="rooms.html" class="py-2 d-block">Our Rooms</a></li>
+                <li><a href="restaurant.html" class="py-2 d-block">Our Food</a></li>
+                <li><a href="blog.html" class="py-2 d-block">Blog</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Privacy</h2>
+              <ul class="list-unstyled">
+                <li><a href="about.html" class="py-2 d-block">About Us</a></li>
+                <li><a href="contact.html" class="py-2 d-block">Contact Us</a></li>
+                <li><a href="#" class="py-2 d-block">Privacy Policy</a></li>
+                <li><a href="#" class="py-2 d-block">Terms of Service</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">Bahay Kubo Resort, Philippines</span></li>
+	                <li><a href="tel://+639123456789"><span class="icon icon-phone"></span><span class="text">+63 912 345 6789</span></a></li>
+	                <li><a href="mailto:info@bahaykuboresort.com"><span class="icon icon-envelope"></span><span class="text">info@bahaykuboresort.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This system is made by BSIT-3D Group 4 Students
+  </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Profile dropdown - click only, no hover
+    $(document).ready(function() {
+      // Update profile display with logged-in user info
+      function updateProfileDisplay() {
+        // Get current user from localStorage or sessionStorage
+        var currentUser = null;
+        var storedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
+        
+        if (storedUser) {
+          try {
+            currentUser = JSON.parse(storedUser);
+          } catch (e) {
+            console.error('Error parsing user data:', e);
+          }
+        }
+        
+        var $profileText = $('#profileDropdown span:last-child');
+        var $profileInitials = $('#profileDropdown .nav-profile-picture span');
+        var $loginLink = $('.profile-dropdown-menu .dropdown-item[href="login.html"]');
+        var $profileContainer = $('#profileDropdownContainer');
+        var $simpleLoginLink = $('#simpleLoginLink');
+        
+        if (currentUser && currentUser.logged_in) {
+          // Show profile dropdown
+          $profileContainer.show();
+          $simpleLoginLink.hide();
+          // User is logged in - show their name
+          var firstName = currentUser.first_name || '';
+          var lastName = currentUser.last_name || '';
+          var fullName = (firstName + ' ' + lastName).trim() || currentUser.username || 'User';
+          
+          // Update profile text
+          $profileText.text('Profile (' + fullName + ')');
+          
+          // Get user data to check for avatar
+          var users = JSON.parse(localStorage.getItem('users') || '[]');
+          var user = users.find(u => u.id === currentUser.user_id);
+          
+          // Check if user has avatar
+          var $profilePicture = $('#profileDropdown .nav-profile-picture');
+          var existingImg = $profilePicture.find('img');
+          
+          if (user && user.avatar) {
+            // User has avatar - show image
+            if (existingImg.length > 0) {
+              existingImg.attr('src', user.avatar);
+            } else {
+              // Remove initials span and add image
+              $profileInitials.remove();
+              $profilePicture.append('<img src="' + user.avatar + '" alt="Profile Picture" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">');
+            }
+            $profilePicture.css('background', 'transparent');
+          } else {
+            // No avatar - show initials
+            if (existingImg.length > 0) {
+              existingImg.remove();
+              $profilePicture.append('<span style="color: #fff; font-weight: 700; font-size: 14px; text-transform: uppercase;"></span>');
+              $profileInitials = $profilePicture.find('span');
+            }
+            $profilePicture.css('background', '#21cc7a');
+            
+            // Update initials (first letter of first name + first letter of last name)
+            var initials = '';
+            if (firstName && lastName) {
+              initials = (firstName.charAt(0) + lastName.charAt(0)).toUpperCase();
+            } else if (currentUser.username) {
+              initials = currentUser.username.substring(0, 2).toUpperCase();
+            } else {
+              initials = 'GU';
+            }
+            $profileInitials.text(initials);
+          }
+          
+          // Hide login link, show My Profile submenu and logout
+          $loginLink.hide();
+          $('.profile-dropdown-menu .profile-submenu-toggle').show();
+          $('.profile-dropdown-menu .logout-link').show();
+        } else {
+          // User is not logged in - hide profile dropdown and show simple login link
+          $profileContainer.hide();
+          $simpleLoginLink.show();
+        }
+      }
+      
+      // Update profile on page load
+      updateProfileDisplay();
+      
+      // Comment Storage Functions
+      function getBlogPostId() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var blogId = urlParams.get('id');
+        if (!blogId) {
+          // Try to get from blogPosts data
+          var postIds = Object.keys(blogPosts);
+          blogId = postIds[0] || '1';
+        }
+        return blogId;
+      }
+
+      function getCommentsForPost(postId) {
+        var allComments = JSON.parse(localStorage.getItem('blogComments') || '{}');
+        return allComments[postId] || [];
+      }
+
+      function saveComment(postId, comment) {
+        var allComments = JSON.parse(localStorage.getItem('blogComments') || '{}');
+        if (!allComments[postId]) {
+          allComments[postId] = [];
+        }
+        allComments[postId].push(comment);
+        localStorage.setItem('blogComments', JSON.stringify(allComments));
+      }
+
+      function updateCommentLikes(postId, commentId, userId, isLiked) {
+        var allComments = JSON.parse(localStorage.getItem('blogComments') || '{}');
+        var comments = allComments[postId] || [];
+        
+        for (var i = 0; i < comments.length; i++) {
+          if (comments[i].id === commentId) {
+            if (!comments[i].likes) comments[i].likes = [];
+            if (!comments[i].likedBy) comments[i].likedBy = [];
+            
+            if (isLiked) {
+              if (comments[i].likedBy.indexOf(userId) === -1) {
+                comments[i].likedBy.push(userId);
+                comments[i].likes = comments[i].likedBy.length;
+              }
+            } else {
+              var index = comments[i].likedBy.indexOf(userId);
+              if (index > -1) {
+                comments[i].likedBy.splice(index, 1);
+                comments[i].likes = comments[i].likedBy.length;
+              }
+            }
+            break;
+          }
+          // Check replies
+          if (comments[i].replies) {
+            for (var j = 0; j < comments[i].replies.length; j++) {
+              if (comments[i].replies[j].id === commentId) {
+                if (!comments[i].replies[j].likes) comments[i].replies[j].likes = [];
+                if (!comments[i].replies[j].likedBy) comments[i].replies[j].likedBy = [];
+                
+                if (isLiked) {
+                  if (comments[i].replies[j].likedBy.indexOf(userId) === -1) {
+                    comments[i].replies[j].likedBy.push(userId);
+                    comments[i].replies[j].likes = comments[i].replies[j].likedBy.length;
+                  }
+                } else {
+                  var replyIndex = comments[i].replies[j].likedBy.indexOf(userId);
+                  if (replyIndex > -1) {
+                    comments[i].replies[j].likedBy.splice(replyIndex, 1);
+                    comments[i].replies[j].likes = comments[i].replies[j].likedBy.length;
+                  }
+                }
+                break;
+              }
+            }
+          }
+        }
+        
+        allComments[postId] = comments;
+        localStorage.setItem('blogComments', JSON.stringify(allComments));
+      }
+
+      function formatDate(dateString) {
+        var date = new Date(dateString);
+        var now = new Date();
+        var diff = now - date;
+        var minutes = Math.floor(diff / 60000);
+        var hours = Math.floor(diff / 3600000);
+        var days = Math.floor(diff / 86400000);
+
+        if (minutes < 1) return 'Just now';
+        if (minutes < 60) return minutes + 'm ago';
+        if (hours < 24) return hours + 'h ago';
+        if (days < 7) return days + 'd ago';
+        
+        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        return months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
+      }
+
+      function renderComments(comments, postId, currentUserId) {
+        var $commentList = $('.comment-list');
+        $commentList.empty();
+
+        if (comments.length === 0) {
+          $commentList.append('<li style="padding: 20px; text-align: center; color: #65676b;">No comments yet. Be the first to comment!</li>');
+          return;
+        }
+
+        comments.forEach(function(comment) {
+          var isLiked = currentUserId && comment.likedBy && comment.likedBy.indexOf(currentUserId) > -1;
+          var likeClass = isLiked ? 'liked' : '';
+          var likeIcon = isLiked ? 'fas' : 'far';
+          var likeCount = comment.likes || 0;
+          var likeCountHtml = likeCount > 0 ? '<span class="like-count">' + likeCount + '</span>' : '<span class="like-count"></span>';
+
+          var commentHtml = '<li class="comment" data-comment-id="' + comment.id + '">' +
+            '<div class="vcard bio">' +
+            '<img src="' + (comment.avatar || 'https://i.pravatar.cc/150?img=' + Math.floor(Math.random() * 70)) + '" alt="' + comment.name + '">' +
+            '</div>' +
+            '<div class="comment-body">' +
+            '<h3>' + comment.name + '</h3>' +
+            '<p>' + comment.text.replace(/\n/g, '<br>') + '</p>' +
+            '<div class="meta">' + formatDate(comment.timestamp) + '</div>' +
+            '<div class="comment-actions">' +
+            '<button class="comment-action-btn ' + likeClass + '" onclick="toggleLike(this, \'' + postId + '\', \'' + comment.id + '\')">' +
+            '<i class="' + likeIcon + ' fa-thumbs-up"></i> Like ' + likeCountHtml +
+            '</button>' +
+            '<button class="comment-action-btn reply-btn" onclick="showReplyForm(this, \'' + postId + '\', \'' + comment.id + '\')">' +
+            '<i class="far fa-comment"></i> Reply' +
+            '</button>' +
+            '</div>';
+
+          // Render replies
+          if (comment.replies && comment.replies.length > 0) {
+            commentHtml += '<ul class="children">';
+            comment.replies.forEach(function(reply) {
+              var replyIsLiked = currentUserId && reply.likedBy && reply.likedBy.indexOf(currentUserId) > -1;
+              var replyLikeClass = replyIsLiked ? 'liked' : '';
+              var replyLikeIcon = replyIsLiked ? 'fas' : 'far';
+              var replyLikeCount = reply.likes || 0;
+              var replyLikeCountHtml = replyLikeCount > 0 ? '<span class="like-count">' + replyLikeCount + '</span>' : '<span class="like-count"></span>';
+
+              commentHtml += '<li class="comment" data-comment-id="' + reply.id + '">' +
+                '<div class="vcard bio">' +
+                '<img src="' + (reply.avatar || 'https://i.pravatar.cc/150?img=' + Math.floor(Math.random() * 70)) + '" alt="' + reply.name + '">' +
+                '</div>' +
+                '<div class="comment-body">' +
+                '<h3>' + reply.name + '</h3>' +
+                '<p>' + reply.text.replace(/\n/g, '<br>') + '</p>' +
+                '<div class="meta">' + formatDate(reply.timestamp) + '</div>' +
+                '<div class="comment-actions">' +
+                '<button class="comment-action-btn ' + replyLikeClass + '" onclick="toggleLike(this, \'' + postId + '\', \'' + reply.id + '\')">' +
+                '<i class="' + replyLikeIcon + ' fa-thumbs-up"></i> Like ' + replyLikeCountHtml +
+                '</button>' +
+                '</div>' +
+                '</div>' +
+                '</li>';
+            });
+            commentHtml += '</ul>';
+          }
+
+          commentHtml += '</div></li>';
+          $commentList.append(commentHtml);
+        });
+
+        // Update comment count
+        var totalComments = comments.length + comments.reduce(function(sum, c) {
+          return sum + (c.replies ? c.replies.length : 0);
+        }, 0);
+        $('.comment-section h3').text(totalComments + ' Comment' + (totalComments !== 1 ? 's' : ''));
+      }
+
+      // Facebook-style Comment Functionality
+      function initCommentSystem() {
+        var postId = getBlogPostId();
+        var currentUser = null;
+        var currentUserId = null;
+        var storedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
+        
+        if (storedUser) {
+          try {
+            currentUser = JSON.parse(storedUser);
+            if (currentUser && currentUser.logged_in) {
+              currentUserId = currentUser.user_id || currentUser.id;
+            }
+          } catch (e) {
+            console.error('Error parsing user data:', e);
+          }
+        }
+
+        // Update comment form with user info
+        var $commentForm = $('.fb-comment-form');
+        var $commentLoginPrompt = $('#commentLoginPrompt');
+        var $commentInput = $('#fbCommentInput');
+        var $commentActions = $('#commentActions');
+        var $userAvatar = $('#commentUserAvatar');
+        var $userInitials = $('#commentUserInitials');
+
+        if (currentUser && currentUser.logged_in) {
+          // User is logged in - show comment form
+          $commentForm.show();
+          $commentLoginPrompt.hide();
+          
+          // Get user data for avatar
+          var users = JSON.parse(localStorage.getItem('users') || '[]');
+          var user = users.find(u => u.id === currentUserId);
+          var firstName = currentUser.first_name || '';
+          var lastName = currentUser.last_name || '';
+          
+          // Set user avatar
+          if (user && user.avatar) {
+            $userAvatar.html('<img src="' + user.avatar + '" alt="Profile">');
+          } else {
+            // Show initials
+            var initials = '';
+            if (firstName && lastName) {
+              initials = (firstName.charAt(0) + lastName.charAt(0)).toUpperCase();
+            } else if (currentUser.username) {
+              initials = currentUser.username.substring(0, 2).toUpperCase();
+            } else {
+              initials = 'GU';
+            }
+            $userInitials.text(initials);
+          }
+        } else {
+          // User not logged in - hide form, show prompt
+          $commentForm.hide();
+          $commentLoginPrompt.show();
+        }
+
+        // Load and display comments
+        var comments = getCommentsForPost(postId);
+        renderComments(comments, postId, currentUserId);
+
+        // Auto-resize textarea
+        $commentInput.on('input', function() {
+          this.style.height = 'auto';
+          this.style.height = (this.scrollHeight) + 'px';
+          
+          // Show/hide actions based on content
+          if ($(this).val().trim().length > 0) {
+            $commentActions.addClass('show');
+          } else {
+            $commentActions.removeClass('show');
+          }
+        });
+
+        // Cancel comment
+        $('#cancelComment').on('click', function() {
+          $commentInput.val('');
+          $commentInput.css('height', 'auto');
+          $commentActions.removeClass('show');
+          $commentInput.data('replying-to', null);
+          $commentInput.attr('placeholder', 'Write a comment...');
+        });
+
+        // Post comment
+        $('#postComment').on('click', function() {
+          if (!currentUser || !currentUser.logged_in) {
+            alert('Please log in to post a comment');
+            return;
+          }
+
+          var commentText = $commentInput.val().trim();
+          if (commentText.length === 0) return;
+
+          var replyingTo = $commentInput.data('replying-to');
+          var users = JSON.parse(localStorage.getItem('users') || '[]');
+          var user = users.find(u => u.id === currentUserId);
+          var firstName = currentUser.first_name || '';
+          var lastName = currentUser.last_name || '';
+          var fullName = (firstName + ' ' + lastName).trim() || currentUser.username || 'User';
+          var avatar = (user && user.avatar) ? user.avatar : null;
+
+          var comment = {
+            id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+            userId: currentUserId,
+            name: fullName,
+            avatar: avatar,
+            text: commentText,
+            timestamp: new Date().toISOString(),
+            likes: 0,
+            likedBy: []
+          };
+
+          if (replyingTo) {
+            // Add as reply
+            var allComments = JSON.parse(localStorage.getItem('blogComments') || '{}');
+            var comments = allComments[postId] || [];
+            
+            for (var i = 0; i < comments.length; i++) {
+              if (comments[i].id === replyingTo) {
+                if (!comments[i].replies) comments[i].replies = [];
+                comments[i].replies.push(comment);
+                break;
+              }
+              // Check nested replies
+              if (comments[i].replies) {
+                for (var j = 0; j < comments[i].replies.length; j++) {
+                  if (comments[i].replies[j].id === replyingTo) {
+                    if (!comments[i].replies) comments[i].replies = [];
+                    comments[i].replies.push(comment);
+                    break;
+                  }
+                }
+              }
+            }
+            
+            allComments[postId] = comments;
+            localStorage.setItem('blogComments', JSON.stringify(allComments));
+          } else {
+            // Add as new comment
+            saveComment(postId, comment);
+          }
+
+          // Reload comments
+          var updatedComments = getCommentsForPost(postId);
+          renderComments(updatedComments, postId, currentUserId);
+          
+          // Clear input
+          $commentInput.val('');
+          $commentInput.css('height', 'auto');
+          $commentActions.removeClass('show');
+          $commentInput.data('replying-to', null);
+          $commentInput.attr('placeholder', 'Write a comment...');
+        });
+
+        // Allow Enter to submit (Shift+Enter for new line)
+        $commentInput.on('keydown', function(e) {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            $('#postComment').click();
+          }
+        });
+      }
+
+
+      // Like/Reply functions
+      window.toggleLike = function(btn, postId, commentId) {
+        var currentUser = null;
+        var currentUserId = null;
+        var storedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
+        
+        if (storedUser) {
+          try {
+            currentUser = JSON.parse(storedUser);
+            if (currentUser && currentUser.logged_in) {
+              currentUserId = currentUser.user_id || currentUser.id;
+            }
+          } catch (e) {
+            console.error('Error parsing user data:', e);
+          }
+        }
+
+        if (!currentUserId) {
+          alert('Please log in to like comments');
+          return;
+        }
+
+        var $btn = $(btn);
+        var isLiked = $btn.hasClass('liked');
+        var $icon = $btn.find('i');
+        var $count = $btn.find('.like-count');
+        
+        // Update in storage
+        updateCommentLikes(postId, commentId, currentUserId, !isLiked);
+        
+        // Reload comments to reflect changes
+        var comments = getCommentsForPost(postId);
+        renderComments(comments, postId, currentUserId);
+      };
+
+      window.showReplyForm = function(btn, postId, commentId) {
+        var currentUser = null;
+        var storedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
+        
+        if (storedUser) {
+          try {
+            currentUser = JSON.parse(storedUser);
+          } catch (e) {
+            console.error('Error parsing user data:', e);
+          }
+        }
+
+        if (!currentUser || !currentUser.logged_in) {
+          alert('Please log in to reply to comments');
+          return;
+        }
+
+        var $commentInput = $('#fbCommentInput');
+        var commentName = $(btn).closest('.comment').find('h3').text();
+        $commentInput.data('replying-to', commentId);
+        $commentInput.attr('placeholder', 'Write a reply to ' + commentName + '...');
+        $commentInput.focus();
+      };
+      
+      var $profileDropdown = $('#profileDropdown');
+      var $profileMenu = $profileDropdown.next('.profile-dropdown-menu');
+      var $profileContainer = $profileDropdown.closest('.dropdown');
+      
+      // Prevent hover from opening
+      $profileContainer.off('mouseenter mouseleave');
+      
+      // Click to toggle
+      $profileDropdown.on('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        var isOpen = $profileMenu.hasClass('show');
+        
+        // Close all other dropdowns
+        $('.dropdown-menu').not($profileMenu).removeClass('show');
+        $('.dropdown-toggle').not($profileDropdown).attr('aria-expanded', 'false');
+        
+        if (isOpen) {
+          // Close with animation
+          $profileMenu.removeClass('show');
+          $profileDropdown.attr('aria-expanded', 'false');
+        } else {
+          // Open with animation - remove show class first to reset animation
+          $profileMenu.removeClass('show');
+          // Force reflow to restart animation
+          $profileMenu[0].offsetHeight;
+          // Add show class to trigger animation
+          $profileMenu.addClass('show');
+          $profileDropdown.attr('aria-expanded', 'true');
+        }
+      });
+      
+      // Keep dropdown open when hovering over it
+      $profileMenu.on('mouseenter', function() {
+        $(this).addClass('show');
+      });
+      
+      // Close when clicking outside
+      $(document).on('click', function(e) {
+        if (!$(e.target).closest('.dropdown').length) {
+          $profileMenu.removeClass('show');
+          $profileDropdown.attr('aria-expanded', 'false');
+          // Close submenu when clicking outside
+          $('.profile-submenu-toggle').removeClass('active');
+        }
+      });
+      
+      // My Profile submenu toggle
+      $(document).on('click', '.profile-submenu-toggle', function(e) {
+        e.stopPropagation();
+        var $toggle = $(this);
+        var $submenu = $toggle.find('.profile-submenu');
+        
+        // Toggle active class
+        $toggle.toggleClass('active');
+        
+        // Close other submenus if any
+        $('.profile-submenu-toggle').not($toggle).removeClass('active');
+      });
+      
+      // Close submenu when clicking on submenu items
+      $(document).on('click', '.profile-submenu .submenu-item', function() {
+        $('.profile-submenu-toggle').removeClass('active');
+      });
+      
+      // Close submenu when clicking outside the submenu
+      $(document).on('click', function(e) {
+        if (!$(e.target).closest('.profile-submenu-toggle').length && 
+            !$(e.target).closest('.profile-submenu').length) {
+          $('.profile-submenu-toggle').removeClass('active');
+        }
+      });
+      
+      // Logout functionality
+      window.handleLogout = function() {
+        // Show loading overlay
+        var loadingOverlay = document.getElementById('logoutLoadingOverlay');
+        if (loadingOverlay) {
+          loadingOverlay.classList.add('active');
+        }
+        
+        // Clear all stored data
+        localStorage.removeItem('currentUser');
+        sessionStorage.removeItem('currentUser');
+        
+        // Clear any cookies
+        document.cookie.split(";").forEach(function(c) { 
+          document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+        });
+        
+        // Redirect to login page after a short delay
+        setTimeout(function() {
+          window.location.href = 'index.html';
+        }, 500);
+      };
+
+      // Blog Content Data - Randomized Bahay Kubo Posts
+      var blogPosts = {
+        1: {
+          title: "The Traditional Architecture of Bahay Kubo",
+          date: "Dec. 15, 2024",
+          image: "images/blog-1.jpg",
+          comments: 12,
+          content: `
+            <p>Discover the timeless beauty and engineering brilliance of the traditional Filipino Bahay Kubo, a symbol of Filipino identity and cultural heritage. The Bahay Kubo, or nipa hut, has been a cornerstone of Filipino architecture for centuries, representing the ingenuity and resourcefulness of Filipino builders.</p>
+            <p>
+              <img src="images/blog-1-content-1.jpg" alt="Traditional Bahay Kubo Architecture" class="img-fluid">
+            </p>
+            <p>At Bahay Kubo Resort, we've carefully preserved the authentic design principles of this traditional structure while incorporating modern comforts. The elevated platform, bamboo framework, and nipa palm roofing create a unique architectural experience that connects you with Filipino heritage.</p>
+            <h2 class="mb-3 mt-5">Understanding the Bahay Kubo Design</h2>
+            <p>The Bahay Kubo's design is both practical and beautiful. Its elevated structure protects from floods and provides natural ventilation, while the use of local materials like bamboo and nipa palm reflects sustainable building practices that have stood the test of time.</p>
+            <p>
+              <img src="images/blog-1-content-2.jpg" alt="Bahay Kubo Details" class="img-fluid">
+            </p>
+            <p>Each Bahay Kubo at our resort tells a story of Filipino craftsmanship. Our skilled artisans have maintained traditional building techniques, ensuring that every structure honors the authentic design while meeting modern safety and comfort standards.</p>
+            <p>The Bahay Kubo represents more than just architecture - it's a living testament to Filipino culture, resilience, and the deep connection between Filipinos and their natural environment. Experience this unique architectural heritage at Bahay Kubo Resort.</p>
+          `,
+          tags: ["Architecture", "Bahay Kubo", "Heritage", "Traditional"]
+        },
+        2: {
+          title: "Modern Comfort Meets Traditional Design",
+          date: "Dec. 10, 2024",
+          image: "images/blog-2.jpg",
+          comments: 8,
+          content: `
+            <p>Experience how Bahay Kubo Resort seamlessly blends traditional Filipino architecture with contemporary amenities for an unforgettable stay. Our unique approach preserves the authentic charm of Bahay Kubo while ensuring your comfort and convenience.</p>
+            <p>
+              <img src="images/blog-2-content-1.jpg" alt="Modern Bahay Kubo Interior" class="img-fluid">
+            </p>
+            <p>Each Bahay Kubo accommodation features traditional bamboo and nipa palm construction on the outside, while the interiors are thoughtfully designed with modern amenities. Air conditioning, comfortable beds, modern bathrooms, and high-speed Wi-Fi are seamlessly integrated into the traditional structure.</p>
+            <h2 class="mb-3 mt-5">Best of Both Worlds</h2>
+            <p>We believe you shouldn't have to choose between experiencing authentic Filipino culture and enjoying modern comfort. Our Bahay Kubo rooms offer spacious interiors with traditional Filipino design elements like woven bamboo partitions, native wood furniture, and local artwork, all while providing the amenities you expect from a premium resort.</p>
+            <p>
+              <img src="images/blog-2-content-2.jpg" alt="Modern Amenities in Traditional Setting" class="img-fluid">
+            </p>
+            <p>The natural ventilation of traditional Bahay Kubo design is enhanced with modern climate control, creating the perfect environment regardless of the weather. Large windows allow natural light to flood the spaces while providing stunning views of the resort's tropical gardens.</p>
+            <p>This harmonious blend of tradition and modernity creates a truly unique accommodation experience that honors Filipino heritage while meeting the expectations of today's travelers. Stay in a Bahay Kubo and discover how centuries-old wisdom and modern innovation can create the perfect retreat.</p>
+          `,
+          tags: ["Modern", "Traditional", "Comfort", "Design"]
+        },
+        3: {
+          title: "The History Behind the Bahay Kubo",
+          date: "Dec. 5, 2024",
+          image: "images/blog-3.jpg",
+          comments: 15,
+          content: `
+            <p>Explore the rich history and cultural significance of the Bahay Kubo, from its indigenous origins to its role in modern Filipino society. The Bahay Kubo has been a fundamental part of Filipino life for generations, adapting to changing times while maintaining its essential character.</p>
+            <p>
+              <img src="images/blog-3-content-1.jpg" alt="Historical Bahay Kubo" class="img-fluid">
+            </p>
+            <p>The origins of Bahay Kubo can be traced back to pre-colonial Philippines, where indigenous communities built these structures using locally available materials. The design evolved from simple shelters to more elaborate homes, always reflecting the practical needs and cultural values of Filipino families.</p>
+            <h2 class="mb-3 mt-5">Evolution Through the Centuries</h2>
+            <p>Throughout Philippine history, the Bahay Kubo has remained a symbol of Filipino identity and resilience. During the Spanish colonial period, Filipino families continued building Bahay Kubo, often in rural areas, preserving traditional building techniques. The design proved adaptable, incorporating some new materials while maintaining its essential structure.</p>
+            <p>
+              <img src="images/blog-3-content-2.jpg" alt="Traditional Building Techniques" class="img-fluid">
+            </p>
+            <p>In modern times, the Bahay Kubo has experienced a renaissance as Filipinos rediscover their architectural heritage. Architects and builders are finding new ways to preserve traditional construction methods while meeting contemporary building codes and standards. This cultural revival ensures that the Bahay Kubo will continue to be part of Filipino life for generations to come.</p>
+            <p>At Bahay Kubo Resort, we're proud to be part of this cultural preservation movement. By maintaining authentic Bahay Kubo structures and sharing their history with our guests, we help keep this important part of Filipino heritage alive and relevant.</p>
+          `,
+          tags: ["History", "Culture", "Heritage", "Philippines"]
+        },
+        4: {
+          title: "Sustainable Living in Traditional Homes",
+          date: "Nov. 28, 2024",
+          image: "images/blog-4.jpg",
+          comments: 6,
+          content: `
+            <p>Learn how the Bahay Kubo's natural ventilation and eco-friendly materials make it a model of sustainable architecture. This traditional Filipino home demonstrates principles of green building that modern architects are only now fully appreciating.</p>
+            <p>
+              <img src="images/blog-4-content-1.jpg" alt="Eco-Friendly Bahay Kubo" class="img-fluid">
+            </p>
+            <p>The Bahay Kubo is inherently sustainable, built from renewable materials that are locally sourced. Bamboo, the primary structural material, is one of the fastest-growing plants on Earth, making it an incredibly sustainable building resource. Nipa palm leaves used for roofing are also renewable and biodegradable.</p>
+            <h2 class="mb-3 mt-5">Natural Cooling and Ventilation</h2>
+            <p>The elevated design of Bahay Kubo creates natural airflow underneath, while large windows and open floor plans allow air to circulate throughout the structure. This natural ventilation system reduces the need for artificial cooling, significantly lowering energy consumption compared to conventional buildings.</p>
+            <p>
+              <img src="images/blog-4-content-2.jpg" alt="Natural Ventilation" class="img-fluid">
+            </p>
+            <p>Traditional Bahay Kubo construction requires minimal processing of materials, reducing the carbon footprint associated with manufacturing building materials. When a Bahay Kubo reaches the end of its life, its materials can be composted or reused, creating minimal waste.</p>
+            <p>At Bahay Kubo Resort, we've enhanced these natural sustainable features with modern eco-friendly technologies like solar panels and rainwater harvesting, creating accommodations that are both traditional and forward-thinking in their environmental impact.</p>
+          `,
+          tags: ["Sustainability", "Eco-Friendly", "Green Building", "Environment"]
+        },
+        5: {
+          title: "Bahay Kubo: A Filipino Family Tradition",
+          date: "Nov. 20, 2024",
+          image: "images/blog-5.jpg",
+          comments: 9,
+          content: `
+            <p>Discover how generations of Filipino families have lived in Bahay Kubo, creating memories and preserving traditions. The Bahay Kubo has always been more than just a house - it's a gathering place for families, a symbol of Filipino values, and a keeper of cultural traditions.</p>
+            <p>
+              <img src="images/blog-5-content-1.jpg" alt="Family Life in Bahay Kubo" class="img-fluid">
+            </p>
+            <p>For many Filipino families, especially in rural areas, the Bahay Kubo has been the center of family life for generations. These traditional homes have witnessed countless family celebrations, daily routines, and the simple moments that define Filipino family life. The open floor plan naturally encourages family togetherness.</p>
+            <h2 class="mb-3 mt-5">Generations of Memories</h2>
+            <p>Grandparents share stories with grandchildren in the same Bahay Kubo where they grew up. Family meals are prepared in traditional kitchens, and festivals are celebrated with extended family gathered in the spacious common areas. The Bahay Kubo becomes a repository of family history and traditions.</p>
+            <p>
+              <img src="images/blog-5-content-2.jpg" alt="Family Traditions" class="img-fluid">
+            </p>
+            <p>Building and maintaining a Bahay Kubo often involves the whole family, with knowledge and skills passed down from one generation to the next. Children learn traditional building techniques from their elders, ensuring that this cultural knowledge survives and evolves.</p>
+            <p>At Bahay Kubo Resort, we honor these family traditions by creating spaces where modern families can experience the warmth and togetherness that Bahay Kubo naturally fosters. Stay with us and create your own family memories in a traditional Filipino home.</p>
+          `,
+          tags: ["Family", "Tradition", "Culture", "Filipino"]
+        },
+        6: {
+          title: "The Natural Materials of Bahay Kubo",
+          date: "Nov. 15, 2024",
+          image: "images/blog-6.jpg",
+          comments: 11,
+          content: `
+            <p>From bamboo to nipa palm, explore the natural materials that make the Bahay Kubo both beautiful and functional. The traditional materials used in Bahay Kubo construction have been carefully selected over centuries for their durability, availability, and performance in the tropical climate.</p>
+            <p>
+              <img src="images/blog-6-content-1.jpg" alt="Bamboo Materials" class="img-fluid">
+            </p>
+            <p>Bamboo is the primary structural material of Bahay Kubo, chosen for its remarkable strength-to-weight ratio and flexibility. It can withstand earthquakes better than rigid materials, bending rather than breaking under stress. Bamboo poles form the framework, floors, and walls of traditional Bahay Kubo, creating a structure that is both strong and lightweight.</p>
+            <h2 class="mb-3 mt-5">Traditional Roofing Materials</h2>
+            <p>Nipa palm leaves, known as "nipa" or "sasa," are traditionally used for roofing. These leaves are carefully woven and layered to create waterproof roofing that lasts for several years. The natural insulation properties of nipa help keep the interior cool during hot days and warm during cooler nights.</p>
+            <p>
+              <img src="images/blog-6-content-2.jpg" alt="Nipa Palm Roofing" class="img-fluid">
+            </p>
+            <p>Other natural materials include coconut wood for support posts, rattan for tying and binding elements together, and various local grasses and leaves for wall materials. Each material is selected and prepared using traditional methods that enhance its natural properties.</p>
+            <p>The use of these natural materials creates not just a building, but a living structure that breathes with its environment. At Bahay Kubo Resort, we source these materials sustainably, supporting local communities while preserving traditional building practices.</p>
+          `,
+          tags: ["Materials", "Bamboo", "Natural", "Construction"]
+        },
+        7: {
+          title: "Staying Cool in a Traditional Bahay Kubo",
+          date: "Nov. 8, 2024",
+          image: "images/blog-7.jpg",
+          comments: 7,
+          content: `
+            <p>Learn how the elevated design and natural ventilation of Bahay Kubo keeps it cool even in the tropical Philippine climate. Traditional Filipino architecture has mastered passive cooling techniques that modern builders are rediscovering.</p>
+            <p>
+              <img src="images/blog-7-content-1.jpg" alt="Cool Bahay Kubo Interior" class="img-fluid">
+            </p>
+            <p>The elevated design of Bahay Kubo is the first line of defense against heat. By raising the structure on stilts, air can circulate underneath, creating a natural cooling effect. This elevation also protects the structure from ground heat and moisture, keeping the interior comfortable throughout the day.</p>
+            <h2 class="mb-3 mt-5">Natural Ventilation Systems</h2>
+            <p>Large windows, typically without glass, allow maximum airflow through the structure. The open floor plan means air can move freely from room to room. High ceilings allow hot air to rise and escape, while cooler air from below naturally replaces it. This natural convection creates a comfortable indoor climate without artificial cooling.</p>
+            <p>
+              <img src="images/blog-7-content-2.jpg" alt="Ventilation Design" class="img-fluid">
+            </p>
+            <p>The nipa palm roofing provides excellent insulation from solar heat. Its thick layers reflect sunlight while the natural materials breathe, allowing heat to escape. The bamboo walls, often with gaps between slats, allow for additional air circulation.</p>
+            <p>At Bahay Kubo Resort, we've maintained these natural cooling features while adding modern amenities. Experience the comfortable coolness that traditional Filipino architecture naturally provides, enhanced with contemporary climate control when needed.</p>
+          `,
+          tags: ["Cooling", "Ventilation", "Climate", "Comfort"]
+        },
+        8: {
+          title: "Preserving Cultural Heritage Through Architecture",
+          date: "Nov. 1, 2024",
+          image: "images/blog-8.jpg",
+          comments: 14,
+          content: `
+            <p>Bahay Kubo Resort's commitment to preserving and promoting Filipino architectural heritage for future generations. We believe that architecture is a powerful expression of cultural identity, and preserving traditional building methods is essential to maintaining Filipino cultural heritage.</p>
+            <p>
+              <img src="images/blog-8-content-1.jpg" alt="Cultural Heritage Preservation" class="img-fluid">
+            </p>
+            <p>Our resort serves as a living museum of Filipino architectural heritage, where traditional Bahay Kubo structures are not just displayed but actively used and maintained. We work with master craftsmen who have learned traditional building techniques from their ancestors, ensuring these skills are passed to the next generation.</p>
+            <h2 class="mb-3 mt-5">Educational Programs</h2>
+            <p>We offer workshops and tours where guests can learn about traditional building techniques, the cultural significance of Bahay Kubo, and the sustainable principles behind traditional Filipino architecture. These educational experiences help visitors appreciate not just the beauty of Bahay Kubo, but its deeper cultural meaning.</p>
+            <p>
+              <img src="images/blog-8-content-2.jpg" alt="Traditional Building Workshops" class="img-fluid">
+            </p>
+            <p>By choosing to stay at Bahay Kubo Resort, you're supporting cultural preservation efforts. A portion of our revenue goes toward training programs for young builders and maintaining traditional building practices in local communities.</p>
+            <p>We're committed to ensuring that the knowledge of building Bahay Kubo doesn't disappear. Through our preservation efforts, we hope that future generations will continue to appreciate and build these beautiful structures that represent Filipino identity and values.</p>
+          `,
+          tags: ["Heritage", "Preservation", "Culture", "Education"]
+        },
+        9: {
+          title: "The Art of Building a Bahay Kubo",
+          date: "Oct. 25, 2024",
+          image: "images/blog-9.jpg",
+          comments: 5,
+          content: `
+            <p>Meet the skilled craftsmen who continue to build Bahay Kubo using traditional techniques passed down through generations. Building a Bahay Kubo is both a science and an art, requiring knowledge of materials, structural principles, and traditional methods honed over centuries.</p>
+            <p>
+              <img src="images/blog-9-content-1.jpg" alt="Craftsmen Building Bahay Kubo" class="img-fluid">
+            </p>
+            <p>Our master builders begin by selecting the right materials at the right time. Bamboo is harvested during specific seasons when it's at peak strength. Nipa leaves are gathered and prepared using traditional methods that ensure durability and proper waterproofing.</p>
+            <h2 class="mb-3 mt-5">Traditional Construction Techniques</h2>
+            <p>The construction process follows time-honored methods. Bamboo poles are joined using traditional lashing techniques with rattan or coconut rope, creating connections that are both strong and flexible. No nails or screws are used in traditional construction - everything is tied and woven together.</p>
+            <p>
+              <img src="images/blog-9-content-2.jpg" alt="Traditional Construction Methods" class="img-fluid">
+            </p>
+            <p>Building a Bahay Kubo is often a community effort, with neighbors and family members helping with construction. This communal building tradition strengthens social bonds and ensures that knowledge is shared widely. The completed structure becomes a source of pride for the entire community.</p>
+            <p>Our craftsmen take great pride in their work, knowing they're preserving not just building techniques, but an important part of Filipino culture. Visit Bahay Kubo Resort and see these skilled artisans at work, maintaining traditions that have defined Filipino architecture for centuries.</p>
+          `,
+          tags: ["Craftsmanship", "Building", "Techniques", "Artisans"]
+        },
+        10: {
+          title: "Bahay Kubo in Modern Philippine Architecture",
+          date: "Oct. 18, 2024",
+          image: "images/blog-10.jpg",
+          comments: 10,
+          content: `
+            <p>How contemporary architects are drawing inspiration from Bahay Kubo to create modern Filipino buildings. The timeless principles of Bahay Kubo design are finding new expression in contemporary Philippine architecture, creating structures that honor tradition while meeting modern needs.</p>
+            <p>
+              <img src="images/blog-10-content-1.jpg" alt="Modern Bahay Kubo Inspired Architecture" class="img-fluid">
+            </p>
+            <p>Contemporary Filipino architects are rediscovering the wisdom inherent in Bahay Kubo design. The elevated structure, natural ventilation, and sustainable materials are being reinterpreted using modern materials and techniques. This fusion creates buildings that feel distinctly Filipino while meeting contemporary standards.</p>
+            <h2 class="mb-3 mt-5">Modern Interpretations</h2>
+            <p>New buildings incorporate Bahay Kubo principles like elevated structures for flood protection, large windows for natural lighting and ventilation, and the use of sustainable materials. Some architects are even using engineered bamboo and modern treatments to create larger structures that maintain the Bahay Kubo aesthetic.</p>
+            <p>
+              <img src="images/blog-10-content-2.jpg" alt="Contemporary Filipino Architecture" class="img-fluid">
+            </p>
+            <p>This architectural movement represents a cultural reclamation, where Filipino architects are creating buildings that reflect Filipino identity rather than simply copying Western styles. The Bahay Kubo serves as both inspiration and a reminder of the sophistication of traditional Filipino design.</p>
+            <p>At Bahay Kubo Resort, we're part of this architectural revival. Our structures demonstrate how traditional design can be adapted for modern use, inspiring both architects and guests to appreciate the continued relevance of Filipino architectural heritage.</p>
+          `,
+          tags: ["Modern Architecture", "Contemporary", "Design", "Innovation"]
+        },
+        11: {
+          title: "Living the Bahay Kubo Experience",
+          date: "Oct. 10, 2024",
+          image: "images/blog-11.jpg",
+          comments: 13,
+          content: `
+            <p>A day in the life at Bahay Kubo Resort, where guests experience authentic Filipino living in traditional accommodations. Staying in a Bahay Kubo offers more than just a place to sleep - it's an immersion into Filipino culture and traditional living.</p>
+            <p>
+              <img src="images/blog-11-content-1.jpg" alt="Daily Life in Bahay Kubo" class="img-fluid">
+            </p>
+            <p>Wake up to the gentle sound of tropical birds and the rustling of nipa palm leaves in the breeze. The natural light streaming through large windows illuminates the traditional interior, decorated with Filipino textiles and handicrafts. Start your day feeling connected to Filipino culture and nature.</p>
+            <h2 class="mb-3 mt-5">An Authentic Experience</h2>
+            <p>Throughout the day, experience the natural ventilation and comfortable temperatures that traditional Bahay Kubo design provides. The open, airy spaces encourage relaxation and a slower pace of life. Spend time on the elevated balcony, enjoying the view and the natural airflow.</p>
+            <p>
+              <img src="images/blog-11-content-2.jpg" alt="Bahay Kubo Living Space" class="img-fluid">
+            </p>
+            <p>Evenings in a Bahay Kubo are particularly special. The natural materials create a warm, inviting atmosphere, perfect for reading, conversation, or simply enjoying the peaceful surroundings. The traditional design naturally brings people together, fostering connection and community.</p>
+            <p>Every moment in a Bahay Kubo teaches something about Filipino culture - from the practical wisdom of traditional design to the cultural values reflected in the architecture. Experience this authentic living at Bahay Kubo Resort.</p>
+          `,
+          tags: ["Experience", "Living", "Culture", "Resort"]
+        },
+        12: {
+          title: "The Elevated Design of Bahay Kubo",
+          date: "Oct. 3, 2024",
+          image: "images/blog-12.jpg",
+          comments: 4,
+          content: `
+            <p>Understanding why Bahay Kubo is built on stilts - from flood protection to natural ventilation and cultural significance. The elevated design is one of the most distinctive and important features of Bahay Kubo architecture.</p>
+            <p>
+              <img src="images/blog-12-content-1.jpg" alt="Elevated Bahay Kubo Structure" class="img-fluid">
+            </p>
+            <p>The Philippines experiences regular flooding, especially during the rainy season. By elevating the structure on stilts, Bahay Kubo stays safe and dry even when surrounding areas flood. This practical solution has protected Filipino families for centuries and remains relevant today as climate change brings more extreme weather.</p>
+            <h2 class="mb-3 mt-5">Natural Cooling and Airflow</h2>
+            <p>The space underneath the elevated structure creates natural airflow that helps cool the interior. Air can circulate freely beneath the building, creating a cooling effect that reduces the temperature inside. This natural air conditioning system works without any energy consumption.</p>
+            <p>
+              <img src="images/blog-12-content-2.jpg" alt="Stilts and Foundation" class="img-fluid">
+            </p>
+            <p>The elevated design also protects against ground moisture, pests, and provides additional security. The height creates a sense of separation from the ground while maintaining connection with the natural environment. This design philosophy reflects the Filipino value of living in harmony with nature while being protected from its challenges.</p>
+            <p>At Bahay Kubo Resort, all our structures maintain this traditional elevated design, ensuring authentic experience while providing practical benefits in our tropical climate.</p>
+          `,
+          tags: ["Design", "Elevated", "Flood Protection", "Architecture"]
+        },
+        13: {
+          title: "Bamboo: The Backbone of Bahay Kubo",
+          date: "Sept. 26, 2024",
+          image: "images/blog-13.jpg",
+          comments: 8,
+          content: `
+            <p>Explore how bamboo, the primary material of Bahay Kubo, contributes to its strength, flexibility, and sustainability. Bamboo is one of nature's most remarkable building materials, and it's central to the construction of traditional Bahay Kubo.</p>
+            <p>
+              <img src="images/blog-13-content-1.jpg" alt="Bamboo Construction" class="img-fluid">
+            </p>
+            <p>Bamboo has a tensile strength comparable to steel and can be stronger than many types of wood by weight. Yet it's incredibly flexible, able to bend significantly without breaking. This combination of strength and flexibility makes bamboo ideal for the Philippines, where structures must withstand both earthquakes and typhoons.</p>
+            <h2 class="mb-3 mt-5">Sustainable Growth</h2>
+            <p>Bamboo is one of the fastest-growing plants on Earth, with some species growing up to three feet per day. It can be harvested sustainably without killing the plant, as new shoots grow from the same root system. This rapid growth makes it an incredibly renewable resource compared to traditional timber.</p>
+            <p>
+              <img src="images/blog-13-content-2.jpg" alt="Bamboo Harvesting" class="img-fluid">
+            </p>
+            <p>In Bahay Kubo construction, bamboo serves multiple purposes. Thick poles form the structural framework, split bamboo creates flooring and walls, and smaller pieces are used for decorative elements. The entire structure can be built primarily from this single versatile material.</p>
+            <p>The use of bamboo in Bahay Kubo demonstrates how traditional Filipino architecture naturally incorporates sustainable principles. At Bahay Kubo Resort, we source our bamboo sustainably, supporting local growers while preserving traditional building practices.</p>
+          `,
+          tags: ["Bamboo", "Materials", "Sustainability", "Construction"]
+        },
+        14: {
+          title: "Nipa Palm Roofing: Traditional Thatched Roofs",
+          date: "Sept. 18, 2024",
+          image: "images/blog-14.jpg",
+          comments: 6,
+          content: `
+            <p>Learn about the traditional nipa palm roofing that gives Bahay Kubo its distinctive appearance and excellent insulation. The nipa palm roof is one of the most recognizable features of Bahay Kubo, but it's also one of the most functional.</p>
+            <p>
+              <img src="images/log-14-content-1.jpg" alt="Nipa Palm Roofing" class="img-fluid">
+            </p>
+            <p>Nipa palm leaves are carefully harvested and prepared using traditional methods. The leaves are woven together in overlapping layers that create an effective waterproof barrier. When properly constructed, a nipa roof can last for several years while providing excellent protection from both rain and sun.</p>
+            <h2 class="mb-3 mt-5">Natural Insulation Properties</h2>
+            <p>The thick layers of nipa leaves create natural insulation that keeps the interior cool during hot days. The natural materials breathe, allowing air to circulate while blocking direct sunlight. This combination of reflection and insulation significantly reduces heat transfer into the building.</p>
+            <p>
+              <img src="images/blog-14-content-2.jpg" alt="Thatched Roof Details" class="img-fluid">
+            </p>
+            <p>Maintaining a nipa roof requires traditional knowledge passed down through generations. When it's time for replacement, the old materials can be composted, creating minimal waste. The new roof is installed using the same traditional techniques, ensuring the skill and knowledge continue to be preserved.</p>
+            <p>The distinctive appearance of nipa roofing immediately identifies a structure as a Bahay Kubo, but its practical benefits are equally important. Experience this traditional roofing at Bahay Kubo Resort, where authentic nipa roofs protect our guests while showcasing Filipino architectural heritage.</p>
+          `,
+          tags: ["Roofing", "Nipa Palm", "Traditional", "Insulation"]
+        },
+        15: {
+          title: "Bahay Kubo Resort: Your Gateway to Filipino Culture",
+          date: "Sept. 10, 2024",
+          image: "images/blog-15.jpg",
+          comments: 9,
+          content: `
+            <p>Experience authentic Filipino hospitality and culture through a stay at Bahay Kubo Resort, where tradition meets comfort. Our resort offers more than just accommodation - it's a complete cultural immersion into Filipino life and traditions.</p>
+            <p>
+              <img src="images/blog-15-content-1.jpg" alt="Bahay Kubo Resort Experience" class="img-fluid">
+            </p>
+            <p>Every aspect of Bahay Kubo Resort is designed to introduce you to authentic Filipino culture. From the traditional architecture of your accommodation to the Filipino cuisine served in our restaurant, from cultural performances to hands-on workshops, you'll experience the warmth and richness of Filipino culture.</p>
+            <h2 class="mb-3 mt-5">Cultural Activities and Experiences</h2>
+            <p>Join our cultural programs to learn traditional Filipino crafts, participate in cooking classes featuring authentic Filipino dishes, and enjoy performances of traditional music and dance. Our staff, many from local communities, share their knowledge and stories, providing genuine insights into Filipino life.</p>
+            <p>
+              <img src="images/blog-15-content-2.jpg" alt="Cultural Activities" class="img-fluid">
+            </p>
+            <p>Staying in a traditional Bahay Kubo is itself a cultural experience. You'll understand how Filipino families have lived for generations, appreciate the wisdom of traditional design, and feel the connection between Filipino people and their natural environment.</p>
+            <p>Whether you're interested in architecture, culture, history, or simply want an authentic travel experience, Bahay Kubo Resort provides a gateway to understanding and appreciating Filipino culture. Come stay with us and discover the beauty and warmth of the Philippines.</p>
+          `,
+          tags: ["Culture", "Resort", "Filipino", "Experience"]
+        },
+        2: {
+          title: "A Culinary Journey Through Filipino Cuisine",
+          date: "Dec. 10, 2024",
+          image: "images/image_2.jpg",
+          content: `
+            <p>Indulge in the rich flavors of authentic Filipino dishes at our restaurant. From adobo to sinigang, discover why our cuisine has been praised by food enthusiasts worldwide.</p>
+            <p>
+              <img src="images/image_2.jpg" alt="Filipino Cuisine" class="img-fluid">
+            </p>
+            <p>Filipino cuisine is a vibrant fusion of flavors influenced by Malay, Chinese, Spanish, and American culinary traditions. At Bahay Kubo Resort, our talented chefs have mastered the art of creating traditional dishes that celebrate this rich culinary heritage.</p>
+            <h2 class="mb-3 mt-5">Signature Dishes</h2>
+            <p>Our menu features classic Filipino favorites prepared with the freshest local ingredients. Our Adobo, considered the national dish, is slow-cooked to perfection, creating a perfect balance of savory and tangy flavors. The Sinigang, a sour soup made with tamarind, offers a refreshing and comforting experience.</p>
+            <p>
+              <img src="images/resto.jpg" alt="Restaurant" class="img-fluid">
+            </p>
+            <p>Each dish tells a story of Filipino culture and tradition. Our Lechon, a whole roasted pig, is prepared for special occasions and celebrations, while our Kare-Kare, a rich oxtail stew with peanut sauce, showcases the complexity of Filipino flavors.</p>
+            <p>We source our ingredients from local farmers and fishermen, ensuring that every meal is not only delicious but also supports our community. Our commitment to authentic flavors means you'll experience Filipino cuisine exactly as it's meant to be enjoyed.</p>
+          `,
+          tags: ["Food", "Cuisine", "Restaurant", "Culture"]
+        },
+        3: {
+          title: "Relaxation and Wellness at Our Resort",
+          date: "Dec. 5, 2024",
+          image: "images/image_3.jpg",
+          content: `
+            <p>Unwind in our beautifully landscaped gardens and refreshing swimming pool. Our resort offers the perfect escape from the hustle and bustle of everyday life.</p>
+            <p>
+              <img src="images/image_3.jpg" alt="Resort Relaxation" class="img-fluid">
+            </p>
+            <p>At Bahay Kubo Resort, we believe that true relaxation comes from connecting with nature and taking time to rejuvenate your mind, body, and spirit. Our carefully designed spaces provide the perfect environment for rest and renewal.</p>
+            <h2 class="mb-3 mt-5">Swimming Pool and Gardens</h2>
+            <p>Our infinity pool offers stunning views of the surrounding landscape, creating a serene atmosphere where you can swim, sunbathe, or simply float and let your worries drift away. The pool area is surrounded by lush tropical gardens, providing privacy and a sense of tranquility.</p>
+            <p>
+              <img src="images/bg_2.jpg" alt="Pool and Gardens" class="img-fluid">
+            </p>
+            <p>The gardens at our resort are a testament to the natural beauty of the Philippines. We've carefully curated a collection of native plants and flowers, creating pathways that invite you to explore and discover hidden corners perfect for meditation or quiet reflection.</p>
+            <p>Whether you're looking for an active day of swimming and exploring, or simply want to find a quiet spot to read a book and enjoy the peaceful atmosphere, our resort provides the perfect setting for your ideal relaxation experience.</p>
+          `,
+          tags: ["Wellness", "Relaxation", "Pool", "Nature"]
+        },
+        4: {
+          title: "Luxurious Accommodations for Every Traveler",
+          date: "Nov. 28, 2024",
+          image: "images/image_4.jpg",
+          content: `
+            <p>Explore our range of comfortable rooms designed to provide the perfect blend of traditional aesthetics and modern amenities for an unforgettable stay.</p>
+            <p>
+              <img src="images/image_4.jpg" alt="Luxurious Rooms" class="img-fluid">
+            </p>
+            <p>Each room at Bahay Kubo Resort has been thoughtfully designed to combine the rustic charm of traditional Filipino architecture with the comfort and convenience of modern luxury. From cozy single rooms to spacious family suites, we have accommodations to suit every traveler's needs.</p>
+            <h2 class="mb-3 mt-5">Room Features</h2>
+            <p>Our rooms feature handcrafted furniture made from local materials, air conditioning, high-speed Wi-Fi, and modern bathrooms with hot water. Large windows and private balconies offer stunning views of the gardens or surrounding landscape, bringing the beauty of nature into your living space.</p>
+            <p>
+              <img src="images/room-1.jpg" alt="Room Interior" class="img-fluid">
+            </p>
+            <p>For families, our suite accommodations provide separate living areas and additional space for children. All rooms are equipped with comfortable beds, quality linens, and thoughtful amenities that ensure your stay is both comfortable and memorable.</p>
+            <p>We understand that every guest has different needs, which is why we offer a variety of room types. Whether you're on a romantic getaway, a family vacation, or a solo adventure, you'll find the perfect accommodation at Bahay Kubo Resort.</p>
+          `,
+          tags: ["Accommodation", "Rooms", "Luxury", "Travel"]
+        },
+        5: {
+          title: "Celebrating Local Culture and Traditions",
+          date: "Nov. 20, 2024",
+          image: "images/image_5.jpg",
+          content: `
+            <p>Immerse yourself in Filipino culture through our various activities and events. Learn about local traditions and create lasting memories with your loved ones.</p>
+            <p>
+              <img src="images/image_5.jpg" alt="Filipino Culture" class="img-fluid">
+            </p>
+            <p>At Bahay Kubo Resort, we're passionate about sharing the rich cultural heritage of the Philippines with our guests. Throughout the year, we host various cultural activities and events that allow you to experience authentic Filipino traditions firsthand.</p>
+            <h2 class="mb-3 mt-5">Cultural Activities</h2>
+            <p>Join us for traditional dance performances, cooking classes where you can learn to prepare Filipino dishes, and craft workshops where local artisans teach traditional skills like basket weaving and pottery making. These activities provide a unique opportunity to connect with Filipino culture in a meaningful way.</p>
+            <p>
+              <img src="images/image_6.jpg" alt="Cultural Activities" class="img-fluid">
+            </p>
+            <p>We also celebrate Filipino festivals and holidays, giving guests the chance to experience the vibrant energy and community spirit that defines Filipino culture. From colorful parades to traditional music performances, these events create unforgettable memories.</p>
+            <p>Our cultural programs are designed to be both educational and entertaining, suitable for guests of all ages. Whether you're interested in history, arts, or simply want to experience something new, our cultural activities offer something for everyone.</p>
+          `,
+          tags: ["Culture", "Traditions", "Activities", "Heritage"]
+        },
+        6: {
+          title: "Nature's Paradise: Exploring Our Gardens",
+          date: "Nov. 15, 2024",
+          image: "images/image_6.jpg",
+          content: `
+            <p>Take a stroll through our meticulously maintained gardens, featuring native plants and flowers. Experience tranquility and connection with nature.</p>
+            <p>
+              <img src="images/image_6.jpg" alt="Resort Gardens" class="img-fluid">
+            </p>
+            <p>The gardens at Bahay Kubo Resort are a living showcase of the Philippines' incredible biodiversity. We've created a sanctuary where native plants thrive, attracting local birds and butterflies, creating a vibrant ecosystem that guests can explore and enjoy.</p>
+            <h2 class="mb-3 mt-5">Garden Features</h2>
+            <p>Our gardens feature winding pathways that lead you through different themed areas - from the tropical fruit orchard to the medicinal herb garden, from the orchid collection to the bamboo grove. Each area has been carefully designed to showcase the natural beauty of the Philippines.</p>
+            <p>
+              <img src="images/bg_1.jpg" alt="Garden Details" class="img-fluid">
+            </p>
+            <p>Early morning and late afternoon are the best times to explore our gardens, when the light is soft and the temperature is pleasant. Many guests enjoy starting their day with a peaceful walk through the gardens, finding it to be a perfect way to set a positive tone for the day.</p>
+            <p>We also offer guided garden tours where our knowledgeable staff share information about the plants, their traditional uses, and their role in Filipino culture. These tours are both educational and inspiring, deepening your appreciation for the natural world.</p>
+          `,
+          tags: ["Nature", "Gardens", "Environment", "Wellness"]
+        },
+        7: {
+          title: "Perfect Venue for Special Events",
+          date: "Nov. 8, 2024",
+          image: "images/bg_1.jpg",
+          content: `
+            <p>Host your wedding, corporate event, or family gathering at Bahay Kubo Resort. Our beautiful spaces and professional service ensure your event is memorable.</p>
+            <p>
+              <img src="images/bg_1.jpg" alt="Event Venue" class="img-fluid">
+            </p>
+            <p>Bahay Kubo Resort provides the perfect backdrop for your special occasions. Whether you're planning an intimate wedding, a corporate retreat, or a family reunion, our versatile event spaces can be customized to meet your specific needs and create an unforgettable experience for your guests.</p>
+            <h2 class="mb-3 mt-5">Event Spaces</h2>
+            <p>Our main event hall can accommodate up to 200 guests, featuring high ceilings, natural lighting, and traditional Filipino architectural elements. For smaller gatherings, we offer several intimate spaces including our garden pavilion, which provides a beautiful outdoor setting surrounded by nature.</p>
+            <p>
+              <img src="images/room-2.jpg" alt="Event Setup" class="img-fluid">
+            </p>
+            <p>Our experienced event planning team works closely with you to ensure every detail is perfect. From menu planning featuring authentic Filipino cuisine to decoration and entertainment, we handle all aspects of your event so you can focus on enjoying the celebration.</p>
+            <p>We've hosted countless successful events, from elegant weddings to productive corporate meetings. Our commitment to excellence and attention to detail ensures that your event at Bahay Kubo Resort will be remembered fondly by all who attend.</p>
+          `,
+          tags: ["Events", "Wedding", "Corporate", "Venue"]
+        },
+        8: {
+          title: "Sustainable Tourism and Eco-Friendly Practices",
+          date: "Nov. 1, 2024",
+          image: "images/bg_2.jpg",
+          content: `
+            <p>Learn about our commitment to sustainable tourism and eco-friendly practices. We're dedicated to preserving the environment while providing exceptional service.</p>
+            <p>
+              <img src="images/bg_2.jpg" alt="Eco-Friendly Resort" class="img-fluid">
+            </p>
+            <p>Sustainability is at the heart of everything we do at Bahay Kubo Resort. We believe that responsible tourism is not just about minimizing our environmental impact, but about actively contributing to the preservation and enhancement of the natural environment and local community.</p>
+            <h2 class="mb-3 mt-5">Our Green Initiatives</h2>
+            <p>We've implemented numerous eco-friendly practices throughout our resort. Our buildings use solar panels for electricity, we have a comprehensive recycling program, and we use biodegradable products wherever possible. Our water conservation efforts include rainwater harvesting and greywater recycling systems.</p>
+            <p>
+              <img src="images/room-3.jpg" alt="Sustainable Practices" class="img-fluid">
+            </p>
+            <p>We source our food from local organic farms, reducing our carbon footprint while supporting the local economy. Our gardens are maintained using organic methods, and we've eliminated the use of harmful pesticides and chemicals.</p>
+            <p>By choosing to stay at Bahay Kubo Resort, you're supporting sustainable tourism practices that benefit both the environment and the local community. We're proud to be a leader in eco-friendly hospitality in the Philippines.</p>
+          `,
+          tags: ["Sustainability", "Eco-Friendly", "Environment", "Green"]
+        },
+        9: {
+          title: "Guest Stories: Memorable Stays at Bahay Kubo",
+          date: "Oct. 25, 2024",
+          image: "images/room-1.jpg",
+          content: `
+            <p>Read about the wonderful experiences of our guests. From romantic getaways to family vacations, discover why visitors return to our resort year after year.</p>
+            <p>
+              <img src="images/room-1.jpg" alt="Happy Guests" class="img-fluid">
+            </p>
+            <p>Nothing makes us happier than hearing about the wonderful experiences our guests have at Bahay Kubo Resort. Over the years, we've had the privilege of hosting thousands of guests, each with their own unique story to tell.</p>
+            <h2 class="mb-3 mt-5">Guest Testimonials</h2>
+            <p>"Our honeymoon at Bahay Kubo Resort was absolutely magical. The traditional architecture, the beautiful gardens, and the warm hospitality made it an unforgettable experience. We can't wait to return for our anniversary!" - Maria and Juan, Manila</p>
+            <p>
+              <img src="images/room-4.jpg" alt="Guest Experience" class="img-fluid">
+            </p>
+            <p>"As a family with young children, we appreciated the safe, welcoming environment and the variety of activities. The kids loved exploring the gardens and learning about Filipino culture. It was both fun and educational!" - The Santos Family</p>
+            <p>These stories inspire us to continue providing exceptional service and creating memorable experiences. We're grateful for every guest who chooses to stay with us and share in the beauty of Filipino culture and hospitality.</p>
+          `,
+          tags: ["Testimonials", "Guests", "Experience", "Reviews"]
+        },
+        10: {
+          title: "Seasonal Activities and Local Attractions",
+          date: "Oct. 18, 2024",
+          image: "images/room-2.jpg",
+          content: `
+            <p>Discover the best activities and attractions near our resort throughout the year. From festivals to natural wonders, there's always something exciting to explore.</p>
+            <p>
+              <img src="images/room-2.jpg" alt="Local Attractions" class="img-fluid">
+            </p>
+            <p>The area surrounding Bahay Kubo Resort is rich with natural beauty and cultural attractions. Throughout the year, there are numerous activities and events that showcase the best of what the Philippines has to offer.</p>
+            <h2 class="mb-3 mt-5">Year-Round Activities</h2>
+            <p>From hiking through nearby nature reserves to visiting local markets and artisan workshops, there's always something to do. During festival seasons, the area comes alive with colorful celebrations, traditional music, and delicious street food.</p>
+            <p>
+              <img src="images/room-5.jpg" alt="Activities" class="img-fluid">
+            </p>
+            <p>Our concierge team is always available to help you plan your adventures, whether you're interested in water activities, cultural tours, or simply exploring the local area. We can arrange transportation and provide recommendations based on your interests.</p>
+            <p>No matter what time of year you visit, you'll find plenty of opportunities to explore, learn, and create lasting memories. The combination of natural beauty and rich culture makes this area a truly special destination.</p>
+          `,
+          tags: ["Activities", "Attractions", "Travel", "Adventure"]
+        },
+        11: {
+          title: "Award-Winning Service and Hospitality",
+          date: "Oct. 10, 2024",
+          image: "images/room-3.jpg",
+          content: `
+            <p>Our dedicated staff is committed to providing exceptional service. Learn about our training programs and what makes our hospitality truly special.</p>
+            <p>
+              <img src="images/room-3.jpg" alt="Service Excellence" class="img-fluid">
+            </p>
+            <p>At Bahay Kubo Resort, we believe that exceptional service is the foundation of a memorable stay. Our team undergoes extensive training to ensure that every guest receives personalized attention and experiences the warm, genuine hospitality that the Philippines is known for.</p>
+            <h2 class="mb-3 mt-5">Our Service Philosophy</h2>
+            <p>We train our staff not just in technical skills, but in the art of Filipino hospitality - the genuine care and attention to detail that makes guests feel truly welcome. Our team members are encouraged to go above and beyond, creating moments of delight that guests remember long after their stay.</p>
+            <p>
+              <img src="images/room-6.jpg" alt="Staff Training" class="img-fluid">
+            </p>
+            <p>Many of our staff members are from the local community, bringing authentic knowledge of Filipino culture and traditions. They're passionate about sharing their heritage with guests, whether it's through recommendations for local experiences or stories about the area's history.</p>
+            <p>Our commitment to service excellence has been recognized with several awards, but the greatest reward is seeing the smiles on our guests' faces and hearing about the wonderful memories they've created during their stay with us.</p>
+          `,
+          tags: ["Service", "Hospitality", "Staff", "Excellence"]
+        },
+        12: {
+          title: "Chef's Special: Signature Dishes You Must Try",
+          date: "Oct. 3, 2024",
+          image: "images/resto.jpg",
+          content: `
+            <p>Meet our talented chefs and discover their signature dishes. Each recipe tells a story of Filipino culinary heritage and innovation.</p>
+            <p>
+              <img src="images/resto.jpg" alt="Chef's Special" class="img-fluid">
+            </p>
+            <p>Our culinary team, led by Executive Chef Maria Santos, brings decades of experience and a passion for Filipino cuisine to every dish. Chef Maria has traveled throughout the Philippines, learning traditional recipes from local communities and adapting them for our restaurant.</p>
+            <h2 class="mb-3 mt-5">Signature Dishes</h2>
+            <p>Our menu features several signature dishes that have become guest favorites. The "Bahay Kubo Special Adobo" is our unique take on the classic dish, slow-cooked for hours to achieve perfect tenderness and flavor. Our "Sinigang na Hipon" features fresh local shrimp in a perfectly balanced sour broth.</p>
+            <p>
+              <img src="images/image_2.jpg" alt="Signature Dishes" class="img-fluid">
+            </p>
+            <p>Chef Maria also creates seasonal specials that highlight the best ingredients available at different times of year. These dishes showcase her creativity while staying true to Filipino culinary traditions.</p>
+            <p>We invite you to join us for a culinary journey through the Philippines, where each dish tells a story and every meal is a celebration of Filipino culture and flavor.</p>
+          `,
+          tags: ["Food", "Chef", "Signature", "Cuisine"]
+        },
+        13: {
+          title: "Photography Tips: Capturing Resort Beauty",
+          date: "Sept. 26, 2024",
+          image: "images/room-4.jpg",
+          content: `
+            <p>Learn how to capture stunning photos of our resort's architecture, gardens, and scenic views. Perfect for social media and creating lasting memories.</p>
+            <p>
+              <img src="images/room-4.jpg" alt="Photography" class="img-fluid">
+            </p>
+            <p>Bahay Kubo Resort offers countless opportunities for beautiful photography. From the traditional architecture to the lush gardens, from sunrise to sunset, every corner of our resort provides a perfect backdrop for stunning images.</p>
+            <h2 class="mb-3 mt-5">Best Photography Spots</h2>
+            <p>The golden hours - early morning and late afternoon - provide the best lighting for capturing the warm tones of our traditional buildings. The gardens are particularly beautiful during these times, with soft, diffused light that brings out the vibrant colors of the flowers and foliage.</p>
+            <p>
+              <img src="images/image_1.jpg" alt="Photography Tips" class="img-fluid">
+            </p>
+            <p>Our infinity pool offers stunning reflection opportunities, especially during sunset when the sky creates a beautiful backdrop. The traditional architecture provides interesting lines and textures that add depth to your compositions.</p>
+            <p>Whether you're a professional photographer or just love taking photos with your phone, our resort offers endless inspiration. Don't forget to tag us in your social media posts - we love seeing how our guests capture the beauty of Bahay Kubo Resort!</p>
+          `,
+          tags: ["Photography", "Tips", "Social Media", "Beauty"]
+        },
+        14: {
+          title: "Wellness Programs and Spa Services",
+          date: "Sept. 18, 2024",
+          image: "images/room-5.jpg",
+          content: `
+            <p>Rejuvenate your mind and body with our wellness programs and spa services. Experience relaxation and renewal in our tranquil environment.</p>
+            <p>
+              <img src="images/room-5.jpg" alt="Spa Services" class="img-fluid">
+            </p>
+            <p>Our wellness center offers a comprehensive range of spa treatments and wellness programs designed to help you relax, rejuvenate, and restore balance to your mind and body. Using traditional Filipino healing techniques combined with modern wellness practices, we create a unique spa experience.</p>
+            <h2 class="mb-3 mt-5">Spa Treatments</h2>
+            <p>Our signature treatments include traditional Filipino hilot massage, which uses deep pressure and stretching techniques to relieve tension and improve circulation. We also offer aromatherapy treatments using locally sourced essential oils, and facial treatments using natural ingredients.</p>
+            <p>
+              <img src="images/image_3.jpg" alt="Wellness" class="img-fluid">
+            </p>
+            <p>Our wellness programs include yoga classes in the gardens, meditation sessions, and wellness workshops. These programs are designed to help you connect with yourself and find inner peace in our tranquil setting.</p>
+            <p>Whether you're looking for a quick massage to relieve travel fatigue or a comprehensive wellness retreat, our team of trained therapists and wellness instructors are here to help you achieve your wellness goals.</p>
+          `,
+          tags: ["Wellness", "Spa", "Relaxation", "Health"]
+        },
+        16: {
+          title: "The Cultural Significance of Bahay Kubo",
+          date: "Sept. 3, 2024",
+          image: "images/blog-16.jpg",
+          comments: 12,
+          content: `
+            <p>Discover how Bahay Kubo represents more than just architecture - it's a symbol of Filipino identity, resilience, and community spirit. The Bahay Kubo holds deep cultural significance that goes far beyond its practical function as a shelter.</p>
+            <p>
+              <img src="images/blog-16-content-1.jpg" alt="Cultural Significance" class="img-fluid">
+            </p>
+            <p>The Bahay Kubo is a symbol of Filipino identity, representing values like resilience, adaptability, and connection with nature. Throughout Philippine history, the Bahay Kubo has remained a constant reminder of Filipino identity, even during periods of colonization and change.</p>
+            <h2 class="mb-3 mt-5">Community and Togetherness</h2>
+            <p>The Bahay Kubo's open design naturally encourages community and togetherness. The spacious interiors are perfect for family gatherings, community meetings, and celebrations. The communal nature of Bahay Kubo reflects the Filipino value of strong family and community bonds.</p>
+            <p>
+              <img src="images/blog-16-content-2.jpg" alt="Community Spirit" class="img-fluid">
+            </p>
+            <p>The Bahay Kubo is also a symbol of Filipino resilience. Despite challenges from colonization, modernization, and natural disasters, the Bahay Kubo has persisted, adapting while maintaining its essential character. This resilience reflects the Filipino spirit of endurance and adaptability.</p>
+            <p>At Bahay Kubo Resort, we honor this cultural significance by creating spaces where guests can experience and appreciate the deeper meaning of Bahay Kubo beyond its architectural features.</p>
+          `,
+          tags: ["Culture", "Identity", "Resilience", "Filipino"]
+        },
+        17: {
+          title: "Restoring Old Bahay Kubo",
+          date: "Aug. 28, 2024",
+          image: "images/blog-17.jpg",
+          comments: 7,
+          content: `
+            <p>Our restoration efforts to preserve historic Bahay Kubo structures and maintain their architectural integrity. Restoring old Bahay Kubo requires special knowledge, care, and dedication to preserving traditional building methods.</p>
+            <p>
+              <img src="images/blog-17-content-1.jpg" alt="Restoration Work" class="img-fluid">
+            </p>
+            <p>Restoring a historic Bahay Kubo is a delicate process that requires understanding traditional construction techniques and materials. We work with master craftsmen who have experience restoring traditional structures, ensuring that the restoration maintains the original character while meeting modern safety standards.</p>
+            <h2 class="mb-3 mt-5">Preservation Techniques</h2>
+            <p>The restoration process begins with careful assessment of the existing structure, identifying which elements can be preserved and which need replacement. Traditional materials like bamboo and nipa palm are sourced from the same regions and prepared using traditional methods to match the original construction.</p>
+            <p>
+              <img src="images/blog-17-content-2.jpg" alt="Preservation Methods" class="img-fluid">
+            </p>
+            <p>When original materials must be replaced, we use traditional techniques to ensure the new elements match the original design. The goal is to preserve as much of the original structure as possible while ensuring the restored Bahay Kubo is safe and functional.</p>
+            <p>Our restoration efforts help preserve not just individual structures, but the knowledge and techniques needed to maintain traditional Bahay Kubo for future generations. Visit Bahay Kubo Resort to see our restored structures and learn about the preservation process.</p>
+          `,
+          tags: ["Restoration", "Preservation", "History", "Heritage"]
+        },
+        18: {
+          title: "Bahay Kubo Interiors: Traditional Filipino Living",
+          date: "Aug. 20, 2024",
+          image: "images/blog-18.jpg",
+          comments: 11,
+          content: `
+            <p>Step inside a traditional Bahay Kubo and discover how Filipino families create cozy, functional living spaces. The interior design of Bahay Kubo reflects Filipino values of practicality, togetherness, and connection with nature.</p>
+            <p>
+              <img src="images/blog-18-content-1.jpg" alt="Bahay Kubo Interior" class="img-fluid">
+            </p>
+            <p>Traditional Bahay Kubo interiors feature open floor plans that maximize space and airflow. Furniture is minimal and functional, typically made from bamboo or local wood. Woven mats and textiles add color and warmth while maintaining the natural aesthetic. The open design naturally encourages family togetherness.</p>
+            <h2 class="mb-3 mt-5">Functional Design Elements</h2>
+            <p>Storage is cleverly integrated into the structure, with built-in shelves and compartments made from bamboo. Cooking areas are designed for natural ventilation, with smoke escaping through openings in the roof. Sleeping areas are flexible, with mats that can be rolled out at night and stored during the day.</p>
+            <p>
+              <img src="images/blog-18-content-2.jpg" alt="Interior Details" class="img-fluid">
+            </p>
+            <p>Decorative elements are minimal but meaningful, often featuring local handicrafts, family photos, and religious items. The overall aesthetic prioritizes function and comfort over decoration, creating spaces that are both practical and inviting.</p>
+            <p>At Bahay Kubo Resort, our interiors blend traditional design principles with modern comfort, creating spaces that honor Filipino living traditions while providing contemporary amenities. Experience this authentic interior design during your stay.</p>
+          `,
+          tags: ["Interior", "Design", "Living", "Filipino"]
+        },
+        19: {
+          title: "The Future of Bahay Kubo Architecture",
+          date: "Aug. 15, 2024",
+          image: "images/blog-19.jpg",
+          comments: 10,
+          content: `
+            <p>How modern innovations are being integrated with traditional Bahay Kubo design to create sustainable homes for the future. The future of Bahay Kubo architecture lies in combining traditional wisdom with modern innovations.</p>
+            <p>
+              <img src="images/blog-19-content-1.jpg" alt="Future Bahay Kubo" class="img-fluid">
+            </p>
+            <p>Contemporary architects and builders are finding new ways to preserve Bahay Kubo design principles while meeting modern needs. Engineered bamboo products offer greater strength and durability while maintaining the natural aesthetic. Modern treatments extend the life of natural materials without compromising their environmental benefits.</p>
+            <h2 class="mb-3 mt-5">Sustainable Innovations</h2>
+            <p>Solar panels are being integrated into traditional roofing, providing renewable energy while maintaining the traditional appearance. Rainwater harvesting systems are being incorporated into the elevated design, enhancing the sustainability of traditional Bahay Kubo. Modern insulation materials are being used alongside traditional materials to improve energy efficiency.</p>
+            <p>
+              <img src="images/blog-19-content-2.jpg" alt="Modern Innovations" class="img-fluid">
+            </p>
+            <p>The future of Bahay Kubo architecture represents a synthesis of traditional wisdom and modern technology. By preserving traditional design principles while incorporating contemporary innovations, we can create structures that honor Filipino heritage while meeting modern needs.</p>
+            <p>At Bahay Kubo Resort, we're at the forefront of this architectural evolution, demonstrating how traditional design can be adapted for the future while preserving its essential character and cultural significance.</p>
+          `,
+          tags: ["Future", "Innovation", "Sustainability", "Architecture"]
+        },
+        20: {
+          title: "Celebrating Filipino Identity Through Bahay Kubo",
+          date: "Aug. 8, 2024",
+          image: "images/blog-20.jpg",
+          comments: 8,
+          content: `
+            <p>How Bahay Kubo Resort honors Filipino heritage and provides guests with an authentic cultural experience. The Bahay Kubo is more than architecture - it's a celebration of Filipino identity, values, and way of life.</p>
+            <p>
+              <img src="images/blog-20-content-1.jpg" alt="Filipino Identity" class="img-fluid">
+            </p>
+            <p>At Bahay Kubo Resort, we celebrate Filipino identity through every aspect of our resort. From the traditional architecture of our accommodations to the Filipino cuisine served in our restaurant, from cultural performances to hands-on workshops, every element is designed to honor and share Filipino heritage.</p>
+            <h2 class="mb-3 mt-5">Cultural Celebration</h2>
+            <p>We host regular cultural events celebrating Filipino traditions, festivals, and holidays. These celebrations provide guests with opportunities to experience Filipino culture firsthand, participate in traditional activities, and learn about Filipino values and customs.</p>
+            <p>
+              <img src="images/blog-20-content-2.jpg" alt="Cultural Events" class="img-fluid">
+            </p>
+            <p>Our staff, many from local communities, share their knowledge and stories, providing genuine insights into Filipino life. Through these interactions, guests develop a deeper appreciation for Filipino culture and the values reflected in Bahay Kubo architecture.</p>
+            <p>By staying at Bahay Kubo Resort, you're participating in a celebration of Filipino identity and heritage. Experience the warmth, hospitality, and rich culture of the Philippines through the lens of traditional Bahay Kubo architecture and Filipino traditions.</p>
+          `,
+          tags: ["Identity", "Heritage", "Celebration", "Filipino"]
+        }
+      };
+
+      // Load blog content based on URL parameter (randomized if no ID provided)
+      function loadBlogContent() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var blogId = urlParams.get('id');
+        var post;
+        
+        if (!blogId) {
+          // If no ID provided, randomly select a post
+          var postIds = Object.keys(blogPosts);
+          var randomIndex = Math.floor(Math.random() * postIds.length);
+          blogId = postIds[randomIndex];
+        }
+        
+        post = blogPosts[blogId];
+        
+        if (!post) {
+          // Default to first post if ID not found
+          post = blogPosts[1];
+          blogId = '1';
+        }
+        
+        // Update hero background image with blog post image
+        var heroWrap = document.querySelector('.hero-wrap');
+        if (heroWrap && post.image) {
+          heroWrap.style.backgroundImage = 'url(' + post.image + ')';
+        }
+        
+        // Update page title
+        document.title = post.title + " - BAHAY KUBO Resort";
+        
+        // Update breadcrumb
+        var breadcrumb = document.querySelector('.breadcrumbs');
+        if (breadcrumb) {
+          breadcrumb.innerHTML = '<span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="blog.html">Blog</a></span> <span>' + post.title + '</span>';
+        }
+        
+        // Update hero title
+        var heroTitle = document.querySelector('.hero-wrap .bread');
+        if (heroTitle) {
+          heroTitle.textContent = post.title;
+        }
+        
+        // Update blog title
+        var blogTitle = document.getElementById('blogTitle');
+        if (blogTitle) {
+          blogTitle.textContent = post.title;
+        }
+        
+        // Update blog content
+        var blogContent = document.getElementById('blogContent');
+        if (blogContent) {
+          blogContent.innerHTML = post.content;
+        }
+        
+        // Update tags
+        var blogTags = document.querySelector('#blogTags .tagcloud');
+        if (blogTags) {
+          blogTags.innerHTML = '';
+          post.tags.forEach(function(tag) {
+            var tagLink = document.createElement('a');
+            tagLink.href = '#';
+            tagLink.className = 'tag-cloud-link';
+            tagLink.textContent = tag;
+            blogTags.appendChild(tagLink);
+          });
+        }
+      }
+      
+      // Randomize recent blog posts in sidebar
+      function randomizeRecentBlogPosts() {
+        var postIds = Object.keys(blogPosts);
+        var shuffled = postIds.sort(function() { return 0.5 - Math.random(); });
+        var recentPosts = shuffled.slice(0, 3);
+        
+        var $recentContainer = $('#recentBlogPosts');
+        $recentContainer.empty();
+        
+        recentPosts.forEach(function(postId) {
+          var post = blogPosts[postId];
+          if (post) {
+            var comments = post.comments || 10;
+            var postHtml = '<div class="block-21 mb-4 d-flex">' +
+              '<a class="blog-img mr-4" style="background-image: url(' + post.image + ');" href="blog-single.html?id=' + postId + '"></a>' +
+              '<div class="text">' +
+              '<h3 class="heading"><a href="blog-single.html?id=' + postId + '">' + post.title + '</a></h3>' +
+              '<div class="meta">' +
+              '<div><a href="#"><span class="icon-calendar"></span> ' + post.date + '</a></div>' +
+              '<div><a href="#"><span class="icon-person"></span> Admin</a></div>' +
+              '<div><a href="#"><span class="icon-chat"></span> ' + comments + '</a></div>' +
+              '</div>' +
+              '</div>' +
+              '</div>';
+            $recentContainer.append(postHtml);
+          }
+        });
+      }
+      
+      // Load content when page loads
+      $(document).ready(function() {
+        loadBlogContent();
+        randomizeRecentBlogPosts();
+        // Initialize comment system after content loads
+        setTimeout(function() {
+          initCommentSystem();
+        }, 200);
+      });
+    });
+  </script>
+  
+  <style>
+    /* Loading Screen for Logout */
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .loading-overlay.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .loading-container {
+      text-align: center;
+      color: #f5f5dc;
+    }
+
+    .loading-spinner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .spinner-circle {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #4a8c3e 0%, #2d5016 100%);
+      animation: spinner-bounce 1.4s ease-in-out infinite both;
+      box-shadow: 0 4px 12px rgba(74, 140, 62, 0.4);
+    }
+
+    .spinner-circle:nth-child(1) {
+      animation-delay: -0.32s;
+    }
+
+    .spinner-circle:nth-child(2) {
+      animation-delay: -0.16s;
+    }
+
+    @keyframes spinner-bounce {
+      0%, 80%, 100% {
+        transform: scale(0.6);
+        opacity: 0.5;
+      }
+      40% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .loading-text {
+      font-size: 24px;
+      font-weight: 600;
+      color: #f5f5dc;
+      margin-bottom: 8px;
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      letter-spacing: 1px;
+      animation: loading-text-pulse 2s ease-in-out infinite;
+    }
+
+    .loading-subtext {
+      font-size: 14px;
+      color: #888;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    @keyframes loading-text-pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.6;
+      }
+    }
+  </style>
+  
+  <!-- Loading Overlay for Logout -->
+  <div class="loading-overlay" id="logoutLoadingOverlay">
+    <div class="loading-container">
+      <div class="loading-spinner">
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+      </div>
+      <div class="loading-text">Logging out...</div>
+      <div class="loading-subtext">Please wait</div>
+    </div>
+  </div>
+    
+  </body>
+</html>

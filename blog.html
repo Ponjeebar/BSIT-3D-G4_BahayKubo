@@ -1,0 +1,1862 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>BAHAY KUBO Resort - Blog</title>
+    <link rel="icon" type="image/png" href="logo/logo.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+      /* Profile Dropdown Enhanced Styles */
+      #profileDropdown {
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 5px;
+        padding: 8px 15px !important;
+      }
+      
+      #profileDropdown:hover {
+        color: #fff !important;
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: translateY(-1px);
+      }
+      
+      #profileDropdown:active {
+        transform: translateY(0);
+      }
+      
+      /* Enhanced Dropdown Menu */
+      .profile-dropdown-menu {
+        min-width: 200px;
+        padding: 8px 0 !important;
+        margin-top: 10px !important;
+        background: #fff;
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        opacity: 0;
+        transform: translateY(-15px) scale(0.9);
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        pointer-events: none;
+        overflow: visible;
+        transform-origin: top right;
+      }
+      
+      .profile-dropdown-menu.show {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+        animation: dropdownSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      
+      @keyframes dropdownSlideIn {
+        0% {
+          opacity: 0;
+          transform: translateY(-15px) scale(0.9);
+        }
+        50% {
+          transform: translateY(2px) scale(1.02);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      
+      .profile-dropdown-menu.show .dropdown-item {
+        animation: fadeInItem 0.4s ease forwards;
+        opacity: 0;
+      }
+      
+      .profile-dropdown-menu.show .dropdown-item:nth-child(1) {
+        animation-delay: 0.05s;
+      }
+      
+      .profile-dropdown-menu.show .dropdown-item:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      
+      @keyframes fadeInItem {
+        from {
+          opacity: 0;
+          transform: translateX(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      
+      .profile-dropdown-menu .dropdown-item {
+        padding: 12px 20px;
+        color: #333;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        border-left: 3px solid transparent;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:first-child {
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:last-child {
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+        padding-left: 25px;
+        transform: translateX(3px);
+      }
+      
+      .profile-dropdown-menu .dropdown-item:active {
+        background: #e9ecef;
+        transform: translateX(0);
+      }
+      
+      /* Hide My Profile submenu and logout by default (shown when logged in) */
+      .profile-dropdown-menu .profile-submenu-toggle,
+      .profile-dropdown-menu .logout-link {
+        display: none;
+      }
+      
+      /* Profile submenu styles */
+      .profile-submenu {
+        display: none;
+        position: absolute;
+        left: 100%;
+        top: 0;
+        min-width: 180px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        margin-left: 8px;
+        padding: 8px 0;
+        z-index: 10001;
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      
+      .profile-submenu-toggle.active .profile-submenu {
+        display: block;
+        opacity: 1;
+        transform: translateX(0);
+      }
+      
+      .profile-submenu-toggle.active i.fa-chevron-right {
+        transform: rotate(90deg);
+      }
+      
+      .profile-submenu .submenu-item {
+        padding: 10px 20px;
+        color: #333;
+        font-size: 14px;
+        font-weight: 500;
+        border-left: 3px solid transparent;
+        display: block;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        border-radius: 0;
+      }
+      
+      .profile-submenu .submenu-item:first-child {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+      
+      .profile-submenu .submenu-item:last-child {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      
+      .profile-submenu .submenu-item:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+        padding-left: 25px;
+        transform: translateX(3px);
+      }
+      
+      .profile-submenu-toggle {
+        user-select: none;
+        position: relative;
+        overflow: visible !important;
+      }
+      
+      .profile-dropdown-menu .profile-submenu-toggle {
+        overflow: visible;
+      }
+      
+      .profile-submenu-toggle:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+      }
+      
+      .profile-submenu-toggle:hover i.fa-chevron-right {
+        color: #21cc7a;
+      }
+      
+      .profile-submenu-toggle.active {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+      }
+      
+      /* Icon spacing for dropdown items */
+      .profile-dropdown-menu .dropdown-item::before {
+        content: '';
+        width: 4px;
+        height: 4px;
+        background: #21cc7a;
+        border-radius: 50%;
+        margin-right: 10px;
+        opacity: 0;
+        transition: all 0.2s ease;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:hover::before {
+        opacity: 1;
+        margin-right: 12px;
+      }
+      
+      /* Logout item special styling */
+      .profile-dropdown-menu .logout-link {
+        border-top: 1px solid #e9ecef;
+        margin-top: 0;
+        padding: 14px 20px 12px 20px;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        transition: all 0.2s ease;
+        border-left: 3px solid transparent;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .profile-dropdown-menu .logout-link:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%) !important;
+        color: #dc3545;
+        border-left-color: #dc3545;
+        border-top-color: transparent;
+        padding-left: 25px;
+        transform: translateX(3px);
+        margin-top: 0;
+      }
+      
+      .profile-dropdown-menu .logout-link::before {
+        background: #dc3545;
+      }
+      
+      /* Profile nav link styling */
+      .profile-nav-link {
+        color: rgba(255, 255, 255, 0.9) !important;
+      }
+      
+      /* Ensure profile dropdown is visible when navbar is scrolled */
+      .ftco-navbar-light.scrolled .profile-nav-link,
+      .ftco-navbar-light.scrolled.awake .profile-nav-link {
+        color: rgba(0, 0, 0, 0.9) !important;
+      }
+      
+      .ftco-navbar-light.scrolled .profile-nav-link span:last-child,
+      .ftco-navbar-light.scrolled.awake .profile-nav-link span:last-child {
+        color: rgba(0, 0, 0, 0.9) !important;
+      }
+      
+      .ftco-navbar-light.scrolled .nav-profile-picture,
+      .ftco-navbar-light.scrolled.awake .nav-profile-picture {
+        border-color: rgba(0, 0, 0, 0.2) !important;
+      }
+      
+      .ftco-navbar-light.scrolled .nav-profile-picture span,
+      .ftco-navbar-light.scrolled.awake .nav-profile-picture span {
+        color: #fff !important;
+      }
+      
+      /* Login link styling */
+      .login-nav-link {
+        color: rgba(255, 255, 255, 0.9) !important;
+        transition: color 0.3s ease;
+      }
+      
+      .ftco-navbar-light.scrolled .login-nav-link,
+      .ftco-navbar-light.scrolled.awake .login-nav-link {
+        color: rgba(0, 0, 0, 0.9) !important;
+      }
+      
+      /* Update border color for login link container when scrolled */
+      .ftco-navbar-light.scrolled #simpleLoginLink,
+      .ftco-navbar-light.scrolled.awake #simpleLoginLink {
+        border-left-color: rgba(0, 0, 0, 0.2) !important;
+      }
+      
+      /* Navigation collapse styling - show flex when menu is open */
+      #ftco-nav.show {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      /* On desktop (lg and up), always show flex (Bootstrap expands navbar on lg+) */
+      @media (min-width: 992px) {
+        #ftco-nav {
+          display: flex !important;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+      
+      /* On mobile, stack items vertically when menu is open */
+      @media (max-width: 991.98px) {
+        #ftco-nav.show {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        
+        #ftco-nav.show .navbar-nav {
+          width: 100%;
+          margin-bottom: 15px;
+        }
+        
+        #ftco-nav.show #profileDropdownContainer,
+        #ftco-nav.show #simpleLoginLink {
+          width: 100%;
+          margin-left: 0 !important;
+          padding-left: 0 !important;
+          border-left: none !important;
+          border-top: 1px solid rgba(255, 255, 255, 0.2);
+          padding-top: 15px;
+          margin-top: 15px;
+        }
+      }
+      
+      /* Reduce footer size to half */
+      .ftco-footer {
+        padding: 3em 0 !important;
+      }
+      
+      .ftco-footer .row.mb-5 {
+        margin-bottom: 1.5rem !important;
+      }
+      
+      .ftco-footer-widget {
+        margin-bottom: 1rem !important;
+      }
+      
+      .ftco-footer-widget h2 {
+        font-size: 16px !important;
+        margin-bottom: 12px !important;
+      }
+      
+      .ftco-footer-widget p {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+        margin-bottom: 15px !important;
+      }
+      
+      .ftco-footer-social {
+        margin-top: 1rem !important;
+      }
+      
+      .ftco-footer-social li {
+        margin-right: 8px !important;
+      }
+      
+      .ftco-footer-social li a {
+        height: 35px !important;
+        width: 35px !important;
+      }
+      
+      .ftco-footer-social li a span {
+        font-size: 16px !important;
+      }
+      
+      .ftco-footer-widget ul.list-unstyled li {
+        padding: 3px 0 !important;
+        font-size: 13px !important;
+      }
+      
+      .ftco-footer-widget ul.list-unstyled li a {
+        padding: 3px 0 !important;
+      }
+      
+      .block-23 ul li {
+        padding: 4px 0 !important;
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+      }
+      
+      .block-23 ul li .text {
+        font-size: 13px !important;
+      }
+      
+      .ftco-footer .row:last-child {
+        margin-top: 1rem !important;
+        padding-top: 1rem !important;
+      }
+      
+      .ftco-footer .row:last-child p {
+        font-size: 12px !important;
+        margin-bottom: 0 !important;
+      }
+
+      /* Blog Pagination Styles - Must override Bootstrap d-flex */
+      .blog-item,
+      .col-md-4.d-flex.ftco-animate.blog-item,
+      .col-md-4.d-flex.blog-item {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s ease;
+      }
+      
+      .blog-item.show-item,
+      .col-md-4.d-flex.ftco-animate.blog-item.show-item,
+      .col-md-4.d-flex.blog-item.show-item {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Enhanced Pagination UI */
+      #blogPagination {
+        list-style: none;
+        padding: 0;
+        margin: 30px 0 0 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      #blogPagination li {
+        margin: 0;
+      }
+
+      #blogPagination li a,
+      #blogPagination li span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 45px;
+        height: 45px;
+        padding: 0 16px;
+        text-decoration: none;
+        color: #555;
+        background: #fff;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 15px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+      }
+
+      #blogPagination li a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.5s;
+      }
+
+      #blogPagination li a:hover::before {
+        left: 100%;
+      }
+
+      #blogPagination li.active a,
+      #blogPagination li.active span {
+        background: linear-gradient(135deg, #21cc7a 0%, #1ab366 100%);
+        color: #fff;
+        border-color: #21cc7a;
+        box-shadow: 0 4px 12px rgba(33, 204, 122, 0.3);
+        transform: translateY(-2px);
+      }
+
+      #blogPagination li:not(.disabled):not(.active) a:hover {
+        background: #f8f9fa;
+        border-color: #21cc7a;
+        color: #21cc7a;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      #blogPagination li:not(.disabled):not(.active) a:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      #blogPagination li.disabled a,
+      #blogPagination li.disabled span {
+        color: #ccc;
+        cursor: not-allowed;
+        pointer-events: none;
+        background: #f5f5f5;
+        border-color: #e0e0e0;
+        opacity: 0.5;
+      }
+
+      #blogPagination li.disabled span {
+        border: 2px solid #e0e0e0;
+        background: #f5f5f5;
+      }
+
+      /* Pagination container styling */
+      .block-27 {
+        padding: 20px 0;
+      }
+
+      /* Animation for blog items appearing */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .blog-item.animate-in {
+        animation: fadeInUp 0.6s ease-out forwards;
+      }
+
+      /* Responsive pagination */
+      @media (max-width: 768px) {
+        #blogPagination {
+          gap: 5px;
+        }
+        
+        #blogPagination li a,
+        #blogPagination li span {
+          min-width: 40px;
+          height: 40px;
+          padding: 0 12px;
+          font-size: 14px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        #blogPagination li a,
+        #blogPagination li span {
+          min-width: 36px;
+          height: 36px;
+          padding: 0 10px;
+          font-size: 13px;
+        }
+      }
+
+      /* Smooth page transition overlay effect */
+      #blogContainer {
+        position: relative;
+        min-height: 500px;
+      }
+
+      /* Big letter styling for blog hero section - matching index.html carousel */
+      .hero {
+        height: 800px !important;
+        position: relative !important;
+      }
+      
+      .home-slider .slider-item {
+        height: 800px !important;
+        position: relative !important;
+      }
+      
+      .home-slider .slider-item .overlay {
+        z-index: 1 !important;
+      }
+      
+      .home-slider .slider-item .slider-text {
+        height: 800px !important;
+        position: relative !important;
+        z-index: 2 !important;
+      }
+      
+      .home-slider .slider-item .slider-text .text {
+        z-index: 10 !important;
+        position: relative !important;
+        color: rgba(255, 255, 255, 0.9) !important;
+      }
+      
+      .home-slider .slider-item .slider-text h1 {
+        font-size: 6vw !important;
+        font-weight: 700 !important;
+        color: #fff !important;
+        line-height: 1 !important;
+        margin-bottom: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+      
+      @media (max-width: 991.98px) {
+        .home-slider .slider-item .slider-text h1 {
+          font-size: 50px !important;
+        }
+      }
+      
+      .home-slider .slider-item .slider-text h2 {
+        font-size: 16px !important;
+        text-transform: uppercase !important;
+        letter-spacing: 4px !important;
+        font-family: 'Nunito Sans', Arial, sans-serif !important;
+        font-weight: 700 !important;
+        color: #f5e4c3 !important;
+        display: inline-block !important;
+        position: relative !important;
+        margin-bottom: 15px !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+      
+      .home-slider .slider-item .slider-text p {
+        font-size: 16px !important;
+        line-height: 1.5 !important;
+        font-weight: 400 !important;
+        color: rgba(255, 255, 255, 0.7) !important;
+      }
+      
+      /* Ensure text elements are visible - override all possible hiding */
+      .home-slider .slider-item .slider-text .text h1,
+      .home-slider .slider-item .slider-text .text h2 {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 10 !important;
+      }
+      
+      /* Ensure ftco-animate doesn't hide content initially */
+      .home-slider .ftco-animate {
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      
+      .home-slider .ftco-animate .text {
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      
+      /* Override any animation initial states */
+      .home-slider .slider-item .slider-text * {
+        visibility: visible !important;
+      }
+      
+      /* Ensure col-md-6 is visible */
+      .home-slider .slider-item .row .col-md-6 {
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // Immediately hide all blog items before page renders
+      (function() {
+        var style = document.createElement('style');
+        style.textContent = '.blog-item, .col-md-4.d-flex.blog-item, .col-md-4.d-flex.ftco-animate.blog-item { display: none !important; visibility: hidden !important; }';
+        document.head.appendChild(style);
+      })();
+    </script>
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="index.html">BAHAY <span>KUBO</span></a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav">
+	          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+	          <li class="nav-item"><a href="rooms.html" class="nav-link">Our Rooms</a></li>
+	          <li class="nav-item"><a href="restaurant.html" class="nav-link">Our Food</a></li>
+	          <li class="nav-item active"><a href="blog.html" class="nav-link">Blog</a></li>
+	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+	        </ul>
+	        <div class="nav-item dropdown" id="profileDropdownContainer" style="margin-left: 30px; position: relative; border-left: 1px solid rgba(255, 255, 255, 0.2); padding-left: 20px;">
+	          <a class="nav-link dropdown-toggle profile-nav-link" href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left: 0; padding-right: 20px; font-weight: 600; display: flex; align-items: center; gap: 10px;">
+	            <span class="nav-profile-picture" style="width: 32px; height: 32px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(255, 255, 255, 0.3); display: flex; align-items: center; justify-content: center; background: #21cc7a; flex-shrink: 0;">
+	              <span style="color: #fff; font-weight: 700; font-size: 14px; text-transform: uppercase;">GU</span>
+	            </span>
+	            <span>Profile (Guest)</span>
+	          </a>
+	          <div class="dropdown-menu dropdown-menu-right profile-dropdown-menu" aria-labelledby="profileDropdown" style="right: 0; left: auto;">
+	            <a class="dropdown-item" href="login.html">Login / Signup</a>
+	            <div class="dropdown-item profile-submenu-toggle" style="cursor: pointer; position: relative; justify-content: space-between;">
+	              <span>My Profile</span>
+	              <i class="fas fa-chevron-right" style="font-size: 12px; transition: transform 0.3s ease; margin-left: auto;"></i>
+	              <div class="profile-submenu">
+	                <a class="dropdown-item submenu-item" href="edit_profile.html">Edit Profile</a>
+	                <a class="dropdown-item submenu-item" href="transaction.html">Transaction</a>
+	              </div>
+	            </div>
+	            <a class="dropdown-item logout-link" href="#" onclick="handleLogout(); return false;">Log out</a>
+	          </div>
+	        </div>
+	        <div class="nav-item" id="simpleLoginLink" style="margin-left: 30px; position: relative; border-left: 1px solid rgba(255, 255, 255, 0.2); padding-left: 20px; display: none;">
+	          <a href="login.html" class="nav-link login-nav-link" style="font-weight: 600; padding-left: 0;">Log in</a>
+	        </div>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+		<div class="hero">
+	    <section class="home-slider owl-carousel">
+	      <div class="slider-item" style="background-image:url(images/bg_1.jpg);">
+	      	<div class="overlay"></div>
+	        <div class="container">
+	          <div class="row no-gutters slider-text align-items-center justify-content-end">
+	          <div class="col-md-6 ftco-animate">
+	          	<div class="text">
+	          		<h2>More than a resort... an experience</h2>
+		            <h1 class="mb-3">Discover Our Stories</h1>
+	            </div>
+	          </div>
+	        </div>
+	        </div>
+	      </div>
+
+	      <div class="slider-item" style="background-image:url(images/bg_2.jpg);">
+	      	<div class="overlay"></div>
+	        <div class="container">
+	          <div class="row no-gutters slider-text align-items-center justify-content-end">
+	          <div class="col-md-6 ftco-animate">
+	          	<div class="text">
+	          		<h2>BAHAY KUBO Resort</h2>
+		            <h1 class="mb-3">Read Our Latest Blog Posts</h1>
+	            </div>
+	          </div>
+	        </div>
+	        </div>
+	      </div>
+
+	      <div class="slider-item" style="background-image:url(images/bg_3.jpg);">
+	      	<div class="overlay"></div>
+	        <div class="container">
+	          <div class="row no-gutters slider-text align-items-center justify-content-end">
+	          <div class="col-md-6 ftco-animate">
+	          	<div class="text">
+	          		<h2>Stories From Our Resort</h2>
+		            <h1 class="mb-3">Explore Our Blog Collection</h1>
+	            </div>
+	          </div>
+	        </div>
+	        </div>
+	      </div>
+	    </section>
+	  </div>
+
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row d-flex" id="blogContainer">
+          <!-- Blog items will be populated and randomized by JavaScript -->
+          <div class="col-md-4 d-flex ftco-animate blog-item" data-blog-id="1">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html?id=1" class="block-20 rounded" style="background-image: url('images/blog-1.jpg');">
+              </a>
+              <div class="text mt-3">
+              	<div class="meta mb-2">
+                  <div><a href="#">Dec. 15, 2024</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 12</a></div>
+                </div>
+                <h3 class="heading"><a href="blog-single.html?id=1">The Traditional Architecture of Bahay Kubo</a></h3>
+                <p>Discover the timeless beauty and engineering brilliance of the traditional Filipino Bahay Kubo, a symbol of Filipino identity and cultural heritage.</p>
+                <a href="blog-single.html?id=1" class="btn btn-secondary rounded">More info</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate blog-item" data-blog-id="2">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html?id=2" class="block-20 rounded" style="background-image: url('images/blog-2.jpg');">
+              </a>
+              <div class="text mt-3">
+              	<div class="meta mb-2">
+                  <div><a href="#">Dec. 10, 2024</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 8</a></div>
+                </div>
+                <h3 class="heading"><a href="blog-single.html?id=2">Modern Comfort Meets Traditional Design</a></h3>
+                <p>Experience how Bahay Kubo Resort seamlessly blends traditional Filipino architecture with contemporary amenities for an unforgettable stay.</p>
+                <a href="blog-single.html?id=2" class="btn btn-secondary rounded">More info</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate blog-item" data-blog-id="3">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html?id=3" class="block-20 rounded" style="background-image: url('images/blog-3.jpg');">
+              </a>
+              <div class="text mt-3">
+              	<div class="meta mb-2">
+                  <div><a href="#">Dec. 5, 2024</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 15</a></div>
+                </div>
+                <h3 class="heading"><a href="blog-single.html?id=3">The History Behind the Bahay Kubo</a></h3>
+                <p>Explore the rich history and cultural significance of the Bahay Kubo, from its indigenous origins to its role in modern Filipino society.</p>
+                <a href="blog-single.html?id=3" class="btn btn-secondary rounded">More info</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate blog-item" data-blog-id="4">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html?id=4" class="block-20 rounded" style="background-image: url('images/blog-4.jpg');">
+              </a>
+              <div class="text mt-3">
+              	<div class="meta mb-2">
+                  <div><a href="#">Nov. 28, 2024</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 6</a></div>
+                </div>
+                <h3 class="heading"><a href="blog-single.html?id=4">Sustainable Living in Traditional Homes</a></h3>
+                <p>Learn how the Bahay Kubo's natural ventilation and eco-friendly materials make it a model of sustainable architecture.</p>
+                <a href="blog-single.html?id=4" class="btn btn-secondary rounded">More info</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate blog-item" data-blog-id="5">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html?id=5" class="block-20 rounded" style="background-image: url('images/blog-5.jpg');">
+              </a>
+              <div class="text mt-3">
+              	<div class="meta mb-2">
+                  <div><a href="#">Nov. 20, 2024</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 9</a></div>
+                </div>
+                <h3 class="heading"><a href="blog-single.html?id=5">Bahay Kubo: A Filipino Family Tradition</a></h3>
+                <p>Discover how generations of Filipino families have lived in Bahay Kubo, creating memories and preserving traditions.</p>
+                <a href="blog-single.html?id=5" class="btn btn-secondary rounded">More info</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate blog-item" data-blog-id="6">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html?id=6" class="block-20 rounded" style="background-image: url('images/blog-6.jpg');">
+              </a>
+              <div class="text mt-3">
+              	<div class="meta mb-2">
+                  <div><a href="#">Nov. 15, 2024</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 11</a></div>
+                </div>
+                <h3 class="heading"><a href="blog-single.html?id=6">The Natural Materials of Bahay Kubo</a></h3>
+                <p>From bamboo to nipa palm, explore the natural materials that make the Bahay Kubo both beautiful and functional.</p>
+                <a href="blog-single.html?id=6" class="btn btn-secondary rounded">More info</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate blog-item" data-blog-id="7">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html?id=7" class="block-20 rounded" style="background-image: url('images/blog-7.jpg');">
+              </a>
+              <div class="text mt-3">
+              	<div class="meta mb-2">
+                  <div><a href="#">Nov. 8, 2024</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 7</a></div>
+                </div>
+                <h3 class="heading"><a href="blog-single.html?id=7">Staying Cool in a Traditional Bahay Kubo</a></h3>
+                <p>Learn how the elevated design and natural ventilation of Bahay Kubo keeps it cool even in the tropical Philippine climate.</p>
+                <a href="blog-single.html?id=7" class="btn btn-secondary rounded">More info</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate blog-item" data-blog-id="8">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html?id=8" class="block-20 rounded" style="background-image: url('images/blog-8.jpg');">
+              </a>
+              <div class="text mt-3">
+              	<div class="meta mb-2">
+                  <div><a href="#">Nov. 1, 2024</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 14</a></div>
+                </div>
+                <h3 class="heading"><a href="blog-single.html?id=8">Preserving Cultural Heritage Through Architecture</a></h3>
+                <p>Bahay Kubo Resort's commitment to preserving and promoting Filipino architectural heritage for future generations.</p>
+                <a href="blog-single.html?id=8" class="btn btn-secondary rounded">More info</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate blog-item" data-blog-id="9">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html?id=9" class="block-20 rounded" style="background-image: url('images/blog-9.jpg');">
+              </a>
+              <div class="text mt-3">
+              	<div class="meta mb-2">
+                  <div><a href="#">Oct. 25, 2024</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 5</a></div>
+                </div>
+                <h3 class="heading"><a href="blog-single.html?id=9">The Art of Building a Bahay Kubo</a></h3>
+                <p>Meet the skilled craftsmen who continue to build Bahay Kubo using traditional techniques passed down through generations.</p>
+                <a href="blog-single.html?id=9" class="btn btn-secondary rounded">More info</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate blog-item" data-blog-id="10">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html?id=10" class="block-20 rounded" style="background-image: url('images/blog-10-10.jpg');">
+              </a>
+              <div class="text mt-3">
+              	<div class="meta mb-2">
+                  <div><a href="#">Oct. 18, 2024</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 10</a></div>
+                </div>
+                <h3 class="heading"><a href="blog-single.html?id=10">Bahay Kubo in Modern Philippine Architecture</a></h3>
+                <p>How contemporary architects are drawing inspiration from Bahay Kubo to create modern Filipino buildings.</p>
+                <a href="blog-single.html?id=10" class="btn btn-secondary rounded">More info</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate blog-item" data-blog-id="11">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html?id=11" class="block-20 rounded" style="background-image: url('images/blog-11-11.jpg');">
+              </a>
+              <div class="text mt-3">
+              	<div class="meta mb-2">
+                  <div><a href="#">Oct. 10, 2024</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 13</a></div>
+                </div>
+                <h3 class="heading"><a href="blog-single.html?id=11">Living the Bahay Kubo Experience</a></h3>
+                <p>A day in the life at Bahay Kubo Resort, where guests experience authentic Filipino living in traditional accommodations.</p>
+                <a href="blog-single.html?id=11" class="btn btn-secondary rounded">More info</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate blog-item" data-blog-id="12">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html?id=12" class="block-20 rounded" style="background-image: url('images/blog-12-12.jpg');">
+              </a>
+              <div class="text mt-3">
+              	<div class="meta mb-2">
+                  <div><a href="#">Oct. 3, 2024</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 4</a></div>
+                </div>
+                <h3 class="heading"><a href="blog-single.html?id=12">The Elevated Design of Bahay Kubo</a></h3>
+                <p>Understanding why Bahay Kubo is built on stilts - from flood protection to natural ventilation and cultural significance.</p>
+                <a href="blog-single.html?id=12" class="btn btn-secondary rounded">More info</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate blog-item" data-blog-id="13">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html?id=13" class="block-20 rounded" style="background-image: url('images/blog-13-13.jpg');">
+              </a>
+              <div class="text mt-3">
+              	<div class="meta mb-2">
+                  <div><a href="#">Sept. 26, 2024</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 8</a></div>
+                </div>
+                <h3 class="heading"><a href="blog-single.html?id=13">Bamboo: The Backbone of Bahay Kubo</a></h3>
+                <p>Explore how bamboo, the primary material of Bahay Kubo, contributes to its strength, flexibility, and sustainability.</p>
+                <a href="blog-single.html?id=13" class="btn btn-secondary rounded">More info</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate blog-item" data-blog-id="14">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html?id=14" class="block-20 rounded" style="background-image: url('images/blog-14-14.jpg');">
+              </a>
+              <div class="text mt-3">
+              	<div class="meta mb-2">
+                  <div><a href="#">Sept. 18, 2024</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 6</a></div>
+                </div>
+                <h3 class="heading"><a href="blog-single.html?id=14">Nipa Palm Roofing: Traditional Thatched Roofs</a></h3>
+                <p>Learn about the traditional nipa palm roofing that gives Bahay Kubo its distinctive appearance and excellent insulation.</p>
+                <a href="blog-single.html?id=14" class="btn btn-secondary rounded">More info</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate blog-item" data-blog-id="15">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html?id=15" class="block-20 rounded" style="background-image: url('images/blog-15-15.jpg');">
+              </a>
+              <div class="text mt-3">
+              	<div class="meta mb-2">
+                  <div><a href="#">Sept. 10, 2024</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 9</a></div>
+                </div>
+                <h3 class="heading"><a href="blog-single.html?id=15">Bahay Kubo Resort: Your Gateway to Filipino Culture</a></h3>
+                <p>Experience authentic Filipino hospitality and culture through a stay at Bahay Kubo Resort, where tradition meets comfort.</p>
+                <a href="blog-single.html?id=15" class="btn btn-secondary rounded">More info</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col text-center">
+            <div class="block-27">
+              <ul id="blogPagination">
+                <!-- Pagination will be generated by JavaScript -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="ftco-footer ftco-section img" style="background-image: url(images/bg_4.jpg);">
+    	<div class="overlay"></div>
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">BAHAY KUBO</h2>
+              <p>More than a resort... an experience. Bahay Kubo Resort offers a unique blend of traditional Filipino architecture and modern amenities. Experience tranquility and connection with nature in our beautifully landscaped gardens, refreshing swimming pool, and renowned restaurant serving authentic Filipino cuisine.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Useful Links</h2>
+              <ul class="list-unstyled">
+                <li><a href="index.html" class="py-2 d-block">Home</a></li>
+                <li><a href="rooms.html" class="py-2 d-block">Our Rooms</a></li>
+                <li><a href="restaurant.html" class="py-2 d-block">Our Food</a></li>
+                <li><a href="blog.html" class="py-2 d-block">Blog</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Privacy</h2>
+              <ul class="list-unstyled">
+                <li><a href="about.html" class="py-2 d-block">About Us</a></li>
+                <li><a href="contact.html" class="py-2 d-block">Contact Us</a></li>
+                <li><a href="#" class="py-2 d-block">Privacy Policy</a></li>
+                <li><a href="#" class="py-2 d-block">Terms of Service</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">Bahay Kubo Resort, Philippines</span></li>
+	                <li><a href="tel://+639123456789"><span class="icon icon-phone"></span><span class="text">+63 912 345 6789</span></a></li>
+	                <li><a href="mailto:info@bahaykuboresort.com"><span class="icon icon-envelope"></span><span class="text">info@bahaykuboresort.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This system is made by BSIT-3D Group 4 Students
+  </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Profile dropdown - click only, no hover
+    $(document).ready(function() {
+      // Update profile display with logged-in user info
+      function updateProfileDisplay() {
+        // Get current user from localStorage or sessionStorage
+        var currentUser = null;
+        var storedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
+        
+        if (storedUser) {
+          try {
+            currentUser = JSON.parse(storedUser);
+          } catch (e) {
+            console.error('Error parsing user data:', e);
+          }
+        }
+        
+        var $profileText = $('#profileDropdown span:last-child');
+        var $profileInitials = $('#profileDropdown .nav-profile-picture span');
+        var $loginLink = $('.profile-dropdown-menu .dropdown-item[href="login.html"]');
+        var $profileContainer = $('#profileDropdownContainer');
+        var $simpleLoginLink = $('#simpleLoginLink');
+        
+        if (currentUser && currentUser.logged_in) {
+          // Show profile dropdown
+          $profileContainer.show();
+          $simpleLoginLink.hide();
+          // User is logged in - show their name
+          var firstName = currentUser.first_name || '';
+          var lastName = currentUser.last_name || '';
+          var fullName = (firstName + ' ' + lastName).trim() || currentUser.username || 'User';
+          
+          // Update profile text
+          $profileText.text('Profile (' + fullName + ')');
+          
+          // Get user data to check for avatar
+          var users = JSON.parse(localStorage.getItem('users') || '[]');
+          var user = users.find(u => u.id === currentUser.user_id);
+          
+          // Check if user has avatar
+          var $profilePicture = $('#profileDropdown .nav-profile-picture');
+          var existingImg = $profilePicture.find('img');
+          
+          if (user && user.avatar) {
+            // User has avatar - show image
+            if (existingImg.length > 0) {
+              existingImg.attr('src', user.avatar);
+            } else {
+              // Remove initials span and add image
+              $profileInitials.remove();
+              $profilePicture.append('<img src="' + user.avatar + '" alt="Profile Picture" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">');
+            }
+            $profilePicture.css('background', 'transparent');
+          } else {
+            // No avatar - show initials
+            if (existingImg.length > 0) {
+              existingImg.remove();
+              $profilePicture.append('<span style="color: #fff; font-weight: 700; font-size: 14px; text-transform: uppercase;"></span>');
+              $profileInitials = $profilePicture.find('span');
+            }
+            $profilePicture.css('background', '#21cc7a');
+            
+            // Update initials (first letter of first name + first letter of last name)
+            var initials = '';
+            if (firstName && lastName) {
+              initials = (firstName.charAt(0) + lastName.charAt(0)).toUpperCase();
+            } else if (currentUser.username) {
+              initials = currentUser.username.substring(0, 2).toUpperCase();
+            } else {
+              initials = 'GU';
+            }
+            $profileInitials.text(initials);
+          }
+          
+          // Hide login link, show My Profile submenu and logout
+          $loginLink.hide();
+          $('.profile-dropdown-menu .profile-submenu-toggle').show();
+          $('.profile-dropdown-menu .logout-link').show();
+        } else {
+          // User is not logged in - hide profile dropdown and show simple login link
+          $profileContainer.hide();
+          $simpleLoginLink.show();
+        }
+      }
+      
+      // Update profile on page load
+      updateProfileDisplay();
+      
+      var $profileDropdown = $('#profileDropdown');
+      var $profileMenu = $profileDropdown.next('.profile-dropdown-menu');
+      var $profileContainer = $profileDropdown.closest('.dropdown');
+      
+      // Prevent hover from opening
+      $profileContainer.off('mouseenter mouseleave');
+      
+      // Click to toggle
+      $profileDropdown.on('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        var isOpen = $profileMenu.hasClass('show');
+        
+        // Close all other dropdowns
+        $('.dropdown-menu').not($profileMenu).removeClass('show');
+        $('.dropdown-toggle').not($profileDropdown).attr('aria-expanded', 'false');
+        
+        if (isOpen) {
+          // Close with animation
+          $profileMenu.removeClass('show');
+          $profileDropdown.attr('aria-expanded', 'false');
+        } else {
+          // Open with animation - remove show class first to reset animation
+          $profileMenu.removeClass('show');
+          // Force reflow to restart animation
+          $profileMenu[0].offsetHeight;
+          // Add show class to trigger animation
+          $profileMenu.addClass('show');
+          $profileDropdown.attr('aria-expanded', 'true');
+        }
+      });
+      
+      // Keep dropdown open when hovering over it
+      $profileMenu.on('mouseenter', function() {
+        $(this).addClass('show');
+      });
+      
+      // Close when clicking outside
+      $(document).on('click', function(e) {
+        if (!$(e.target).closest('.dropdown').length) {
+          $profileMenu.removeClass('show');
+          $profileDropdown.attr('aria-expanded', 'false');
+          // Close submenu when clicking outside
+          $('.profile-submenu-toggle').removeClass('active');
+        }
+      });
+      
+      // My Profile submenu toggle
+      $(document).on('click', '.profile-submenu-toggle', function(e) {
+        e.stopPropagation();
+        var $toggle = $(this);
+        var $submenu = $toggle.find('.profile-submenu');
+        
+        // Toggle active class
+        $toggle.toggleClass('active');
+        
+        // Close other submenus if any
+        $('.profile-submenu-toggle').not($toggle).removeClass('active');
+      });
+      
+      // Close submenu when clicking on submenu items
+      $(document).on('click', '.profile-submenu .submenu-item', function() {
+        $('.profile-submenu-toggle').removeClass('active');
+      });
+      
+      // Close submenu when clicking outside the submenu
+      $(document).on('click', function(e) {
+        if (!$(e.target).closest('.profile-submenu-toggle').length && 
+            !$(e.target).closest('.profile-submenu').length) {
+          $('.profile-submenu-toggle').removeClass('active');
+        }
+      });
+      
+      // Logout functionality
+      window.handleLogout = function() {
+        // Show loading overlay
+        var loadingOverlay = document.getElementById('logoutLoadingOverlay');
+        if (loadingOverlay) {
+          loadingOverlay.classList.add('active');
+        }
+        
+        // Clear all stored data
+        localStorage.removeItem('currentUser');
+        sessionStorage.removeItem('currentUser');
+        
+        // Clear any cookies
+        document.cookie.split(";").forEach(function(c) { 
+          document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+        });
+        
+        // Redirect to login page after a short delay
+        setTimeout(function() {
+          window.location.href = 'index.html';
+        }, 500);
+      };
+
+      // Randomized Blog Posts Data - About Bahay Kubo
+      var blogPostsData = [
+        {
+          id: 1,
+          title: "The Traditional Architecture of Bahay Kubo",
+          description: "Discover the timeless beauty and engineering brilliance of the traditional Filipino Bahay Kubo, a symbol of Filipino identity and cultural heritage.",
+          image: "images/blog-1.jpg",
+          date: "Dec. 15, 2024",
+          comments: 12
+        },
+        {
+          id: 2,
+          title: "Modern Comfort Meets Traditional Design",
+          description: "Experience how Bahay Kubo Resort seamlessly blends traditional Filipino architecture with contemporary amenities for an unforgettable stay.",
+          image: "images/blog-2.jpg",
+          date: "Dec. 10, 2024",
+          comments: 8
+        },
+        {
+          id: 3,
+          title: "The History Behind the Bahay Kubo",
+          description: "Explore the rich history and cultural significance of the Bahay Kubo, from its indigenous origins to its role in modern Filipino society.",
+          image: "images/blog-3.jpg",
+          date: "Dec. 5, 2024",
+          comments: 15
+        },
+        {
+          id: 4,
+          title: "Sustainable Living in Traditional Homes",
+          description: "Learn how the Bahay Kubo's natural ventilation and eco-friendly materials make it a model of sustainable architecture.",
+          image: "images/blog-4.jpg",
+          date: "Nov. 28, 2024",
+          comments: 6
+        },
+        {
+          id: 5,
+          title: "Bahay Kubo: A Filipino Family Tradition",
+          description: "Discover how generations of Filipino families have lived in Bahay Kubo, creating memories and preserving traditions.",
+          image: "images/blog-5.jpg",
+          date: "Nov. 20, 2024",
+          comments: 9
+        },
+        {
+          id: 6,
+          title: "The Natural Materials of Bahay Kubo",
+          description: "From bamboo to nipa palm, explore the natural materials that make the Bahay Kubo both beautiful and functional.",
+          image: "images/blog-6.jpg",
+          date: "Nov. 15, 2024",
+          comments: 11
+        },
+        {
+          id: 7,
+          title: "Staying Cool in a Traditional Bahay Kubo",
+          description: "Learn how the elevated design and natural ventilation of Bahay Kubo keeps it cool even in the tropical Philippine climate.",
+          image: "images/blog-7.jpg",
+          date: "Nov. 8, 2024",
+          comments: 7
+        },
+        {
+          id: 8,
+          title: "Preserving Cultural Heritage Through Architecture",
+          description: "Bahay Kubo Resort's commitment to preserving and promoting Filipino architectural heritage for future generations.",
+          image: "images/blog-8.jpg",
+          date: "Nov. 1, 2024",
+          comments: 14
+        },
+        {
+          id: 9,
+          title: "The Art of Building a Bahay Kubo",
+          description: "Meet the skilled craftsmen who continue to build Bahay Kubo using traditional techniques passed down through generations.",
+          image: "images/blog-9.jpg",
+          date: "Oct. 25, 2024",
+          comments: 5
+        },
+        {
+          id: 10,
+          title: "Bahay Kubo in Modern Philippine Architecture",
+          description: "How contemporary architects are drawing inspiration from Bahay Kubo to create modern Filipino buildings.",
+          image: "images/blog-10.jpg",
+          date: "Oct. 18, 2024",
+          comments: 10
+        },
+        {
+          id: 11,
+          title: "Living the Bahay Kubo Experience",
+          description: "A day in the life at Bahay Kubo Resort, where guests experience authentic Filipino living in traditional accommodations.",
+          image: "images/blog-11.jpg",
+          date: "Oct. 10, 2024",
+          comments: 13
+        },
+        {
+          id: 12,
+          title: "The Elevated Design of Bahay Kubo",
+          description: "Understanding why Bahay Kubo is built on stilts - from flood protection to natural ventilation and cultural significance.",
+          image: "images/blog-12.jpg",
+          date: "Oct. 3, 2024",
+          comments: 4
+        },
+        {
+          id: 13,
+          title: "Bamboo: The Backbone of Bahay Kubo",
+          description: "Explore how bamboo, the primary material of Bahay Kubo, contributes to its strength, flexibility, and sustainability.",
+          image: "images/blog-13.jpg",
+          date: "Sept. 26, 2024",
+          comments: 8
+        },
+        {
+          id: 14,
+          title: "Nipa Palm Roofing: Traditional Thatched Roofs",
+          description: "Learn about the traditional nipa palm roofing that gives Bahay Kubo its distinctive appearance and excellent insulation.",
+          image: "images/blog-14.jpg",
+          date: "Sept. 18, 2024",
+          comments: 6
+        },
+        {
+          id: 15,
+          title: "Bahay Kubo Resort: Your Gateway to Filipino Culture",
+          description: "Experience authentic Filipino hospitality and culture through a stay at Bahay Kubo Resort, where tradition meets comfort.",
+          image: "images/blog-15.jpg",
+          date: "Sept. 10, 2024",
+          comments: 9
+        },
+        {
+          id: 16,
+          title: "The Cultural Significance of Bahay Kubo",
+          description: "Discover how Bahay Kubo represents more than just architecture - it's a symbol of Filipino identity, resilience, and community spirit.",
+          image: "images/blog-16.jpg",
+          date: "Sept. 3, 2024",
+          comments: 12
+        },
+        {
+          id: 17,
+          title: "Restoring Old Bahay Kubo",
+          description: "Our restoration efforts to preserve historic Bahay Kubo structures and maintain their architectural integrity.",
+          image: "images/blog-17.jpg",
+          date: "Aug. 28, 2024",
+          comments: 7
+        },
+        {
+          id: 18,
+          title: "Bahay Kubo Interiors: Traditional Filipino Living",
+          description: "Step inside a traditional Bahay Kubo and discover how Filipino families create cozy, functional living spaces.",
+          image: "images/blog-18.jpg",
+          date: "Aug. 20, 2024",
+          comments: 11
+        },
+        {
+          id: 19,
+          title: "The Future of Bahay Kubo Architecture",
+          description: "How modern innovations are being integrated with traditional Bahay Kubo design to create sustainable homes for the future.",
+          image: "images/blog-19.jpg",
+          date: "Aug. 15, 2024",
+          comments: 10
+        },
+        {
+          id: 20,
+          title: "Celebrating Filipino Identity Through Bahay Kubo",
+          description: "How Bahay Kubo Resort honors Filipino heritage and provides guests with an authentic cultural experience.",
+          image: "images/blog-20.jpg",
+          date: "Aug. 8, 2024",
+          comments: 8
+        }
+      ];
+
+      // Function to shuffle array (Fisher-Yates algorithm)
+      function shuffleArray(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+        while (0 !== currentIndex) {
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex -= 1;
+          temporaryValue = array[currentIndex];
+          array[currentIndex] = array[randomIndex];
+          array[randomIndex] = temporaryValue;
+        }
+        return array;
+      }
+
+      // Randomize blog posts on page load
+      function randomizeBlogPosts() {
+        var shuffled = shuffleArray([].slice.call(blogPostsData));
+        
+        // Update all blog items with randomized content
+        $('.blog-item').each(function(index) {
+          if (index < shuffled.length) {
+            var post = shuffled[index];
+            var $item = $(this);
+            
+            // Update image
+            $item.find('.block-20').css('background-image', 'url(' + post.image + ')');
+            
+            // Update date
+            $item.find('.meta div:first a').text(post.date);
+            
+            // Update comments
+            $item.find('.meta-chat span').text(post.comments);
+            $item.find('.meta-chat').html('<span class="icon-chat"></span> ' + post.comments);
+            
+            // Update title and link
+            var $titleLink = $item.find('.heading a');
+            $titleLink.text(post.title);
+            $titleLink.attr('href', 'blog-single.html?id=' + post.id);
+            
+            // Update description
+            $item.find('.text.mt-3 p').text(post.description);
+            
+            // Update "More info" link
+            $item.find('.btn-secondary').attr('href', 'blog-single.html?id=' + post.id);
+            
+            // Update data-blog-id
+            $item.attr('data-blog-id', post.id);
+          }
+        });
+      }
+
+      // Blog Pagination Functionality
+      var blogPagination = {
+        itemsPerPage: 6,
+        currentPage: 1,
+        totalItems: 0,
+        totalPages: 0,
+        
+        init: function() {
+          var self = this;
+          
+          // Randomize blog posts first
+          randomizeBlogPosts();
+          
+          var $blogItems = $('.blog-item');
+          self.totalItems = $blogItems.length;
+          self.totalPages = Math.ceil(self.totalItems / self.itemsPerPage);
+          
+          if (self.totalItems === 0) {
+            return;
+          }
+          
+          // Force hide all items first - remove class and set display to none
+          $blogItems.removeClass('show-item animate-in').css({
+            'display': 'none',
+            'visibility': 'hidden',
+            'opacity': '0',
+            'transform': 'translateY(20px)'
+          });
+          
+          // Show first page with animation
+          setTimeout(function() {
+            self.showPage(1);
+          }, 100);
+          
+          // Generate pagination HTML
+          self.generatePagination();
+        },
+        
+        showPage: function(page) {
+          var self = this;
+          self.currentPage = page;
+          
+          var $blogItems = $('.blog-item');
+          var $currentlyVisible = $blogItems.filter('.show-item');
+          
+          // Calculate start and end index
+          var startIndex = (page - 1) * self.itemsPerPage;
+          var endIndex = startIndex + self.itemsPerPage;
+          var $visibleItems = $blogItems.slice(startIndex, endIndex);
+          
+          // Check if we're showing the same items (initial load)
+          var isInitialLoad = $currentlyVisible.length === 0;
+          
+          if (!isInitialLoad) {
+            // Animate out current items
+            $currentlyVisible.each(function(index) {
+              var $item = $(this);
+              setTimeout(function() {
+                $item.css({
+                  'opacity': '0',
+                  'transform': 'translateY(-20px)'
+                });
+                setTimeout(function() {
+                  $item.removeClass('show-item animate-in').css({
+                    'display': 'none',
+                    'visibility': 'hidden'
+                  });
+                }, 300);
+              }, index * 30);
+            });
+          } else {
+            // For initial load, just hide all
+            $blogItems.removeClass('show-item animate-in').css({
+              'display': 'none',
+              'visibility': 'hidden',
+              'opacity': '0',
+              'transform': 'translateY(30px)'
+            });
+          }
+          
+          // Show new items with staggered animation
+          var delay = isInitialLoad ? 100 : 400;
+          setTimeout(function() {
+            $visibleItems.each(function(index) {
+              var $item = $(this);
+              $item.css({
+                'display': 'flex',
+                'visibility': 'visible',
+                'opacity': '0',
+                'transform': 'translateY(30px)'
+              });
+              
+              setTimeout(function() {
+                $item.addClass('show-item animate-in').css({
+                  'opacity': '1',
+                  'transform': 'translateY(0)'
+                });
+              }, index * 80);
+            });
+          }, delay);
+          
+          // Update pagination UI
+          self.generatePagination();
+          
+          // Scroll to top of blog section smoothly
+          var $blogContainer = $('#blogContainer');
+          if ($blogContainer.length) {
+            setTimeout(function() {
+              $('html, body').animate({
+                scrollTop: $blogContainer.offset().top - 100
+              }, 600);
+            }, 300);
+          }
+        },
+        
+        generatePagination: function() {
+          var self = this;
+          var $pagination = $('#blogPagination');
+          $pagination.empty();
+          
+          if (self.totalPages <= 1) {
+            return; // Don't show pagination if only one page
+          }
+          
+          // Previous button
+          var prevClass = self.currentPage === 1 ? 'disabled' : '';
+          var prevHtml = '<li class="' + prevClass + '"><a href="#" class="page-link" data-page="prev">&lt;</a></li>';
+          $pagination.append(prevHtml);
+          
+          // Page numbers - show up to 5 page numbers
+          var maxVisiblePages = 5;
+          var startPage = Math.max(1, self.currentPage - Math.floor(maxVisiblePages / 2));
+          var endPage = Math.min(self.totalPages, startPage + maxVisiblePages - 1);
+          
+          // Adjust start page if we're near the end
+          if (endPage - startPage < maxVisiblePages - 1) {
+            startPage = Math.max(1, endPage - maxVisiblePages + 1);
+          }
+          
+          // First page if not in range
+          if (startPage > 1) {
+            $pagination.append('<li><a href="#" class="page-link" data-page="1">1</a></li>');
+            if (startPage > 2) {
+              $pagination.append('<li class="disabled"><span>...</span></li>');
+            }
+          }
+          
+          // Page number buttons
+          for (var i = startPage; i <= endPage; i++) {
+            var activeClass = i === self.currentPage ? 'active' : '';
+            var pageHtml = '<li class="' + activeClass + '"><a href="#" class="page-link" data-page="' + i + '">' + i + '</a></li>';
+            $pagination.append(pageHtml);
+          }
+          
+          // Last page if not in range
+          if (endPage < self.totalPages) {
+            if (endPage < self.totalPages - 1) {
+              $pagination.append('<li class="disabled"><span>...</span></li>');
+            }
+            $pagination.append('<li><a href="#" class="page-link" data-page="' + self.totalPages + '">' + self.totalPages + '</a></li>');
+          }
+          
+          // Next button
+          var nextClass = self.currentPage === self.totalPages ? 'disabled' : '';
+          var nextHtml = '<li class="' + nextClass + '"><a href="#" class="page-link" data-page="next">&gt;</a></li>';
+          $pagination.append(nextHtml);
+        }
+      };
+      
+      // Initialize pagination immediately (we're already inside document.ready)
+      // Force hide all blog items first
+      $('.blog-item').removeClass('show-item').css('display', 'none');
+      
+      // Initialize pagination
+      blogPagination.init();
+      
+      // Also initialize on window load as backup
+      $(window).on('load', function() {
+        // Force hide all blog items first
+        $('.blog-item').removeClass('show-item').css('display', 'none');
+        
+        if (blogPagination.totalItems === 0) {
+          blogPagination.init();
+        } else {
+          // Re-initialize to ensure correct display
+          blogPagination.showPage(blogPagination.currentPage);
+        }
+      });
+      
+      // Handle pagination clicks
+      $(document).on('click', '#blogPagination a.page-link', function(e) {
+        e.preventDefault();
+        
+        var $li = $(this).parent();
+        if ($li.hasClass('disabled')) {
+          return;
+        }
+        
+        var page = $(this).data('page');
+        
+        if (page === 'prev') {
+          if (blogPagination.currentPage > 1) {
+            blogPagination.showPage(blogPagination.currentPage - 1);
+          }
+        } else if (page === 'next') {
+          if (blogPagination.currentPage < blogPagination.totalPages) {
+            blogPagination.showPage(blogPagination.currentPage + 1);
+          }
+        } else {
+          blogPagination.showPage(parseInt(page));
+        }
+      });
+    });
+  </script>
+  
+  <style>
+    /* Loading Screen for Logout */
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .loading-overlay.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .loading-container {
+      text-align: center;
+      color: #f5f5dc;
+    }
+
+    .loading-spinner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .spinner-circle {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #4a8c3e 0%, #2d5016 100%);
+      animation: spinner-bounce 1.4s ease-in-out infinite both;
+      box-shadow: 0 4px 12px rgba(74, 140, 62, 0.4);
+    }
+
+    .spinner-circle:nth-child(1) {
+      animation-delay: -0.32s;
+    }
+
+    .spinner-circle:nth-child(2) {
+      animation-delay: -0.16s;
+    }
+
+    .spinner-circle:nth-child(3) {
+      animation-delay: 0s;
+    }
+
+    @keyframes spinner-bounce {
+      0%, 80%, 100% {
+        transform: scale(0.6);
+        opacity: 0.5;
+      }
+      40% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .loading-text {
+      font-size: 24px;
+      font-weight: 600;
+      color: #f5f5dc;
+      margin-bottom: 8px;
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      letter-spacing: 1px;
+      animation: loading-text-pulse 2s ease-in-out infinite;
+    }
+
+    .loading-subtext {
+      font-size: 14px;
+      color: #888;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    @keyframes loading-text-pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.6;
+      }
+    }
+  </style>
+  
+  <!-- Loading Overlay for Logout -->
+  <div class="loading-overlay" id="logoutLoadingOverlay">
+    <div class="loading-container">
+      <div class="loading-spinner">
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+      </div>
+      <div class="loading-text">Logging out...</div>
+      <div class="loading-subtext">Please wait</div>
+    </div>
+  </div>
+    
+  </body>
+</html>

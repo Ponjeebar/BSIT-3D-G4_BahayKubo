@@ -1,0 +1,1983 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>BAHAY KUBO Resort - Our Food</title>
+    <link rel="icon" type="image/png" href="logo/logo.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+      /* Profile Dropdown Enhanced Styles */
+      #profileDropdown {
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 5px;
+        padding: 8px 15px !important;
+      }
+      
+      #profileDropdown:hover {
+        color: #fff !important;
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: translateY(-1px);
+      }
+      
+      #profileDropdown:active {
+        transform: translateY(0);
+      }
+      
+      /* Enhanced Dropdown Menu */
+      .profile-dropdown-menu {
+        min-width: 200px;
+        padding: 8px 0 !important;
+        margin-top: 10px !important;
+        background: #fff;
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        opacity: 0;
+        transform: translateY(-15px) scale(0.9);
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        pointer-events: none;
+        overflow: visible;
+        transform-origin: top right;
+      }
+      
+      .profile-dropdown-menu.show {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+        animation: dropdownSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      
+      @keyframes dropdownSlideIn {
+        0% {
+          opacity: 0;
+          transform: translateY(-15px) scale(0.9);
+        }
+        50% {
+          transform: translateY(2px) scale(1.02);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      
+      .profile-dropdown-menu.show .dropdown-item {
+        animation: fadeInItem 0.4s ease forwards;
+        opacity: 0;
+      }
+      
+      .profile-dropdown-menu.show .dropdown-item:nth-child(1) {
+        animation-delay: 0.05s;
+      }
+      
+      .profile-dropdown-menu.show .dropdown-item:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      
+      @keyframes fadeInItem {
+        from {
+          opacity: 0;
+          transform: translateX(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      
+      .profile-dropdown-menu .dropdown-item {
+        padding: 12px 20px;
+        color: #333;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        border-left: 3px solid transparent;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:first-child {
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:last-child {
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+        padding-left: 25px;
+        transform: translateX(3px);
+      }
+      
+      .profile-dropdown-menu .dropdown-item:active {
+        background: #e9ecef;
+        transform: translateX(0);
+      }
+      
+      /* Hide My Profile submenu and logout by default (shown when logged in) */
+      .profile-dropdown-menu .profile-submenu-toggle,
+      .profile-dropdown-menu .logout-link {
+        display: none;
+      }
+      
+      /* Profile submenu styles */
+      .profile-submenu {
+        display: none;
+        position: absolute;
+        left: 100%;
+        top: 0;
+        min-width: 180px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        margin-left: 8px;
+        padding: 8px 0;
+        z-index: 10001;
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      
+      .profile-submenu-toggle.active .profile-submenu {
+        display: block;
+        opacity: 1;
+        transform: translateX(0);
+      }
+      
+      .profile-submenu-toggle.active i.fa-chevron-right {
+        transform: rotate(90deg);
+      }
+      
+      .profile-submenu .submenu-item {
+        padding: 10px 20px;
+        color: #333;
+        font-size: 14px;
+        font-weight: 500;
+        border-left: 3px solid transparent;
+        display: block;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        border-radius: 0;
+      }
+      
+      .profile-submenu .submenu-item:first-child {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+      
+      .profile-submenu .submenu-item:last-child {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      
+      .profile-submenu .submenu-item:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+        padding-left: 25px;
+        transform: translateX(3px);
+      }
+      
+      .profile-submenu-toggle {
+        user-select: none;
+        position: relative;
+        overflow: visible !important;
+      }
+      
+      .profile-dropdown-menu .profile-submenu-toggle {
+        overflow: visible;
+      }
+      
+      .profile-submenu-toggle:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+      }
+      
+      .profile-submenu-toggle:hover i.fa-chevron-right {
+        color: #21cc7a;
+      }
+      
+      .profile-submenu-toggle.active {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+      }
+      
+      /* Icon spacing for dropdown items */
+      .profile-dropdown-menu .dropdown-item::before {
+        content: '';
+        width: 4px;
+        height: 4px;
+        background: #21cc7a;
+        border-radius: 50%;
+        margin-right: 10px;
+        opacity: 0;
+        transition: all 0.2s ease;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:hover::before {
+        opacity: 1;
+        margin-right: 12px;
+      }
+      
+      /* Logout item special styling */
+      .profile-dropdown-menu .logout-link {
+        border-top: 1px solid #e9ecef;
+        margin-top: 0;
+        padding: 14px 20px 12px 20px;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        transition: all 0.2s ease;
+        border-left: 3px solid transparent;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .profile-dropdown-menu .logout-link:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%) !important;
+        color: #dc3545;
+        border-left-color: #dc3545;
+        border-top-color: transparent;
+        padding-left: 25px;
+        transform: translateX(3px);
+        margin-top: 0;
+      }
+      
+      .profile-dropdown-menu .logout-link::before {
+        background: #dc3545;
+      }
+      
+      /* Profile nav link styling */
+      .profile-nav-link {
+        color: rgba(255, 255, 255, 0.9) !important;
+      }
+      
+      /* Ensure profile dropdown is visible when navbar is scrolled */
+      .ftco-navbar-light.scrolled .profile-nav-link,
+      .ftco-navbar-light.scrolled.awake .profile-nav-link {
+        color: rgba(0, 0, 0, 0.9) !important;
+      }
+      
+      .ftco-navbar-light.scrolled .profile-nav-link span:last-child,
+      .ftco-navbar-light.scrolled.awake .profile-nav-link span:last-child {
+        color: rgba(0, 0, 0, 0.9) !important;
+      }
+      
+      .ftco-navbar-light.scrolled .nav-profile-picture,
+      .ftco-navbar-light.scrolled.awake .nav-profile-picture {
+        border-color: rgba(0, 0, 0, 0.2) !important;
+      }
+      
+      .ftco-navbar-light.scrolled .nav-profile-picture span,
+      .ftco-navbar-light.scrolled.awake .nav-profile-picture span {
+        color: #fff !important;
+      }
+      
+      /* Login link styling */
+      .login-nav-link {
+        color: rgba(255, 255, 255, 0.9) !important;
+        transition: color 0.3s ease;
+      }
+      
+      .ftco-navbar-light.scrolled .login-nav-link,
+      .ftco-navbar-light.scrolled.awake .login-nav-link {
+        color: rgba(0, 0, 0, 0.9) !important;
+      }
+      
+      /* Update border color for login link container when scrolled */
+      .ftco-navbar-light.scrolled #simpleLoginLink,
+      .ftco-navbar-light.scrolled.awake #simpleLoginLink {
+        border-left-color: rgba(0, 0, 0, 0.2) !important;
+      }
+      
+      /* Navigation collapse styling - show flex when menu is open */
+      #ftco-nav.show {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      /* On desktop (lg and up), always show flex (Bootstrap expands navbar on lg+) */
+      @media (min-width: 992px) {
+        #ftco-nav {
+          display: flex !important;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+      
+      /* On mobile, stack items vertically when menu is open */
+      @media (max-width: 991.98px) {
+        #ftco-nav.show {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        
+        #ftco-nav.show .navbar-nav {
+          width: 100%;
+          margin-bottom: 15px;
+        }
+        
+        #ftco-nav.show #profileDropdownContainer,
+        #ftco-nav.show #simpleLoginLink {
+          width: 100%;
+          margin-left: 0 !important;
+          padding-left: 0 !important;
+          border-left: none !important;
+          border-top: 1px solid rgba(255, 255, 255, 0.2);
+          padding-top: 15px;
+          margin-top: 15px;
+        }
+      }
+      
+      /* Food Carousel Image Styling */
+      #foodCarousel .resto-img {
+        background-size: contain !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        background-color: #f8f9fa;
+      }
+      
+      /* Reduce Footer Size by Half */
+      .ftco-footer {
+        padding: 3em 0 !important;
+      }
+      
+      .ftco-footer .row.mb-5 {
+        margin-bottom: 1.5rem !important;
+      }
+      
+      .ftco-footer-widget {
+        margin-bottom: 1rem !important;
+      }
+      
+      .ftco-footer-widget h2 {
+        font-size: 16px !important;
+        margin-bottom: 12px !important;
+      }
+      
+      .ftco-footer-widget p {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+        margin-bottom: 15px !important;
+      }
+      
+      .ftco-footer-social {
+        margin-top: 1rem !important;
+      }
+      
+      .ftco-footer-social li {
+        margin-right: 8px !important;
+      }
+      
+      .ftco-footer-social li a {
+        height: 35px !important;
+        width: 35px !important;
+      }
+      
+      .ftco-footer-social li a span {
+        font-size: 16px !important;
+      }
+      
+      .ftco-footer-widget ul.list-unstyled li {
+        padding: 3px 0 !important;
+        font-size: 13px !important;
+      }
+      
+      .ftco-footer-widget ul.list-unstyled li a {
+        padding: 3px 0 !important;
+      }
+      
+      .block-23 ul li {
+        padding: 4px 0 !important;
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+      }
+      
+      .block-23 ul li .text {
+        font-size: 13px !important;
+      }
+      
+      .ftco-footer .row:last-child {
+        margin-top: 1rem !important;
+        padding-top: 1rem !important;
+      }
+      
+      .ftco-footer .row:last-child p {
+        font-size: 12px !important;
+        margin-bottom: 0 !important;
+      }
+      
+      /* Food Category Sidebar Styles */
+      .category-link {
+        display: block;
+        padding: 12px 15px;
+        color: #333 !important;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        border-left: 3px solid transparent;
+      }
+      
+      .category-link:hover {
+        background-color: #f8f9fa;
+        color: #21cc7a !important;
+        border-left-color: #21cc7a;
+        padding-left: 20px;
+        transform: translateX(5px);
+      }
+      
+      .category-link.active {
+        background-color: #21cc7a;
+        color: #fff !important;
+        border-left-color: #21cc7a;
+      }
+      
+      @media (max-width: 991px) {
+        .food-category-sidebar {
+          position: relative !important;
+          top: 0 !important;
+        }
+      }
+      
+      /* Menu Item Pagination Styles */
+      .menu-item {
+        display: none !important;
+      }
+      
+      .menu-item.active {
+        display: flex !important;
+      }
+      
+      .pagination {
+        margin-top: 30px;
+      }
+      
+      .pagination .page-link {
+        color: #333;
+        padding: 10px 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin: 0 5px;
+        transition: all 0.3s ease;
+        background-color: #fff;
+        font-weight: 500;
+      }
+      
+      .pagination .page-link:hover {
+        background-color: #21cc7a;
+        color: #fff;
+        border-color: #21cc7a;
+        transform: translateY(-2px);
+      }
+      
+      .pagination .page-item.disabled .page-link {
+        background-color: #f5f5f5;
+        color: #999;
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+      
+      .pagination .page-item.disabled .page-link:hover {
+        background-color: #f5f5f5;
+        color: #999;
+        transform: none;
+      }
+      
+      #pageInfo {
+        color: #666;
+        font-size: 14px;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="index.html">BAHAY <span>KUBO</span></a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav">
+	          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+	          <li class="nav-item"><a href="rooms.html" class="nav-link">Our Rooms</a></li>
+	          <li class="nav-item active"><a href="restaurant.html" class="nav-link">Our Food</a></li>
+	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+	        </ul>
+	        <div class="nav-item dropdown" id="profileDropdownContainer" style="margin-left: 30px; position: relative; border-left: 1px solid rgba(255, 255, 255, 0.2); padding-left: 20px;">
+	          <a class="nav-link dropdown-toggle profile-nav-link" href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left: 0; padding-right: 20px; font-weight: 600; display: flex; align-items: center; gap: 10px;">
+	            <span class="nav-profile-picture" style="width: 32px; height: 32px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(255, 255, 255, 0.3); display: flex; align-items: center; justify-content: center; background: #21cc7a; flex-shrink: 0;">
+	              <span style="color: #fff; font-weight: 700; font-size: 14px; text-transform: uppercase;">GU</span>
+	            </span>
+	            <span>Profile (Guest)</span>
+	          </a>
+	          <div class="dropdown-menu dropdown-menu-right profile-dropdown-menu" aria-labelledby="profileDropdown" style="right: 0; left: auto;">
+	            <a class="dropdown-item" href="login.html">Login / Signup</a>
+	            <div class="dropdown-item profile-submenu-toggle" style="cursor: pointer; position: relative; justify-content: space-between;">
+	              <span>My Profile</span>
+	              <i class="fas fa-chevron-right" style="font-size: 12px; transition: transform 0.3s ease; margin-left: auto;"></i>
+	              <div class="profile-submenu">
+	                <a class="dropdown-item submenu-item" href="edit_profile.html">Edit Profile</a>
+	                <a class="dropdown-item submenu-item" href="transaction.html">Transaction</a>
+	              </div>
+	            </div>
+	            <a class="dropdown-item logout-link" href="#" onclick="handleLogout(); return false;">Log out</a>
+	          </div>
+	        </div>
+	        <div class="nav-item" id="simpleLoginLink" style="margin-left: 30px; position: relative; border-left: 1px solid rgba(255, 255, 255, 0.2); padding-left: 20px; display: none;">
+	          <a href="login.html" class="nav-link login-nav-link" style="font-weight: 600; padding-left: 0;">Log in</a>
+	        </div>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+		<div class="hero-wrap" style="background-image: url('images/bg_3.jpg');">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+          	<div class="text">
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home</a></span> <span>Our Food</span></p>
+	            <h1 class="mb-4 bread">Our Food</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-md-6">
+      			<div class="single-slider-resto mb-4 mb-md-0 owl-carousel" id="foodCarousel">
+      				<div class="item">
+      					<div class="resto-img rounded" style="background-image: url(images/menu-dishes/chefs-special-platter.jpg);"></div>
+      				</div>
+      				<div class="item">
+      					<div class="resto-img rounded" style="background-image: url(images/menu-dishes/lechon.jpg);"></div>
+      				</div>
+      				<div class="item">
+      					<div class="resto-img rounded" style="background-image: url(images/menu-dishes/surf-and-turf.jpg);"></div>
+      				</div>
+      				<div class="item">
+      					<div class="resto-img rounded" style="background-image: url(images/menu-dishes/chicken-adobo.jpg);"></div>
+      				</div>
+      				<div class="item">
+      					<div class="resto-img rounded" style="background-image: url(images/menu-dishes/kare-kare.webp);"></div>
+      				</div>
+      				<div class="item">
+      					<div class="resto-img rounded" style="background-image: url(images/menu-dishes/sinigang-na-hipon.webp);"></div>
+      				</div>
+      			</div>
+    			</div>
+    			<div class="col-md-6 pl-md-5">
+    				<div class="heading-section mb-4 my-5 my-md-0">
+	          	<span class="subheading">About Bahay Kubo Resort</span>
+	            <h2 class="mb-4">Our Food</h2>
+	          </div>
+	          <p>Experience the authentic flavors of the Philippines at Bahay Kubo Resort's restaurant. Our talented chefs prepare traditional Filipino dishes using fresh, locally-sourced ingredients, bringing you a true taste of Filipino hospitality and culinary heritage.</p>
+	          <p>From classic favorites like Chicken Adobo and Sinigang to our Chef's Special Platter and fresh seafood selections, every dish is crafted with care and passion. Whether you're craving comfort food or exploring new flavors, our diverse menu has something to satisfy every palate. Order now and let us bring the best of Filipino cuisine to your table!</p>
+	          <p><a href="#menuItemsContainer" class="btn btn-secondary rounded">View Our Menu</a></p>
+    			</div>
+    		</div>
+    	</div>
+    </section>
+
+    <section class="ftco-section ftco-menu bg-light">
+			<div class="container">
+				<div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading">Bahay Kubo Restaurant Menu</span>
+            <h2>Our Specialties</h2>
+          </div>
+        </div>
+				<div class="row">
+					<!-- Food Category Sidebar -->
+					<div class="col-lg-3 col-md-4 mb-4 mb-lg-0">
+						<div class="food-category-sidebar" style="background: #fff; padding: 30px 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 20px;">
+							<h3 class="mb-4" style="font-size: 24px; font-weight: 600; color: #000; border-bottom: 2px solid #21cc7a; padding-bottom: 15px;">Food Category</h3>
+							<ul class="list-unstyled" style="margin: 0; padding: 0;">
+								<li class="mb-3">
+									<a href="#" class="category-link" data-category="all">
+										<span>All Items</span>
+									</a>
+								</li>
+								<li class="mb-3">
+									<a href="#" class="category-link" data-category="appetizers">
+										<span>Appetizers</span>
+									</a>
+								</li>
+								<li class="mb-3">
+									<a href="#" class="category-link" data-category="main-course">
+										<span>Main Course</span>
+									</a>
+								</li>
+								<li class="mb-3">
+									<a href="#" class="category-link" data-category="seafood">
+										<span>Seafood</span>
+									</a>
+								</li>
+								<li class="mb-3">
+									<a href="#" class="category-link" data-category="desserts">
+										<span>Desserts</span>
+									</a>
+								</li>
+								<li class="mb-3">
+									<a href="#" class="category-link" data-category="beverages">
+										<span>Beverages</span>
+									</a>
+								</li>
+								<li class="mb-3">
+									<a href="#" class="category-link" data-category="vegetarian">
+										<span>Vegetarian</span>
+									</a>
+								</li>
+								<li class="mb-3">
+									<a href="#" class="category-link" data-category="specialties">
+										<span>Specialties</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!-- Menu Items -->
+					<div class="col-lg-9 col-md-8">
+						<div class="row" id="menuItemsContainer" style="min-height: 400px;">
+							<!-- Appetizers -->
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="appetizers">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/lumpia-shanghai.webp);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Lumpia Shanghai</span></h3>
+											<span class="price">$8.00</span>
+										</div>
+										<div class="d-block">
+											<p>Crispy Filipino spring rolls filled with ground pork, carrots, and onions, served with sweet and sour sauce</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="appetizers">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/sisig.jpg);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Sisig</span></h3>
+											<span class="price">$12.00</span>
+										</div>
+										<div class="d-block">
+											<p>Chopped pig's head and liver, seasoned with calamansi, onions, and chili peppers, served sizzling hot</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="appetizers">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/caesar-salad.jpg);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Caesar Salad</span></h3>
+											<span class="price">$10.00</span>
+										</div>
+										<div class="d-block">
+											<p>Fresh romaine lettuce with parmesan cheese, croutons, and creamy Caesar dressing</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="appetizers">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/chicharon.webp);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Chicharon</span></h3>
+											<span class="price">$7.00</span>
+										</div>
+										<div class="d-block">
+											<p>Crispy deep-fried pork rinds, perfect for snacking, served with vinegar dip</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<!-- Main Course -->
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="main-course">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/chicken-adobo.jpg);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Chicken Adobo</span></h3>
+											<span class="price">$18.00</span>
+										</div>
+										<div class="d-block">
+											<p>Classic Filipino dish with chicken braised in vinegar, soy sauce, garlic, and bay leaves, served with steamed rice</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="main-course">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/kare-kare.webp);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Kare-Kare</span></h3>
+											<span class="price">$22.00</span>
+										</div>
+										<div class="d-block">
+											<p>Traditional Filipino stew with oxtail and vegetables in rich peanut sauce, served with bagoong</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="main-course">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/grilled-ribeye-steak.jpg);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Grilled Ribeye Steak</span></h3>
+											<span class="price">$32.00</span>
+										</div>
+										<div class="d-block">
+											<p>Premium ribeye steak grilled to perfection, served with roasted vegetables and mashed potatoes</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="main-course">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/bistek-tagalog.jpg);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Bistek Tagalog</span></h3>
+											<span class="price">$20.00</span>
+										</div>
+										<div class="d-block">
+											<p>Filipino beef steak with thin slices of beef marinated in soy sauce and calamansi, topped with onions</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="main-course">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/chicken-parmesan.jpg);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Chicken Parmesan</span></h3>
+											<span class="price">$24.00</span>
+										</div>
+										<div class="d-block">
+											<p>Breaded chicken breast topped with marinara sauce and melted mozzarella, served with pasta</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="main-course">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/kaldereta.jpg);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Kaldereta</span></h3>
+											<span class="price">$21.00</span>
+										</div>
+										<div class="d-block">
+											<p>Spicy Filipino goat stew cooked in tomato sauce with potatoes, carrots, and bell peppers</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<!-- Seafood -->
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="seafood">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/sinigang-na-hipon.webp);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Sinigang na Hipon</span></h3>
+											<span class="price">$19.00</span>
+										</div>
+										<div class="d-block">
+											<p>Traditional Filipino sour soup with fresh shrimp, vegetables, and tamarind broth</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="seafood">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/grilled-salmon.jpg);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Grilled Salmon</span></h3>
+											<span class="price">$28.00</span>
+										</div>
+										<div class="d-block">
+											<p>Fresh Atlantic salmon grilled with herbs, served with lemon butter sauce and seasonal vegetables</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="seafood">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/ginataang-alimango.jpg);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Ginataang Alimango</span></h3>
+											<span class="price">$25.00</span>
+										</div>
+										<div class="d-block">
+											<p>Crab cooked in rich coconut milk with spicy chili and vegetables, a Filipino favorite</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="seafood">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/lobster-thermidor.webp);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Lobster Thermidor</span></h3>
+											<span class="price">$45.00</span>
+										</div>
+										<div class="d-block">
+											<p>Succulent lobster meat in a creamy white wine sauce, baked with cheese and herbs</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="seafood">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/inihaw-na-pusit.jpg);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Inihaw na Pusit</span></h3>
+											<span class="price">$16.00</span>
+										</div>
+										<div class="d-block">
+											<p>Grilled squid marinated in calamansi, soy sauce, and spices, served with vinegar dip</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<!-- Desserts -->
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="desserts">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/halo-halo.jpg);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Halo-Halo</span></h3>
+											<span class="price">$6.00</span>
+										</div>
+										<div class="d-block">
+											<p>Classic Filipino dessert with shaved ice, evaporated milk, mixed fruits, beans, and topped with ice cream</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="desserts">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/leche-flan.jpg);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Leche Flan</span></h3>
+											<span class="price">$5.00</span>
+										</div>
+										<div class="d-block">
+											<p>Filipino-style caramel custard made with egg yolks and condensed milk, smooth and creamy</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="desserts">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/chocolate-lava-cake.jpg);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Chocolate Lava Cake</span></h3>
+											<span class="price">$9.00</span>
+										</div>
+										<div class="d-block">
+											<p>Warm chocolate cake with a molten center, served with vanilla ice cream and fresh berries</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="desserts">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/turon.jpg);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Turon</span></h3>
+											<span class="price">$4.00</span>
+										</div>
+										<div class="d-block">
+											<p>Sweet fried spring rolls filled with banana and jackfruit, coated with caramelized sugar</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="desserts">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/tiramisu.jpg);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Tiramisu</span></h3>
+											<span class="price">$8.00</span>
+										</div>
+										<div class="d-block">
+											<p>Classic Italian dessert with coffee-soaked ladyfingers, mascarpone cream, and cocoa powder</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="desserts">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/cassava-cake.jpg);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Cassava Cake</span></h3>
+											<span class="price">$5.00</span>
+										</div>
+										<div class="d-block">
+											<p>Traditional Filipino dessert made from grated cassava, coconut milk, and topped with sweet custard</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<!-- Beverages -->
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="beverages">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/sagot-gulaman.webp);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Sago't Gulaman</span></h3>
+											<span class="price">$4.00</span>
+										</div>
+										<div class="d-block">
+											<p>Sweet Filipino drink with sago pearls, gulaman cubes, and brown sugar syrup, served ice-cold</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="beverages">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/buko-juice.jpg);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Buko Juice</span></h3>
+											<span class="price">$5.00</span>
+										</div>
+										<div class="d-block">
+											<p>Fresh young coconut water served straight from the shell, naturally refreshing and hydrating</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="beverages">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/fresh-fruit-smoothie.jpg);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Fresh Fruit Smoothie</span></h3>
+											<span class="price">$6.00</span>
+										</div>
+										<div class="d-block">
+											<p>Blend of fresh seasonal fruits, yogurt, and ice for a refreshing drink</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="beverages">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/mango-tango.webp);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Mango Tango</span></h3>
+											<span class="price">$7.00</span>
+										</div>
+										<div class="d-block">
+											<p>Tropical blend of fresh mango, pineapple, and coconut water</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="beverages">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/salabat.jpg);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Salabat</span></h3>
+											<span class="price">$3.00</span>
+										</div>
+										<div class="d-block">
+											<p>Warm ginger tea, perfect for cold weather or when feeling under the weather</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<!-- Vegetarian -->
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="vegetarian">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/pinakbet.jpg);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Pinakbet</span></h3>
+											<span class="price">$14.00</span>
+										</div>
+										<div class="d-block">
+											<p>Traditional Filipino vegetable stew with squash, eggplant, okra, and bitter melon in shrimp paste</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="vegetarian">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/laing.webp);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Laing</span></h3>
+											<span class="price">$15.00</span>
+										</div>
+										<div class="d-block">
+											<p>Taro leaves cooked in rich coconut milk with spicy chili, a flavorful vegetarian dish</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="vegetarian">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/vegetable-stir-fry.jpg);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Vegetable Stir Fry</span></h3>
+											<span class="price">$16.00</span>
+										</div>
+										<div class="d-block">
+											<p>Fresh mixed vegetables stir-fried in a savory sauce, served with steamed rice</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="vegetarian">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/mushroom-risotto.jpg);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Mushroom Risotto</span></h3>
+											<span class="price">$18.00</span>
+										</div>
+										<div class="d-block">
+											<p>Creamy arborio rice with mixed wild mushrooms, parmesan cheese, and fresh herbs</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="vegetarian">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/ginisang-monggo.webp);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Ginisang Monggo</span></h3>
+											<span class="price">$13.00</span>
+										</div>
+										<div class="d-block">
+											<p>Mung bean stew with ampalaya leaves and tomatoes, a healthy and comforting Filipino dish</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<!-- Specialties -->
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="specialties">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/lechon.jpg);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Lechon</span></h3>
+											<span class="price">$48.00</span>
+										</div>
+										<div class="d-block">
+											<p>Traditional Filipino roasted whole pig with crispy skin and tender meat, perfect for special occasions</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="specialties">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/surf-and-turf.jpg);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Surf and Turf</span></h3>
+											<span class="price">$42.00</span>
+										</div>
+										<div class="d-block">
+											<p>Prime steak paired with grilled lobster tail, served with garlic butter and your choice of sides</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="specialties">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/chefs-special-platter.jpg);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Chef's Special Platter</span></h3>
+											<span class="price">$38.00</span>
+										</div>
+										<div class="d-block">
+											<p>A selection of chef's favorite dishes including grilled meats, seafood, and seasonal sides</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-6 d-flex menu-item" data-category="specialties">
+								<div class="pricing-entry rounded d-flex ftco-animate">
+									<div class="img" style="background-image: url(images/menu-dishes/bulalo.webp);"></div>
+									<div class="desc p-4">
+										<div class="d-md-flex text align-items-start">
+											<h3><span>Bulalo</span></h3>
+											<span class="price">$20.00</span>
+										</div>
+										<div class="d-block">
+											<p>Rich beef shank soup with bone marrow, corn, cabbage, and vegetables, a Filipino comfort food</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Pagination Controls -->
+						<div class="row mt-5">
+							<div class="col-12">
+								<nav aria-label="Menu pagination">
+									<ul class="pagination justify-content-center" id="menuPagination">
+										<li class="page-item" id="prevPage">
+											<a class="page-link" href="#" aria-label="Previous">
+												<span aria-hidden="true">&laquo; Previous</span>
+											</a>
+										</li>
+										<li class="page-item" id="nextPage">
+											<a class="page-link" href="#" aria-label="Next">
+												<span aria-hidden="true">Next &raquo;</span>
+											</a>
+										</li>
+									</ul>
+									<div class="text-center mt-3">
+										<span id="pageInfo" style="color: #666; font-size: 14px;"></span>
+									</div>
+								</nav>
+							</div>
+						</div>
+					</div>
+        </div>
+			</div>
+		</section>
+
+    <footer class="ftco-footer ftco-section img" style="background-image: url(images/bg_4.jpg);">
+    	<div class="overlay"></div>
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">BAHAY KUBO</h2>
+              <p>More than a resort... an experience. Bahay Kubo Resort offers a unique blend of traditional Filipino architecture and modern amenities. Experience tranquility and connection with nature in our beautifully landscaped gardens, refreshing swimming pool, and renowned restaurant serving authentic Filipino cuisine.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Useful Links</h2>
+              <ul class="list-unstyled">
+                <li><a href="index.html" class="py-2 d-block">Home</a></li>
+                <li><a href="rooms.html" class="py-2 d-block">Our Rooms</a></li>
+                <li><a href="restaurant.html" class="py-2 d-block">Our Food</a></li>
+                <li><a href="blog.html" class="py-2 d-block">Blog</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Privacy</h2>
+              <ul class="list-unstyled">
+                <li><a href="about.html" class="py-2 d-block">About Us</a></li>
+                <li><a href="contact.html" class="py-2 d-block">Contact Us</a></li>
+                <li><a href="#" class="py-2 d-block">Privacy Policy</a></li>
+                <li><a href="#" class="py-2 d-block">Terms of Service</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">Bahay Kubo Resort, Philippines</span></li>
+	                <li><a href="tel://+639123456789"><span class="icon icon-phone"></span><span class="text">+63 912 345 6789</span></a></li>
+	                <li><a href="mailto:info@bahaykuboresort.com"><span class="icon icon-envelope"></span><span class="text">info@bahaykuboresort.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This system is made by BSIT-3D Group 4 Students
+  </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Initialize food carousel with autoplay and no arrows
+    $(document).ready(function() {
+      $('#foodCarousel').owlCarousel({
+        items: 1,
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true,
+        nav: false,
+        dots: false,
+        animateOut: 'fadeOut',
+        animateIn: 'fadeIn',
+        smartSpeed: 1000
+      });
+    });
+  </script>
+  <script>
+    // Profile dropdown - click only, no hover
+    $(document).ready(function() {
+      // Update profile display with logged-in user info
+      function updateProfileDisplay() {
+        // Get current user from localStorage or sessionStorage
+        var currentUser = null;
+        var storedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
+        
+        if (storedUser) {
+          try {
+            currentUser = JSON.parse(storedUser);
+          } catch (e) {
+            console.error('Error parsing user data:', e);
+          }
+        }
+        
+        var $profileText = $('#profileDropdown span:last-child');
+        var $profileInitials = $('#profileDropdown .nav-profile-picture span');
+        var $loginLink = $('.profile-dropdown-menu .dropdown-item[href="login.html"]');
+        var $profileContainer = $('#profileDropdownContainer');
+        var $simpleLoginLink = $('#simpleLoginLink');
+        
+        if (currentUser && currentUser.logged_in) {
+          // Show profile dropdown
+          $profileContainer.show();
+          $simpleLoginLink.hide();
+          // User is logged in - show their name
+          var firstName = currentUser.first_name || '';
+          var lastName = currentUser.last_name || '';
+          var fullName = (firstName + ' ' + lastName).trim() || currentUser.username || 'User';
+          
+          // Update profile text
+          $profileText.text('Profile (' + fullName + ')');
+          
+          // Get user data to check for avatar
+          var users = JSON.parse(localStorage.getItem('users') || '[]');
+          var user = users.find(u => u.id === currentUser.user_id);
+          
+          // Check if user has avatar
+          var $profilePicture = $('#profileDropdown .nav-profile-picture');
+          var existingImg = $profilePicture.find('img');
+          
+          if (user && user.avatar) {
+            // User has avatar - show image
+            if (existingImg.length > 0) {
+              existingImg.attr('src', user.avatar);
+            } else {
+              // Remove initials span and add image
+              $profileInitials.remove();
+              $profilePicture.append('<img src="' + user.avatar + '" alt="Profile Picture" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">');
+            }
+            $profilePicture.css('background', 'transparent');
+          } else {
+            // No avatar - show initials
+            if (existingImg.length > 0) {
+              existingImg.remove();
+              $profilePicture.append('<span style="color: #fff; font-weight: 700; font-size: 14px; text-transform: uppercase;"></span>');
+              $profileInitials = $profilePicture.find('span');
+            }
+            $profilePicture.css('background', '#21cc7a');
+            
+            // Update initials (first letter of first name + first letter of last name)
+            var initials = '';
+            if (firstName && lastName) {
+              initials = (firstName.charAt(0) + lastName.charAt(0)).toUpperCase();
+            } else if (currentUser.username) {
+              initials = currentUser.username.substring(0, 2).toUpperCase();
+            } else {
+              initials = 'GU';
+            }
+            $profileInitials.text(initials);
+          }
+          
+          // Hide login link, show My Profile submenu and logout
+          $loginLink.hide();
+          $('.profile-dropdown-menu .profile-submenu-toggle').show();
+          $('.profile-dropdown-menu .logout-link').show();
+        } else {
+          // User is not logged in - hide profile dropdown and show simple login link
+          $profileContainer.hide();
+          $simpleLoginLink.show();
+        }
+      }
+      
+      // Update profile on page load
+      updateProfileDisplay();
+      
+      var $profileDropdown = $('#profileDropdown');
+      var $profileMenu = $profileDropdown.next('.profile-dropdown-menu');
+      var $profileContainer = $profileDropdown.closest('.dropdown');
+      
+      // Prevent hover from opening
+      $profileContainer.off('mouseenter mouseleave');
+      
+      // Click to toggle
+      $profileDropdown.on('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        var isOpen = $profileMenu.hasClass('show');
+        
+        // Close all other dropdowns
+        $('.dropdown-menu').not($profileMenu).removeClass('show');
+        $('.dropdown-toggle').not($profileDropdown).attr('aria-expanded', 'false');
+        
+        if (isOpen) {
+          // Close with animation
+          $profileMenu.removeClass('show');
+          $profileDropdown.attr('aria-expanded', 'false');
+        } else {
+          // Open with animation - remove show class first to reset animation
+          $profileMenu.removeClass('show');
+          // Force reflow to restart animation
+          $profileMenu[0].offsetHeight;
+          // Add show class to trigger animation
+          $profileMenu.addClass('show');
+          $profileDropdown.attr('aria-expanded', 'true');
+        }
+      });
+      
+      // Keep dropdown open when hovering over it
+      $profileMenu.on('mouseenter', function() {
+        $(this).addClass('show');
+      });
+      
+      // Close when clicking outside
+      $(document).on('click', function(e) {
+        if (!$(e.target).closest('.dropdown').length) {
+          $profileMenu.removeClass('show');
+          $profileDropdown.attr('aria-expanded', 'false');
+          // Close submenu when clicking outside
+          $('.profile-submenu-toggle').removeClass('active');
+        }
+      });
+      
+      // My Profile submenu toggle
+      $(document).on('click', '.profile-submenu-toggle', function(e) {
+        e.stopPropagation();
+        var $toggle = $(this);
+        var $submenu = $toggle.find('.profile-submenu');
+        
+        // Toggle active class
+        $toggle.toggleClass('active');
+        
+        // Close other submenus if any
+        $('.profile-submenu-toggle').not($toggle).removeClass('active');
+      });
+      
+      // Close submenu when clicking on submenu items
+      $(document).on('click', '.profile-submenu .submenu-item', function() {
+        $('.profile-submenu-toggle').removeClass('active');
+      });
+      
+      // Close submenu when clicking outside the submenu
+      $(document).on('click', function(e) {
+        if (!$(e.target).closest('.profile-submenu-toggle').length && 
+            !$(e.target).closest('.profile-submenu').length) {
+          $('.profile-submenu-toggle').removeClass('active');
+        }
+      });
+      
+      // Logout functionality
+      window.handleLogout = function() {
+        // Show loading overlay
+        var loadingOverlay = document.getElementById('logoutLoadingOverlay');
+        if (loadingOverlay) {
+          loadingOverlay.classList.add('active');
+        }
+        
+        // Clear all stored data
+        localStorage.removeItem('currentUser');
+        sessionStorage.removeItem('currentUser');
+        
+        // Clear any cookies
+        document.cookie.split(";").forEach(function(c) { 
+          document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+        });
+        
+        // Redirect to login page after a short delay
+        setTimeout(function() {
+          window.location.href = 'index.html';
+        }, 500);
+      };
+      
+      // Menu Pagination and Category Filtering
+      var currentPage = 1;
+      var itemsPerPage = 6;
+      var currentCategory = 'all';
+      
+      // Get filtered items based on category
+      function getFilteredItems(category) {
+        if (category === 'all') {
+          return $('.menu-item');
+        } else {
+          return $('.menu-item[data-category="' + category + '"]');
+        }
+      }
+      
+      // Initialize pagination variables
+      function initializePagination() {
+        // First, hide all items to ensure they start hidden
+        $('.menu-item').removeClass('active');
+        
+        // Filter items by current category
+        var $filteredItems = getFilteredItems(currentCategory);
+        var totalItems = $filteredItems.length;
+        var totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
+        
+        // Store in global scope for use in other functions
+        window.paginationData = {
+          totalItems: totalItems,
+          totalPages: totalPages,
+          filteredItems: $filteredItems
+        };
+        
+        // Show first page
+        if (totalItems > 0) {
+          // Hide no items message if it exists
+          $('#noItemsMessage').hide();
+          showPage(1);
+        } else {
+          // No items found for this category
+          $('.menu-item').removeClass('active');
+          updatePaginationButtons();
+          updatePageInfo();
+          // Show message if no items container doesn't exist
+          if ($('#noItemsMessage').length === 0) {
+            $('#menuItemsContainer').append('<div class="col-12 text-center py-5" id="noItemsMessage"><p class="text-muted">No items found in this category.</p></div>');
+          } else {
+            $('#noItemsMessage').show();
+          }
+        }
+      }
+      
+      function showPage(page) {
+        // Filter items by current category
+        var $filteredItems = getFilteredItems(currentCategory);
+        var totalItems = $filteredItems.length;
+        var totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
+        
+        // Update pagination data
+        window.paginationData = {
+          totalItems: totalItems,
+          totalPages: totalPages,
+          filteredItems: $filteredItems
+        };
+        
+        // Update current page
+        currentPage = page;
+        
+        // Hide all items first (ensure they're all hidden)
+        $('.menu-item').removeClass('active');
+        
+        // Calculate which items to show (only 6 items per page)
+        var startIndex = (page - 1) * itemsPerPage;
+        var endIndex = Math.min(startIndex + itemsPerPage, totalItems);
+        
+        // Show only the filtered items for current page (exactly 6 items or less if last page)
+        $filteredItems.slice(startIndex, endIndex).addClass('active');
+        
+        // Update pagination buttons
+        updatePaginationButtons();
+        
+        // Update page info
+        updatePageInfo();
+        
+        // Scroll to top of menu items
+        $('html, body').animate({
+          scrollTop: $('#menuItemsContainer').offset().top - 100
+        }, 300);
+      }
+      
+      function updatePaginationButtons() {
+        var totalPages = window.paginationData ? window.paginationData.totalPages : 1;
+        
+        // Disable/enable previous button
+        if (currentPage === 1) {
+          $('#prevPage').addClass('disabled');
+        } else {
+          $('#prevPage').removeClass('disabled');
+        }
+        
+        // Disable/enable next button
+        if (currentPage >= totalPages) {
+          $('#nextPage').addClass('disabled');
+        } else {
+          $('#nextPage').removeClass('disabled');
+        }
+      }
+      
+      function updatePageInfo() {
+        var totalItems = window.paginationData ? window.paginationData.totalItems : 0;
+        var totalPages = window.paginationData ? window.paginationData.totalPages : 1;
+        var startItem = totalItems > 0 ? (currentPage - 1) * itemsPerPage + 1 : 0;
+        var endItem = Math.min(currentPage * itemsPerPage, totalItems);
+        
+        if (totalItems > 0) {
+          $('#pageInfo').text('Showing ' + startItem + ' - ' + endItem + ' of ' + totalItems + ' items (Page ' + currentPage + ' of ' + totalPages + ')');
+        } else {
+          $('#pageInfo').text('No items found');
+        }
+      }
+      
+      // Food Category Links with Filtering
+      $('.category-link').on('click', function(e) {
+        e.preventDefault();
+        // Remove active class from all links
+        $('.category-link').removeClass('active');
+        // Add active class to clicked link
+        $(this).addClass('active');
+        // Get selected category
+        var category = $(this).data('category');
+        // Update current category
+        currentCategory = category;
+        // Reset to page 1 when category changes
+        currentPage = 1;
+        // Reinitialize pagination with new category
+        initializePagination();
+        // Smooth scroll to menu items
+        $('html, body').animate({
+          scrollTop: $('#menuItemsContainer').offset().top - 100
+        }, 300);
+      });
+      
+      // Set first category as active by default
+      $('.category-link').first().addClass('active');
+      
+      // Previous page click
+      $('#prevPage').on('click', function(e) {
+        e.preventDefault();
+        if (!$(this).hasClass('disabled') && currentPage > 1) {
+          currentPage--;
+          showPage(currentPage);
+        }
+      });
+      
+      // Next page click
+      $('#nextPage').on('click', function(e) {
+        e.preventDefault();
+        var totalPages = window.paginationData ? window.paginationData.totalPages : 1;
+        if (!$(this).hasClass('disabled') && currentPage < totalPages) {
+          currentPage++;
+          showPage(currentPage);
+        }
+      });
+      
+      // Initialize pagination when DOM is ready
+      initializePagination();
+      
+      // Also initialize on window load as backup
+      $(window).on('load', function() {
+        setTimeout(function() {
+          initializePagination();
+        }, 100);
+      });
+      
+      // Food Ordering System
+      var cart = [];
+      
+      // Add order buttons to all menu items dynamically
+      function addOrderButtons() {
+        $('.menu-item').each(function() {
+          var $menuItem = $(this);
+          var $desc = $menuItem.find('.desc');
+          var $priceEl = $menuItem.find('.price');
+          var $nameEl = $menuItem.find('h3 span');
+          
+          // Check if button already exists
+          if ($desc.find('.order-btn').length === 0) {
+            var name = $nameEl.text().trim();
+            var priceText = $priceEl.text().trim();
+            var price = parseFloat(priceText.replace('$', '').replace(',', ''));
+            
+            // Add order button
+            $desc.append(
+              '<div class="d-block mt-3">' +
+                '<button class="btn btn-sm order-btn" data-name="' + name + '" data-price="' + price + '" style="background: #21cc7a; color: white; border: none; padding: 8px 20px; border-radius: 5px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">' +
+                  '<i class="fas fa-shopping-cart"></i> Order Now' +
+                '</button>' +
+              '</div>'
+            );
+          }
+        });
+      }
+      
+      // Initialize order buttons
+      setTimeout(addOrderButtons, 500);
+      
+      // Create cart sidebar HTML
+      var cartSidebar = `
+        <div id="cartSidebar" style="position: fixed; right: -400px; top: 0; width: 400px; height: 100vh; background: #fff; box-shadow: -2px 0 10px rgba(0,0,0,0.1); z-index: 9999; transition: right 0.3s ease; overflow-y: auto;">
+          <div style="padding: 20px; border-bottom: 2px solid #f0f0f0;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <h3 style="margin: 0; color: #222; font-size: 24px;">Shopping Cart</h3>
+              <button id="closeCart" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #666;">&times;</button>
+            </div>
+          </div>
+          <div id="cartItems" style="padding: 20px;">
+            <p style="text-align: center; color: #999; padding: 40px 0;">Your cart is empty</p>
+          </div>
+          <div style="position: sticky; bottom: 0; padding: 20px; background: #fff; border-top: 2px solid #f0f0f0;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 18px; font-weight: 600;">
+              <span>Total:</span>
+              <span id="cartTotal">$0.00</span>
+            </div>
+            <button id="checkoutBtn" style="width: 100%; background: #21cc7a; color: white; border: none; padding: 15px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;" disabled>
+              Proceed to Checkout
+            </button>
+          </div>
+        </div>
+      `;
+      
+      // Create cart icon
+      var cartIcon = `
+        <div id="cartIcon" style="position: fixed; right: 20px; bottom: 20px; width: 60px; height: 60px; background: #21cc7a; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 12px rgba(33, 204, 122, 0.4); z-index: 9998; transition: all 0.3s ease;">
+          <i class="fas fa-shopping-cart" style="color: white; font-size: 24px;"></i>
+          <span id="cartBadge" style="position: absolute; top: -5px; right: -5px; background: #dc3545; color: white; border-radius: 50%; width: 24px; height: 24px; display: none; align-items: center; justify-content: center; font-size: 12px; font-weight: 600;">0</span>
+        </div>
+      `;
+      
+      // Add cart to page
+      $('body').append(cartSidebar);
+      $('body').append(cartIcon);
+      
+      // Update cart badge
+      function updateCartBadge() {
+        var total = cart.reduce((sum, item) => sum + item.quantity, 0);
+        if (total > 0) {
+          $('#cartBadge').text(total).show();
+        } else {
+          $('#cartBadge').hide();
+        }
+        $('#checkoutBtn').prop('disabled', total === 0);
+      }
+      
+      // Update cart display
+      function updateCart() {
+        var $cartItems = $('#cartItems');
+        var total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        
+        $('#cartTotal').text('$' + total.toFixed(2));
+        updateCartBadge();
+        
+        if (cart.length === 0) {
+          $cartItems.html('<p style="text-align: center; color: #999; padding: 40px 0;">Your cart is empty</p>');
+          return;
+        }
+        
+        var html = '';
+        cart.forEach(function(item, index) {
+          html += `
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #f0f0f0;">
+              <div style="flex: 1;">
+                <h4 style="margin: 0 0 5px 0; font-size: 16px; color: #222;">${item.name}</h4>
+                <p style="margin: 0; color: #21cc7a; font-weight: 600;">$${item.price.toFixed(2)}</p>
+                <div style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
+                  <button class="decrease-qty" data-index="${index}" style="width: 30px; height: 30px; border: 1px solid #ddd; background: #f8f9fa; border-radius: 5px; cursor: pointer;">-</button>
+                  <span style="min-width: 30px; text-align: center;">${item.quantity}</span>
+                  <button class="increase-qty" data-index="${index}" style="width: 30px; height: 30px; border: 1px solid #ddd; background: #f8f9fa; border-radius: 5px; cursor: pointer;">+</button>
+                </div>
+              </div>
+              <div style="text-align: right;">
+                <p style="margin: 0 0 10px 0; font-size: 18px; font-weight: 600; color: #222;">$${(item.price * item.quantity).toFixed(2)}</p>
+                <button class="remove-item" data-index="${index}" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 12px;">Remove</button>
+              </div>
+            </div>
+          `;
+        });
+        $cartItems.html(html);
+      }
+      
+      // Open/close cart
+      $('#cartIcon').on('click', function() {
+        $('#cartSidebar').css('right', '0');
+      });
+      
+      $('#closeCart').on('click', function() {
+        $('#cartSidebar').css('right', '-400px');
+      });
+      
+      // Add to cart
+      $(document).on('click', '.order-btn', function(e) {
+        e.preventDefault();
+        var name = $(this).data('name');
+        var price = parseFloat($(this).data('price'));
+        
+        // Check if user is logged in
+        var currentUser = null;
+        var storedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
+        if (storedUser) {
+          try {
+            currentUser = JSON.parse(storedUser);
+          } catch (e) {
+            console.error('Error parsing user data:', e);
+          }
+        }
+        
+        if (!currentUser || !currentUser.logged_in) {
+          alert('Please login to order food. Redirecting to login page...');
+          window.location.href = 'login.html';
+          return;
+        }
+        
+        // Find existing item in cart
+        var existingItem = cart.find(item => item.name === name);
+        if (existingItem) {
+          existingItem.quantity++;
+        } else {
+          cart.push({ name: name, price: price, quantity: 1 });
+        }
+        
+        updateCart();
+        $('#cartSidebar').css('right', '0');
+        
+        // Show success message
+        $(this).html('<i class="fas fa-check"></i> Added!').css('background', '#28a745');
+        setTimeout(() => {
+          $(this).html('<i class="fas fa-shopping-cart"></i> Order Now').css('background', '#21cc7a');
+        }, 1000);
+      });
+      
+      // Increase quantity
+      $(document).on('click', '.increase-qty', function() {
+        var index = $(this).data('index');
+        cart[index].quantity++;
+        updateCart();
+      });
+      
+      // Decrease quantity
+      $(document).on('click', '.decrease-qty', function() {
+        var index = $(this).data('index');
+        if (cart[index].quantity > 1) {
+          cart[index].quantity--;
+        } else {
+          cart.splice(index, 1);
+        }
+        updateCart();
+      });
+      
+      // Remove item
+      $(document).on('click', '.remove-item', function() {
+        var index = $(this).data('index');
+        cart.splice(index, 1);
+        updateCart();
+      });
+      
+      // Checkout button
+      $('#checkoutBtn').on('click', function() {
+        if (cart.length === 0) return;
+        
+        // Show payment modal
+        showPaymentModal();
+      });
+      
+      // Payment modal
+      function showPaymentModal() {
+        var total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        var modal = `
+          <div id="foodPaymentModal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10000; display: flex; align-items: center; justify-content: center;">
+            <div style="background: white; border-radius: 16px; padding: 30px; max-width: 500px; width: 90%; max-height: 90vh; overflow-y: auto;">
+              <h2 style="margin: 0 0 20px 0; color: #222;">Complete Your Order</h2>
+              <div style="margin-bottom: 20px;">
+                <h3 style="font-size: 18px; margin-bottom: 10px;">Order Summary</h3>
+                <div id="orderSummary" style="margin-bottom: 20px;">
+                  ${cart.map(item => `
+                    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f0f0f0;">
+                      <span>${item.name} x${item.quantity}</span>
+                      <span>$${(item.price * item.quantity).toFixed(2)}</span>
+                    </div>
+                  `).join('')}
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 20px; font-weight: 600; padding-top: 10px; border-top: 2px solid #222;">
+                  <span>Total:</span>
+                  <span>$${total.toFixed(2)}</span>
+                </div>
+              </div>
+              <div style="margin-bottom: 20px;">
+                <h3 style="font-size: 18px; margin-bottom: 10px;">Payment Method</h3>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                  <label style="display: flex; align-items: center; padding: 10px; border: 2px solid #ddd; border-radius: 8px; cursor: pointer;">
+                    <input type="radio" name="paymentMethod" value="cash" checked style="margin-right: 10px;">
+                    <span>Cash on Delivery</span>
+                  </label>
+                  <label style="display: flex; align-items: center; padding: 10px; border: 2px solid #ddd; border-radius: 8px; cursor: pointer;">
+                    <input type="radio" name="paymentMethod" value="card" style="margin-right: 10px;">
+                    <span>Credit/Debit Card</span>
+                  </label>
+                </div>
+              </div>
+              <div style="display: flex; gap: 10px;">
+                <button id="cancelOrder" style="flex: 1; background: #f0f0f0; color: #222; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: 600;">Cancel</button>
+                <button id="confirmOrder" style="flex: 1; background: #21cc7a; color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: 600;">Confirm Order</button>
+              </div>
+            </div>
+          </div>
+        `;
+        
+        $('body').append(modal);
+      }
+      
+      // Close payment modal
+      $(document).on('click', '#cancelOrder', function() {
+        $('#foodPaymentModal').remove();
+      });
+      
+      // Confirm order
+      $(document).on('click', '#confirmOrder', function() {
+        var paymentMethod = $('input[name="paymentMethod"]:checked').val();
+        var total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        
+        // Get current user
+        var currentUser = null;
+        var storedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
+        if (storedUser) {
+          try {
+            currentUser = JSON.parse(storedUser);
+          } catch (e) {
+            console.error('Error parsing user data:', e);
+          }
+        }
+        
+        if (!currentUser || !currentUser.logged_in) {
+          alert('Please login to complete your order.');
+          window.location.href = 'login.html';
+          return;
+        }
+        
+        // Generate order ID
+        var orderId = 'FO-' + new Date().getFullYear() + '-' + Math.floor(100000 + Math.random() * 900000);
+        
+        // Save transaction
+        var transactions = JSON.parse(localStorage.getItem('transactions') || '[]');
+        var transaction = {
+          id: orderId,
+          userId: currentUser.user_id,
+          date: new Date().toISOString(),
+          status: 'pending',
+          type: 'Food Order',
+          amount: total,
+          items: cart.map(item => ({
+            name: item.name,
+            price: item.price,
+            quantity: item.quantity
+          })),
+          paymentMethod: paymentMethod === 'cash' ? 'Cash on Delivery' : 'Credit/Debit Card'
+        };
+        transactions.push(transaction);
+        localStorage.setItem('transactions', JSON.stringify(transactions));
+        
+        // Clear cart
+        cart = [];
+        updateCart();
+        $('#cartSidebar').css('right', '-400px');
+        $('#foodPaymentModal').remove();
+        
+        // Show success message
+        alert('Order placed successfully! Order ID: ' + orderId + '\n\nYou can view your order in the Transaction page.');
+      });
+      
+      // Close modal on outside click
+      $(document).on('click', '#foodPaymentModal', function(e) {
+        if ($(e.target).attr('id') === 'foodPaymentModal') {
+          $('#foodPaymentModal').remove();
+        }
+      });
+    });
+  </script>
+  
+  </body>
+</html>

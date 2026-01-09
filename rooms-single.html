@@ -1,0 +1,2992 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>BAHAY KUBO Resort - Room Details</title>
+    <link rel="icon" type="image/png" href="logo/logo.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+      /* Profile Dropdown Enhanced Styles */
+      #profileDropdown {
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 5px;
+        padding: 8px 15px !important;
+      }
+      
+      #profileDropdown:hover {
+        color: #fff !important;
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: translateY(-1px);
+      }
+      
+      #profileDropdown:active {
+        transform: translateY(0);
+      }
+      
+      .profile-dropdown-menu {
+        min-width: 200px;
+        padding: 8px 0 !important;
+        margin-top: 10px !important;
+        background: #fff;
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        opacity: 0;
+        transform: translateY(-15px) scale(0.9);
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        pointer-events: none;
+        overflow: visible;
+        transform-origin: top right;
+      }
+      
+      .profile-dropdown-menu.show {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+        animation: dropdownSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      
+      @keyframes dropdownSlideIn {
+        0% {
+          opacity: 0;
+          transform: translateY(-15px) scale(0.9);
+        }
+        50% {
+          transform: translateY(2px) scale(1.02);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      
+      .profile-dropdown-menu.show .dropdown-item {
+        animation: fadeInItem 0.4s ease forwards;
+        opacity: 0;
+      }
+      
+      .profile-dropdown-menu.show .dropdown-item:nth-child(1) {
+        animation-delay: 0.05s;
+      }
+      
+      .profile-dropdown-menu.show .dropdown-item:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      
+      @keyframes fadeInItem {
+        from {
+          opacity: 0;
+          transform: translateX(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      
+      .profile-dropdown-menu .dropdown-item {
+        padding: 12px 20px;
+        color: #333;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        border-left: 3px solid transparent;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:first-child {
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:last-child {
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+        padding-left: 25px;
+        transform: translateX(3px);
+      }
+      
+      .profile-dropdown-menu .dropdown-item:active {
+        background: #e9ecef;
+        transform: translateX(0);
+      }
+      
+      /* Hide My Profile submenu and logout by default (shown when logged in) */
+      .profile-dropdown-menu .profile-submenu-toggle,
+      .profile-dropdown-menu .logout-link {
+        display: none;
+      }
+      
+      /* Profile submenu styles */
+      .profile-submenu {
+        display: none;
+        position: absolute;
+        left: 100%;
+        top: 0;
+        min-width: 180px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        margin-left: 8px;
+        padding: 8px 0;
+        z-index: 10001;
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      
+      .profile-submenu-toggle.active .profile-submenu {
+        display: block;
+        opacity: 1;
+        transform: translateX(0);
+      }
+      
+      .profile-submenu-toggle.active i.fa-chevron-right {
+        transform: rotate(90deg);
+      }
+      
+      .profile-submenu .submenu-item {
+        padding: 10px 20px;
+        color: #333;
+        font-size: 14px;
+        font-weight: 500;
+        border-left: 3px solid transparent;
+        display: block;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        border-radius: 0;
+      }
+      
+      .profile-submenu .submenu-item:first-child {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+      
+      .profile-submenu .submenu-item:last-child {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      
+      .profile-submenu .submenu-item:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+        padding-left: 25px;
+        transform: translateX(3px);
+      }
+      
+      .profile-submenu-toggle {
+        user-select: none;
+        position: relative;
+        overflow: visible !important;
+      }
+      
+      .profile-dropdown-menu .profile-submenu-toggle {
+        overflow: visible;
+      }
+      
+      .profile-submenu-toggle:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+      }
+      
+      .profile-submenu-toggle:hover i.fa-chevron-right {
+        color: #21cc7a;
+      }
+      
+      .profile-submenu-toggle.active {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+      }
+      
+      .profile-dropdown-menu .dropdown-item::before {
+        content: '';
+        width: 4px;
+        height: 4px;
+        background: #21cc7a;
+        border-radius: 50%;
+        margin-right: 10px;
+        opacity: 0;
+        transition: all 0.2s ease;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:hover::before {
+        opacity: 1;
+        margin-right: 12px;
+      }
+      
+      .profile-dropdown-menu .logout-link {
+        border-top: 1px solid #e9ecef;
+        margin-top: 0;
+        padding: 14px 20px 12px 20px;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        transition: all 0.2s ease;
+        border-left: 3px solid transparent;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .profile-dropdown-menu .logout-link:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%) !important;
+        color: #dc3545;
+        border-left-color: #dc3545;
+        border-top-color: transparent;
+        padding-left: 25px;
+        transform: translateX(3px);
+        margin-top: 0;
+      }
+      
+      .profile-dropdown-menu .logout-link::before {
+        background: #dc3545;
+      }
+      
+      .profile-nav-link {
+        color: rgba(255, 255, 255, 0.9) !important;
+      }
+      
+      .ftco-navbar-light.scrolled .profile-nav-link,
+      .ftco-navbar-light.scrolled.awake .profile-nav-link {
+        color: rgba(0, 0, 0, 0.9) !important;
+      }
+      
+      .ftco-navbar-light.scrolled .profile-nav-link span:last-child,
+      .ftco-navbar-light.scrolled.awake .profile-nav-link span:last-child {
+        color: rgba(0, 0, 0, 0.9) !important;
+      }
+      
+      .ftco-navbar-light.scrolled .nav-profile-picture,
+      .ftco-navbar-light.scrolled.awake .nav-profile-picture {
+        border-color: rgba(0, 0, 0, 0.2) !important;
+      }
+      
+      .ftco-navbar-light.scrolled .nav-profile-picture span,
+      .ftco-navbar-light.scrolled.awake .nav-profile-picture span {
+        color: #fff !important;
+      }
+      
+      /* Login link styling */
+      .login-nav-link {
+        color: rgba(255, 255, 255, 0.9) !important;
+        transition: color 0.3s ease;
+      }
+      
+      .ftco-navbar-light.scrolled .login-nav-link,
+      .ftco-navbar-light.scrolled.awake .login-nav-link {
+        color: rgba(0, 0, 0, 0.9) !important;
+      }
+      
+      /* Update border color for login link container when scrolled */
+      .ftco-navbar-light.scrolled #simpleLoginLink,
+      .ftco-navbar-light.scrolled.awake #simpleLoginLink {
+        border-left-color: rgba(0, 0, 0, 0.2) !important;
+      }
+      
+      /* Navigation collapse styling - show flex when menu is open */
+      #ftco-nav.show {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      /* On desktop (lg and up), always show flex (Bootstrap expands navbar on lg+) */
+      @media (min-width: 992px) {
+        #ftco-nav {
+          display: flex !important;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+      
+      /* On mobile, stack items vertically when menu is open */
+      @media (max-width: 991.98px) {
+        #ftco-nav.show {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        
+        #ftco-nav.show .navbar-nav {
+          width: 100%;
+          margin-bottom: 15px;
+        }
+        
+        #ftco-nav.show #profileDropdownContainer,
+        #ftco-nav.show #simpleLoginLink {
+          width: 100%;
+          margin-left: 0 !important;
+          padding-left: 0 !important;
+          border-left: none !important;
+          border-top: 1px solid rgba(255, 255, 255, 0.2);
+          padding-top: 15px;
+          margin-top: 15px;
+        }
+      }
+
+      /* Airbnb-Style Room Details Page */
+      body {
+        font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: #222;
+      }
+
+      /* Navigation Tabs */
+      .room-nav-tabs {
+        display: flex;
+        gap: 32px;
+        padding: 24px 0;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 32px;
+        position: sticky;
+        top: 0;
+        background: #fff;
+        z-index: 100;
+      }
+
+      .room-nav-tabs a {
+        color: #222;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        padding-bottom: 16px;
+        border-bottom: 2px solid transparent;
+        transition: all 0.2s ease;
+      }
+
+      .room-nav-tabs a:hover,
+      .room-nav-tabs a.active {
+        border-bottom-color: #222;
+      }
+
+      /* Image Gallery */
+      .room-gallery {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 48px;
+        height: 500px;
+      }
+
+      .room-gallery-main {
+        grid-row: 1 / 3;
+      }
+
+      .room-gallery-thumb:last-child {
+        position: relative;
+      }
+
+      .room-gallery-main img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .room-gallery-thumb {
+        position: relative;
+        cursor: pointer;
+        overflow: hidden;
+      }
+
+      .room-gallery-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .room-gallery-thumb:hover img {
+        transform: scale(1.05);
+      }
+
+      .room-gallery-thumb:last-child::after {
+        content: 'Show all photos →';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.85);
+        color: #fff;
+        padding: 14px 24px;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 16px;
+        letter-spacing: 0.5px;
+        pointer-events: none;
+        z-index: 2;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        white-space: nowrap;
+        transition: all 0.3s ease;
+      }
+
+      .room-gallery-thumb:last-child {
+        cursor: pointer;
+        position: relative;
+      }
+
+      .room-gallery-thumb:last-child::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 1;
+        transition: background 0.3s ease;
+      }
+
+      .room-gallery-thumb:last-child:hover::before {
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      .room-gallery-thumb:last-child:hover::after {
+        background: rgba(0, 0, 0, 0.95);
+        transform: translate(-50%, -50%) scale(1.05);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+        border-color: rgba(255, 255, 255, 0.5);
+      }
+
+      /* Hidden gallery for magnific popup */
+      .room-gallery-popup {
+        display: none;
+      }
+
+      /* Photo Album Modal */
+      .photo-album-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 10000;
+        display: none;
+        overflow-y: auto;
+        padding: 60px 20px 20px;
+      }
+
+      .photo-album-modal.active {
+        display: block;
+      }
+
+      .photo-album-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .photo-album-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        color: #fff;
+      }
+
+      .photo-album-header h2 {
+        font-size: 28px;
+        font-weight: 600;
+        margin: 0;
+        color: #fff;
+      }
+
+      .photo-album-close {
+        background: none;
+        border: 2px solid #fff;
+        color: #fff;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        padding: 0;
+        line-height: 1;
+      }
+
+      .photo-album-close:hover {
+        background: #fff;
+        color: #000;
+        transform: rotate(90deg);
+      }
+
+      .photo-album-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        padding-bottom: 40px;
+      }
+
+      .photo-album-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        cursor: pointer;
+        aspect-ratio: 4 / 3;
+        background: #f0f0f0;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .photo-album-item:hover {
+        transform: scale(1.02);
+        box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+      }
+
+      .photo-album-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      @media (max-width: 768px) {
+        .photo-album-grid {
+          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+          gap: 10px;
+        }
+
+        .photo-album-header h2 {
+          font-size: 22px;
+        }
+
+        .photo-album-modal {
+          padding: 40px 10px 10px;
+        }
+      }
+
+      /* Room Header */
+      .room-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 24px;
+      }
+
+      .room-title-section h1 {
+        font-size: 26px;
+        font-weight: 600;
+        margin: 0 0 8px 0;
+        color: #222;
+      }
+
+      .room-location {
+        font-size: 16px;
+        color: #717171;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .room-meta {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+
+      .room-rating {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .room-rating svg {
+        fill: #000;
+        width: 14px;
+        height: 14px;
+      }
+
+      .room-reviews-count {
+        color: #717171;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
+      .room-actions {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .room-action-btn {
+        background: none;
+        border: 1px solid #222;
+        border-radius: 8px;
+        padding: 8px 16px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+      }
+
+      .room-action-btn:hover {
+        background: #f7f7f7;
+      }
+
+      .room-action-btn.save {
+        border: none;
+        padding: 8px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Guest Favorite Badge */
+      .guest-favorite {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 16px;
+        background: #fff7ed;
+        border: 1px solid #fed7aa;
+        border-radius: 12px;
+        margin-bottom: 32px;
+      }
+
+      .guest-favorite-icon {
+        width: 24px;
+        height: 24px;
+        fill: #f59e0b;
+      }
+
+      .guest-favorite-text {
+        font-size: 14px;
+        color: #222;
+      }
+
+      /* Highlights Section */
+      .room-highlights {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 24px;
+        margin-bottom: 48px;
+        padding-bottom: 48px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .highlight-item {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+      }
+
+      .highlight-icon {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+        fill: #222;
+      }
+
+      .highlight-content h4 {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0 0 4px 0;
+      }
+
+      .highlight-content p {
+        font-size: 14px;
+        color: #717171;
+        margin: 0;
+      }
+
+      /* Room Description */
+      .room-description {
+        margin-bottom: 48px;
+      }
+
+      .room-description h2 {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+
+      .room-description p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #222;
+        margin-bottom: 16px;
+      }
+
+      /* Features Section */
+      .room-features {
+        margin-bottom: 48px;
+        padding-bottom: 48px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .room-features h3 {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 24px;
+      }
+
+      .features-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .features-list li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 16px;
+      }
+
+      .features-list li svg {
+        width: 20px;
+        height: 20px;
+        fill: #222;
+        flex-shrink: 0;
+      }
+
+      /* Amenities Section */
+      .room-amenities {
+        margin-bottom: 48px;
+        padding-bottom: 48px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .room-amenities h3 {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 24px;
+      }
+
+      .amenities-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 24px;
+      }
+
+      .amenity-item {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .amenity-icon {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+      }
+
+      .amenity-name {
+        font-size: 16px;
+        font-weight: 400;
+      }
+
+      .show-all-btn {
+        background: none;
+        border: 1px solid #222;
+        border-radius: 8px;
+        padding: 12px 24px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 14px;
+        margin-top: 16px;
+        transition: all 0.2s ease;
+      }
+
+      .show-all-btn:hover {
+        background: #f7f7f7;
+      }
+
+      /* Booking Widget */
+      .booking-widget {
+        position: sticky;
+        top: 100px;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        background: #fff;
+      }
+
+      .booking-price {
+        display: flex;
+        align-items: baseline;
+        gap: 4px;
+        margin-bottom: 24px;
+      }
+
+      .booking-price-amount {
+        font-size: 22px;
+        font-weight: 600;
+      }
+
+      .booking-price-period {
+        font-size: 16px;
+        color: #717171;
+      }
+
+      .price-includes {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 24px;
+        font-size: 14px;
+        color: #717171;
+      }
+
+      .price-includes svg {
+        width: 16px;
+        height: 16px;
+        fill: #ff385c;
+      }
+
+      .booking-form-group {
+        margin-bottom: 16px;
+      }
+
+      .booking-form-group label {
+        display: block;
+        font-size: 10px;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+        color: #222;
+      }
+
+      .booking-form-group input,
+      .booking-form-group select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #b0b0b0;
+        border-radius: 8px;
+        font-size: 14px;
+        font-family: inherit;
+      }
+
+      .booking-form-group input:focus,
+      .booking-form-group select:focus {
+        outline: none;
+        border-color: #222;
+      }
+
+      .reserve-btn {
+        width: 100%;
+        background: linear-gradient(to right, #e61e4d 0%, #e31c5f 50%, #d70466 100%);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        padding: 14px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 24px;
+        transition: transform 0.2s ease;
+      }
+
+      .reserve-btn:hover {
+        transform: scale(1.02);
+      }
+
+      .reserve-note {
+        text-align: center;
+        font-size: 14px;
+        color: #717171;
+        margin-top: 8px;
+      }
+
+      .report-listing {
+        text-align: center;
+        margin-top: 16px;
+        font-size: 14px;
+        color: #717171;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
+      /* Payment Modal */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+        backdrop-filter: blur(4px);
+      }
+
+      .modal-overlay.active {
+        display: flex;
+      }
+
+      .payment-modal,
+      .confirmation-modal {
+        background: #fff;
+        border-radius: 16px;
+        padding: 32px;
+        max-width: 500px;
+        width: 90%;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        animation: modalSlideIn 0.3s ease;
+      }
+
+      @keyframes modalSlideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px) scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .modal-header h2 {
+        font-size: 24px;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      .modal-close {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: #717171;
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.2s ease;
+      }
+
+      .modal-close:hover {
+        background: #f7f7f7;
+        color: #222;
+      }
+
+      .payment-methods {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+
+      .payment-method {
+        border: 2px solid #ddd;
+        border-radius: 12px;
+        padding: 16px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .payment-method:hover {
+        border-color: #222;
+        background: #f7f7f7;
+      }
+
+      .payment-method.selected {
+        border-color: #e61e4d;
+        background: #fff5f7;
+      }
+
+      .payment-method input[type="radio"] {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+      }
+
+      .payment-method-label {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .payment-icon {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f7f7f7;
+        border-radius: 8px;
+      }
+
+      .payment-icon svg {
+        width: 20px;
+        height: 20px;
+        fill: #222;
+      }
+
+      .payment-details {
+        margin-top: 24px;
+        padding-top: 24px;
+        border-top: 1px solid #ddd;
+      }
+
+      .payment-details h3 {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+
+      .payment-form-group {
+        margin-bottom: 16px;
+      }
+
+      .payment-form-group label {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+        color: #222;
+      }
+
+      .payment-form-group input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #b0b0b0;
+        border-radius: 8px;
+        font-size: 14px;
+        font-family: inherit;
+      }
+
+      .payment-form-group input:focus {
+        outline: none;
+        border-color: #e61e4d;
+      }
+
+      .payment-form-row {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 12px;
+      }
+
+      .modal-btn {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        margin-top: 24px;
+      }
+
+      .modal-btn-primary {
+        background: linear-gradient(to right, #e61e4d 0%, #e31c5f 50%, #d70466 100%);
+        color: #fff;
+      }
+
+      .modal-btn-primary:hover {
+        transform: scale(1.02);
+      }
+
+      .modal-btn-primary:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .modal-btn-secondary {
+        background: #f7f7f7;
+        color: #222;
+      }
+
+      .modal-btn-secondary:hover {
+        background: #e9e9e9;
+      }
+
+      /* Confirmation Modal */
+      .confirmation-content {
+        text-align: center;
+        padding: 24px 0;
+      }
+
+      .confirmation-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 24px;
+        background: #d4edda;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .confirmation-icon svg {
+        width: 40px;
+        height: 40px;
+        fill: #28a745;
+      }
+
+      .confirmation-content h2 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+
+      .confirmation-content p {
+        font-size: 16px;
+        color: #717171;
+        margin-bottom: 24px;
+      }
+
+      .booking-summary {
+        background: #f7f7f7;
+        border-radius: 12px;
+        padding: 20px;
+        margin: 24px 0;
+        text-align: left;
+      }
+
+      .booking-summary-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+        font-size: 14px;
+      }
+
+      .booking-summary-item:last-child {
+        margin-bottom: 0;
+        padding-top: 12px;
+        border-top: 1px solid #ddd;
+        font-weight: 600;
+        font-size: 16px;
+      }
+
+      .booking-summary-label {
+        color: #717171;
+      }
+
+      .booking-summary-value {
+        color: #222;
+        font-weight: 500;
+      }
+
+      /* Reviews Section */
+      .reviews-section {
+        margin-top: 48px;
+        padding-top: 48px;
+        border-top: 1px solid #ddd;
+      }
+
+      .reviews-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 32px;
+      }
+
+      .reviews-rating {
+        font-size: 48px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .reviews-rating svg {
+        width: 32px;
+        height: 32px;
+        fill: #f59e0b;
+      }
+
+      .reviews-breakdown {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 24px;
+        margin-bottom: 48px;
+      }
+
+      .rating-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .rating-item svg {
+        width: 20px;
+        height: 20px;
+        fill: #222;
+      }
+
+      .rating-label {
+        font-size: 14px;
+        min-width: 100px;
+      }
+
+      .rating-value {
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .reviews-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 32px;
+      }
+
+      .review-item {
+        margin-bottom: 32px;
+      }
+
+      .review-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      .review-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #ddd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        color: #222;
+      }
+
+      .review-info h4 {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0 0 4px 0;
+      }
+
+      .review-meta {
+        font-size: 14px;
+        color: #717171;
+      }
+
+      .review-rating {
+        display: flex;
+        gap: 2px;
+        margin-bottom: 12px;
+      }
+
+      .review-rating svg {
+        width: 14px;
+        height: 14px;
+        fill: #222;
+      }
+
+      .review-text {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #222;
+      }
+
+      /* Calendar Section */
+      .calendar-section {
+        margin-top: 48px;
+        padding-top: 48px;
+        border-top: 1px solid #ddd;
+      }
+
+      .calendar-header {
+        margin-bottom: 24px;
+      }
+
+      .calendar-header h2 {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .calendar-container {
+        display: flex;
+        gap: 48px;
+        flex-wrap: wrap;
+      }
+
+      .calendar-wrapper {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .room-gallery {
+          grid-template-columns: 1fr;
+          height: auto;
+        }
+
+        .room-gallery-main {
+          grid-row: 1;
+        }
+
+        .room-header {
+          flex-direction: column;
+        }
+
+        .booking-widget {
+          position: relative;
+          top: 0;
+          margin-top: 32px;
+        }
+      }
+      
+      /* Reduce footer size to half */
+      .ftco-footer {
+        padding: 3em 0 !important;
+      }
+      
+      .ftco-footer .row.mb-5 {
+        margin-bottom: 1.5rem !important;
+      }
+      
+      .ftco-footer-widget {
+        margin-bottom: 1rem !important;
+      }
+      
+      .ftco-footer-widget h2 {
+        font-size: 16px !important;
+        margin-bottom: 12px !important;
+      }
+      
+      .ftco-footer-widget p {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+        margin-bottom: 15px !important;
+      }
+      
+      .ftco-footer-social {
+        margin-top: 1rem !important;
+      }
+      
+      .ftco-footer-social li {
+        margin-right: 8px !important;
+      }
+      
+      .ftco-footer-social li a {
+        height: 35px !important;
+        width: 35px !important;
+      }
+      
+      .ftco-footer-social li a span {
+        font-size: 16px !important;
+      }
+      
+      .ftco-footer-widget ul.list-unstyled li {
+        padding: 3px 0 !important;
+        font-size: 13px !important;
+      }
+      
+      .ftco-footer-widget ul.list-unstyled li a {
+        padding: 3px 0 !important;
+      }
+      
+      .block-23 ul li {
+        padding: 4px 0 !important;
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+      }
+      
+      .block-23 ul li .text {
+        font-size: 13px !important;
+      }
+      
+      .ftco-footer .row:last-child {
+        margin-top: 1rem !important;
+        padding-top: 1rem !important;
+      }
+      
+      .ftco-footer .row:last-child p {
+        font-size: 12px !important;
+        margin-bottom: 0 !important;
+      }
+    </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="index.html">BAHAY <span>KUBO</span></a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav">
+	          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+	          <li class="nav-item active"><a href="rooms.html" class="nav-link">Our Rooms</a></li>
+	          <li class="nav-item"><a href="restaurant.html" class="nav-link">Our Food</a></li>
+	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+	        </ul>
+	        <div class="nav-item dropdown" id="profileDropdownContainer" style="margin-left: 30px; position: relative; border-left: 1px solid rgba(255, 255, 255, 0.2); padding-left: 20px;">
+	          <a class="nav-link dropdown-toggle profile-nav-link" href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left: 0; padding-right: 20px; font-weight: 600; display: flex; align-items: center; gap: 10px;">
+	            <span class="nav-profile-picture" style="width: 32px; height: 32px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(255, 255, 255, 0.3); display: flex; align-items: center; justify-content: center; background: #21cc7a; flex-shrink: 0;">
+	              <span style="color: #fff; font-weight: 700; font-size: 14px; text-transform: uppercase;">GU</span>
+	            </span>
+	            <span>Profile (Guest)</span>
+	          </a>
+	          <div class="dropdown-menu dropdown-menu-right profile-dropdown-menu" aria-labelledby="profileDropdown" style="right: 0; left: auto;">
+	            <a class="dropdown-item" href="login.html">Login / Signup</a>
+	            <div class="dropdown-item profile-submenu-toggle" style="cursor: pointer; position: relative; justify-content: space-between;">
+	              <span>My Profile</span>
+	              <i class="fas fa-chevron-right" style="font-size: 12px; transition: transform 0.3s ease; margin-left: auto;"></i>
+	              <div class="profile-submenu">
+	                <a class="dropdown-item submenu-item" href="edit_profile.html">Edit Profile</a>
+	                <a class="dropdown-item submenu-item" href="transaction.html">Transaction</a>
+	              </div>
+	            </div>
+	            <a class="dropdown-item logout-link" href="#" onclick="handleLogout(); return false;">Log out</a>
+	          </div>
+	        </div>
+        <div class="nav-item" id="simpleLoginLink" style="margin-left: 30px; position: relative; border-left: 1px solid rgba(255, 255, 255, 0.2); padding-left: 20px; display: none;">
+          <a href="login.html" class="nav-link login-nav-link" style="font-weight: 600; padding-left: 0;">Log in</a>
+        </div>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+		<div class="hero-wrap" style="background-image: url('images/bg_3.jpg'); background-position: center; background-size: cover; height: 400px;">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+          	<div class="text">
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="rooms.html">Rooms</a></span> <span>Rooms Single</span></p>
+	            <h1 class="mb-4 bread">Rooms Details</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section" style="padding-top: 40px;">
+      <div class="container">
+        <!-- Navigation Tabs -->
+        <div class="room-nav-tabs">
+          <a href="#photos" class="active">Photos</a>
+          <a href="#amenities">Amenities</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#location">Location</a>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-8">
+            <!-- Image Gallery -->
+            <div class="room-gallery" id="photos">
+              <div class="room-gallery-main">
+                <img src="images/bahay kubo rooms/1/q0.jpg" alt="Room" id="mainImage">
+              </div>
+              <div class="room-gallery-thumb" onclick="changeMainImage('images/bahay kubo rooms/1/q1.jpg')">
+                <img src="images/bahay kubo rooms/1/q1.jpg" alt="Room">
+              </div>
+              <div class="room-gallery-thumb" onclick="changeMainImage('images/bahay kubo rooms/1/q2.jpg')">
+                <img src="images/bahay kubo rooms/1/q2.jpg" alt="Room">
+              </div>
+              <div class="room-gallery-thumb" onclick="changeMainImage('images/bahay kubo rooms/1/q3.jpg')">
+                <img src="images/bahay kubo rooms/1/q3.jpg" alt="Room">
+              </div>
+              <div class="room-gallery-thumb" onclick="showAllPhotos(); return false;">
+                <img src="images/bahay kubo rooms/1/q4.jpg" alt="Room">
+              </div>
+            </div>
+
+            <!-- Hidden gallery for photo popup (for lightbox when clicking individual photos) -->
+            <div class="room-gallery-popup">
+              <!-- Images will be dynamically loaded based on room ID -->
+            </div>
+
+            <!-- Photo Album Modal -->
+            <div class="photo-album-modal" id="photoAlbumModal">
+              <div class="photo-album-container">
+                <div class="photo-album-header">
+                  <h2>All Photos</h2>
+                  <button class="photo-album-close" onclick="closePhotoAlbum()" aria-label="Close">
+                    ×
+                  </button>
+                </div>
+                <div class="photo-album-grid">
+                  <!-- Images will be dynamically loaded based on room ID -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Room Header -->
+            <div class="room-header">
+              <div class="room-title-section">
+                <h1>Deluxe Room at Bahay Kubo Resort</h1>
+                <div class="room-location">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                  <span>Resort accommodation at Bahay Kubo Resort, Philippines</span>
+                </div>
+                <div class="room-meta">
+                  <span>4 guests · 1 bedroom · 2 beds · 1 bath</span>
+                </div>
+              </div>
+              <div class="room-actions">
+                <button class="room-action-btn">Share</button>
+                <button class="room-action-btn save">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Guest Favorite Badge -->
+            <div class="guest-favorite">
+              <svg class="guest-favorite-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+              <div class="guest-favorite-text">
+                <strong>Guest favorite</strong> - One of the most loved homes on Bahay Kubo Resort, according to guests.
+              </div>
+            </div>
+
+            <!-- Highlights -->
+            <div class="room-highlights">
+              <div class="highlight-item">
+                <svg class="highlight-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <div class="highlight-content">
+                  <h4>Top 10% of homes</h4>
+                  <p>This home is highly ranked based on ratings, reviews, and reliability.</p>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <svg class="highlight-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                <div class="highlight-content">
+                  <h4>Flexible cancellation policy</h4>
+                  <p>Free cancellation up to 48 hours before check-in for your peace of mind.</p>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <svg class="highlight-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <div class="highlight-content">
+                  <h4>Outdoor entertainment</h4>
+                  <p>The pool and alfresco dining are great for summer trips.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Room Description -->
+            <div class="room-description">
+              <h2>About this place</h2>
+              <p>Experience authentic Filipino hospitality in this beautifully designed room at Bahay Kubo Resort. This spacious and well-appointed accommodation is ideal for up to 4 guests, featuring modern amenities, premium bedding, and stunning views of the resort's lush gardens and natural surroundings. Perfect for families, couples, or small groups seeking a peaceful and memorable getaway.</p>
+              <p>Enjoy the tranquil ambiance of our resort with easy access to our on-site restaurant, swimming pool, and recreational facilities. The room includes complimentary high-speed WiFi, air conditioning, and a 65-inch QLED TV with streaming services. Wake up to the sound of nature and experience the perfect blend of traditional Filipino charm and modern comfort.</p>
+            </div>
+
+            <!-- Features -->
+            <div class="room-features">
+              <h3>Features</h3>
+              <ul class="features-list">
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                  </svg>
+                  <span>Bahay Kubo Resort, Main Building</span>
+                </li>
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                  <span>Up to 4 guests</span>
+                </li>
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="9" y1="9" x2="15" y2="9"></line>
+                    <line x1="9" y1="15" x2="15" y2="15"></line>
+                  </svg>
+                  <span>1 bedroom</span>
+                </li>
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12h18M3 6h18M3 18h18"></path>
+                  </svg>
+                  <span>2 beds</span>
+                </li>
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
+                  <span>1 bath</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Amenities -->
+            <div class="room-amenities" id="amenities">
+              <h3>What this place offers</h3>
+              <div class="amenities-grid">
+                <div class="amenity-item">
+                  <svg class="amenity-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                  </svg>
+                  <span class="amenity-name">Kitchen</span>
+                </div>
+                <div class="amenity-item">
+                  <svg class="amenity-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12h18M3 6h18M3 18h18"></path>
+                  </svg>
+                  <span class="amenity-name">Pool</span>
+                </div>
+                <div class="amenity-item">
+                  <svg class="amenity-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                  </svg>
+                  <span class="amenity-name">Air conditioning</span>
+                </div>
+                <div class="amenity-item">
+                  <svg class="amenity-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                    <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                    <line x1="12" y1="20" x2="12.01" y2="20"></line>
+                  </svg>
+                  <span class="amenity-name">Wifi</span>
+                </div>
+                <div class="amenity-item">
+                  <svg class="amenity-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect>
+                    <polyline points="17 2 12 7 7 2"></polyline>
+                  </svg>
+                  <span class="amenity-name">65 inch HDTV with Netflix</span>
+                </div>
+                <div class="amenity-item">
+                  <svg class="amenity-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M10.29 3.86L1 20h22L11.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                  </svg>
+                  <span class="amenity-name">Carbon monoxide alarm</span>
+                </div>
+              </div>
+              <button class="show-all-btn">Show all 10 amenities</button>
+            </div>
+
+            <!-- Reviews Section -->
+            <div class="reviews-section" id="reviews">
+              <div class="reviews-header">
+                <div class="reviews-rating">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  <span>4.83</span>
+                </div>
+                <div>
+                  <div class="room-rating">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <span>4.83</span>
+                  </div>
+                  <span class="room-reviews-count">6 reviews</span>
+                </div>
+              </div>
+
+              <div class="reviews-breakdown">
+                <div class="rating-item">
+                  <span class="rating-label">Overall rating</span>
+                  <span class="rating-value">4.8</span>
+                </div>
+                <div class="rating-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                  </svg>
+                  <span class="rating-label">Cleanliness</span>
+                  <span class="rating-value">4.8</span>
+                </div>
+                <div class="rating-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span class="rating-label">Accuracy</span>
+                  <span class="rating-value">5.0</span>
+                </div>
+                <div class="rating-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                  <span class="rating-label">Check-in</span>
+                  <span class="rating-value">5.0</span>
+                </div>
+                <div class="rating-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                  </svg>
+                  <span class="rating-label">Communication</span>
+                  <span class="rating-value">5.0</span>
+                </div>
+                <div class="rating-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="1" x2="12" y2="23"></line>
+                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                  </svg>
+                  <span class="rating-label">Location</span>
+                  <span class="rating-value">5.0</span>
+                </div>
+                <div class="rating-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="1" x2="12" y2="23"></line>
+                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                  </svg>
+                  <span class="rating-label">Value</span>
+                  <span class="rating-value">5.0</span>
+                </div>
+              </div>
+
+              <div class="reviews-list">
+                <div class="review-item">
+                  <div class="review-header">
+                    <div class="review-avatar">AC</div>
+                    <div class="review-info">
+                      <h4>Aaron Cris Emmanuel</h4>
+                      <div class="review-meta">1 month on Bahay Kubo · Today</div>
+                    </div>
+                  </div>
+                  <div class="review-rating">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                  </div>
+                  <div class="review-text">The place is great, there was just an issue with the wifi but i think it's just during our time. overall everything is good.</div>
+                </div>
+
+                <div class="review-item">
+                  <div class="review-header">
+                    <div class="review-avatar">L</div>
+                    <div class="review-info">
+                      <h4>Lara</h4>
+                      <div class="review-meta">8 years on Bahay Kubo · 1 week ago</div>
+                    </div>
+                  </div>
+                  <div class="review-rating">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                  </div>
+                  <div class="review-text">Very nice host, easy to communicate with and the place is great ✨</div>
+                </div>
+
+                <div class="review-item">
+                  <div class="review-header">
+                    <div class="review-avatar">M</div>
+                    <div class="review-info">
+                      <h4>Mao</h4>
+                      <div class="review-meta">4 months on Bahay Kubo · 1 week ago</div>
+                    </div>
+                  </div>
+                  <div class="review-rating">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                  </div>
+                  <div class="review-text">It was a great experience. 💜 Will come back again soon.</div>
+                </div>
+
+                <div class="review-item">
+                  <div class="review-header">
+                    <div class="review-avatar">J</div>
+                    <div class="review-info">
+                      <h4>Jewel</h4>
+                      <div class="review-meta">2 months on Bahay Kubo · 2 weeks ago</div>
+                    </div>
+                  </div>
+                  <div class="review-rating">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                  </div>
+                  <div class="review-text">We had a wonderful stay! The place was clean, comfortable, and exactly as described. The host was very kind, responsive, and made sure we had everything we needed throughout our stay.</div>
+                </div>
+
+                <div class="review-item">
+                  <div class="review-header">
+                    <div class="review-avatar">S</div>
+                    <div class="review-info">
+                      <h4>Shi</h4>
+                      <div class="review-meta">3 years on Bahay Kubo · 1 week ago</div>
+                    </div>
+                  </div>
+                  <div class="review-rating">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                  </div>
+                  <div class="review-text">We had a great stay and found it super relaxing.</div>
+                </div>
+
+                <div class="review-item">
+                  <div class="review-header">
+                    <div class="review-avatar">D</div>
+                    <div class="review-info">
+                      <h4>David</h4>
+                      <div class="review-meta">3 years on Bahay Kubo · 2 weeks ago</div>
+                    </div>
+                  </div>
+                  <div class="review-rating">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                  </div>
+                  <div class="review-text">best</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Location Section -->
+            <div class="room-description" id="location" style="margin-top: 48px; padding-top: 48px; border-top: 1px solid #ddd;">
+              <h2>Where you'll be</h2>
+              <p>Bahay Kubo Resort, Philippines</p>
+              <p>Nestled in a serene and picturesque setting, Bahay Kubo Resort offers you a peaceful escape from the hustle and bustle of city life. Our resort provides a unique blend of traditional Filipino architecture and modern amenities, creating an authentic and relaxing experience. Enjoy our beautifully landscaped gardens, refreshing swimming pool, and our renowned on-site restaurant serving authentic Filipino cuisine. The resort is designed to provide guests with a true sense of tranquility and connection with nature while maintaining all the comforts you need for a perfect stay.</p>
+            </div>
+          </div> <!-- .col-lg-8 -->
+
+          <!-- Booking Widget -->
+          <div class="col-lg-4">
+            <div class="booking-widget">
+              <div class="booking-price">
+                <span class="booking-price-amount">₱3,938</span>
+                <span class="booking-price-period">for 2 nights</span>
+              </div>
+              <div class="price-includes">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+                <span>Prices include all fees</span>
+              </div>
+              <form>
+                <div class="booking-form-group">
+                  <label>CHECK-IN</label>
+                  <input type="text" id="checkinDate" placeholder="Add date" readonly>
+                </div>
+                <div class="booking-form-group">
+                  <label>CHECKOUT</label>
+                  <input type="text" id="checkoutDate" placeholder="Add date" readonly>
+                </div>
+                <div class="booking-form-group">
+                  <label>GUESTS</label>
+                  <select id="guestsSelect">
+                    <option value="1">1 guest</option>
+                    <option value="2">2 guests</option>
+                    <option value="3">3 guests</option>
+                    <option value="4">4 guests</option>
+                  </select>
+                </div>
+                <button type="button" class="reserve-btn" onclick="handleReserve()">Reserve</button>
+                <div class="reserve-note">You won't be charged yet</div>
+              </form>
+              <div class="report-listing">Report this listing</div>
+            </div>
+          </div> <!-- .col-lg-4 -->
+        </div>
+      </div>
+    </section>
+
+    <footer class="ftco-footer ftco-section img" style="background-image: url(images/bg_4.jpg);">
+    	<div class="overlay"></div>
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">BAHAY KUBO</h2>
+              <p>More than a resort... an experience. Bahay Kubo Resort offers a unique blend of traditional Filipino architecture and modern amenities. Experience tranquility and connection with nature in our beautifully landscaped gardens, refreshing swimming pool, and renowned restaurant serving authentic Filipino cuisine.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Useful Links</h2>
+              <ul class="list-unstyled">
+                <li><a href="index.html" class="py-2 d-block">Home</a></li>
+                <li><a href="rooms.html" class="py-2 d-block">Our Rooms</a></li>
+                <li><a href="restaurant.html" class="py-2 d-block">Our Food</a></li>
+                <li><a href="blog.html" class="py-2 d-block">Blog</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Privacy</h2>
+              <ul class="list-unstyled">
+                <li><a href="about.html" class="py-2 d-block">About Us</a></li>
+                <li><a href="contact.html" class="py-2 d-block">Contact Us</a></li>
+                <li><a href="#" class="py-2 d-block">Privacy Policy</a></li>
+                <li><a href="#" class="py-2 d-block">Terms of Service</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">Bahay Kubo Resort, Philippines</span></li>
+	                <li><a href="tel://+639123456789"><span class="icon icon-phone"></span><span class="text">+63 912 345 6789</span></a></li>
+	                <li><a href="mailto:info@bahaykuboresort.com"><span class="icon icon-envelope"></span><span class="text">info@bahaykuboresort.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This system is made by BSIT-3D Group 4 Students
+  </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+  
+
+  <!-- Payment Method Modal -->
+  <div class="modal-overlay" id="paymentModal">
+    <div class="payment-modal">
+      <div class="modal-header">
+        <h2>Select Payment Method</h2>
+        <button class="modal-close" onclick="closePaymentModal()">&times;</button>
+      </div>
+      <div class="payment-methods">
+        <div class="payment-method" onclick="selectPaymentMethod('card')">
+          <input type="radio" name="paymentMethod" id="card" value="card">
+          <label class="payment-method-label" for="card">
+            <div class="payment-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                <line x1="1" y1="10" x2="23" y2="10"></line>
+              </svg>
+            </div>
+            <span>Credit or Debit Card</span>
+          </label>
+        </div>
+        <div class="payment-method" onclick="selectPaymentMethod('paypal')">
+          <input type="radio" name="paymentMethod" id="paypal" value="paypal">
+          <label class="payment-method-label" for="paypal">
+            <div class="payment-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.203zm14.146-14.42a.477.477 0 0 0-.175-.41c-.89-.77-2.61-1.13-4.68-1.13H9.8c-.524 0-.968.382-1.05.9L7.6 19.337h4.476c.524 0 .968-.382 1.05-.9l1.12-7.203h2.19c4.298 0 7.664-1.747 8.647-6.797.03-.149.054-.294.077-.437z"/>
+              </svg>
+            </div>
+            <span>PayPal</span>
+          </label>
+        </div>
+        <div class="payment-method" onclick="selectPaymentMethod('gcash')">
+          <input type="radio" name="paymentMethod" id="gcash" value="gcash">
+          <label class="payment-method-label" for="gcash">
+            <div class="payment-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </div>
+            <span>GCash</span>
+          </label>
+        </div>
+      </div>
+      <div class="payment-details" id="cardDetails" style="display: none;">
+        <h3>Card Details</h3>
+        <div class="payment-form-group">
+          <label>Card Number</label>
+          <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+        </div>
+        <div class="payment-form-row">
+          <div class="payment-form-group">
+            <label>Expiry Date</label>
+            <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5">
+          </div>
+          <div class="payment-form-group">
+            <label>CVV</label>
+            <input type="text" id="cardCVV" placeholder="123" maxlength="3">
+          </div>
+        </div>
+        <div class="payment-form-group">
+          <label>Cardholder Name</label>
+          <input type="text" id="cardName" placeholder="John Doe">
+        </div>
+      </div>
+      <button type="button" class="modal-btn modal-btn-primary" id="proceedBtn" onclick="proceedToConfirmation()" disabled>
+        Proceed to Confirmation
+      </button>
+      <button type="button" class="modal-btn modal-btn-secondary" onclick="closePaymentModal()">
+        Cancel
+      </button>
+    </div>
+  </div>
+
+  <!-- Confirmation Modal -->
+  <div class="modal-overlay" id="confirmationModal">
+    <div class="confirmation-modal">
+      <div class="modal-header">
+        <h2>Confirm Booking</h2>
+        <button class="modal-close" onclick="closeConfirmationModal()">&times;</button>
+      </div>
+      <div class="confirmation-content">
+        <div class="confirmation-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+          </svg>
+        </div>
+        <h2>Review Your Booking</h2>
+        <p>Please review your booking details before confirming</p>
+        <div class="booking-summary">
+          <div class="booking-summary-item">
+            <span class="booking-summary-label">Check-in:</span>
+            <span class="booking-summary-value" id="confirmCheckin">-</span>
+          </div>
+          <div class="booking-summary-item">
+            <span class="booking-summary-label">Check-out:</span>
+            <span class="booking-summary-value" id="confirmCheckout">-</span>
+          </div>
+          <div class="booking-summary-item">
+            <span class="booking-summary-label">Guests:</span>
+            <span class="booking-summary-value" id="confirmGuests">-</span>
+          </div>
+          <div class="booking-summary-item">
+            <span class="booking-summary-label">Payment Method:</span>
+            <span class="booking-summary-value" id="confirmPayment">-</span>
+          </div>
+          <div class="booking-summary-item">
+            <span class="booking-summary-label">Total Amount:</span>
+            <span class="booking-summary-value" id="confirmTotal">₱3,938</span>
+          </div>
+        </div>
+        <button type="button" class="modal-btn modal-btn-primary" onclick="confirmBooking()">
+          Confirm Booking
+        </button>
+        <button type="button" class="modal-btn modal-btn-secondary" onclick="closeConfirmationModal()">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div class="modal-overlay" id="successModal">
+    <div class="confirmation-modal">
+      <div class="confirmation-content">
+        <div class="confirmation-icon" style="background: #d4edda;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+          </svg>
+        </div>
+        <h2>Booking Confirmed!</h2>
+        <p>Your reservation has been successfully confirmed. You will receive a confirmation email shortly.</p>
+        <div class="booking-summary">
+          <div class="booking-summary-item">
+            <span class="booking-summary-label">Booking Reference:</span>
+            <span class="booking-summary-value" id="bookingReference">BK-2024-001234</span>
+          </div>
+        </div>
+        <button type="button" class="modal-btn modal-btn-primary" onclick="closeSuccessModal()">
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Get room ID from URL parameter, default to 1
+    function getRoomId() {
+      var urlParams = new URLSearchParams(window.location.search);
+      var roomId = urlParams.get('room');
+      return roomId ? parseInt(roomId) : 1;
+    }
+
+    // Get all images from a room folder
+    function getRoomImages(roomId) {
+      // Map of room IDs to their image filenames (based on actual folder contents)
+      var roomImageMap = {
+        1: ['q0.jpg', 'q1.jpg', 'q2.jpg', 'q3.jpg', 'q4.jpg', 'q5.jpg', 'q6.jpg', 'q7.jpg', 'q8.jpg', 'q9.jpg'],
+        2: ['w0.jpg', 'w1.jpg', 'w2.jpg', 'w3.jpg', 'w4.jpg', 'w5.jpg', 'w6.jpg', 'w7.jpg', 'w8.jpg', 'w9.jpg'],
+        3: ['e0.jpg', 'e1.jpg', 'e2.jpg', 'e3.jpg', 'e4.jpg', 'e5.jpg', 'e6.jpg', 'e7.jpg', 'e8.jpg', 'e9.jpg', 'e11.jpg', 'e12.jpg', 'e13.jpg'],
+        4: ['r0.jpg', 'r1.jpg', 'r2.jpg', 'r3.jpg', 'r4.jpg', 'r5.jpg', 'r6.jpg', 'r7.jpg', 'r8.jpg', 'r9.jpg'],
+        5: ['t1.jpg', 't2.jpg', 't3.jpg', 't4.jpg', 't5.jpg'],
+        6: ['y.jpg', 'y0.jpg', 'y2.jpg', 'y3.jpg', 'y4.jpg', 'y5.jpg', 'y6.jpg', 'y7.jpg', 'y8.jpg', 'y9.jpg', 'y11.jpg', 'y12.jpg', 'y13.jpg', 'y14.jpg', 'y15.jpg', 'y17.jpg'],
+        7: ['u0.jpg', 'u1.jpg', 'u2.jpg', 'u3.jpg', 'u4.jpg', 'u5.jpg', 'u6.jpg', 'u7.jpg', 'u8.jpg', 'u9.jpg'],
+        8: ['s0.jpg', 's1.jpg', 's2.jpg', 's3.jpg', 's4.jpg', 's5.jpg', 's6.jpg', 's7.jpg', 's8.jpg', 's9.jpg'],
+        9: ['d0.jpg', 'd1.jpg', 'd2.jpg', 'd3.jpg', 'd4.jpg', 'd5.jpg', 'd6.jpg', 'd7.jpg', 'd8.jpg', 'd9.jpg'],
+        10: ['f1.jpg', 'f2.jpg', 'f3.jpg', 'f4.jpg', 'f5.jpg', 'f6.jpg', 'f7.jpg', 'f8.jpg', 'f9.jpg'],
+        11: ['g1.jpg', 'g2.jpg', 'g3.jpg', 'g4.jpg', 'g5.jpg', 'g6.jpg', 'g7.jpg', 'g8.jpg', 'g9.jpg'],
+        12: ['h1.jpg', 'h2.jpg', 'h3.jpg', 'h4.jpg', 'h5.jpg', 'h6.jpg'],
+        13: ['z1.jpg', 'z2.jpg', 'z3.jpg', 'z4.jpg', 'z5.jpg', 'z6.jpg', 'z7.jpg', 'z8.jpg', 'z9.jpg'],
+        14: ['x1.jpg', 'x2.jpg', 'x3.jpg', 'x4.jpg', 'x5.jpg', 'x6.jpg', 'x7.jpg', 'x8.jpg', 'x9.jpg'],
+        15: ['c1.jpg', 'c2.jpg', 'c3.jpg', 'c4.jpg', 'c5.jpg', 'c6.jpg', 'c7.jpg', 'c8.jpg', 'c9.jpg'],
+        16: ['v1.jpg', 'v2.jpg', 'v3.jpg', 'v4.jpg', 'v5.jpg', 'v6.jpg', 'v7.jpg', 'v8.jpg', 'v9.jpg'],
+        17: ['b1.jpg', 'b2.jpg', 'b3.jpg', 'b4.jpg', 'b5.jpg', 'b6.jpg', 'b7.jpg', 'b8.jpg', 'b9.jpg'],
+        18: ['n1.jpg', 'n2.jpg', 'n3.jpg', 'n4.jpg', 'n5.jpg', 'n6.jpg', 'n7.jpg', 'n8.jpg', 'n9.jpg'],
+        19: ['m1.jpg', 'm2.jpg', 'm3.jpg', 'm4.jpg', 'm5.jpg', 'm6.jpg'],
+        20: ['l1.jpg', 'l2.jpg', 'l3.jpg', 'l4.jpg', 'l5.jpg', 'l6.jpg', 'l7.jpg', 'l8.jpg', 'l9.jpg']
+      };
+
+      var imageFiles = roomImageMap[roomId] || roomImageMap[1];
+      var basePath = 'images/bahay kubo rooms/' + roomId + '/';
+      var images = [];
+      
+      for (var i = 0; i < imageFiles.length; i++) {
+        images.push(basePath + imageFiles[i]);
+      }
+      
+      return images;
+    }
+
+    // Global variables for room images (will be initialized in document.ready)
+    var currentRoomId = 1;
+    var roomImages = [];
+
+    // Change main image when thumbnail is clicked
+    function changeMainImage(src) {
+      document.getElementById('mainImage').src = src;
+    }
+
+    // Show all photos in album style modal
+    function showAllPhotos(event) {
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      
+      // Show the photo album modal
+      $('#photoAlbumModal').addClass('active');
+      $('body').css('overflow', 'hidden');
+      return false;
+    }
+
+    // Close photo album modal
+    function closePhotoAlbum() {
+      $('#photoAlbumModal').removeClass('active');
+      $('body').css('overflow', '');
+    }
+
+    // Open individual photo in lightbox when clicked from album
+    function openPhotoInLightbox(index) {
+      // Close album modal first
+      closePhotoAlbum();
+      
+      // Wait for modal animation to complete, then open lightbox
+      setTimeout(function() {
+        // Get fresh room images in case room changed
+        var currentId = getRoomId();
+        var photoPaths = getRoomImages(currentId);
+        
+        // Create items array for magnific popup
+        var itemsArray = [];
+        for (var i = 0; i < photoPaths.length; i++) {
+          itemsArray.push({
+            src: photoPaths[i],
+            title: 'Room Photo ' + (i + 1)
+          });
+        }
+        
+        // Use magnificPopup's open method directly - this won't affect the main image
+        $.magnificPopup.open({
+          items: itemsArray,
+          gallery: {
+            enabled: true,
+            navigateByImgClick: true,
+            preload: [0, 1]
+          },
+          type: 'image',
+          mainClass: 'mfp-fade',
+          removalDelay: 300,
+          index: index, // Start at the clicked photo index
+          callbacks: {
+            open: function() {
+              $('body').css('overflow', 'hidden');
+            },
+            close: function() {
+              $('body').css('overflow', '');
+            }
+          }
+        });
+      }, 250);
+    }
+
+    // Handle photo album item clicks - use capture phase to ensure we handle it first
+    $(document).on('click', '.photo-album-item', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      
+      var index = parseInt($(this).data('photo-index'), 10);
+      if (!isNaN(index)) {
+        openPhotoInLightbox(index);
+      }
+      return false;
+    });
+
+    // Also prevent any clicks on images inside album items from bubbling
+    $(document).on('click', '.photo-album-item img', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      
+      var index = parseInt($(this).closest('.photo-album-item').data('photo-index'), 10);
+      if (!isNaN(index)) {
+        openPhotoInLightbox(index);
+      }
+      return false;
+    });
+
+    // Close modal when clicking outside
+    $(document).on('click', '#photoAlbumModal', function(e) {
+      if ($(e.target).hasClass('photo-album-modal')) {
+        closePhotoAlbum();
+      }
+    });
+
+    // Close modal with Escape key
+    $(document).on('keydown', function(e) {
+      if (e.key === 'Escape' && $('#photoAlbumModal').hasClass('active')) {
+        closePhotoAlbum();
+      }
+    });
+
+    // Date picker initialization
+    $(document).ready(function() {
+      // Initialize room images based on URL parameter
+      currentRoomId = getRoomId();
+      roomImages = getRoomImages(currentRoomId);
+      
+      // Update gallery images based on room ID
+      if (roomImages.length > 0) {
+        // Update main image
+        $('#mainImage').attr('src', roomImages[0]);
+        
+        // Update thumbnails (show first 4 additional images)
+        var thumbnails = $('.room-gallery-thumb');
+        for (var i = 0; i < Math.min(4, roomImages.length - 1); i++) {
+          if (i < thumbnails.length - 1) {
+            var img = thumbnails.eq(i).find('img');
+            img.attr('src', roomImages[i + 1]);
+            thumbnails.eq(i).attr('onclick', "changeMainImage('" + roomImages[i + 1] + "')");
+          }
+        }
+        
+        // Update last thumbnail (Show all photos) - show 5th image or last image if less than 5
+        if (thumbnails.length > 0) {
+          var lastThumb = thumbnails.last();
+          var showAllImgIndex = Math.min(4, roomImages.length - 1);
+          lastThumb.find('img').attr('src', roomImages[showAllImgIndex]);
+        }
+        
+        // Update hidden gallery popup
+        var popupGallery = $('.room-gallery-popup');
+        popupGallery.empty();
+        for (var j = 0; j < roomImages.length; j++) {
+          popupGallery.append(
+            '<a href="' + roomImages[j] + '" class="gallery-item" data-mfp-src="' + roomImages[j] + '">' +
+            '<img src="' + roomImages[j] + '" alt="Room Photo">' +
+            '</a>'
+          );
+        }
+        
+        // Update photo album modal
+        var albumGrid = $('.photo-album-grid');
+        albumGrid.empty();
+        for (var k = 0; k < roomImages.length; k++) {
+          albumGrid.append(
+            '<div class="photo-album-item" data-photo-index="' + k + '">' +
+            '<img src="' + roomImages[k] + '" alt="Room Photo ' + (k + 1) + '">' +
+            '</div>'
+          );
+        }
+        
+        // Reinitialize magnific popup with new images
+        if (window.roomGalleryPopup) {
+          window.roomGalleryPopup.destroy();
+        }
+        window.roomGalleryPopup = $('.room-gallery-popup').magnificPopup({
+          delegate: 'a',
+          type: 'image',
+          gallery: {
+            enabled: true,
+            navigateByImgClick: true,
+            preload: [0, 1]
+          },
+          image: {
+            titleSrc: function(item) {
+              return item.el.find('img').attr('alt') || 'Room Photo';
+            }
+          },
+          mainClass: 'mfp-fade',
+          removalDelay: 300,
+          callbacks: {
+            open: function() {
+              $('body').css('overflow', 'hidden');
+            },
+            close: function() {
+              $('body').css('overflow', '');
+            }
+          }
+        });
+      }
+
+      var checkinDate = $('#checkinDate');
+      var checkoutDate = $('#checkoutDate');
+      var guestsSelect = $('#guestsSelect');
+      
+      // Check if coming from search results (bookingSearch in localStorage)
+      var bookingSearch = localStorage.getItem('bookingSearch');
+      var urlParams = new URLSearchParams(window.location.search);
+      var urlCheckin = urlParams.get('checkin');
+      var urlCheckout = urlParams.get('checkout');
+      var urlGuests = urlParams.get('guests');
+      
+      var fromSearch = false;
+      var checkinValue = null;
+      var checkoutValue = null;
+      var guestsValue = null;
+      
+      // Priority 1: Check URL parameters
+      if (urlCheckin && urlCheckout && urlGuests) {
+        fromSearch = true;
+        // Convert from yyyy-mm-dd to mm/dd/yyyy
+        var formatDateFromURL = function(dateString) {
+          var parts = dateString.split('-');
+          return parts[1] + '/' + parts[2] + '/' + parts[0];
+        };
+        checkinValue = formatDateFromURL(urlCheckin);
+        checkoutValue = formatDateFromURL(urlCheckout);
+        guestsValue = urlGuests;
+      }
+      // Priority 2: Check localStorage bookingSearch
+      else if (bookingSearch) {
+        try {
+          var bookingData = JSON.parse(bookingSearch);
+          fromSearch = true;
+          checkinValue = bookingData.checkinDate; // Already in mm/dd/yyyy format
+          checkoutValue = bookingData.checkoutDate;
+          guestsValue = bookingData.guests;
+        } catch (e) {
+          console.error('Error parsing bookingSearch:', e);
+        }
+      }
+      
+      // Initialize datepickers
+      checkinDate.datepicker({
+        format: 'mm/dd/yyyy',
+        autoclose: true,
+        startDate: new Date()
+      }).on('changeDate', function(e) {
+        var minDate = new Date(e.date);
+        minDate.setDate(minDate.getDate() + 1);
+        checkoutDate.datepicker('setStartDate', minDate);
+      });
+
+      checkoutDate.datepicker({
+        format: 'mm/dd/yyyy',
+        autoclose: true
+      });
+      
+      // Auto-fill if coming from search, otherwise keep fillable
+      if (fromSearch && checkinValue && checkoutValue && guestsValue) {
+        // Auto-fill the form fields
+        checkinDate.val(checkinValue);
+        checkinDate.datepicker('update', checkinValue);
+        
+        checkoutDate.val(checkoutValue);
+        checkoutDate.datepicker('update', checkoutValue);
+        
+        // Set minimum checkout date based on check-in
+        var checkinDateObj = new Date(checkinValue);
+        var minCheckout = new Date(checkinDateObj);
+        minCheckout.setDate(minCheckout.getDate() + 1);
+        checkoutDate.datepicker('setStartDate', minCheckout);
+        
+        guestsSelect.val(guestsValue);
+        
+        // Make fields appear filled but still editable if user wants to change
+        // Add visual indication that it's pre-filled (light green background)
+        checkinDate.css('background-color', '#f0f8f0');
+        checkoutDate.css('background-color', '#f0f8f0');
+        guestsSelect.css('background-color', '#f0f8f0');
+        
+        // Remove readonly temporarily to allow editing, then restore datepicker functionality
+        // The datepicker will still work with readonly inputs, but this ensures full editability
+        checkinDate.prop('readonly', false);
+        checkoutDate.prop('readonly', false);
+        
+        // Add a small note that fields are pre-filled
+        if (!$('.pre-filled-note').length) {
+          checkinDate.closest('.booking-form-group').after('<div class="pre-filled-note" style="font-size: 11px; color: #21cc7a; margin-top: 4px; font-style: italic; padding: 0 16px;">Pre-filled from search • You can edit if needed</div>');
+        }
+        
+        // Re-initialize datepickers to ensure they work properly with the new values
+        checkinDate.datepicker('update');
+        checkoutDate.datepicker('update');
+      } else {
+        // Coming from regular browsing - keep fields empty and fillable
+        // Fields remain editable as normal (readonly attribute is fine for datepicker)
+      }
+
+      // Gallery popup will be initialized after images are loaded (see above)
+
+      // Navigation tabs smooth scroll
+      $('.room-nav-tabs a').on('click', function(e) {
+        e.preventDefault();
+        var target = $(this).attr('href');
+        $('.room-nav-tabs a').removeClass('active');
+        $(this).addClass('active');
+        
+        if (target.startsWith('#')) {
+          $('html, body').animate({
+            scrollTop: $(target).offset().top - 100
+          }, 500);
+        }
+      });
+    });
+
+    // Handle reserve button
+    function handleReserve() {
+      var checkin = $('#checkinDate').val();
+      var checkout = $('#checkoutDate').val();
+      var guests = $('#guestsSelect').val();
+
+      if (!checkin || !checkout) {
+        alert('Please select check-in and check-out dates');
+        return;
+      }
+
+      // Show payment modal
+      $('#paymentModal').addClass('active');
+      $('body').css('overflow', 'hidden');
+    }
+
+    // Payment method selection
+    var selectedPaymentMethod = null;
+
+    function selectPaymentMethod(method) {
+      selectedPaymentMethod = method;
+      
+      // Update radio button
+      $('input[name="paymentMethod"]').prop('checked', false);
+      $('input[value="' + method + '"]').prop('checked', true);
+      
+      // Update visual selection
+      $('.payment-method').removeClass('selected');
+      $('input[value="' + method + '"]').closest('.payment-method').addClass('selected');
+      
+      // Show/hide card details
+      if (method === 'card') {
+        $('#cardDetails').slideDown(300);
+        // Enable proceed button only if card details are filled
+        checkCardDetails();
+      } else {
+        $('#cardDetails').slideUp(300);
+        // Enable proceed button for other payment methods
+        $('#proceedBtn').prop('disabled', false);
+      }
+    }
+
+    // Check if card details are filled
+    function checkCardDetails() {
+      var cardNumber = $('#cardNumber').val().replace(/\s/g, '');
+      var cardExpiry = $('#cardExpiry').val();
+      var cardCVV = $('#cardCVV').val();
+      var cardName = $('#cardName').val();
+
+      if (cardNumber.length >= 13 && cardExpiry.length === 5 && cardCVV.length === 3 && cardName.length > 0) {
+        $('#proceedBtn').prop('disabled', false);
+      } else {
+        $('#proceedBtn').prop('disabled', true);
+      }
+    }
+
+    // Format card number input
+    $('#cardNumber').on('input', function() {
+      var value = $(this).val().replace(/\s/g, '');
+      var formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+      $(this).val(formattedValue);
+      checkCardDetails();
+    });
+
+    // Format expiry date input
+    $('#cardExpiry').on('input', function() {
+      var value = $(this).val().replace(/\D/g, '');
+      if (value.length >= 2) {
+        value = value.substring(0, 2) + '/' + value.substring(2, 4);
+      }
+      $(this).val(value);
+      checkCardDetails();
+    });
+
+    // Format CVV input
+    $('#cardCVV').on('input', function() {
+      $(this).val($(this).val().replace(/\D/g, ''));
+      checkCardDetails();
+    });
+
+    // Card name input
+    $('#cardName').on('input', function() {
+      checkCardDetails();
+    });
+
+    // Close payment modal
+    function closePaymentModal() {
+      $('#paymentModal').removeClass('active');
+      $('body').css('overflow', '');
+      // Reset form
+      $('input[name="paymentMethod"]').prop('checked', false);
+      $('.payment-method').removeClass('selected');
+      $('#cardDetails').hide();
+      $('#cardNumber, #cardExpiry, #cardCVV, #cardName').val('');
+      $('#proceedBtn').prop('disabled', true);
+      selectedPaymentMethod = null;
+    }
+
+    // Proceed to confirmation
+    function proceedToConfirmation() {
+      if (!selectedPaymentMethod) {
+        alert('Please select a payment method');
+        return;
+      }
+
+      if (selectedPaymentMethod === 'card') {
+        var cardNumber = $('#cardNumber').val().replace(/\s/g, '');
+        var cardExpiry = $('#cardExpiry').val();
+        var cardCVV = $('#cardCVV').val();
+        var cardName = $('#cardName').val();
+
+        if (cardNumber.length < 13 || cardExpiry.length !== 5 || cardCVV.length !== 3 || !cardName) {
+          alert('Please fill in all card details');
+          return;
+        }
+      }
+
+      // Get booking details
+      var checkin = $('#checkinDate').val();
+      var checkout = $('#checkoutDate').val();
+      var guests = $('#guestsSelect').val();
+      var total = $('.booking-price-amount').text();
+
+      // Update confirmation modal
+      $('#confirmCheckin').text(checkin || 'Not selected');
+      $('#confirmCheckout').text(checkout || 'Not selected');
+      $('#confirmGuests').text(guests + ' ' + (guests == 1 ? 'guest' : 'guests'));
+      
+      var paymentMethodNames = {
+        'card': 'Credit/Debit Card',
+        'paypal': 'PayPal',
+        'gcash': 'GCash'
+      };
+      $('#confirmPayment').text(paymentMethodNames[selectedPaymentMethod] || selectedPaymentMethod);
+      $('#confirmTotal').text(total);
+
+      // Close payment modal and show confirmation modal
+      closePaymentModal();
+      $('#confirmationModal').addClass('active');
+    }
+
+    // Close confirmation modal
+    function closeConfirmationModal() {
+      $('#confirmationModal').removeClass('active');
+      $('body').css('overflow', '');
+    }
+
+    // Confirm booking
+    function confirmBooking() {
+      // Show loading state
+      var confirmBtn = $('#confirmationModal .modal-btn-primary');
+      var originalText = confirmBtn.text();
+      confirmBtn.text('Processing...');
+      confirmBtn.prop('disabled', true);
+
+      // Simulate API call
+      setTimeout(function() {
+        // Generate booking reference
+        var bookingRef = 'BK-' + new Date().getFullYear() + '-' + Math.floor(100000 + Math.random() * 900000);
+        $('#bookingReference').text(bookingRef);
+
+        // Get current user
+        var currentUser = null;
+        var storedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
+        if (storedUser) {
+          try {
+            currentUser = JSON.parse(storedUser);
+          } catch (e) {
+            console.error('Error parsing user data:', e);
+          }
+        }
+
+        // Save transaction
+        if (currentUser && currentUser.logged_in) {
+          var transactions = JSON.parse(localStorage.getItem('transactions') || '[]');
+          var transaction = {
+            id: bookingRef,
+            userId: currentUser.user_id,
+            date: new Date().toISOString(),
+            status: 'pending',
+            type: 'Room Booking',
+            amount: parseFloat($('#confirmTotal').text().replace(/[₱,]/g, '')) || 3938,
+            checkin: $('#confirmCheckin').text(),
+            checkout: $('#confirmCheckout').text(),
+            guests: $('#confirmGuests').text(),
+            paymentMethod: $('#confirmPayment').text(),
+            roomId: getRoomId() || 1
+          };
+          transactions.push(transaction);
+          localStorage.setItem('transactions', JSON.stringify(transactions));
+        }
+
+        // Close confirmation modal and show success modal
+        closeConfirmationModal();
+        $('#successModal').addClass('active');
+      }, 1500);
+    }
+
+    // Close success modal
+    function closeSuccessModal() {
+      $('#successModal').removeClass('active');
+      $('body').css('overflow', '');
+      // Optionally redirect to a booking confirmation page
+      // window.location.href = 'booking-confirmation.html';
+    }
+
+    // Close modals when clicking outside
+    $('.modal-overlay').on('click', function(e) {
+      if (e.target === this) {
+        $(this).removeClass('active');
+        $('body').css('overflow', '');
+      }
+    });
+
+    // Profile dropdown functionality
+    $(document).ready(function() {
+      // Update profile display with logged-in user info
+      function updateProfileDisplay() {
+        var currentUser = null;
+        var storedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
+        
+        if (storedUser) {
+          try {
+            currentUser = JSON.parse(storedUser);
+          } catch (e) {
+            console.error('Error parsing user data:', e);
+          }
+        }
+        
+        var $profileText = $('#profileDropdown span:last-child');
+        var $profileInitials = $('#profileDropdown .nav-profile-picture span');
+        var $loginLink = $('.profile-dropdown-menu .dropdown-item[href="login.html"]');
+        var $profileContainer = $('#profileDropdownContainer');
+        var $simpleLoginLink = $('#simpleLoginLink');
+        
+        if (currentUser && currentUser.logged_in) {
+          $profileContainer.show();
+          $simpleLoginLink.hide();
+          var firstName = currentUser.first_name || '';
+          var lastName = currentUser.last_name || '';
+          var fullName = (firstName + ' ' + lastName).trim() || currentUser.username || 'User';
+          
+          $profileText.text('Profile (' + fullName + ')');
+          
+          var users = JSON.parse(localStorage.getItem('users') || '[]');
+          var user = users.find(u => u.id === currentUser.user_id);
+          
+          var $profilePicture = $('#profileDropdown .nav-profile-picture');
+          var existingImg = $profilePicture.find('img');
+          
+          if (user && user.avatar) {
+            if (existingImg.length > 0) {
+              existingImg.attr('src', user.avatar);
+            } else {
+              $profileInitials.remove();
+              $profilePicture.append('<img src="' + user.avatar + '" alt="Profile Picture" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">');
+            }
+            $profilePicture.css('background', 'transparent');
+          } else {
+            if (existingImg.length > 0) {
+              existingImg.remove();
+              $profilePicture.append('<span style="color: #fff; font-weight: 700; font-size: 14px; text-transform: uppercase;"></span>');
+              $profileInitials = $profilePicture.find('span');
+            }
+            $profilePicture.css('background', '#21cc7a');
+            
+            var initials = '';
+            if (firstName && lastName) {
+              initials = (firstName.charAt(0) + lastName.charAt(0)).toUpperCase();
+            } else if (currentUser.username) {
+              initials = currentUser.username.substring(0, 2).toUpperCase();
+            } else {
+              initials = 'GU';
+            }
+            $profileInitials.text(initials);
+          }
+          
+          $loginLink.hide();
+          $('.profile-dropdown-menu .profile-submenu-toggle').show();
+          $('.profile-dropdown-menu .logout-link').show();
+        } else {
+          $profileContainer.hide();
+          $simpleLoginLink.show();
+        }
+      }
+      
+      updateProfileDisplay();
+      
+      var $profileDropdown = $('#profileDropdown');
+      var $profileMenu = $profileDropdown.next('.profile-dropdown-menu');
+      var $profileContainer = $profileDropdown.closest('.dropdown');
+      
+      $profileContainer.off('mouseenter mouseleave');
+      
+      $profileDropdown.on('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        var isOpen = $profileMenu.hasClass('show');
+        
+        $('.dropdown-menu').not($profileMenu).removeClass('show');
+        $('.dropdown-toggle').not($profileDropdown).attr('aria-expanded', 'false');
+        
+        if (isOpen) {
+          $profileMenu.removeClass('show');
+          $profileDropdown.attr('aria-expanded', 'false');
+        } else {
+          $profileMenu.removeClass('show');
+          $profileMenu[0].offsetHeight;
+          $profileMenu.addClass('show');
+          $profileDropdown.attr('aria-expanded', 'true');
+        }
+      });
+      
+      $profileMenu.on('mouseenter', function() {
+        $(this).addClass('show');
+      });
+      
+      $(document).on('click', function(e) {
+        if (!$(e.target).closest('.dropdown').length) {
+          $profileMenu.removeClass('show');
+          $profileDropdown.attr('aria-expanded', 'false');
+          // Close submenu when clicking outside
+          $('.profile-submenu-toggle').removeClass('active');
+        }
+      });
+      
+      // My Profile submenu toggle
+      $(document).on('click', '.profile-submenu-toggle', function(e) {
+        e.stopPropagation();
+        var $toggle = $(this);
+        var $submenu = $toggle.find('.profile-submenu');
+        
+        // Toggle active class
+        $toggle.toggleClass('active');
+        
+        // Close other submenus if any
+        $('.profile-submenu-toggle').not($toggle).removeClass('active');
+      });
+      
+      // Close submenu when clicking on submenu items
+      $(document).on('click', '.profile-submenu .submenu-item', function() {
+        $('.profile-submenu-toggle').removeClass('active');
+      });
+      
+      // Close submenu when clicking outside the submenu
+      $(document).on('click', function(e) {
+        if (!$(e.target).closest('.profile-submenu-toggle').length && 
+            !$(e.target).closest('.profile-submenu').length) {
+          $('.profile-submenu-toggle').removeClass('active');
+        }
+      });
+      
+      window.handleLogout = function() {
+        localStorage.removeItem('currentUser');
+        sessionStorage.removeItem('currentUser');
+        
+        document.cookie.split(";").forEach(function(c) { 
+          document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+        });
+        
+        setTimeout(function() {
+          window.location.href = 'index.html';
+        }, 500);
+      };
+    });
+  </script>
+    
+  </body>
+</html>

@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>BAHAY KUBO Resort - Contact</title>
+    <link rel="icon" type="image/png" href="logo/logo.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+      /* Profile Dropdown Enhanced Styles */
+      #profileDropdown {
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 5px;
+        padding: 8px 15px !important;
+      }
+      
+      #profileDropdown:hover {
+        color: #fff !important;
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: translateY(-1px);
+      }
+      
+      #profileDropdown:active {
+        transform: translateY(0);
+      }
+      
+      /* Enhanced Dropdown Menu */
+      .profile-dropdown-menu {
+        min-width: 200px;
+        padding: 8px 0 !important;
+        margin-top: 10px !important;
+        background: #fff;
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        opacity: 0;
+        transform: translateY(-15px) scale(0.9);
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        pointer-events: none;
+        overflow: visible;
+        transform-origin: top right;
+      }
+      
+      .profile-dropdown-menu.show {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+        animation: dropdownSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      
+      @keyframes dropdownSlideIn {
+        0% {
+          opacity: 0;
+          transform: translateY(-15px) scale(0.9);
+        }
+        50% {
+          transform: translateY(2px) scale(1.02);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      
+      .profile-dropdown-menu.show .dropdown-item {
+        animation: fadeInItem 0.4s ease forwards;
+        opacity: 0;
+      }
+      
+      .profile-dropdown-menu.show .dropdown-item:nth-child(1) {
+        animation-delay: 0.05s;
+      }
+      
+      .profile-dropdown-menu.show .dropdown-item:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      
+      @keyframes fadeInItem {
+        from {
+          opacity: 0;
+          transform: translateX(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      
+      .profile-dropdown-menu .dropdown-item {
+        padding: 12px 20px;
+        color: #333;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        border-left: 3px solid transparent;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:first-child {
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:last-child {
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+        padding-left: 25px;
+        transform: translateX(3px);
+      }
+      
+      .profile-dropdown-menu .dropdown-item:active {
+        background: #e9ecef;
+        transform: translateX(0);
+      }
+      
+      /* Hide My Profile submenu and logout by default (shown when logged in) */
+      .profile-dropdown-menu .profile-submenu-toggle,
+      .profile-dropdown-menu .logout-link {
+        display: none;
+      }
+      
+      /* Profile submenu styles */
+      .profile-submenu {
+        display: none;
+        position: absolute;
+        left: 100%;
+        top: 0;
+        min-width: 180px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        margin-left: 8px;
+        padding: 8px 0;
+        z-index: 10001;
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      
+      .profile-submenu-toggle.active .profile-submenu {
+        display: block;
+        opacity: 1;
+        transform: translateX(0);
+      }
+      
+      .profile-submenu-toggle.active i.fa-chevron-right {
+        transform: rotate(90deg);
+      }
+      
+      .profile-submenu .submenu-item {
+        padding: 10px 20px;
+        color: #333;
+        font-size: 14px;
+        font-weight: 500;
+        border-left: 3px solid transparent;
+        display: block;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        border-radius: 0;
+      }
+      
+      .profile-submenu .submenu-item:first-child {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+      
+      .profile-submenu .submenu-item:last-child {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      
+      .profile-submenu .submenu-item:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+        padding-left: 25px;
+        transform: translateX(3px);
+      }
+      
+      .profile-submenu-toggle {
+        user-select: none;
+        position: relative;
+        overflow: visible !important;
+      }
+      
+      .profile-dropdown-menu .profile-submenu-toggle {
+        overflow: visible;
+      }
+      
+      .profile-submenu-toggle:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+      }
+      
+      .profile-submenu-toggle:hover i.fa-chevron-right {
+        color: #21cc7a;
+      }
+      
+      .profile-submenu-toggle.active {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+      }
+      
+      /* Icon spacing for dropdown items */
+      .profile-dropdown-menu .dropdown-item::before {
+        content: '';
+        width: 4px;
+        height: 4px;
+        background: #21cc7a;
+        border-radius: 50%;
+        margin-right: 10px;
+        opacity: 0;
+        transition: all 0.2s ease;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:hover::before {
+        opacity: 1;
+        margin-right: 12px;
+      }
+      
+      /* Logout item special styling */
+      .profile-dropdown-menu .logout-link {
+        border-top: 1px solid #e9ecef;
+        margin-top: 0;
+        padding: 14px 20px 12px 20px;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        transition: all 0.2s ease;
+        border-left: 3px solid transparent;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .profile-dropdown-menu .logout-link:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%) !important;
+        color: #dc3545;
+        border-left-color: #dc3545;
+        border-top-color: transparent;
+        padding-left: 25px;
+        transform: translateX(3px);
+        margin-top: 0;
+      }
+      
+      .profile-dropdown-menu .logout-link::before {
+        background: #dc3545;
+      }
+      
+      /* Profile nav link styling */
+      .profile-nav-link {
+        color: rgba(255, 255, 255, 0.9) !important;
+      }
+      
+      /* Ensure profile dropdown is visible when navbar is scrolled */
+      .ftco-navbar-light.scrolled .profile-nav-link,
+      .ftco-navbar-light.scrolled.awake .profile-nav-link {
+        color: rgba(0, 0, 0, 0.9) !important;
+      }
+      
+      .ftco-navbar-light.scrolled .profile-nav-link span:last-child,
+      .ftco-navbar-light.scrolled.awake .profile-nav-link span:last-child {
+        color: rgba(0, 0, 0, 0.9) !important;
+      }
+      
+      .ftco-navbar-light.scrolled .nav-profile-picture,
+      .ftco-navbar-light.scrolled.awake .nav-profile-picture {
+        border-color: rgba(0, 0, 0, 0.2) !important;
+      }
+      
+      .ftco-navbar-light.scrolled .nav-profile-picture span,
+      .ftco-navbar-light.scrolled.awake .nav-profile-picture span {
+        color: #fff !important;
+      }
+      
+      /* Login link styling */
+      .login-nav-link {
+        color: rgba(255, 255, 255, 0.9) !important;
+        transition: color 0.3s ease;
+      }
+      
+      .ftco-navbar-light.scrolled .login-nav-link,
+      .ftco-navbar-light.scrolled.awake .login-nav-link {
+        color: rgba(0, 0, 0, 0.9) !important;
+      }
+      
+      /* Update border color for login link container when scrolled */
+      .ftco-navbar-light.scrolled #simpleLoginLink,
+      .ftco-navbar-light.scrolled.awake #simpleLoginLink {
+        border-left-color: rgba(0, 0, 0, 0.2) !important;
+      }
+      
+      /* Navigation collapse styling - show flex when menu is open */
+      #ftco-nav.show {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      /* On desktop (lg and up), always show flex (Bootstrap expands navbar on lg+) */
+      @media (min-width: 992px) {
+        #ftco-nav {
+          display: flex !important;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+      
+      /* On mobile, stack items vertically when menu is open */
+      @media (max-width: 991.98px) {
+        #ftco-nav.show {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        
+        #ftco-nav.show .navbar-nav {
+          width: 100%;
+          margin-bottom: 15px;
+        }
+        
+        #ftco-nav.show #profileDropdownContainer,
+        #ftco-nav.show #simpleLoginLink {
+          width: 100%;
+          margin-left: 0 !important;
+          padding-left: 0 !important;
+          border-left: none !important;
+          border-top: 1px solid rgba(255, 255, 255, 0.2);
+          padding-top: 15px;
+          margin-top: 15px;
+        }
+      }
+      
+      /* Reduce footer size to half */
+      .ftco-footer {
+        padding: 3em 0 !important;
+      }
+      
+      .ftco-footer .row.mb-5 {
+        margin-bottom: 1.5rem !important;
+      }
+      
+      .ftco-footer-widget {
+        margin-bottom: 1rem !important;
+      }
+      
+      .ftco-footer-widget h2 {
+        font-size: 16px !important;
+        margin-bottom: 12px !important;
+      }
+      
+      .ftco-footer-widget p {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+        margin-bottom: 15px !important;
+      }
+      
+      .ftco-footer-social {
+        margin-top: 1rem !important;
+      }
+      
+      .ftco-footer-social li {
+        margin-right: 8px !important;
+      }
+      
+      .ftco-footer-social li a {
+        height: 35px !important;
+        width: 35px !important;
+      }
+      
+      .ftco-footer-social li a span {
+        font-size: 16px !important;
+      }
+      
+      .ftco-footer-widget ul.list-unstyled li {
+        padding: 3px 0 !important;
+        font-size: 13px !important;
+      }
+      
+      .ftco-footer-widget ul.list-unstyled li a {
+        padding: 3px 0 !important;
+      }
+      
+      .block-23 ul li {
+        padding: 4px 0 !important;
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+      }
+      
+      .block-23 ul li .text {
+        font-size: 13px !important;
+      }
+      
+      .ftco-footer .row:last-child {
+        margin-top: 1rem !important;
+        padding-top: 1rem !important;
+      }
+      
+      .ftco-footer .row:last-child p {
+        font-size: 12px !important;
+        margin-bottom: 0 !important;
+      }
+
+      /* Enhanced Contact Page Styles */
+      .contact-section {
+        padding: 80px 0;
+      }
+
+      .contact-section .h3 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 3rem;
+        position: relative;
+        padding-bottom: 1rem;
+      }
+
+      .contact-section .h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, #21cc7a 0%, #1ea862 100%);
+        border-radius: 2px;
+      }
+
+      /* Enhanced Contact Info Cards */
+      .contact-info .info {
+        border: none;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+      }
+
+      .contact-info .info::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(180deg, #21cc7a 0%, #1ea862 100%);
+        transform: scaleY(0);
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .contact-info .info:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 40px rgba(33, 204, 122, 0.2);
+      }
+
+      .contact-info .info:hover::before {
+        transform: scaleY(1);
+      }
+
+      .contact-info .info p {
+        margin: 0;
+        font-size: 15px;
+        line-height: 1.8;
+        color: #333;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+
+      .contact-info .info p span {
+        font-weight: 700;
+        color: #21cc7a;
+        min-width: 80px;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        flex-shrink: 0;
+      }
+
+      .contact-info .info p a {
+        color: #333;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        flex: 1;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        display: inline-block;
+      }
+
+      .contact-info .info:hover p a {
+        color: #21cc7a;
+        transform: translateX(5px);
+      }
+
+      /* Contact Info Icons */
+      .contact-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #21cc7a 0%, #1ea862 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+        box-shadow: 0 4px 15px rgba(33, 204, 122, 0.3);
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .contact-info .info:hover .contact-icon {
+        transform: rotate(5deg) scale(1.1);
+        box-shadow: 0 6px 20px rgba(33, 204, 122, 0.4);
+      }
+
+      .contact-icon .icon {
+        color: #fff;
+        font-size: 24px;
+      }
+
+      /* Enhanced Contact Form */
+      .contact-form {
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        border: none;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .contact-form::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(90deg, #21cc7a 0%, #1ea862 100%);
+      }
+
+      .contact-form .form-group {
+        margin-bottom: 25px;
+        position: relative;
+      }
+
+      .contact-form .form-control {
+        border: 2px solid #e9ecef;
+        border-radius: 12px;
+        padding: 15px 20px;
+        font-size: 15px;
+        transition: all 0.3s ease;
+        background: #f8f9fa;
+        color: #333;
+      }
+
+      .contact-form .form-control:focus {
+        border-color: #21cc7a;
+        background: #fff;
+        box-shadow: 0 0 0 4px rgba(33, 204, 122, 0.1);
+        outline: none;
+        transform: translateY(-2px);
+      }
+
+      .contact-form .form-control::placeholder {
+        color: #adb5bd;
+        font-weight: 400;
+      }
+
+      .contact-form textarea.form-control {
+        resize: vertical;
+        min-height: 150px;
+      }
+
+      /* Enhanced Submit Button */
+      .contact-form .btn-primary {
+        background: linear-gradient(135deg, #21cc7a 0%, #1ea862 100%);
+        border: none;
+        border-radius: 12px;
+        padding: 16px 40px;
+        font-size: 16px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 6px 20px rgba(33, 204, 122, 0.3);
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+      }
+
+      .contact-form .btn-primary::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+      }
+
+      .contact-form .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(33, 204, 122, 0.4);
+      }
+
+      .contact-form .btn-primary:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .contact-form .btn-primary:active {
+        transform: translateY(-1px);
+      }
+
+      /* Enhanced Map Container */
+      #map {
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        border: 5px solid #fff;
+        transition: all 0.3s ease;
+      }
+
+      #map:hover {
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        transform: translateY(-5px);
+      }
+
+      #map iframe {
+        border-radius: 15px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .contact-section {
+          padding: 60px 0;
+        }
+
+        .contact-section .h3 {
+          font-size: 2rem;
+          margin-bottom: 2rem;
+        }
+
+        .contact-info .info {
+          margin-bottom: 20px;
+        }
+
+        .contact-form {
+          margin-top: 30px;
+        }
+
+        #map {
+          margin-top: 30px;
+          height: 400px !important;
+        }
+      }
+
+      /* Animation for contact cards */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .contact-info .info {
+        animation: fadeInUp 0.6s ease forwards;
+      }
+
+      .contact-info .info:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+
+      .contact-info .info:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .contact-info .info:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+
+      .contact-info .info:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+
+      /* Form Success/Error Messages */
+      #formMessage {
+        padding: 15px 20px;
+        border-radius: 12px;
+        font-weight: 500;
+        animation: slideDown 0.4s ease;
+      }
+
+      #formMessage.success {
+        background: #d4edda;
+        color: #155724;
+        border: 2px solid #c3e6cb;
+      }
+
+      #formMessage.error {
+        background: #f8d7da;
+        color: #721c24;
+        border: 2px solid #f5c6cb;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .contact-form h3 {
+        position: relative;
+        padding-bottom: 15px;
+      }
+
+      .contact-form h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, #21cc7a 0%, #1ea862 100%);
+        border-radius: 2px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="index.html">BAHAY <span>KUBO</span></a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav">
+	          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+	          <li class="nav-item"><a href="rooms.html" class="nav-link">Our Rooms</a></li>
+	          <li class="nav-item"><a href="restaurant.html" class="nav-link">Our Food</a></li>
+	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+	          <li class="nav-item active"><a href="contact.html" class="nav-link">Contact</a></li>
+	        </ul>
+	        <div class="nav-item dropdown" id="profileDropdownContainer" style="margin-left: 30px; position: relative; border-left: 1px solid rgba(255, 255, 255, 0.2); padding-left: 20px;">
+	          <a class="nav-link dropdown-toggle profile-nav-link" href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left: 0; padding-right: 20px; font-weight: 600; display: flex; align-items: center; gap: 10px;">
+	            <span class="nav-profile-picture" style="width: 32px; height: 32px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(255, 255, 255, 0.3); display: flex; align-items: center; justify-content: center; background: #21cc7a; flex-shrink: 0;">
+	              <span style="color: #fff; font-weight: 700; font-size: 14px; text-transform: uppercase;">GU</span>
+	            </span>
+	            <span>Profile (Guest)</span>
+	          </a>
+          <div class="dropdown-menu dropdown-menu-right profile-dropdown-menu" aria-labelledby="profileDropdown" style="right: 0; left: auto;">
+            <a class="dropdown-item" href="login.html">Login / Signup</a>
+            <div class="dropdown-item profile-submenu-toggle" style="cursor: pointer; position: relative; justify-content: space-between;">
+              <span>My Profile</span>
+              <i class="fas fa-chevron-right" style="font-size: 12px; transition: transform 0.3s ease; margin-left: auto;"></i>
+              <div class="profile-submenu">
+                <a class="dropdown-item submenu-item" href="edit_profile.html">Edit Profile</a>
+                <a class="dropdown-item submenu-item" href="transaction.html">Transaction</a>
+              </div>
+            </div>
+            <a class="dropdown-item logout-link" href="#" onclick="handleLogout(); return false;">Log out</a>
+          </div>
+	        </div>
+	        <div class="nav-item" id="simpleLoginLink" style="margin-left: 30px; position: relative; border-left: 1px solid rgba(255, 255, 255, 0.2); padding-left: 20px; display: none;">
+	          <a href="login.html" class="nav-link login-nav-link" style="font-weight: 600; padding-left: 0;">Log in</a>
+	        </div>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+		<div class="hero-wrap" style="background-image: url('images/bg_3.jpg');">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+          	<div class="text">
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home</a></span> <span>Contact Us</span></p>
+	            <h1 class="mb-4 bread">Contact Us</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section contact-section bg-light">
+      <div class="container">
+        <div class="row d-flex mb-5 contact-info">
+          <div class="col-md-12 mb-4">
+            <h2 class="h3">Contact Information</h2>
+          </div>
+          <div class="w-100"></div>
+          <div class="col-md-3 d-flex">
+          	<div class="info rounded bg-white p-4">
+              <div class="contact-icon">
+                <span class="icon icon-map-marker"></span>
+              </div>
+	            <p><span>Address:</span> <a href="https://www.google.com/maps?q=Cavite+State+University+Carmona+Campus+Philippines" target="_blank">Cavite State University - Carmona Campus, Philippines</a></p>
+	          </div>
+          </div>
+          <div class="col-md-3 d-flex">
+          	<div class="info rounded bg-white p-4">
+              <div class="contact-icon">
+                <span class="icon icon-phone"></span>
+              </div>
+	            <p><span>Phone:</span> <a href="tel://+23923929210">+2 392 3929 210</a></p>
+	          </div>
+          </div>
+          <div class="col-md-3 d-flex">
+          	<div class="info rounded bg-white p-4">
+              <div class="contact-icon">
+                <span class="icon icon-envelope"></span>
+              </div>
+	            <p><span>Email:</span> <a href="mailto:info@bahaykuboresort.com">info@bahaykuboresort.com</a></p>
+	          </div>
+          </div>
+          <div class="col-md-3 d-flex">
+          	<div class="info rounded bg-white p-4">
+              <div class="contact-icon">
+                <span class="icon icon-globe"></span>
+              </div>
+	            <p><span>Website:</span> <a href="https://bahaykuboresort.com" target="_blank" rel="noopener noreferrer">bahaykuboresort.com</a></p>
+	          </div>
+          </div>
+        </div>
+        <div class="row block-9">
+          <div class="col-md-6 order-md-last d-flex">
+            <form action="#" class="bg-white p-5 contact-form" id="contactForm" onsubmit="handleFormSubmit(event); return false;">
+              <h3 class="mb-4" style="color: #1a1a1a; font-weight: 700; font-size: 1.8rem;">Send us a Message</h3>
+              <div class="form-group">
+                <input type="text" class="form-control" id="contactName" placeholder="Your Name" required>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" id="contactEmail" placeholder="Your Email" required>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" id="contactSubject" placeholder="Subject" required>
+              </div>
+              <div class="form-group">
+                <textarea name="message" id="contactMessage" cols="30" rows="7" class="form-control" placeholder="Your Message" required></textarea>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary py-3 px-5">
+                  <span class="btn-text">Send Message</span>
+                  <span class="btn-loader" style="display: none; margin-left: 10px;">
+                    <span style="display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.8s linear infinite;"></span>
+                  </span>
+                </button>
+              </div>
+              <div id="formMessage" class="mt-3" style="display: none;"></div>
+            </form>
+          
+          </div>
+
+          <div class="col-md-6 d-flex">
+          	<div id="map" class="bg-white" style="width: 100%; height: 500px; overflow: hidden;">
+          		<!-- Google Maps will be loaded here -->
+          	</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <footer class="ftco-footer ftco-section img" style="background-image: url(images/bg_4.jpg);">
+    	<div class="overlay"></div>
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">BAHAY KUBO</h2>
+              <p>More than a resort... an experience. Bahay Kubo Resort offers a unique blend of traditional Filipino architecture and modern amenities. Experience tranquility and connection with nature in our beautifully landscaped gardens, refreshing swimming pool, and renowned restaurant serving authentic Filipino cuisine.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Useful Links</h2>
+              <ul class="list-unstyled">
+                <li><a href="index.html" class="py-2 d-block">Home</a></li>
+                <li><a href="rooms.html" class="py-2 d-block">Our Rooms</a></li>
+                <li><a href="restaurant.html" class="py-2 d-block">Our Food</a></li>
+                <li><a href="blog.html" class="py-2 d-block">Blog</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Privacy</h2>
+              <ul class="list-unstyled">
+                <li><a href="about.html" class="py-2 d-block">About Us</a></li>
+                <li><a href="contact.html" class="py-2 d-block">Contact Us</a></li>
+                <li><a href="#" class="py-2 d-block">Privacy Policy</a></li>
+                <li><a href="#" class="py-2 d-block">Terms of Service</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">Bahay Kubo Resort, Philippines</span></li>
+	                <li><a href="tel://+639123456789"><span class="icon icon-phone"></span><span class="text">+63 912 345 6789</span></a></li>
+	                <li><a href="mailto:info@bahaykuboresort.com"><span class="icon icon-envelope"></span><span class="text">info@bahaykuboresort.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This system is made by BSIT-3D Group 4 Students
+  </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script>
+    // Load Google Maps using iframe embed (no API key required)
+    // This is more reliable and doesn't require API key setup
+    document.addEventListener('DOMContentLoaded', function() {
+      var mapElement = document.getElementById('map');
+      if (mapElement) {
+        var searchQuery = encodeURIComponent('Cavite State University Carmona Campus Philippines');
+        mapElement.innerHTML = '<iframe src="https://www.google.com/maps?q=' + searchQuery + '&output=embed&hl=en" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
+      }
+    });
+
+    // Enhanced Form Submission Handler
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      
+      var form = document.getElementById('contactForm');
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var btnText = submitBtn.querySelector('.btn-text');
+      var btnLoader = submitBtn.querySelector('.btn-loader');
+      var formMessage = document.getElementById('formMessage');
+      
+      // Get form values
+      var name = document.getElementById('contactName').value.trim();
+      var email = document.getElementById('contactEmail').value.trim();
+      var subject = document.getElementById('contactSubject').value.trim();
+      var message = document.getElementById('contactMessage').value.trim();
+      
+      // Validate form
+      if (!name || !email || !subject || !message) {
+        showFormMessage('Please fill in all fields.', 'error');
+        return;
+      }
+      
+      // Validate email format
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showFormMessage('Please enter a valid email address.', 'error');
+        return;
+      }
+      
+      // Show loading state
+      submitBtn.disabled = true;
+      btnText.style.display = 'none';
+      btnLoader.style.display = 'inline-block';
+      formMessage.style.display = 'none';
+      
+      // Simulate form submission (replace with actual API call)
+      setTimeout(function() {
+        // Reset form
+        form.reset();
+        
+        // Show success message
+        showFormMessage('Thank you! Your message has been sent successfully. We will get back to you soon.', 'success');
+        
+        // Reset button
+        submitBtn.disabled = false;
+        btnText.style.display = 'inline';
+        btnLoader.style.display = 'none';
+        
+        // Hide message after 5 seconds
+        setTimeout(function() {
+          formMessage.style.display = 'none';
+        }, 5000);
+      }, 1500);
+    }
+    
+    function showFormMessage(message, type) {
+      var formMessage = document.getElementById('formMessage');
+      formMessage.textContent = message;
+      formMessage.className = type;
+      formMessage.style.display = 'block';
+    }
+  </script>
+  <script src="js/main.js"></script>
+  <script>
+    // Profile dropdown - click only, no hover
+    $(document).ready(function() {
+      // Update profile display with logged-in user info
+      function updateProfileDisplay() {
+        // Get current user from localStorage or sessionStorage
+        var currentUser = null;
+        var storedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
+        
+        if (storedUser) {
+          try {
+            currentUser = JSON.parse(storedUser);
+          } catch (e) {
+            console.error('Error parsing user data:', e);
+          }
+        }
+        
+        var $profileText = $('#profileDropdown span:last-child');
+        var $profileInitials = $('#profileDropdown .nav-profile-picture span');
+        var $loginLink = $('.profile-dropdown-menu .dropdown-item[href="login.html"]');
+        var $profileContainer = $('#profileDropdownContainer');
+        var $simpleLoginLink = $('#simpleLoginLink');
+        
+        if (currentUser && currentUser.logged_in) {
+          // Show profile dropdown
+          $profileContainer.show();
+          $simpleLoginLink.hide();
+          // User is logged in - show their name
+          var firstName = currentUser.first_name || '';
+          var lastName = currentUser.last_name || '';
+          var fullName = (firstName + ' ' + lastName).trim() || currentUser.username || 'User';
+          
+          // Update profile text
+          $profileText.text('Profile (' + fullName + ')');
+          
+          // Get user data to check for avatar
+          var users = JSON.parse(localStorage.getItem('users') || '[]');
+          var user = users.find(u => u.id === currentUser.user_id);
+          
+          // Check if user has avatar
+          var $profilePicture = $('#profileDropdown .nav-profile-picture');
+          var existingImg = $profilePicture.find('img');
+          
+          if (user && user.avatar) {
+            // User has avatar - show image
+            if (existingImg.length > 0) {
+              existingImg.attr('src', user.avatar);
+            } else {
+              // Remove initials span and add image
+              $profileInitials.remove();
+              $profilePicture.append('<img src="' + user.avatar + '" alt="Profile Picture" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">');
+            }
+            $profilePicture.css('background', 'transparent');
+          } else {
+            // No avatar - show initials
+            if (existingImg.length > 0) {
+              existingImg.remove();
+              $profilePicture.append('<span style="color: #fff; font-weight: 700; font-size: 14px; text-transform: uppercase;"></span>');
+              $profileInitials = $profilePicture.find('span');
+            }
+            $profilePicture.css('background', '#21cc7a');
+            
+            // Update initials (first letter of first name + first letter of last name)
+            var initials = '';
+            if (firstName && lastName) {
+              initials = (firstName.charAt(0) + lastName.charAt(0)).toUpperCase();
+            } else if (currentUser.username) {
+              initials = currentUser.username.substring(0, 2).toUpperCase();
+            } else {
+              initials = 'GU';
+            }
+            $profileInitials.text(initials);
+          }
+          
+          // Hide login link, show My Profile submenu and logout
+          $loginLink.hide();
+          $('.profile-dropdown-menu .profile-submenu-toggle').show();
+          $('.profile-dropdown-menu .logout-link').show();
+        } else {
+          // User is not logged in - hide profile dropdown and show simple login link
+          $profileContainer.hide();
+          $simpleLoginLink.show();
+        }
+      }
+      
+      // Update profile on page load
+      updateProfileDisplay();
+      
+      var $profileDropdown = $('#profileDropdown');
+      var $profileMenu = $profileDropdown.next('.profile-dropdown-menu');
+      var $profileContainer = $profileDropdown.closest('.dropdown');
+      
+      // Prevent hover from opening
+      $profileContainer.off('mouseenter mouseleave');
+      
+      // Click to toggle
+      $profileDropdown.on('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        var isOpen = $profileMenu.hasClass('show');
+        
+        // Close all other dropdowns
+        $('.dropdown-menu').not($profileMenu).removeClass('show');
+        $('.dropdown-toggle').not($profileDropdown).attr('aria-expanded', 'false');
+        
+        if (isOpen) {
+          // Close with animation
+          $profileMenu.removeClass('show');
+          $profileDropdown.attr('aria-expanded', 'false');
+        } else {
+          // Open with animation - remove show class first to reset animation
+          $profileMenu.removeClass('show');
+          // Force reflow to restart animation
+          $profileMenu[0].offsetHeight;
+          // Add show class to trigger animation
+          $profileMenu.addClass('show');
+          $profileDropdown.attr('aria-expanded', 'true');
+        }
+      });
+      
+      // Keep dropdown open when hovering over it
+      $profileMenu.on('mouseenter', function() {
+        $(this).addClass('show');
+      });
+      
+      // Close when clicking outside
+      $(document).on('click', function(e) {
+        if (!$(e.target).closest('.dropdown').length) {
+          $profileMenu.removeClass('show');
+          $profileDropdown.attr('aria-expanded', 'false');
+          // Close submenu when clicking outside
+          $('.profile-submenu-toggle').removeClass('active');
+        }
+      });
+      
+      // My Profile submenu toggle
+      $(document).on('click', '.profile-submenu-toggle', function(e) {
+        e.stopPropagation();
+        var $toggle = $(this);
+        var $submenu = $toggle.find('.profile-submenu');
+        
+        // Toggle active class
+        $toggle.toggleClass('active');
+        
+        // Close other submenus if any
+        $('.profile-submenu-toggle').not($toggle).removeClass('active');
+      });
+      
+      // Close submenu when clicking on submenu items
+      $(document).on('click', '.profile-submenu .submenu-item', function() {
+        $('.profile-submenu-toggle').removeClass('active');
+      });
+      
+      // Close submenu when clicking outside the submenu
+      $(document).on('click', function(e) {
+        if (!$(e.target).closest('.profile-submenu-toggle').length && 
+            !$(e.target).closest('.profile-submenu').length) {
+          $('.profile-submenu-toggle').removeClass('active');
+        }
+      });
+      
+      // Logout functionality
+      window.handleLogout = function() {
+        // Show loading overlay
+        var loadingOverlay = document.getElementById('logoutLoadingOverlay');
+        if (loadingOverlay) {
+          loadingOverlay.classList.add('active');
+        }
+        
+        // Clear all stored data
+        localStorage.removeItem('currentUser');
+        sessionStorage.removeItem('currentUser');
+        
+        // Clear any cookies
+        document.cookie.split(";").forEach(function(c) { 
+          document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+        });
+        
+        // Redirect to login page after a short delay
+        setTimeout(function() {
+          window.location.href = 'index.html';
+        }, 500);
+      };
+    });
+  </script>
+  
+  <style>
+    /* Loading Screen for Logout */
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .loading-overlay.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .loading-container {
+      text-align: center;
+      color: #f5f5dc;
+    }
+
+    .loading-spinner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .spinner-circle {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #4a8c3e 0%, #2d5016 100%);
+      animation: spinner-bounce 1.4s ease-in-out infinite both;
+      box-shadow: 0 4px 12px rgba(74, 140, 62, 0.4);
+    }
+
+    .spinner-circle:nth-child(1) {
+      animation-delay: -0.32s;
+    }
+
+    .spinner-circle:nth-child(2) {
+      animation-delay: -0.16s;
+    }
+
+    .spinner-circle:nth-child(3) {
+      animation-delay: 0s;
+    }
+
+    @keyframes spinner-bounce {
+      0%, 80%, 100% {
+        transform: scale(0.6);
+        opacity: 0.5;
+      }
+      40% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .loading-text {
+      font-size: 24px;
+      font-weight: 600;
+      color: #f5f5dc;
+      margin-bottom: 8px;
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      letter-spacing: 1px;
+      animation: loading-text-pulse 2s ease-in-out infinite;
+    }
+
+    .loading-subtext {
+      font-size: 14px;
+      color: #888;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    @keyframes loading-text-pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.6;
+      }
+    }
+  </style>
+  
+  <!-- Loading Overlay for Logout -->
+  <div class="loading-overlay" id="logoutLoadingOverlay">
+    <div class="loading-container">
+      <div class="loading-spinner">
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+      </div>
+      <div class="loading-text">Logging out...</div>
+      <div class="loading-subtext">Please wait</div>
+    </div>
+  </div>
+    
+  </body>
+</html>

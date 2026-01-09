@@ -1,0 +1,3611 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>BAHAY KUBO Resort - Our Rooms</title>
+    <link rel="icon" type="image/png" href="logo/logo.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+      /* Profile Dropdown Enhanced Styles */
+      #profileDropdown {
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 5px;
+        padding: 8px 15px !important;
+      }
+      
+      #profileDropdown:hover {
+        color: #fff !important;
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: translateY(-1px);
+      }
+      
+      #profileDropdown:active {
+        transform: translateY(0);
+      }
+      
+      /* Enhanced Dropdown Menu */
+      .profile-dropdown-menu {
+        min-width: 200px;
+        padding: 8px 0 !important;
+        margin-top: 10px !important;
+        background: #fff;
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        opacity: 0;
+        transform: translateY(-15px) scale(0.9);
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        pointer-events: none;
+        overflow: visible;
+        transform-origin: top right;
+      }
+      
+      .profile-dropdown-menu.show {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+        animation: dropdownSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      
+      @keyframes dropdownSlideIn {
+        0% {
+          opacity: 0;
+          transform: translateY(-15px) scale(0.9);
+        }
+        50% {
+          transform: translateY(2px) scale(1.02);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      
+      .profile-dropdown-menu.show .dropdown-item {
+        animation: fadeInItem 0.4s ease forwards;
+        opacity: 0;
+      }
+      
+      .profile-dropdown-menu.show .dropdown-item:nth-child(1) {
+        animation-delay: 0.05s;
+      }
+      
+      .profile-dropdown-menu.show .dropdown-item:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      
+      @keyframes fadeInItem {
+        from {
+          opacity: 0;
+          transform: translateX(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      
+      .profile-dropdown-menu .dropdown-item {
+        padding: 12px 20px;
+        color: #333;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        border-left: 3px solid transparent;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:first-child {
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:last-child {
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+        padding-left: 25px;
+        transform: translateX(3px);
+      }
+      
+      .profile-dropdown-menu .dropdown-item:active {
+        background: #e9ecef;
+        transform: translateX(0);
+      }
+      
+      /* Hide My Profile submenu and logout by default (shown when logged in) */
+      .profile-dropdown-menu .profile-submenu-toggle,
+      .profile-dropdown-menu .logout-link {
+        display: none;
+      }
+      
+      /* Profile submenu styles */
+      .profile-submenu {
+        display: none;
+        position: absolute;
+        left: 100%;
+        top: 0;
+        min-width: 180px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        margin-left: 8px;
+        padding: 8px 0;
+        z-index: 10001;
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      
+      .profile-submenu-toggle.active .profile-submenu {
+        display: block;
+        opacity: 1;
+        transform: translateX(0);
+      }
+      
+      .profile-submenu-toggle.active i.fa-chevron-right {
+        transform: rotate(90deg);
+      }
+      
+      .profile-submenu .submenu-item {
+        padding: 10px 20px;
+        color: #333;
+        font-size: 14px;
+        font-weight: 500;
+        border-left: 3px solid transparent;
+        display: block;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        border-radius: 0;
+      }
+      
+      .profile-submenu .submenu-item:first-child {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+      
+      .profile-submenu .submenu-item:last-child {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      
+      .profile-submenu .submenu-item:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+        padding-left: 25px;
+        transform: translateX(3px);
+      }
+      
+      .profile-submenu-toggle {
+        user-select: none;
+        position: relative;
+        overflow: visible !important;
+      }
+      
+      .profile-dropdown-menu .profile-submenu-toggle {
+        overflow: visible;
+      }
+      
+      .profile-submenu-toggle:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+      }
+      
+      .profile-submenu-toggle:hover i.fa-chevron-right {
+        color: #21cc7a;
+      }
+      
+      .profile-submenu-toggle.active {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+      }
+      
+      /* Icon spacing for dropdown items */
+      .profile-dropdown-menu .dropdown-item::before {
+        content: '';
+        width: 4px;
+        height: 4px;
+        background: #21cc7a;
+        border-radius: 50%;
+        margin-right: 10px;
+        opacity: 0;
+        transition: all 0.2s ease;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:hover::before {
+        opacity: 1;
+        margin-right: 12px;
+      }
+      
+      /* Logout item special styling */
+      .profile-dropdown-menu .logout-link {
+        border-top: 1px solid #e9ecef;
+        margin-top: 0;
+        padding: 14px 20px 12px 20px;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        transition: all 0.2s ease;
+        border-left: 3px solid transparent;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .profile-dropdown-menu .logout-link:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%) !important;
+        color: #dc3545;
+        border-left-color: #dc3545;
+        border-top-color: transparent;
+        padding-left: 25px;
+        transform: translateX(3px);
+        margin-top: 0;
+      }
+      
+      .profile-dropdown-menu .logout-link::before {
+        background: #dc3545;
+      }
+      
+      /* Profile nav link styling */
+      .profile-nav-link {
+        color: rgba(255, 255, 255, 0.9) !important;
+      }
+      
+      /* Ensure profile dropdown is visible when navbar is scrolled */
+      .ftco-navbar-light.scrolled .profile-nav-link,
+      .ftco-navbar-light.scrolled.awake .profile-nav-link {
+        color: rgba(0, 0, 0, 0.9) !important;
+      }
+      
+      .ftco-navbar-light.scrolled .profile-nav-link span:last-child,
+      .ftco-navbar-light.scrolled.awake .profile-nav-link span:last-child {
+        color: rgba(0, 0, 0, 0.9) !important;
+      }
+      
+      .ftco-navbar-light.scrolled .nav-profile-picture,
+      .ftco-navbar-light.scrolled.awake .nav-profile-picture {
+        border-color: rgba(0, 0, 0, 0.2) !important;
+      }
+      
+      .ftco-navbar-light.scrolled .nav-profile-picture span,
+      .ftco-navbar-light.scrolled.awake .nav-profile-picture span {
+        color: #fff !important;
+      }
+      
+      /* Login link styling */
+      .login-nav-link {
+        color: rgba(255, 255, 255, 0.9) !important;
+        transition: color 0.3s ease;
+      }
+      
+      .ftco-navbar-light.scrolled .login-nav-link,
+      .ftco-navbar-light.scrolled.awake .login-nav-link {
+        color: rgba(0, 0, 0, 0.9) !important;
+      }
+      
+      /* Update border color for login link container when scrolled */
+      .ftco-navbar-light.scrolled #simpleLoginLink,
+      .ftco-navbar-light.scrolled.awake #simpleLoginLink {
+        border-left-color: rgba(0, 0, 0, 0.2) !important;
+      }
+      
+      /* Navigation collapse styling - show flex when menu is open */
+      #ftco-nav.show {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      /* On desktop (lg and up), always show flex (Bootstrap expands navbar on lg+) */
+      @media (min-width: 992px) {
+        #ftco-nav {
+          display: flex !important;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+      
+      /* On mobile, stack items vertically when menu is open */
+      @media (max-width: 991.98px) {
+        #ftco-nav.show {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        
+        #ftco-nav.show .navbar-nav {
+          width: 100%;
+          margin-bottom: 15px;
+        }
+        
+        #ftco-nav.show #profileDropdownContainer,
+        #ftco-nav.show #simpleLoginLink {
+          width: 100%;
+          margin-left: 0 !important;
+          padding-left: 0 !important;
+          border-left: none !important;
+          border-top: 1px solid rgba(255, 255, 255, 0.2);
+          padding-top: 15px;
+          margin-top: 15px;
+        }
+      }
+      
+      /* Enhanced Booking Form Styles */
+      .booking-form .form-control.checkin_date,
+      .booking-form .form-control.checkout_date {
+        background: #f8f9fa;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 15px;
+        color: #333;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        font-weight: 500;
+        text-align: center;
+        line-height: 1.5;
+        height: auto;
+      }
+      
+      .booking-form .form-control.checkin_date:hover,
+      .booking-form .form-control.checkout_date:hover {
+        border-color: #21cc7a;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(33, 204, 122, 0.15);
+        transform: translateY(-1px);
+      }
+      
+      .booking-form .form-control.checkin_date:focus,
+      .booking-form .form-control.checkout_date:focus {
+        outline: none;
+        border-color: #21cc7a;
+        background: #fff;
+        box-shadow: 0 0 0 4px rgba(33, 204, 122, 0.1), 0 4px 12px rgba(33, 204, 122, 0.15);
+        transform: translateY(-2px);
+      }
+      
+      .booking-form .form-group label {
+        font-weight: 700;
+        font-size: 12px;
+        color: #21cc7a;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 8px;
+        display: block;
+        transition: color 0.3s ease;
+        text-align: center;
+      }
+      
+      .booking-form .form-group:hover label {
+        color: #1ba865;
+      }
+      
+      .booking-form #roomsCheckAvailabilityBtn {
+        background: linear-gradient(135deg, #21cc7a 0%, #1ba865 100%);
+        border: none;
+        border-radius: 8px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 15px rgba(33, 204, 122, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .booking-form #roomsCheckAvailabilityBtn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s ease;
+      }
+      
+      .booking-form #roomsCheckAvailabilityBtn:hover::before {
+        left: 100%;
+      }
+      
+      .booking-form #roomsCheckAvailabilityBtn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(33, 204, 122, 0.4);
+        background: linear-gradient(135deg, #1ba865 0%, #21cc7a 100%);
+      }
+      
+      .booking-form #roomsCheckAvailabilityBtn:active {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 15px rgba(33, 204, 122, 0.3);
+      }
+      
+      .booking-form .wrap {
+        background: #fff;
+        border-radius: 12px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 100px;
+      }
+      
+      .booking-form .form-group:hover .wrap {
+        box-shadow: 0 4px 12px rgba(33, 204, 122, 0.1);
+        transform: translateY(-2px);
+      }
+      
+      /* Guest Counter Styles */
+      .guest-counter-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 4px 0;
+        flex-wrap: wrap;
+      }
+      
+      .guest-counter-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 4px 8px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        flex: 0 0 auto;
+      }
+      
+      .guest-counter-item:hover {
+        background: rgba(33, 204, 122, 0.05);
+      }
+      
+      .guest-counter-separator {
+        width: 1px;
+        height: 30px;
+        background: #e9ecef;
+        flex-shrink: 0;
+      }
+      
+      .guest-counter-label {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #333;
+        white-space: nowrap;
+      }
+      
+      .guest-counter-label i {
+        color: #21cc7a;
+        font-size: 14px;
+        width: 16px;
+        text-align: center;
+      }
+      
+      .guest-counter-controls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #f8f9fa;
+        border-radius: 20px;
+        padding: 2px;
+        border: 2px solid #e9ecef;
+        transition: all 0.3s ease;
+      }
+      
+      .guest-counter-item:hover .guest-counter-controls {
+        border-color: #21cc7a;
+        background: #fff;
+        box-shadow: 0 2px 6px rgba(33, 204, 122, 0.15);
+      }
+      
+      .guest-counter-btn {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        border: none;
+        background: #21cc7a;
+        color: #fff;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 2px 4px rgba(33, 204, 122, 0.3);
+        position: relative;
+        overflow: hidden;
+        padding: 0;
+      }
+      
+      .guest-counter-btn:hover {
+        background: #1ba865;
+        transform: scale(1.1);
+        box-shadow: 0 3px 8px rgba(33, 204, 122, 0.4);
+      }
+      
+      .guest-counter-btn:active {
+        transform: scale(0.95);
+      }
+      
+      .guest-counter-btn:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+        opacity: 0.5;
+      }
+      
+      .guest-counter-value {
+        min-width: 20px;
+        text-align: center;
+        font-size: 15px;
+        font-weight: 700;
+        color: #21cc7a;
+        transition: all 0.3s ease;
+      }
+      
+      .guest-counter-item:hover .guest-counter-value {
+        color: #1ba865;
+      }
+      
+      @keyframes counterPulse {
+        0%, 100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+      }
+      
+      .guest-counter-value.updated {
+        animation: counterPulse 0.3s ease;
+      }
+      
+      /* Booking Modal Styles */
+      .booking-modal {
+        display: none;
+        position: fixed;
+        z-index: 10001;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(8px);
+        animation: fadeIn 0.3s ease;
+        font-family: 'Nunito Sans', sans-serif;
+      }
+      
+      .booking-modal.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      
+      .booking-modal-content {
+        background: #ffffff;
+        margin: auto;
+        padding: 0;
+        border-radius: 24px;
+        width: 90%;
+        max-width: 500px;
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+        animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+        position: relative;
+      }
+      
+      .booking-modal-header {
+        background: linear-gradient(135deg, #21cc7a 0%, #1ba865 100%);
+        padding: 40px 35px 30px;
+        color: white;
+        position: relative;
+        text-align: center;
+        overflow: hidden;
+      }
+      
+      .booking-modal-header::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        animation: pulse 3s ease-in-out infinite;
+      }
+      
+      .booking-modal-logo {
+        position: absolute;
+        top: 5px;
+        left: 2px;
+        z-index: 5;
+        opacity: 0.95;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        display: block;
+        width: 120px;
+        height: auto;
+      }
+      
+      .booking-modal-logo img {
+        width: 120px;
+        height: auto;
+        display: block;
+        object-fit: contain;
+      }
+      
+      .booking-modal-title {
+        font-size: 28px;
+        font-weight: 800;
+        margin: 0 0 10px 0;
+        text-transform: none;
+        letter-spacing: -0.5px;
+        position: relative;
+        z-index: 1;
+        font-family: 'Nunito Sans', sans-serif;
+        line-height: 1.2;
+      }
+      
+      .booking-modal-subtitle {
+        font-size: 15px;
+        opacity: 0.9;
+        font-weight: 400;
+        position: relative;
+        z-index: 1;
+      }
+      
+      .booking-modal-close {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        color: white;
+        font-size: 28px;
+        font-weight: 300;
+        cursor: pointer;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 10;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      
+      .booking-modal-close:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: rotate(90deg) scale(1.1);
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+      
+      .booking-modal-body {
+        padding: 40px 35px;
+        background: #ffffff;
+      }
+      
+      .booking-modal-footer {
+        padding: 30px 35px;
+        background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
+        text-align: center;
+        border-top: 1px solid #e2e8f0;
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+      }
+      
+      .booking-modal-btn {
+        padding: 16px 40px;
+        border-radius: 30px;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        font-family: 'Nunito Sans', sans-serif;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        border: none;
+      }
+      
+      .booking-modal-btn-primary {
+        background: #21cc7a;
+        color: white;
+        box-shadow: 0 6px 20px rgba(33, 204, 122, 0.35);
+      }
+      
+      .booking-modal-btn-primary:hover {
+        background: #1ba865;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(33, 204, 122, 0.45);
+      }
+      
+      .booking-modal-btn-secondary {
+        background: #e2e8f0;
+        color: #2d3748;
+      }
+      
+      .booking-modal-btn-secondary:hover {
+        background: #cbd5e0;
+        transform: translateY(-2px);
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px) scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      
+      @keyframes pulse {
+        0%, 100% {
+          opacity: 0.5;
+        }
+        50% {
+          opacity: 0.8;
+        }
+      }
+      
+      /* Airbnb-Style Rooms Page */
+      .airbnb-search-bar {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 40px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.05);
+        display: flex;
+        align-items: center;
+        padding: 8px;
+        margin: 20px auto;
+        max-width: 850px;
+        transition: box-shadow 0.2s ease;
+      }
+      
+      .airbnb-search-bar:hover {
+        box-shadow: 0 2px 4px rgba(0,0,0,0.18);
+      }
+      
+      .search-item {
+        flex: 1;
+        padding: 14px 24px;
+        border-right: 1px solid #ddd;
+        cursor: pointer;
+        transition: background 0.2s ease;
+        border-radius: 40px;
+      }
+      
+      .search-item:last-child {
+        border-right: none;
+      }
+      
+      .search-item:hover {
+        background: #f7f7f7;
+      }
+      
+      .search-item-label {
+        font-size: 12px;
+        font-weight: 600;
+        color: #000;
+        margin-bottom: 2px;
+        text-transform: uppercase;
+      }
+      
+      .search-item-value {
+        font-size: 14px;
+        color: #717171;
+      }
+      
+      .search-button {
+        background: #21cc7a;
+        border: none;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        cursor: pointer;
+        margin-left: 8px;
+        transition: background 0.2s ease;
+      }
+      
+      .search-button:hover {
+        background: #1ab869;
+      }
+      
+      .rooms-section {
+        padding: 40px 0;
+      }
+      
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+        padding: 0 24px;
+      }
+      
+      .section-title {
+        font-size: 22px;
+        font-weight: 600;
+        color: #000;
+        margin: 0;
+      }
+      
+      .room-card {
+        position: relative;
+        margin-bottom: 40px;
+        cursor: pointer;
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 0.2s ease;
+      }
+      
+      .room-card:hover {
+        transform: translateY(-4px);
+      }
+      
+      .room-image-wrapper {
+        position: relative;
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+        border-radius: 12px;
+      }
+      
+      .room-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+      
+      .room-card:hover .room-image {
+        transform: scale(1.05);
+      }
+      
+      .room-badge {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: rgba(0,0,0,0.7);
+        color: #fff;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        z-index: 2;
+      }
+      
+      .room-favorite {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: rgba(255,255,255,0.9);
+        border: none;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 2;
+        transition: background 0.2s ease;
+      }
+      
+      .room-favorite:hover {
+        background: #fff;
+      }
+      
+      .room-favorite.active svg {
+        fill: #ff385c;
+      }
+      
+      .room-info {
+        padding: 12px 0 0 0;
+      }
+      
+      .room-title {
+        font-size: 15px;
+        font-weight: 600;
+        color: #000;
+        margin-bottom: 4px;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      
+      .room-location {
+        font-size: 15px;
+        color: #717171;
+        margin-bottom: 8px;
+      }
+      
+      .room-price-rating {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .room-price {
+        font-size: 15px;
+        color: #000;
+        font-weight: 600;
+      }
+      
+      .room-price span {
+        color: #717171;
+        font-weight: 400;
+      }
+      
+      .room-rating {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 14px;
+        color: #000;
+        font-weight: 600;
+      }
+      
+      .room-rating svg {
+        fill: #000;
+        width: 14px;
+        height: 14px;
+      }
+      
+      .rooms-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 40px 24px;
+        padding: 0 24px;
+      }
+      
+      /* Horizontal Scrollable Carousel */
+      .rooms-carousel-container {
+        position: relative;
+        margin-bottom: 60px;
+      }
+      
+      .rooms-carousel-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+        padding: 0 24px;
+      }
+      
+      .rooms-carousel-header h2 {
+        font-size: 22px;
+        font-weight: 600;
+        color: #000;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      
+      .carousel-nav-buttons {
+        display: flex;
+        gap: 8px;
+      }
+      
+      .carousel-nav-btn {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        position: relative;
+        z-index: 10;
+        pointer-events: auto;
+      }
+      
+      .carousel-nav-btn:hover {
+        border-color: #000;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        background: #f7f7f7;
+      }
+      
+      .carousel-nav-btn:active {
+        transform: scale(0.95);
+      }
+      
+      .carousel-nav-btn:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+      
+      .carousel-nav-buttons {
+        position: relative;
+        z-index: 10;
+      }
+      
+      .rooms-carousel {
+        display: flex;
+        gap: 24px;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        padding: 0 24px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      
+      .rooms-carousel::-webkit-scrollbar {
+        display: none;
+      }
+      
+      .room-card-carousel {
+        position: relative;
+        min-width: 280px;
+        flex-shrink: 0;
+        cursor: pointer;
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 0.2s ease;
+      }
+      
+      .room-card-carousel:hover {
+        transform: translateY(-4px);
+      }
+      
+      .room-card-carousel .room-image-wrapper {
+        height: 280px;
+      }
+      
+      /* Search Results Section */
+      .search-results-section {
+        display: none;
+        padding: 40px 0;
+        background: #f7f7f7;
+        margin-top: 30px;
+        animation: slideDown 0.5s ease;
+      }
+      
+      .search-results-section.active {
+        display: block;
+      }
+      
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .search-results-header {
+        background: #fff;
+        border-radius: 16px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+      
+      .search-results-title {
+        font-size: 28px;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      
+      .search-results-title i {
+        color: #21cc7a;
+        font-size: 24px;
+      }
+      
+      .search-criteria-summary {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 12px;
+        margin-bottom: 20px;
+      }
+      
+      .criteria-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        background: #fff;
+        border-radius: 8px;
+        border: 1px solid #e9ecef;
+        transition: all 0.3s ease;
+      }
+      
+      .criteria-item:hover {
+        border-color: #21cc7a;
+        box-shadow: 0 2px 8px rgba(33, 204, 122, 0.15);
+      }
+      
+      .criteria-item i {
+        color: #21cc7a;
+        font-size: 16px;
+      }
+      
+      .criteria-label {
+        font-size: 12px;
+        color: #717171;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-right: 4px;
+      }
+      
+      .criteria-value {
+        font-size: 14px;
+        color: #000;
+        font-weight: 600;
+      }
+      
+      .results-count {
+        font-size: 16px;
+        color: #717171;
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      
+      .results-count strong {
+        color: #21cc7a;
+        font-weight: 700;
+      }
+      
+      .show-all-btn {
+        background: #fff;
+        border: 2px solid #21cc7a;
+        color: #21cc7a;
+        padding: 10px 24px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      
+      .show-all-btn:hover {
+        background: #21cc7a;
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(33, 204, 122, 0.3);
+      }
+      
+      .show-all-btn.active {
+        background: #21cc7a;
+        color: #fff;
+      }
+      
+      .rooms-results-grid-view {
+        display: none;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+        padding: 0;
+        animation: fadeIn 0.3s ease;
+      }
+      
+      .rooms-results-grid-view.active {
+        display: grid;
+      }
+      
+      .rooms-results-grid {
+        display: flex;
+        gap: 24px;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        padding: 0;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      
+      .rooms-results-grid::-webkit-scrollbar {
+        display: none;
+      }
+      
+      .rooms-results-carousel-container {
+        position: relative;
+        margin-bottom: 40px;
+      }
+      
+      .results-carousel-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+      }
+      
+      .results-carousel-nav-buttons {
+        display: flex;
+        gap: 8px;
+      }
+      
+      .results-carousel-nav-btn {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        position: relative;
+        z-index: 10;
+        pointer-events: auto;
+      }
+      
+      .results-carousel-nav-btn:hover {
+        border-color: #21cc7a;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        background: #f7f7f7;
+      }
+      
+      .results-carousel-nav-btn:active {
+        transform: scale(0.95);
+      }
+      
+      .results-carousel-nav-btn:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+      
+      .result-room-card {
+        min-width: 320px;
+        flex-shrink: 0;
+      }
+      
+      .result-room-card {
+        background: #fff;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        position: relative;
+      }
+      
+      .result-room-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      }
+      
+      .result-room-image-wrapper {
+        position: relative;
+        width: 100%;
+        height: 250px;
+        overflow: hidden;
+      }
+      
+      .result-room-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+      
+      .result-room-card:hover .result-room-image {
+        transform: scale(1.1);
+      }
+      
+      .result-room-badge {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: rgba(33, 204, 122, 0.95);
+        color: #fff;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 700;
+        z-index: 2;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      
+      .result-room-favorite {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: rgba(255, 255, 255, 0.95);
+        border: none;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 2;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      
+      .result-room-favorite:hover {
+        background: #fff;
+        transform: scale(1.1);
+      }
+      
+      .result-room-favorite.active svg {
+        fill: #ff385c;
+      }
+      
+      .result-room-content {
+        padding: 20px;
+      }
+      
+      .result-room-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 8px;
+        line-height: 1.3;
+      }
+      
+      .result-room-location {
+        font-size: 14px;
+        color: #717171;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      
+      .result-room-location i {
+        color: #21cc7a;
+        font-size: 12px;
+      }
+      
+      .result-room-features {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 16px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid #e9ecef;
+      }
+      
+      .room-feature {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        color: #717171;
+      }
+      
+      .room-feature i {
+        color: #21cc7a;
+        font-size: 14px;
+      }
+      
+      .result-room-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .result-room-price {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .result-room-price-amount {
+        font-size: 22px;
+        font-weight: 700;
+        color: #000;
+        line-height: 1.2;
+      }
+      
+      .result-room-price-period {
+        font-size: 13px;
+        color: #717171;
+        font-weight: 400;
+      }
+      
+      .result-room-rating {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+        color: #000;
+        font-weight: 600;
+      }
+      
+      .result-room-rating svg {
+        fill: #000;
+        width: 16px;
+        height: 16px;
+      }
+      
+      .book-now-btn {
+        background: #21cc7a;
+        color: #fff;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-top: 12px;
+        width: 100%;
+      }
+      
+      .book-now-btn:hover {
+        background: #1ba865;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(33, 204, 122, 0.3);
+      }
+      
+      .no-results {
+        text-align: center;
+        padding: 60px 20px;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+      
+      .no-results-icon {
+        font-size: 64px;
+        color: #e9ecef;
+        margin-bottom: 20px;
+      }
+      
+      .no-results-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 12px;
+      }
+      
+      .no-results-text {
+        font-size: 16px;
+        color: #717171;
+        margin-bottom: 30px;
+      }
+      
+      .modify-search-btn {
+        background: #21cc7a;
+        color: #fff;
+        border: none;
+        padding: 14px 32px;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      
+      .modify-search-btn:hover {
+        background: #1ba865;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(33, 204, 122, 0.3);
+      }
+      
+      @media (max-width: 768px) {
+        .airbnb-search-bar {
+          flex-direction: column;
+          border-radius: 12px;
+        }
+        
+        .search-item {
+          border-right: none;
+          border-bottom: 1px solid #ddd;
+          border-radius: 0;
+        }
+        
+        .search-item:last-child {
+          border-bottom: none;
+        }
+        
+        .search-button {
+          width: 100%;
+          border-radius: 12px;
+          margin-left: 0;
+          margin-top: 8px;
+        }
+        
+        .rooms-grid {
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: 24px 16px;
+          padding: 0 16px;
+        }
+        
+        .search-results-header {
+          padding: 20px;
+        }
+        
+        .search-results-title {
+          font-size: 22px;
+        }
+        
+        .search-criteria-summary {
+          flex-direction: column;
+          gap: 12px;
+        }
+        
+        .result-room-card {
+          min-width: 280px;
+        }
+        
+        .results-carousel-nav-buttons {
+          display: none;
+        }
+        
+        .rooms-results-grid-view {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        
+        .results-count {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 15px;
+        }
+        
+        .show-all-btn {
+          width: 100%;
+        }
+      }
+      
+      /* Reduce footer size to half */
+      .ftco-footer {
+        padding: 3em 0 !important;
+      }
+      
+      .ftco-footer .row.mb-5 {
+        margin-bottom: 1.5rem !important;
+      }
+      
+      .ftco-footer-widget {
+        margin-bottom: 1rem !important;
+      }
+      
+      .ftco-footer-widget h2 {
+        font-size: 16px !important;
+        margin-bottom: 12px !important;
+      }
+      
+      .ftco-footer-widget p {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+        margin-bottom: 15px !important;
+      }
+      
+      .ftco-footer-social {
+        margin-top: 1rem !important;
+      }
+      
+      .ftco-footer-social li {
+        margin-right: 8px !important;
+      }
+      
+      .ftco-footer-social li a {
+        height: 35px !important;
+        width: 35px !important;
+      }
+      
+      .ftco-footer-social li a span {
+        font-size: 16px !important;
+      }
+      
+      .ftco-footer-widget ul.list-unstyled li {
+        padding: 3px 0 !important;
+        font-size: 13px !important;
+      }
+      
+      .ftco-footer-widget ul.list-unstyled li a {
+        padding: 3px 0 !important;
+      }
+      
+      .block-23 ul li {
+        padding: 4px 0 !important;
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+      }
+      
+      .block-23 ul li .text {
+        font-size: 13px !important;
+      }
+      
+      .ftco-footer .row:last-child {
+        margin-top: 1rem !important;
+        padding-top: 1rem !important;
+      }
+      
+      .ftco-footer .row:last-child p {
+        font-size: 12px !important;
+        margin-bottom: 0 !important;
+      }
+    </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="index.html">BAHAY <span>KUBO</span></a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav">
+	          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+	          <li class="nav-item active"><a href="rooms.html" class="nav-link">Our Rooms</a></li>
+	          <li class="nav-item"><a href="restaurant.html" class="nav-link">Our Food</a></li>
+	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+	        </ul>
+	        <div class="nav-item dropdown" id="profileDropdownContainer" style="margin-left: 30px; position: relative; border-left: 1px solid rgba(255, 255, 255, 0.2); padding-left: 20px;">
+	          <a class="nav-link dropdown-toggle profile-nav-link" href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left: 0; padding-right: 20px; font-weight: 600; display: flex; align-items: center; gap: 10px;">
+	            <span class="nav-profile-picture" style="width: 32px; height: 32px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(255, 255, 255, 0.3); display: flex; align-items: center; justify-content: center; background: #21cc7a; flex-shrink: 0;">
+	              <span style="color: #fff; font-weight: 700; font-size: 14px; text-transform: uppercase;">GU</span>
+	            </span>
+	            <span>Profile (Guest)</span>
+	          </a>
+	          <div class="dropdown-menu dropdown-menu-right profile-dropdown-menu" aria-labelledby="profileDropdown" style="right: 0; left: auto;">
+	            <a class="dropdown-item" href="login.html">Login / Signup</a>
+	            <div class="dropdown-item profile-submenu-toggle" style="cursor: pointer; position: relative; justify-content: space-between;">
+	              <span>My Profile</span>
+	              <i class="fas fa-chevron-right" style="font-size: 12px; transition: transform 0.3s ease; margin-left: auto;"></i>
+	              <div class="profile-submenu">
+	                <a class="dropdown-item submenu-item" href="edit_profile.html">Edit Profile</a>
+	                <a class="dropdown-item submenu-item" href="transaction.html">Transaction</a>
+	              </div>
+	            </div>
+	            <a class="dropdown-item logout-link" href="#" onclick="handleLogout(); return false;">Log out</a>
+	          </div>
+	        </div>
+        <div class="nav-item" id="simpleLoginLink" style="margin-left: 30px; position: relative; border-left: 1px solid rgba(255, 255, 255, 0.2); padding-left: 20px; display: none;">
+          <a href="login.html" class="nav-link login-nav-link" style="font-weight: 600; padding-left: 0;">Log in</a>
+        </div>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+		<div class="hero-wrap" style="background-image: url('images/bg_3.jpg'); background-position: center; background-size: cover; height: 400px;">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center d-flex align-items-center justify-content-center" style="height: 350px;">
+          	<div class="text">
+	            <h1 class="mb-4 bread" style="color: #fff; font-size: 48px; font-weight: 600;">Find Your Perfect Room</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Booking Form -->
+    <section class="ftco-booking ftco-section ftco-no-pt ftco-no-pb">
+    	<div class="container">
+    		<div class="row no-gutters">
+    			<div class="col-lg-12">
+    				<form action="#" class="booking-form aside-stretch" id="roomsBookingForm">
+	        		<div class="row">
+	        			<div class="col-md d-flex py-md-4">
+	        				<div class="form-group align-self-stretch d-flex align-items-center">
+	        					<div class="wrap align-self-stretch py-3 px-4 d-flex flex-column justify-content-center">
+				    					<label for="roomsCheckinDate">CHECK-IN DATE</label>
+				    					<input type="text" id="roomsCheckinDate" name="checkinDate" class="form-control checkin_date" placeholder="Check-in date" required>
+        </div>
+        </div>
+        </div>
+	        			<div class="col-md d-flex py-md-4">
+	        				<div class="form-group align-self-stretch d-flex align-items-center">
+	        					<div class="wrap align-self-stretch py-3 px-4 d-flex flex-column justify-content-center">
+				    					<label for="roomsCheckoutDate">CHECK-OUT DATE</label>
+				    					<input type="text" id="roomsCheckoutDate" name="checkoutDate" class="form-control checkout_date" placeholder="Check-out date" required>
+        </div>
+			    				</div>
+	        			</div>
+	        			<div class="col-md d-flex py-md-4">
+	        				<div class="form-group align-self-stretch d-flex align-items-center">
+	        					<div class="wrap align-self-stretch py-3 px-4 d-flex flex-column justify-content-center">
+			      					<label for="roomsGuests">GUESTS</label>
+			      					<div class="form-field">
+			      						<div class="guest-counter-wrapper">
+			      							<div class="guest-counter-item">
+			      								<div class="guest-counter-label">
+			      									<i class="fas fa-user"></i>
+			      									<span>Adults</span>
+			      								</div>
+			      								<div class="guest-counter-controls">
+			      									<button type="button" class="guest-counter-btn minus" id="roomsAdultMinus" aria-label="Decrease adults">
+			      										<i class="fas fa-minus"></i>
+			      									</button>
+			      									<span class="guest-counter-value" id="roomsAdultCount">1</span>
+			      									<button type="button" class="guest-counter-btn plus" id="roomsAdultPlus" aria-label="Increase adults">
+			      										<i class="fas fa-plus"></i>
+        </button>
+      </div>
+    </div>
+			      							<div class="guest-counter-separator"></div>
+			      							<div class="guest-counter-item">
+			      								<div class="guest-counter-label">
+			      									<i class="fas fa-child"></i>
+			      									<span>Kids</span>
+			      								</div>
+			      								<div class="guest-counter-controls">
+			      									<button type="button" class="guest-counter-btn minus" id="roomsKidMinus" aria-label="Decrease kids">
+			      										<i class="fas fa-minus"></i>
+			      									</button>
+			      									<span class="guest-counter-value" id="roomsKidCount">0</span>
+			      									<button type="button" class="guest-counter-btn plus" id="roomsKidPlus" aria-label="Increase kids">
+			      										<i class="fas fa-plus"></i>
+			      									</button>
+			      								</div>
+			      							</div>
+			      						</div>
+			      						<input type="hidden" name="guests" id="roomsGuests" value="1 Adult" required>
+				              </div>
+				            </div>
+		              </div>
+	        			</div>
+	        			<div class="col-md d-flex">
+	        				<div class="form-group d-flex align-self-stretch">
+			              <button type="submit" class="btn btn-primary py-5 py-md-3 px-4 align-self-stretch d-block" id="roomsCheckAvailabilityBtn"><span>Check Availability <small>Best Price Guaranteed!</small></span></button>
+			            </div>
+	        			</div>
+	        		</div>
+	        	</form>
+	    		</div>
+    		</div>
+    	</div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section class="rooms-section">
+      <div class="container-fluid">
+        <!-- Section 1: Popular rooms at Bahay Kubo Resort -->
+        <div class="rooms-carousel-container">
+          <div class="rooms-carousel-header">
+            <h2>Popular rooms at Bahay Kubo Resort <span style="font-size: 16px; color: #717171;">→</span></h2>
+            <div class="carousel-nav-buttons">
+              <button class="carousel-nav-btn" data-carousel="popularRooms" data-direction="left" aria-label="Previous" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button class="carousel-nav-btn" data-carousel="popularRooms" data-direction="right" aria-label="Next" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="rooms-carousel" id="popularRooms">
+          <!-- Popular Room 1 -->
+          <div class="room-card-carousel" onclick="window.location.href='rooms-single.html?room=1'">
+            <div class="room-image-wrapper">
+              <img src="images/bahay kubo rooms/1/q0.jpg" alt="Suite Room" class="room-image">
+              <span class="room-badge">Guest favorite</span>
+              <button class="room-favorite" onclick="event.stopPropagation(); toggleFavorite(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="room-info">
+              <div class="room-title">Deluxe Suite Room</div>
+              <div class="room-location">Bahay Kubo Resort</div>
+              <div class="room-price-rating">
+                <div class="room-price">₱3,600 <span>for 2 nights</span></div>
+                <div class="room-rating">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  <span>4.89</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Popular Room 2 -->
+          <div class="room-card-carousel" onclick="window.location.href='rooms-single.html?room=2'">
+            <div class="room-image-wrapper">
+              <img src="images/bahay kubo rooms/2/w0.jpg" alt="Apartment" class="room-image">
+              <span class="room-badge">Guest favorite</span>
+              <button class="room-favorite" onclick="event.stopPropagation(); toggleFavorite(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="room-info">
+              <div class="room-title">Family Apartment Room</div>
+              <div class="room-location">Bahay Kubo Resort</div>
+              <div class="room-price-rating">
+                <div class="room-price">₱3,880 <span>for 2 nights</span></div>
+                <div class="room-rating">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  <span>4.83</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Popular Room 3 -->
+          <div class="room-card-carousel" onclick="window.location.href='rooms-single.html?room=3'">
+            <div class="room-image-wrapper">
+              <img src="images/bahay kubo rooms/3/e0.jpg" alt="Room" class="room-image">
+              <span class="room-badge">Guest favorite</span>
+              <button class="room-favorite" onclick="event.stopPropagation(); toggleFavorite(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="room-info">
+              <div class="room-title">Standard Room</div>
+              <div class="room-location">Bahay Kubo Resort</div>
+              <div class="room-price-rating">
+                <div class="room-price">₱3,652 <span>for 2 nights</span></div>
+                <div class="room-rating">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  <span>4.96</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Popular Room 4 -->
+          <div class="room-card-carousel" onclick="window.location.href='rooms-single.html?room=4'">
+            <div class="room-image-wrapper">
+              <img src="images/bahay kubo rooms/4/r0.jpg" alt="Room" class="room-image">
+              <span class="room-badge">Guest favorite</span>
+              <button class="room-favorite" onclick="event.stopPropagation(); toggleFavorite(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="room-info">
+              <div class="room-title">Standard Room</div>
+              <div class="room-location">Bahay Kubo Resort</div>
+              <div class="room-price-rating">
+                <div class="room-price">₱5,296 <span>for 2 nights</span></div>
+                <div class="room-rating">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  <span>4.97</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Popular Room 5 -->
+          <div class="room-card-carousel" onclick="window.location.href='rooms-single.html?room=5'">
+            <div class="room-image-wrapper">
+              <img src="images/bahay kubo rooms/5/t1.jpg" alt="Condo" class="room-image">
+              <span class="room-badge">Guest favorite</span>
+              <button class="room-favorite" onclick="event.stopPropagation(); toggleFavorite(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="room-info">
+              <div class="room-title">Executive Condo Room</div>
+              <div class="room-location">Bahay Kubo Resort</div>
+              <div class="room-price-rating">
+                <div class="room-price">₱4,109 <span>for 2 nights</span></div>
+                <div class="room-rating">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  <span>4.91</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Popular Room 6 -->
+          <div class="room-card-carousel" onclick="window.location.href='rooms-single.html?room=6'">
+            <div class="room-image-wrapper">
+              <img src="images/bahay kubo rooms/6/y.jpg" alt="Apartment" class="room-image">
+              <button class="room-favorite" onclick="event.stopPropagation(); toggleFavorite(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="room-info">
+              <div class="room-title">Family Apartment Room</div>
+              <div class="room-location">Bahay Kubo Resort</div>
+              <div class="room-price-rating">
+                <div class="room-price">₱2,296 <span>for 2 nights</span></div>
+                <div class="room-rating">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  <span>4.78</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Popular Room 7 -->
+          <div class="room-card-carousel" onclick="window.location.href='rooms-single.html?room=7'">
+            <div class="room-image-wrapper">
+              <img src="images/bahay kubo rooms/7/u0.jpg" alt="Condo" class="room-image">
+              <button class="room-favorite" onclick="event.stopPropagation(); toggleFavorite(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="room-info">
+              <div class="room-title">Executive Condo Room</div>
+              <div class="room-location">Bahay Kubo Resort</div>
+              <div class="room-price-rating">
+                <div class="room-price">₱3,451 <span>for 2 nights</span></div>
+                <div class="room-rating">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  <span>4.80</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Popular Room 8 -->
+          <div class="room-card-carousel" onclick="window.location.href='rooms-single.html?room=8'">
+            <div class="room-image-wrapper">
+              <img src="images/bahay kubo rooms/8/s0.jpg" alt="Condo" class="room-image">
+              <span class="room-badge">Guest favorite</span>
+              <button class="room-favorite" onclick="event.stopPropagation(); toggleFavorite(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="room-info">
+              <div class="room-title">Executive Condo Room</div>
+              <div class="room-location">Bahay Kubo Resort</div>
+              <div class="room-price-rating">
+                <div class="room-price">₱3,600 <span>for 2 nights</span></div>
+                <div class="room-rating">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  <span>4.89</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+        
+        <!-- Section 2: Available this weekend -->
+        <div class="rooms-carousel-container">
+          <div class="rooms-carousel-header">
+            <h2>Available this weekend <span style="font-size: 16px; color: #717171;">→</span></h2>
+            <div class="carousel-nav-buttons">
+              <button class="carousel-nav-btn" data-carousel="weekendRooms" data-direction="left" aria-label="Previous" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button class="carousel-nav-btn" data-carousel="weekendRooms" data-direction="right" aria-label="Next" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="rooms-carousel" id="weekendRooms">
+          <!-- Weekend Room 1 -->
+          <div class="room-card-carousel" onclick="window.location.href='rooms-single.html?room=9'">
+            <div class="room-image-wrapper">
+              <img src="images/bahay kubo rooms/9/d0.jpg" alt="Apartment" class="room-image">
+              <span class="room-badge">Guest favorite</span>
+              <button class="room-favorite" onclick="event.stopPropagation(); toggleFavorite(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="room-info">
+              <div class="room-title">Premium Apartment Room</div>
+              <div class="room-location">Bahay Kubo Resort</div>
+              <div class="room-price-rating">
+                <div class="room-price">₱3,582 <span>for 2 nights</span></div>
+                <div class="room-rating">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  <span>4.88</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Weekend Room 2 -->
+          <div class="room-card-carousel" onclick="window.location.href='rooms-single.html?room=10'">
+            <div class="room-image-wrapper">
+              <img src="images/bahay kubo rooms/10/f1.jpg" alt="Apartment" class="room-image">
+              <button class="room-favorite" onclick="event.stopPropagation(); toggleFavorite(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="room-info">
+              <div class="room-title">Premium Apartment Room</div>
+              <div class="room-location">Bahay Kubo Resort</div>
+              <div class="room-price-rating">
+                <div class="room-price">₱3,492 <span>for 2 nights</span></div>
+                <div class="room-rating">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  <span>5.0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Weekend Room 3 -->
+          <div class="room-card-carousel" onclick="window.location.href='rooms-single.html?room=11'">
+            <div class="room-image-wrapper">
+              <img src="images/bahay kubo rooms/11/g1.jpg" alt="Apartment" class="room-image">
+              <span class="room-badge">Guest favorite</span>
+              <button class="room-favorite" onclick="event.stopPropagation(); toggleFavorite(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="room-info">
+              <div class="room-title">Premium Apartment Room</div>
+              <div class="room-location">Bahay Kubo Resort</div>
+              <div class="room-price-rating">
+                <div class="room-price">₱3,399 <span>for 2 nights</span></div>
+                <div class="room-rating">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  <span>4.88</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Weekend Room 4 -->
+          <div class="room-card-carousel" onclick="window.location.href='rooms-single.html?room=12'">
+            <div class="room-image-wrapper">
+              <img src="images/bahay kubo rooms/12/h1.jpg" alt="Tower" class="room-image">
+              <span class="room-badge">Guest favorite</span>
+              <button class="room-favorite" onclick="event.stopPropagation(); toggleFavorite(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="room-info">
+              <div class="room-title">Premium Tower Room</div>
+              <div class="room-location">Bahay Kubo Resort</div>
+              <div class="room-price-rating">
+                <div class="room-price">₱4,097 <span>for 2 nights</span></div>
+                <div class="room-rating">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  <span>5.0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Weekend Room 5 -->
+          <div class="room-card-carousel" onclick="window.location.href='rooms-single.html?room=13'">
+            <div class="room-image-wrapper">
+              <img src="images/bahay kubo rooms/13/z1.jpg" alt="Apartment" class="room-image">
+              <span class="room-badge">Guest favorite</span>
+              <button class="room-favorite" onclick="event.stopPropagation(); toggleFavorite(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="room-info">
+              <div class="room-title">Premium Apartment Room</div>
+              <div class="room-location">Bahay Kubo Resort</div>
+              <div class="room-price-rating">
+                <div class="room-price">₱3,629 <span>for 2 nights</span></div>
+                <div class="room-rating">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  <span>5.0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Weekend Room 6 -->
+          <div class="room-card-carousel" onclick="window.location.href='rooms-single.html?room=14'">
+            <div class="room-image-wrapper">
+              <img src="images/bahay kubo rooms/14/x1.jpg" alt="Bahay Kubo" class="room-image">
+              <button class="room-favorite" onclick="event.stopPropagation(); toggleFavorite(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="room-info">
+              <div class="room-title">Deluxe Bahay Kubo Room</div>
+              <div class="room-location">Bahay Kubo Resort</div>
+              <div class="room-price-rating">
+                <div class="room-price">₱4,930 <span>for 2 nights</span></div>
+                <div class="room-rating">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  <span>4.88</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Weekend Room 7 -->
+          <div class="room-card-carousel" onclick="window.location.href='rooms-single.html?room=15'">
+            <div class="room-image-wrapper">
+              <img src="images/bahay kubo rooms/15/c1.jpg" alt="Tower" class="room-image">
+              <span class="room-badge">Guest favorite</span>
+              <button class="room-favorite" onclick="event.stopPropagation(); toggleFavorite(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="room-info">
+              <div class="room-title">Premium Tower Room</div>
+              <div class="room-location">Bahay Kubo Resort</div>
+              <div class="room-price-rating">
+                <div class="room-price">₱4,097 <span>for 2 nights</span></div>
+                <div class="room-rating">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  <span>4.92</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Weekend Room 8 -->
+          <div class="room-card-carousel" onclick="window.location.href='rooms-single.html?room=16'">
+            <div class="room-image-wrapper">
+              <img src="images/bahay kubo rooms/16/v1.jpg" alt="Tower" class="room-image">
+              <span class="room-badge">Guest favorite</span>
+              <button class="room-favorite" onclick="event.stopPropagation(); toggleFavorite(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="room-info">
+              <div class="room-title">Premium Tower Room</div>
+              <div class="room-location">Bahay Kubo Resort</div>
+              <div class="room-price-rating">
+                <div class="room-price">₱4,097 <span>for 2 nights</span></div>
+                <div class="room-rating">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  <span>4.92</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search Results Section -->
+    <section class="search-results-section" id="searchResultsSection">
+      <div class="container">
+        <div class="search-results-header">
+          <h2 class="search-results-title">
+            <i class="fas fa-search"></i>
+            Search Results
+          </h2>
+          <div class="search-criteria-summary" id="searchCriteriaSummary">
+            <!-- Will be populated by JavaScript -->
+          </div>
+          <div class="results-count" id="resultsCount">
+            <!-- Will be populated by JavaScript -->
+            <button class="show-all-btn" id="showAllBtn" onclick="toggleViewMode()">
+              <i class="fas fa-th"></i> Show All
+            </button>
+          </div>
+        </div>
+        
+        <!-- Carousel View -->
+        <div class="rooms-results-carousel-container" id="carouselView">
+          <div class="results-carousel-header">
+            <div></div>
+            <div class="results-carousel-nav-buttons">
+              <button class="results-carousel-nav-btn" id="resultsCarouselPrev" aria-label="Previous" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button class="results-carousel-nav-btn" id="resultsCarouselNext" aria-label="Next" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="rooms-results-grid" id="roomsResultsGrid">
+            <!-- Results will be populated by JavaScript -->
+          </div>
+        </div>
+        
+        <!-- Grid View (Show All) -->
+        <div class="rooms-results-grid-view" id="gridView">
+          <!-- Results will be populated by JavaScript when Show All is clicked -->
+        </div>
+        
+        <div class="no-results" id="noResults" style="display: none;">
+          <div class="no-results-icon">
+            <i class="fas fa-bed"></i>
+          </div>
+          <h3 class="no-results-title">No rooms available</h3>
+          <p class="no-results-text">We couldn't find any rooms matching your search criteria. Please try different dates or modify your search.</p>
+          <button class="modify-search-btn" onclick="scrollToSearchForm()">
+            <i class="fas fa-edit"></i> Modify Search
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="ftco-footer ftco-section img" style="background-image: url(images/bg_4.jpg);">
+    	<div class="overlay"></div>
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">BAHAY KUBO</h2>
+              <p>More than a resort... an experience. Bahay Kubo Resort offers a unique blend of traditional Filipino architecture and modern amenities. Experience tranquility and connection with nature in our beautifully landscaped gardens, refreshing swimming pool, and renowned restaurant serving authentic Filipino cuisine.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Useful Links</h2>
+              <ul class="list-unstyled">
+                <li><a href="index.html" class="py-2 d-block">Home</a></li>
+                <li><a href="rooms.html" class="py-2 d-block">Our Rooms</a></li>
+                <li><a href="restaurant.html" class="py-2 d-block">Our Food</a></li>
+                <li><a href="blog.html" class="py-2 d-block">Blog</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Privacy</h2>
+              <ul class="list-unstyled">
+                <li><a href="about.html" class="py-2 d-block">About Us</a></li>
+                <li><a href="contact.html" class="py-2 d-block">Contact Us</a></li>
+                <li><a href="#" class="py-2 d-block">Privacy Policy</a></li>
+                <li><a href="#" class="py-2 d-block">Terms of Service</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">Bahay Kubo Resort, Philippines</span></li>
+	                <li><a href="tel://+639123456789"><span class="icon icon-phone"></span><span class="text">+63 912 345 6789</span></a></li>
+	                <li><a href="mailto:info@bahaykuboresort.com"><span class="icon icon-envelope"></span><span class="text">info@bahaykuboresort.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This system is made by BSIT-3D Group 4 Students
+  </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Profile dropdown - click only, no hover
+    $(document).ready(function() {
+      // Update profile display with logged-in user info
+      function updateProfileDisplay() {
+        // Get current user from localStorage or sessionStorage
+        var currentUser = null;
+        var storedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
+        
+        if (storedUser) {
+          try {
+            currentUser = JSON.parse(storedUser);
+          } catch (e) {
+            console.error('Error parsing user data:', e);
+          }
+        }
+        
+        var $profileText = $('#profileDropdown span:last-child');
+        var $profileInitials = $('#profileDropdown .nav-profile-picture span');
+        var $loginLink = $('.profile-dropdown-menu .dropdown-item[href="login.html"]');
+        var $profileContainer = $('#profileDropdownContainer');
+        var $simpleLoginLink = $('#simpleLoginLink');
+        
+        if (currentUser && currentUser.logged_in) {
+          // Show profile dropdown
+          $profileContainer.show();
+          $simpleLoginLink.hide();
+          // User is logged in - show their name
+          var firstName = currentUser.first_name || '';
+          var lastName = currentUser.last_name || '';
+          var fullName = (firstName + ' ' + lastName).trim() || currentUser.username || 'User';
+          
+          // Update profile text
+          $profileText.text('Profile (' + fullName + ')');
+          
+          // Get user data to check for avatar
+          var users = JSON.parse(localStorage.getItem('users') || '[]');
+          var user = users.find(u => u.id === currentUser.user_id);
+          
+          // Check if user has avatar
+          var $profilePicture = $('#profileDropdown .nav-profile-picture');
+          var existingImg = $profilePicture.find('img');
+          
+          if (user && user.avatar) {
+            // User has avatar - show image
+            if (existingImg.length > 0) {
+              existingImg.attr('src', user.avatar);
+            } else {
+              // Remove initials span and add image
+              $profileInitials.remove();
+              $profilePicture.append('<img src="' + user.avatar + '" alt="Profile Picture" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">');
+            }
+            $profilePicture.css('background', 'transparent');
+          } else {
+            // No avatar - show initials
+            if (existingImg.length > 0) {
+              existingImg.remove();
+              $profilePicture.append('<span style="color: #fff; font-weight: 700; font-size: 14px; text-transform: uppercase;"></span>');
+              $profileInitials = $profilePicture.find('span');
+            }
+            $profilePicture.css('background', '#21cc7a');
+            
+            // Update initials (first letter of first name + first letter of last name)
+            var initials = '';
+            if (firstName && lastName) {
+              initials = (firstName.charAt(0) + lastName.charAt(0)).toUpperCase();
+            } else if (currentUser.username) {
+              initials = currentUser.username.substring(0, 2).toUpperCase();
+            } else {
+              initials = 'GU';
+            }
+            $profileInitials.text(initials);
+          }
+          
+          // Hide login link, show My Profile submenu and logout
+          $loginLink.hide();
+          $('.profile-dropdown-menu .profile-submenu-toggle').show();
+          $('.profile-dropdown-menu .logout-link').show();
+        } else {
+          // User is not logged in - hide profile dropdown and show simple login link
+          $profileContainer.hide();
+          $simpleLoginLink.show();
+        }
+      }
+      
+      // Update profile on page load
+      updateProfileDisplay();
+      
+      var $profileDropdown = $('#profileDropdown');
+      var $profileMenu = $profileDropdown.next('.profile-dropdown-menu');
+      var $profileContainer = $profileDropdown.closest('.dropdown');
+      
+      // Prevent hover from opening
+      $profileContainer.off('mouseenter mouseleave');
+      
+      // Click to toggle
+      $profileDropdown.on('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        var isOpen = $profileMenu.hasClass('show');
+        
+        // Close all other dropdowns
+        $('.dropdown-menu').not($profileMenu).removeClass('show');
+        $('.dropdown-toggle').not($profileDropdown).attr('aria-expanded', 'false');
+        
+        if (isOpen) {
+          // Close with animation
+          $profileMenu.removeClass('show');
+          $profileDropdown.attr('aria-expanded', 'false');
+        } else {
+          // Open with animation - remove show class first to reset animation
+          $profileMenu.removeClass('show');
+          // Force reflow to restart animation
+          $profileMenu[0].offsetHeight;
+          // Add show class to trigger animation
+          $profileMenu.addClass('show');
+          $profileDropdown.attr('aria-expanded', 'true');
+        }
+      });
+      
+      // Keep dropdown open when hovering over it
+      $profileMenu.on('mouseenter', function() {
+        $(this).addClass('show');
+      });
+      
+      // Close when clicking outside
+      $(document).on('click', function(e) {
+        if (!$(e.target).closest('.dropdown').length) {
+          $profileMenu.removeClass('show');
+          $profileDropdown.attr('aria-expanded', 'false');
+          // Close submenu when clicking outside
+          $('.profile-submenu-toggle').removeClass('active');
+        }
+      });
+      
+      // My Profile submenu toggle
+      $(document).on('click', '.profile-submenu-toggle', function(e) {
+        e.stopPropagation();
+        var $toggle = $(this);
+        var $submenu = $toggle.find('.profile-submenu');
+        
+        // Toggle active class
+        $toggle.toggleClass('active');
+        
+        // Close other submenus if any
+        $('.profile-submenu-toggle').not($toggle).removeClass('active');
+      });
+      
+      // Close submenu when clicking on submenu items
+      $(document).on('click', '.profile-submenu .submenu-item', function() {
+        $('.profile-submenu-toggle').removeClass('active');
+      });
+      
+      // Close submenu when clicking outside the submenu
+      $(document).on('click', function(e) {
+        if (!$(e.target).closest('.profile-submenu-toggle').length && 
+            !$(e.target).closest('.profile-submenu').length) {
+          $('.profile-submenu-toggle').removeClass('active');
+        }
+      });
+      
+      // Logout functionality
+      window.handleLogout = function() {
+        // Show loading overlay
+        var loadingOverlay = document.getElementById('logoutLoadingOverlay');
+        if (loadingOverlay) {
+          loadingOverlay.classList.add('active');
+        }
+        
+        // Clear all stored data
+        localStorage.removeItem('currentUser');
+        sessionStorage.removeItem('currentUser');
+        
+        // Clear any cookies
+        document.cookie.split(";").forEach(function(c) { 
+          document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+        });
+        
+        // Redirect to login page after a short delay
+        setTimeout(function() {
+          window.location.href = 'index.html';
+        }, 500);
+      };
+      
+      // Booking Form Functionality
+      // Initialize date pickers with min date as today
+      var today = new Date();
+      var tomorrow = new Date(today);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      
+      $('#roomsCheckinDate').datepicker({
+        format: 'm/d/yyyy',
+        startDate: today,
+        autoclose: true,
+        todayHighlight: true
+      }).on('changeDate', function(e) {
+        // Set minimum checkout date to day after check-in
+        var checkinDate = e.date;
+        if (checkinDate) {
+          var minCheckout = new Date(checkinDate);
+          minCheckout.setDate(minCheckout.getDate() + 1);
+          $('#roomsCheckoutDate').datepicker('setStartDate', minCheckout);
+          
+          // If checkout date is before new minimum, clear it
+          var checkoutDate = $('#roomsCheckoutDate').datepicker('getDate');
+          if (checkoutDate && checkoutDate <= checkinDate) {
+            $('#roomsCheckoutDate').val('');
+          }
+        }
+      });
+      
+      $('#roomsCheckoutDate').datepicker({
+        format: 'm/d/yyyy',
+        startDate: tomorrow,
+        autoclose: true,
+        todayHighlight: true
+      });
+      
+      // Guest Counter Functionality
+      var adultCount = 1;
+      var kidCount = 0;
+      var maxAdults = 10;
+      var maxKids = 10;
+      var minAdults = 1;
+      var minKids = 0;
+      
+      function updateGuestDisplay() {
+        $('#roomsAdultCount').text(adultCount);
+        $('#roomsKidCount').text(kidCount);
+        
+        // Update hidden input value
+        var guestText = adultCount + ' Adult' + (adultCount !== 1 ? 's' : '');
+        if (kidCount > 0) {
+          guestText += ', ' + kidCount + ' Kid' + (kidCount !== 1 ? 's' : '');
+        }
+        $('#roomsGuests').val(guestText);
+        
+        // Update button states
+        $('#roomsAdultMinus').prop('disabled', adultCount <= minAdults);
+        $('#roomsAdultPlus').prop('disabled', adultCount >= maxAdults);
+        $('#roomsKidMinus').prop('disabled', kidCount <= minKids);
+        $('#roomsKidPlus').prop('disabled', kidCount >= maxKids);
+        
+        // Add pulse animation
+        $('#roomsAdultCount, #roomsKidCount').addClass('updated');
+        setTimeout(function() {
+          $('#roomsAdultCount, #roomsKidCount').removeClass('updated');
+        }, 300);
+      }
+      
+      $('#roomsAdultPlus').on('click', function() {
+        if (adultCount < maxAdults) {
+          adultCount++;
+          updateGuestDisplay();
+        }
+      });
+      
+      $('#roomsAdultMinus').on('click', function() {
+        if (adultCount > minAdults) {
+          adultCount--;
+          updateGuestDisplay();
+        }
+      });
+      
+      $('#roomsKidPlus').on('click', function() {
+        if (kidCount < maxKids) {
+          kidCount++;
+          updateGuestDisplay();
+        }
+      });
+      
+      $('#roomsKidMinus').on('click', function() {
+        if (kidCount > minKids) {
+          kidCount--;
+          updateGuestDisplay();
+        }
+      });
+      
+      // Initialize guest counter
+      updateGuestDisplay();
+      
+      // Handle form submission
+      $('#roomsBookingForm').on('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form values
+        var checkinDate = $('#roomsCheckinDate').val();
+        var checkoutDate = $('#roomsCheckoutDate').val();
+        var guests = $('#roomsGuests').val();
+        
+        // Validation
+        if (!checkinDate) {
+          alert('Please select a check-in date.');
+          $('#roomsCheckinDate').focus();
+          return false;
+        }
+        
+        if (!checkoutDate) {
+          alert('Please select a check-out date.');
+          $('#roomsCheckoutDate').focus();
+          return false;
+        }
+        
+        // Validate dates - parse date strings (format: m/d/yyyy)
+        var parseDate = function(dateString) {
+          var parts = dateString.split('/');
+          return new Date(parts[2], parts[0] - 1, parts[1]);
+        };
+        
+        var checkin = parseDate(checkinDate);
+        var checkout = parseDate(checkoutDate);
+        var today = new Date();
+        today.setHours(0, 0, 0, 0);
+        
+        if (checkin < today) {
+          alert('Check-in date cannot be in the past.');
+          $('#roomsCheckinDate').focus();
+          return false;
+        }
+        
+        if (checkout <= checkin) {
+          alert('Check-out date must be after check-in date.');
+          $('#roomsCheckoutDate').focus();
+          return false;
+        }
+        
+        if (!guests) {
+          alert('Please select number of guests.');
+          return false;
+        }
+        
+        // Check if user is logged in
+        var currentUser = null;
+        var storedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
+        
+        if (storedUser) {
+          try {
+            currentUser = JSON.parse(storedUser);
+          } catch (e) {
+            console.error('Error parsing user data:', e);
+          }
+        }
+        
+        // If user is not logged in, show login modal
+        if (!currentUser || !currentUser.logged_in) {
+          // Store booking search data temporarily so we can use it after login
+          var bookingSearch = {
+            checkinDate: checkinDate,
+            checkoutDate: checkoutDate,
+            guests: guests,
+            searchDate: new Date().toISOString()
+          };
+          localStorage.setItem('pendingBookingSearch', JSON.stringify(bookingSearch));
+          
+          // Show login required modal
+          $('#loginRequiredModal').addClass('active');
+          $('body').css('overflow', 'hidden');
+          return false;
+        }
+        
+        // User is logged in - proceed with booking
+        // Store booking search data
+        var bookingSearch = {
+          checkinDate: checkinDate,
+          checkoutDate: checkoutDate,
+          guests: guests,
+          searchDate: new Date().toISOString()
+        };
+        
+        localStorage.setItem('bookingSearch', JSON.stringify(bookingSearch));
+        
+        // Show loading state
+        var $btn = $('#roomsCheckAvailabilityBtn');
+        var originalText = $btn.html();
+        $btn.prop('disabled', true);
+        $btn.html('<span>Checking... <small>Please wait</small></span>');
+        
+        // Simulate search delay, then show results
+        setTimeout(function() {
+          // Restore button
+          $btn.prop('disabled', false);
+          $btn.html(originalText);
+          
+          // Display search results
+          displaySearchResults(checkinDate, checkoutDate, guests);
+          
+          // Scroll to results
+          $('html, body').animate({
+            scrollTop: $('#searchResultsSection').offset().top - 100
+          }, 800);
+        }, 1000);
+        
+        return false;
+      });
+      
+      function toggleFavorite(button) {
+        button.classList.toggle('active');
+        var svg = button.querySelector('svg');
+        if (button.classList.contains('active')) {
+          svg.style.fill = '#ff385c';
+          svg.setAttribute('fill', '#ff385c');
+        } else {
+          svg.style.fill = 'none';
+          svg.setAttribute('fill', 'none');
+        }
+      }
+      
+      // Fisher-Yates shuffle algorithm
+      function shuffleArray(array) {
+        var shuffled = array.slice(); // Create a copy to avoid mutating original
+        for (var i = shuffled.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var temp = shuffled[i];
+          shuffled[i] = shuffled[j];
+          shuffled[j] = temp;
+        }
+        return shuffled;
+      }
+
+      // Sample room data
+      var availableRooms = [
+        {
+          id: 1,
+          title: 'Deluxe Suite Room',
+          location: 'Bahay Kubo Resort',
+          image: 'images/bahay kubo rooms/1/q0.jpg',
+          price: 3600,
+          pricePeriod: 'for 2 nights',
+          rating: 4.89,
+          guests: 4,
+          bedrooms: 1,
+          beds: 1,
+          bathrooms: 1,
+          badge: 'Available'
+        },
+        {
+          id: 2,
+          title: 'Family Apartment Room',
+          location: 'Bahay Kubo Resort',
+          image: 'images/bahay kubo rooms/2/w0.jpg',
+          price: 3880,
+          pricePeriod: 'for 2 nights',
+          rating: 4.83,
+          guests: 6,
+          bedrooms: 2,
+          beds: 2,
+          bathrooms: 2,
+          badge: 'Available'
+        },
+        {
+          id: 3,
+          title: 'Standard Room',
+          location: 'Bahay Kubo Resort',
+          image: 'images/bahay kubo rooms/3/e0.jpg',
+          price: 3652,
+          pricePeriod: 'for 2 nights',
+          rating: 4.96,
+          guests: 2,
+          bedrooms: 1,
+          beds: 1,
+          bathrooms: 1,
+          badge: 'Available'
+        },
+        {
+          id: 4,
+          title: 'Deluxe Garden View Room',
+          location: 'Bahay Kubo Resort',
+          image: 'images/bahay kubo rooms/4/r0.jpg',
+          price: 5296,
+          pricePeriod: 'for 2 nights',
+          rating: 4.97,
+          guests: 4,
+          bedrooms: 1,
+          beds: 2,
+          bathrooms: 1,
+          badge: 'Available'
+        },
+        {
+          id: 5,
+          title: 'Executive Condo Room',
+          location: 'Bahay Kubo Resort',
+          image: 'images/bahay kubo rooms/5/t1.jpg',
+          price: 4109,
+          pricePeriod: 'for 2 nights',
+          rating: 4.91,
+          guests: 4,
+          bedrooms: 2,
+          beds: 2,
+          bathrooms: 2,
+          badge: 'Available'
+        },
+        {
+          id: 6,
+          title: 'Luxury Apartment Room',
+          location: 'Bahay Kubo Resort',
+          image: 'images/bahay kubo rooms/6/y.jpg',
+          price: 2296,
+          pricePeriod: 'for 2 nights',
+          rating: 4.78,
+          guests: 2,
+          bedrooms: 1,
+          beds: 1,
+          bathrooms: 1,
+          badge: 'Available'
+        },
+        {
+          id: 7,
+          title: 'Premium Suite Room',
+          location: 'Bahay Kubo Resort',
+          image: 'images/bahay kubo rooms/7/u0.jpg',
+          price: 4500,
+          pricePeriod: 'for 2 nights',
+          rating: 4.92,
+          guests: 4,
+          bedrooms: 2,
+          beds: 2,
+          bathrooms: 2,
+          badge: 'Available'
+        },
+        {
+          id: 8,
+          title: 'Family Villa Room',
+          location: 'Bahay Kubo Resort',
+          image: 'images/bahay kubo rooms/8/s0.jpg',
+          price: 6800,
+          pricePeriod: 'for 2 nights',
+          rating: 4.95,
+          guests: 8,
+          bedrooms: 3,
+          beds: 3,
+          bathrooms: 2,
+          badge: 'Available'
+        },
+        {
+          id: 9,
+          title: 'Cozy Studio Room',
+          location: 'Bahay Kubo Resort',
+          image: 'images/bahay kubo rooms/9/d0.jpg',
+          price: 2800,
+          pricePeriod: 'for 2 nights',
+          rating: 4.85,
+          guests: 2,
+          bedrooms: 1,
+          beds: 1,
+          bathrooms: 1,
+          badge: 'Available'
+        },
+        {
+          id: 10,
+          title: 'Executive Business Room',
+          location: 'Bahay Kubo Resort',
+          image: 'images/bahay kubo rooms/10/f1.jpg',
+          price: 4800,
+          pricePeriod: 'for 2 nights',
+          rating: 4.88,
+          guests: 4,
+          bedrooms: 1,
+          beds: 2,
+          bathrooms: 1,
+          badge: 'Available'
+        },
+        {
+          id: 11,
+          title: 'Modern Loft Room',
+          location: 'Bahay Kubo Resort',
+          image: 'images/bahay kubo rooms/11/g1.jpg',
+          price: 5200,
+          pricePeriod: 'for 2 nights',
+          rating: 4.90,
+          guests: 4,
+          bedrooms: 2,
+          beds: 2,
+          bathrooms: 2,
+          badge: 'Available'
+        },
+        {
+          id: 12,
+          title: 'Garden View Room',
+          location: 'Bahay Kubo Resort',
+          image: 'images/bahay kubo rooms/12/h1.jpg',
+          price: 5500,
+          pricePeriod: 'for 2 nights',
+          rating: 4.93,
+          guests: 4,
+          bedrooms: 2,
+          beds: 2,
+          bathrooms: 2,
+          badge: 'Available'
+        }
+      ];
+      
+      // Randomize availableRooms array on page load
+      availableRooms = shuffleArray(availableRooms);
+      
+      // Function to randomize carousel rooms on page load
+      function randomizeCarousel(carouselId) {
+        var carousel = document.getElementById(carouselId);
+        if (!carousel) return;
+        
+        var rooms = Array.from(carousel.children);
+        if (rooms.length === 0) return;
+        
+        // Shuffle the rooms array using Fisher-Yates
+        for (var i = rooms.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var temp = rooms[i];
+          rooms[i] = rooms[j];
+          rooms[j] = temp;
+        }
+        
+        // Re-append rooms in shuffled order
+        rooms.forEach(function(room) {
+          carousel.appendChild(room);
+        });
+      }
+      
+      // Randomize carousels on page load
+      $(document).ready(function() {
+        randomizeCarousel('popularRooms');
+        randomizeCarousel('weekendRooms');
+      });
+      
+      // Function to display search results
+      function displaySearchResults(checkinDate, checkoutDate, guests) {
+        // Parse guests to get total count
+        var totalGuests = 1;
+        var guestsMatch = guests.match(/(\d+)\s+Adult/);
+        if (guestsMatch) {
+          totalGuests = parseInt(guestsMatch[1]);
+        }
+        var kidsMatch = guests.match(/(\d+)\s+Kid/);
+        if (kidsMatch) {
+          totalGuests += parseInt(kidsMatch[1]);
+        }
+        
+        // Update search criteria summary
+        var criteriaHtml = '<div class="criteria-item">' +
+          '<i class="fas fa-calendar-check"></i>' +
+          '<span class="criteria-label">Check-in:</span>' +
+          '<span class="criteria-value">' + checkinDate + '</span>' +
+          '</div>' +
+          '<div class="criteria-item">' +
+          '<i class="fas fa-calendar-times"></i>' +
+          '<span class="criteria-label">Check-out:</span>' +
+          '<span class="criteria-value">' + checkoutDate + '</span>' +
+          '</div>' +
+          '<div class="criteria-item">' +
+          '<i class="fas fa-users"></i>' +
+          '<span class="criteria-label">Guests:</span>' +
+          '<span class="criteria-value">' + guests + '</span>' +
+          '</div>';
+        
+        $('#searchCriteriaSummary').html(criteriaHtml);
+        
+        // Filter rooms based on guest capacity
+        var filteredRooms = availableRooms.filter(function(room) {
+          return room.guests >= totalGuests;
+        });
+        
+        // Randomize the filtered rooms
+        filteredRooms = shuffleArray(filteredRooms);
+        
+        // Update results count with Show All button
+        var resultsCountHtml = '<span>Found <strong>' + filteredRooms.length + '</strong> available room' + (filteredRooms.length !== 1 ? 's' : '') + ' for your dates</span>';
+        $('#resultsCount').html(resultsCountHtml);
+        $('#resultsCount').append('<button class="show-all-btn" id="showAllBtn" onclick="toggleViewMode()"><i class="fas fa-th"></i> Show All</button>');
+        
+        // Display results
+        var $resultsCarousel = $('#roomsResultsGrid');
+        var $carouselView = $('#carouselView');
+        var $gridView = $('#gridView');
+        var $noResults = $('#noResults');
+        
+        if (filteredRooms.length === 0) {
+          $resultsCarousel.hide();
+          $carouselView.hide();
+          $gridView.hide();
+          $noResults.show();
+        } else {
+          $noResults.hide();
+          
+          // Function to create room card HTML
+          function createRoomCard(room) {
+            // Get booking parameters if they exist (from search)
+            var bookingParams = '';
+            var bookingSearch = localStorage.getItem('bookingSearch');
+            if (bookingSearch) {
+              try {
+                var bookingData = JSON.parse(bookingSearch);
+                // Convert dates from mm/dd/yyyy to yyyy-mm-dd for URL
+                var formatDateForURL = function(dateString) {
+                  var parts = dateString.split('/');
+                  return parts[2] + '-' + parts[0].padStart(2, '0') + '-' + parts[1].padStart(2, '0');
+                };
+                var checkinParam = bookingData.checkinDate ? formatDateForURL(bookingData.checkinDate) : '';
+                var checkoutParam = bookingData.checkoutDate ? formatDateForURL(bookingData.checkoutDate) : '';
+                var guestsParam = bookingData.guests || '';
+                
+                if (checkinParam && checkoutParam && guestsParam) {
+                  bookingParams = '&checkin=' + encodeURIComponent(checkinParam) + 
+                                  '&checkout=' + encodeURIComponent(checkoutParam) + 
+                                  '&guests=' + encodeURIComponent(guestsParam);
+                }
+              } catch (e) {
+                console.error('Error parsing bookingSearch:', e);
+              }
+            }
+            
+            // Also check URL parameters (if page was loaded with search params)
+            var urlParams = new URLSearchParams(window.location.search);
+            var urlCheckin = urlParams.get('checkin');
+            var urlCheckout = urlParams.get('checkout');
+            var urlGuests = urlParams.get('guests');
+            
+            if (urlCheckin && urlCheckout && urlGuests && !bookingParams) {
+              bookingParams = '&checkin=' + encodeURIComponent(urlCheckin) + 
+                              '&checkout=' + encodeURIComponent(urlCheckout) + 
+                              '&guests=' + encodeURIComponent(urlGuests);
+            }
+            
+            var roomUrl = 'rooms-single.html?room=' + room.id + bookingParams;
+            
+            return '<div class="result-room-card" onclick="window.location.href=\'' + roomUrl + '\'">' +
+              '<div class="result-room-image-wrapper">' +
+              '<img src="' + room.image + '" alt="' + room.title + '" class="result-room-image">' +
+              '<span class="result-room-badge">' + room.badge + '</span>' +
+              '<button class="result-room-favorite" onclick="event.stopPropagation(); toggleFavorite(this)">' +
+              '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">' +
+              '<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>' +
+              '</svg>' +
+              '</button>' +
+              '</div>' +
+              '<div class="result-room-content">' +
+              '<h3 class="result-room-title">' + room.title + '</h3>' +
+              '<div class="result-room-location">' +
+              '<i class="fas fa-map-marker-alt"></i>' +
+              '<span>' + room.location + '</span>' +
+              '</div>' +
+              '<div class="result-room-features">' +
+              '<div class="room-feature">' +
+              '<i class="fas fa-users"></i>' +
+              '<span>' + room.guests + ' guests</span>' +
+              '</div>' +
+              '<div class="room-feature">' +
+              '<i class="fas fa-bed"></i>' +
+              '<span>' + room.bedrooms + ' bedroom' + (room.bedrooms !== 1 ? 's' : '') + '</span>' +
+              '</div>' +
+              '<div class="room-feature">' +
+              '<i class="fas fa-bath"></i>' +
+              '<span>' + room.bathrooms + ' bathroom' + (room.bathrooms !== 1 ? 's' : '') + '</span>' +
+              '</div>' +
+              '</div>' +
+              '<div class="result-room-footer">' +
+              '<div class="result-room-price">' +
+              '<span class="result-room-price-amount">₱' + room.price.toLocaleString() + '</span>' +
+              '<span class="result-room-price-period">' + room.pricePeriod + '</span>' +
+              '</div>' +
+              '<div class="result-room-rating">' +
+              '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">' +
+              '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>' +
+              '</svg>' +
+              '<span>' + room.rating + '</span>' +
+              '</div>' +
+              '</div>' +
+              '<button class="book-now-btn" onclick="event.stopPropagation(); window.location.href=\'' + roomUrl + '\'">Book Now</button>' +
+              '</div>' +
+              '</div>';
+          }
+          
+          // Populate carousel view (show first 8 rooms)
+          $resultsCarousel.empty();
+          var carouselRooms = filteredRooms.slice(0, 8);
+          carouselRooms.forEach(function(room) {
+            $resultsCarousel.append(createRoomCard(room));
+          });
+          $carouselView.show();
+          
+          // Populate grid view (show all rooms)
+          $gridView.empty();
+          filteredRooms.forEach(function(room) {
+            $gridView.append(createRoomCard(room));
+          });
+          $gridView.hide();
+        }
+        
+        // Show results section
+        $('#searchResultsSection').addClass('active');
+        
+        // Initialize carousel navigation
+        initializeResultsCarousel();
+      }
+      
+      // Initialize results carousel navigation
+      function initializeResultsCarousel() {
+        var $carousel = $('#roomsResultsGrid');
+        var $prevBtn = $('#resultsCarouselPrev');
+        var $nextBtn = $('#resultsCarouselNext');
+        
+        // Update button states
+        function updateCarouselButtons() {
+          var scrollLeft = $carousel.scrollLeft();
+          var scrollWidth = $carousel[0].scrollWidth;
+          var clientWidth = $carousel[0].clientWidth;
+          
+          $prevBtn.prop('disabled', scrollLeft === 0);
+          $nextBtn.prop('disabled', scrollLeft + clientWidth >= scrollWidth - 1);
+        }
+        
+        // Update on scroll
+        $carousel.on('scroll', updateCarouselButtons);
+        
+        // Initial update
+        updateCarouselButtons();
+        
+        // Previous button - instant scroll (scroll by 2 cards at once)
+        $prevBtn.on('click', function() {
+          var cardWidth = 320; // card min-width
+          var gap = 24; // gap between cards
+          var scrollAmount = (cardWidth + gap) * 2; // Scroll 2 cards at once
+          $carousel[0].scrollLeft -= scrollAmount;
+          updateCarouselButtons();
+        });
+        
+        // Next button - instant scroll (scroll by 2 cards at once)
+        $nextBtn.on('click', function() {
+          var cardWidth = 320; // card min-width
+          var gap = 24; // gap between cards
+          var scrollAmount = (cardWidth + gap) * 2; // Scroll 2 cards at once
+          $carousel[0].scrollLeft += scrollAmount;
+          updateCarouselButtons();
+        });
+      }
+      
+      // Function to scroll to search form
+      window.scrollToSearchForm = function() {
+        $('html, body').animate({
+          scrollTop: $('.ftco-booking').offset().top - 100
+        }, 800);
+      };
+      
+      // Toggle between carousel and grid view
+      window.toggleViewMode = function() {
+        var $carouselView = $('#carouselView');
+        var $gridView = $('#gridView');
+        var $showAllBtn = $('#showAllBtn');
+        var isGridView = $gridView.hasClass('active');
+        
+        if (isGridView) {
+          // Switch to carousel view
+          $gridView.removeClass('active').hide();
+          $carouselView.show();
+          $showAllBtn.html('<i class="fas fa-th"></i> Show All');
+          $showAllBtn.removeClass('active');
+        } else {
+          // Switch to grid view
+          $carouselView.hide();
+          $gridView.addClass('active').show();
+          $showAllBtn.html('<i class="fas fa-list"></i> Show Carousel');
+          $showAllBtn.addClass('active');
+          
+          // Scroll to grid view
+          $('html, body').animate({
+            scrollTop: $gridView.offset().top - 100
+          }, 500);
+        }
+      };
+      
+      // Check if there are URL parameters and show results on page load
+      $(document).ready(function() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var checkin = urlParams.get('checkin');
+        var checkout = urlParams.get('checkout');
+        var guests = urlParams.get('guests');
+        
+        if (checkin && checkout && guests) {
+          // Format dates from URL (yyyy-mm-dd to m/d/yyyy)
+          var formatDateFromURL = function(dateString) {
+            var parts = dateString.split('-');
+            return parts[1] + '/' + parts[2] + '/' + parts[0];
+          };
+          
+          var checkinDate = formatDateFromURL(checkin);
+          var checkoutDate = formatDateFromURL(checkout);
+          
+          // Set form values
+          $('#roomsCheckinDate').val(checkinDate);
+          $('#roomsCheckoutDate').val(checkoutDate);
+          
+          // Display results
+          displaySearchResults(checkinDate, checkoutDate, guests);
+          
+          // Scroll to results after a short delay
+          setTimeout(function() {
+            $('html, body').animate({
+              scrollTop: $('#searchResultsSection').offset().top - 100
+            }, 800);
+          }, 300);
+        }
+      });
+    });
+    
+    // Carousel scrolling function - must be global for onclick handlers (instant scroll, 2 cards at once)
+    window.scrollCarousel = function(carouselId, direction) {
+      var carousel = document.getElementById(carouselId);
+      if (!carousel) {
+        console.error('Carousel not found:', carouselId);
+        return;
+      }
+      var cardWidth = 280; // card min-width
+      var gap = 24; // gap between cards
+      var scrollAmount = (cardWidth + gap) * 2; // Scroll 2 cards at once
+      if (direction === 'left') {
+        carousel.scrollLeft -= scrollAmount;
+      } else {
+        carousel.scrollLeft += scrollAmount;
+      }
+    };
+    
+    // Add event listeners for carousel buttons
+    $(document).ready(function() {
+      // Use event delegation to ensure buttons work even if loaded dynamically
+      $(document).on('click', '.carousel-nav-btn', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var button = $(this);
+        var carouselId = button.data('carousel');
+        var direction = button.data('direction');
+        
+        if (carouselId && direction) {
+          scrollCarousel(carouselId, direction);
+        } else {
+          // Fallback: try to get from container
+          var container = button.closest('.rooms-carousel-container');
+          var carousel = container.find('.rooms-carousel');
+          carouselId = carousel.attr('id');
+          direction = button.attr('aria-label') === 'Previous' ? 'left' : 'right';
+          
+          if (carouselId && direction) {
+            scrollCarousel(carouselId, direction);
+          }
+        }
+      });
+    });
+  </script>
+  
+  <style>
+    /* Loading Screen for Logout */
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .loading-overlay.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .loading-container {
+      text-align: center;
+      color: #f5f5dc;
+    }
+
+    .loading-spinner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .spinner-circle {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #4a8c3e 0%, #2d5016 100%);
+      animation: spinner-bounce 1.4s ease-in-out infinite both;
+      box-shadow: 0 4px 12px rgba(74, 140, 62, 0.4);
+    }
+
+    .spinner-circle:nth-child(1) {
+      animation-delay: -0.32s;
+    }
+
+    .spinner-circle:nth-child(2) {
+      animation-delay: -0.16s;
+    }
+
+    .spinner-circle:nth-child(3) {
+      animation-delay: 0s;
+    }
+
+    @keyframes spinner-bounce {
+      0%, 80%, 100% {
+        transform: scale(0.6);
+        opacity: 0.5;
+      }
+      40% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .loading-text {
+      font-size: 24px;
+      font-weight: 600;
+      color: #f5f5dc;
+      margin-bottom: 8px;
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      letter-spacing: 1px;
+      animation: loading-text-pulse 2s ease-in-out infinite;
+    }
+
+    .loading-subtext {
+      font-size: 14px;
+      color: #888;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    @keyframes loading-text-pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.6;
+      }
+    }
+    
+    /* Reduce Footer Size by Half */
+    .ftco-footer {
+      padding: 2rem 0 1rem 0 !important;
+    }
+    
+    .ftco-footer .container {
+      padding-top: 1rem !important;
+      padding-bottom: 0.5rem !important;
+    }
+    
+    .ftco-footer .row.mb-5 {
+      margin-bottom: 1.5rem !important;
+    }
+    
+    .ftco-footer-widget {
+      margin-bottom: 1rem !important;
+    }
+    
+    .ftco-footer-widget h2 {
+      font-size: 1.1rem !important;
+      margin-bottom: 0.75rem !important;
+    }
+    
+    .ftco-footer-widget p {
+      font-size: 0.85rem !important;
+      line-height: 1.4 !important;
+      margin-bottom: 0.75rem !important;
+    }
+    
+    .ftco-footer-social {
+      margin-top: 1rem !important;
+    }
+    
+    .ftco-footer-social li {
+      margin-right: 0.5rem !important;
+    }
+    
+    .ftco-footer-widget ul.list-unstyled li {
+      padding: 0.25rem 0 !important;
+      font-size: 0.85rem !important;
+    }
+    
+    .ftco-footer-widget ul.list-unstyled li a {
+      padding: 0.25rem 0 !important;
+    }
+    
+    .block-23 ul li {
+      padding: 0.25rem 0 !important;
+      font-size: 0.85rem !important;
+      line-height: 1.4 !important;
+    }
+    
+    .block-23 ul li .text {
+      font-size: 0.85rem !important;
+    }
+    
+    .ftco-footer .row:last-child {
+      margin-top: 1rem !important;
+      padding-top: 0.75rem !important;
+    }
+    
+    .ftco-footer .row:last-child p {
+      font-size: 0.8rem !important;
+      margin-bottom: 0 !important;
+    }
+  </style>
+  
+  <!-- Login Required Modal -->
+  <div id="loginRequiredModal" class="booking-modal">
+    <div class="booking-modal-content">
+      <span class="booking-modal-close">&times;</span>
+      <div class="booking-modal-header">
+        <a href="index.html" class="booking-modal-logo"><img src="logo/logo.png" alt="BAHAY KUBO Resort"></a>
+        <h2 class="booking-modal-title">Login Required</h2>
+        <p class="booking-modal-subtitle">Please log in to check availability</p>
+      </div>
+      <div class="booking-modal-body">
+        <p style="font-size: 15px; line-height: 1.7; color: #4a5568; margin-bottom: 25px; text-align: center;">
+          You need to be logged in to check room availability and make a booking. Please log in to continue.
+        </p>
+        <div style="text-align: center; padding: 20px 0;">
+          <i class="fas fa-lock" style="font-size: 48px; color: #21cc7a; margin-bottom: 15px; display: block;"></i>
+        </div>
+      </div>
+      <div class="booking-modal-footer">
+        <button type="button" class="booking-modal-btn booking-modal-btn-secondary" id="cancelLoginModalBtn">Cancel</button>
+        <button type="button" class="booking-modal-btn booking-modal-btn-primary" id="goToLoginBtn">Go to Login</button>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // Login Required Modal handlers
+    $(document).ready(function() {
+      // Close login modal
+      $('#loginRequiredModal .booking-modal-close, #cancelLoginModalBtn').on('click', function() {
+        $('#loginRequiredModal').removeClass('active');
+        $('body').css('overflow', 'auto');
+      });
+      
+      // Close login modal when clicking outside
+      $('#loginRequiredModal').on('click', function(e) {
+        if ($(e.target).hasClass('booking-modal')) {
+          $(this).removeClass('active');
+          $('body').css('overflow', 'auto');
+        }
+      });
+      
+      // Close login modal with Escape key
+      $(document).on('keydown', function(e) {
+        if (e.key === 'Escape' && $('#loginRequiredModal').hasClass('active')) {
+          $('#loginRequiredModal').removeClass('active');
+          $('body').css('overflow', 'auto');
+        }
+      });
+      
+      // Go to login page button
+      $('#goToLoginBtn').on('click', function() {
+        // Store pending booking data if not already stored
+        var pendingBooking = localStorage.getItem('pendingBookingSearch');
+        if (!pendingBooking) {
+          // Get current form values
+          var checkinDate = $('#roomsCheckinDate').val();
+          var checkoutDate = $('#roomsCheckoutDate').val();
+          var guests = $('#roomsGuests').val();
+          
+          if (checkinDate && checkoutDate && guests) {
+            var bookingSearch = {
+              checkinDate: checkinDate,
+              checkoutDate: checkoutDate,
+              guests: guests,
+              searchDate: new Date().toISOString()
+            };
+            localStorage.setItem('pendingBookingSearch', JSON.stringify(bookingSearch));
+          }
+        }
+        
+        // Redirect to login page
+        window.location.href = 'login.html';
+      });
+    });
+  </script>
+    
+  </body>
+</html>

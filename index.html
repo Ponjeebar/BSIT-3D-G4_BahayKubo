@@ -1,0 +1,4578 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>BAHAY KUBO Resort - Home</title>
+    <link rel="icon" type="image/png" href="logo/logo.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+      /* Profile Dropdown Enhanced Styles */
+      #profileDropdown {
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 5px;
+        padding: 8px 15px !important;
+      }
+      
+      #profileDropdown:hover {
+        color: #fff !important;
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: translateY(-1px);
+      }
+      
+      #profileDropdown:active {
+        transform: translateY(0);
+      }
+      
+      /* Enhanced Dropdown Menu */
+      .profile-dropdown-menu {
+        min-width: 200px;
+        padding: 8px 0 !important;
+        margin-top: 10px !important;
+        background: #fff;
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        opacity: 0;
+        transform: translateY(-15px) scale(0.9);
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        pointer-events: none;
+        overflow: visible;
+        transform-origin: top right;
+      }
+      
+      .profile-dropdown-menu.show {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+        animation: dropdownSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      
+      @keyframes dropdownSlideIn {
+        0% {
+          opacity: 0;
+          transform: translateY(-15px) scale(0.9);
+        }
+        50% {
+          transform: translateY(2px) scale(1.02);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      
+      .profile-dropdown-menu.show .dropdown-item {
+        animation: fadeInItem 0.4s ease forwards;
+        opacity: 0;
+      }
+      
+      .profile-dropdown-menu.show .dropdown-item:nth-child(1) {
+        animation-delay: 0.05s;
+      }
+      
+      .profile-dropdown-menu.show .dropdown-item:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      
+      @keyframes fadeInItem {
+        from {
+          opacity: 0;
+          transform: translateX(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      
+      .profile-dropdown-menu .dropdown-item {
+        padding: 12px 20px;
+        color: #333;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        border-left: 3px solid transparent;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:first-child {
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:last-child,
+      .profile-dropdown-menu .logout-link {
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+        padding-left: 25px;
+        transform: translateX(3px);
+      }
+      
+      .profile-dropdown-menu .dropdown-item:active {
+        background: #e9ecef;
+        transform: translateX(0);
+      }
+      
+      /* Hide My Profile submenu and logout by default (shown when logged in) */
+      .profile-dropdown-menu .profile-submenu-toggle,
+      .profile-dropdown-menu .logout-link {
+        display: none;
+      }
+      
+      /* Profile submenu styles */
+      .profile-submenu {
+        display: none;
+        position: absolute;
+        left: 100%;
+        top: 0;
+        min-width: 180px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        margin-left: 8px;
+        padding: 8px 0;
+        z-index: 10001;
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      
+      .profile-submenu-toggle.active .profile-submenu {
+        display: block;
+        opacity: 1;
+        transform: translateX(0);
+      }
+      
+      .profile-submenu-toggle.active i.fa-chevron-right {
+        transform: rotate(90deg);
+      }
+      
+      .profile-submenu .submenu-item {
+        padding: 10px 20px;
+        color: #333;
+        font-size: 14px;
+        font-weight: 500;
+        border-left: 3px solid transparent;
+        display: block;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        border-radius: 0;
+      }
+      
+      .profile-submenu .submenu-item:first-child {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+      
+      .profile-submenu .submenu-item:last-child {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      
+      .profile-submenu .submenu-item:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+        padding-left: 25px;
+        transform: translateX(3px);
+      }
+      
+      .profile-submenu-toggle {
+        user-select: none;
+        position: relative;
+        overflow: visible !important;
+      }
+      
+      .profile-dropdown-menu .profile-submenu-toggle {
+        overflow: visible;
+      }
+      
+      .profile-submenu-toggle:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+      }
+      
+      .profile-submenu-toggle:hover i.fa-chevron-right {
+        color: #21cc7a;
+      }
+      
+      .profile-submenu-toggle.active {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #21cc7a;
+        border-left-color: #21cc7a;
+      }
+      
+      /* Icon spacing for dropdown items */
+      .profile-dropdown-menu .dropdown-item::before {
+        content: '';
+        width: 4px;
+        height: 4px;
+        background: #21cc7a;
+        border-radius: 50%;
+        margin-right: 10px;
+        opacity: 0;
+        transition: all 0.2s ease;
+      }
+      
+      .profile-dropdown-menu .dropdown-item:hover::before {
+        opacity: 1;
+        margin-right: 12px;
+      }
+      
+      /* Logout item special styling */
+      .profile-dropdown-menu .logout-link {
+        border-top: 1px solid #e9ecef;
+        margin-top: 0;
+        padding: 14px 20px 12px 20px;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        transition: all 0.2s ease;
+        border-left: 3px solid transparent;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .profile-dropdown-menu .logout-link:hover {
+        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%) !important;
+        color: #dc3545;
+        border-left-color: #dc3545;
+        border-top-color: transparent;
+        padding-left: 25px;
+        transform: translateX(3px);
+        margin-top: 0;
+      }
+      
+      .profile-dropdown-menu .logout-link::before {
+        background: #dc3545;
+      }
+      
+      /* Profile nav link styling */
+      .profile-nav-link {
+        color: rgba(255, 255, 255, 0.9) !important;
+      }
+      
+      /* Ensure profile dropdown is visible when navbar is scrolled */
+      .ftco-navbar-light.scrolled .profile-nav-link,
+      .ftco-navbar-light.scrolled.awake .profile-nav-link {
+        color: rgba(0, 0, 0, 0.9) !important;
+      }
+      
+      .ftco-navbar-light.scrolled .profile-nav-link span:last-child,
+      .ftco-navbar-light.scrolled.awake .profile-nav-link span:last-child {
+        color: rgba(0, 0, 0, 0.9) !important;
+      }
+      
+      .ftco-navbar-light.scrolled .nav-profile-picture,
+      .ftco-navbar-light.scrolled.awake .nav-profile-picture {
+        border-color: rgba(0, 0, 0, 0.2) !important;
+      }
+      
+      .ftco-navbar-light.scrolled .nav-profile-picture span,
+      .ftco-navbar-light.scrolled.awake .nav-profile-picture span {
+        color: #fff !important;
+      }
+      
+      /* Navigation collapse styling - show flex when menu is open */
+      #ftco-nav.show {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      /* On desktop (lg and up), always show flex (Bootstrap expands navbar on lg+) */
+      @media (min-width: 992px) {
+        #ftco-nav {
+          display: flex !important;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+      
+      /* On mobile, stack items vertically when menu is open */
+      @media (max-width: 991.98px) {
+        #ftco-nav.show {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        
+        #ftco-nav.show .navbar-nav {
+          width: 100%;
+          margin-bottom: 15px;
+        }
+        
+        #ftco-nav.show #profileDropdownContainer,
+        #ftco-nav.show #simpleLoginLink {
+          width: 100%;
+          margin-left: 0 !important;
+          padding-left: 0 !important;
+          border-left: none !important;
+          border-top: 1px solid rgba(255, 255, 255, 0.2);
+          padding-top: 15px;
+          margin-top: 15px;
+        }
+      }
+      
+      /* Login link styling */
+      .login-nav-link {
+        color: rgba(255, 255, 255, 0.9) !important;
+        transition: color 0.3s ease;
+      }
+      
+      .ftco-navbar-light.scrolled .login-nav-link,
+      .ftco-navbar-light.scrolled.awake .login-nav-link {
+        color: rgba(0, 0, 0, 0.9) !important;
+      }
+      
+      /* Update border color for login link container when scrolled */
+      .ftco-navbar-light.scrolled #simpleLoginLink,
+      .ftco-navbar-light.scrolled.awake #simpleLoginLink {
+        border-left-color: rgba(0, 0, 0, 0.2) !important;
+      }
+      
+      /* Enhanced Booking Form Dropdown Styles */
+      .booking-form .select-wrap {
+        position: relative;
+        overflow: visible;
+      }
+      
+      .booking-form .select-wrap {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .booking-form .select-wrap select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background: #f8f9fa;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        padding: 12px 40px;
+        font-size: 15px;
+        color: #333;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        width: 100%;
+        font-weight: 500;
+        position: relative;
+        z-index: 0;
+        text-align: center;
+        line-height: 1.5;
+        height: auto;
+      }
+      
+      .booking-form .select-wrap:hover select,
+      .booking-form .select-wrap.hovered select {
+        border-color: #21cc7a;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(33, 204, 122, 0.15);
+        transform: translateY(-1px);
+      }
+      
+      .booking-form .select-wrap select:focus,
+      .booking-form .select-wrap.focused select {
+        outline: none;
+        border-color: #21cc7a;
+        background: #fff;
+        box-shadow: 0 0 0 4px rgba(33, 204, 122, 0.1), 0 4px 12px rgba(33, 204, 122, 0.15);
+        transform: translateY(-2px);
+      }
+      
+      .booking-form .select-wrap select.has-value {
+        color: #1ba865;
+        font-weight: 600;
+      }
+      
+      .booking-form .select-wrap .icon {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%) rotate(0deg);
+        pointer-events: none;
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        z-index: 1;
+      }
+      
+      .booking-form .select-wrap.focused .icon,
+      .booking-form .select-wrap.hovered .icon {
+        transform: translateY(-50%) rotate(180deg);
+      }
+      
+      .booking-form .select-wrap.has-value .icon span {
+        color: #1ba865 !important;
+      }
+      
+      .booking-form .select-wrap.focused {
+        animation: selectPulse 0.6s ease-out;
+      }
+      
+      @keyframes selectPulse {
+        0%, 100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.02);
+        }
+      }
+      
+      .booking-form .select-wrap .icon span {
+        color: #21cc7a !important;
+        font-size: 18px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+      
+      .booking-form .select-wrap:hover .icon span {
+        color: #1ba865 !important;
+      }
+      
+      /* Dropdown option styling */
+      .booking-form .select-wrap select option {
+        padding: 12px 16px;
+        background: #fff;
+        color: #333;
+        font-size: 15px;
+        transition: all 0.2s ease;
+      }
+      
+      .booking-form .select-wrap select option:hover {
+        background: #f0f8f4;
+        color: #21cc7a;
+      }
+      
+      .booking-form .select-wrap select option:checked {
+        background: #21cc7a;
+        color: #fff;
+        font-weight: 600;
+      }
+      
+      /* Enhanced form field wrapper */
+      .booking-form .form-field {
+        position: relative;
+      }
+      
+      /* Input field enhancements */
+      .booking-form .form-control.checkin_date,
+      .booking-form .form-control.checkout_date {
+        background: #f8f9fa;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 15px;
+        color: #333;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        font-weight: 500;
+        text-align: center;
+        line-height: 1.5;
+        height: auto;
+      }
+      
+      .booking-form .form-control.checkin_date:hover,
+      .booking-form .form-control.checkout_date:hover {
+        border-color: #21cc7a;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(33, 204, 122, 0.15);
+        transform: translateY(-1px);
+      }
+      
+      .booking-form .form-control.checkin_date:focus,
+      .booking-form .form-control.checkout_date:focus {
+        outline: none;
+        border-color: #21cc7a;
+        background: #fff;
+        box-shadow: 0 0 0 4px rgba(33, 204, 122, 0.1), 0 4px 12px rgba(33, 204, 122, 0.15);
+        transform: translateY(-2px);
+      }
+      
+      /* Label enhancements */
+      .booking-form .form-group label {
+        font-weight: 700;
+        font-size: 12px;
+        color: #21cc7a;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 8px;
+        display: block;
+        transition: color 0.3s ease;
+        text-align: center;
+      }
+      
+      .booking-form .form-group:hover label {
+        color: #1ba865;
+      }
+      
+      /* Button enhancements */
+      .booking-form #checkAvailabilityBtn {
+        background: linear-gradient(135deg, #21cc7a 0%, #1ba865 100%);
+        border: none;
+        border-radius: 8px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 15px rgba(33, 204, 122, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .booking-form #checkAvailabilityBtn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s ease;
+      }
+      
+      .booking-form #checkAvailabilityBtn:hover::before {
+        left: 100%;
+      }
+      
+      .booking-form #checkAvailabilityBtn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(33, 204, 122, 0.4);
+        background: linear-gradient(135deg, #1ba865 0%, #21cc7a 100%);
+      }
+      
+      .booking-form #checkAvailabilityBtn:active {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 15px rgba(33, 204, 122, 0.3);
+      }
+      
+      .booking-form #checkAvailabilityBtn:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+        transform: none;
+      }
+      
+      /* Wrap container enhancements */
+      .booking-form .wrap {
+        background: #fff;
+        border-radius: 12px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 100px;
+      }
+      
+      .booking-form .wrap.d-flex {
+        justify-content: center;
+      }
+      
+      .booking-form .wrap label {
+        margin-bottom: 12px;
+      }
+      
+      .booking-form .wrap .form-control,
+      .booking-form .wrap .form-field {
+        margin: 0;
+      }
+      
+      .booking-form .wrap::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(33, 204, 122, 0.05), transparent);
+        transition: left 0.5s ease;
+      }
+      
+      .booking-form .form-group:hover .wrap::before {
+        left: 100%;
+      }
+      
+      .booking-form .form-group:hover .wrap,
+      .booking-form .form-group.field-focused .wrap {
+        box-shadow: 0 4px 12px rgba(33, 204, 122, 0.1);
+        transform: translateY(-2px);
+      }
+      
+      /* Animation for dropdown opening */
+      @keyframes dropdownSlide {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .booking-form select {
+        animation: dropdownSlide 0.3s ease-out;
+      }
+      
+      /* Focus ring animation */
+      @keyframes focusRing {
+        0% {
+          box-shadow: 0 0 0 0 rgba(33, 204, 122, 0.4);
+        }
+        50% {
+          box-shadow: 0 0 0 8px rgba(33, 204, 122, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(33, 204, 122, 0);
+        }
+      }
+      
+      .booking-form .form-control:focus,
+      .booking-form select:focus {
+        animation: focusRing 0.6s ease-out;
+      }
+      
+      /* Guest Counter Styles */
+      .guest-counter-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 4px 0;
+        flex-wrap: wrap;
+      }
+      
+      .guest-counter-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 4px 8px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        flex: 0 0 auto;
+      }
+      
+      .guest-counter-item:hover {
+        background: rgba(33, 204, 122, 0.05);
+      }
+      
+      .guest-counter-separator {
+        width: 1px;
+        height: 30px;
+        background: #e9ecef;
+        flex-shrink: 0;
+      }
+      
+      .guest-counter-label {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #333;
+        white-space: nowrap;
+      }
+      
+      .guest-counter-label i {
+        color: #21cc7a;
+        font-size: 14px;
+        width: 16px;
+        text-align: center;
+      }
+      
+      .guest-counter-controls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #f8f9fa;
+        border-radius: 20px;
+        padding: 2px;
+        border: 2px solid #e9ecef;
+        transition: all 0.3s ease;
+      }
+      
+      .guest-counter-item:hover .guest-counter-controls {
+        border-color: #21cc7a;
+        background: #fff;
+        box-shadow: 0 2px 6px rgba(33, 204, 122, 0.15);
+      }
+      
+      .guest-counter-btn {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        border: none;
+        background: #21cc7a;
+        color: #fff;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 2px 4px rgba(33, 204, 122, 0.3);
+        position: relative;
+        overflow: hidden;
+        padding: 0;
+      }
+      
+      .guest-counter-btn::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.4s ease, height 0.4s ease;
+      }
+      
+      .guest-counter-btn:active::before {
+        width: 200%;
+        height: 200%;
+      }
+      
+      .guest-counter-btn:hover {
+        background: #1ba865;
+        transform: scale(1.1);
+        box-shadow: 0 3px 8px rgba(33, 204, 122, 0.4);
+      }
+      
+      .guest-counter-btn:active {
+        transform: scale(0.95);
+      }
+      
+      .guest-counter-btn:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+        opacity: 0.5;
+      }
+      
+      .guest-counter-btn:disabled:hover {
+        background: #ccc;
+        transform: none;
+      }
+      
+      .guest-counter-value {
+        min-width: 20px;
+        text-align: center;
+        font-size: 15px;
+        font-weight: 700;
+        color: #21cc7a;
+        transition: all 0.3s ease;
+      }
+      
+      .guest-counter-item:hover .guest-counter-value {
+        color: #1ba865;
+      }
+      
+      @keyframes counterPulse {
+        0%, 100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+      }
+      
+      .guest-counter-value.updated {
+        animation: counterPulse 0.3s ease;
+      }
+      
+      /* Mobile responsive adjustments */
+      @media (max-width: 768px) {
+        .booking-form .select-wrap select {
+          padding: 10px 35px 10px 14px;
+          font-size: 14px;
+        }
+        
+        .booking-form .form-control.checkin_date,
+        .booking-form .form-control.checkout_date {
+          padding: 10px 14px;
+          font-size: 14px;
+        }
+        
+        .guest-counter-wrapper {
+          flex-direction: column;
+          gap: 15px;
+        }
+        
+        .guest-counter-item {
+          padding: 10px 0;
+          min-width: 100%;
+        }
+        
+        .guest-counter-separator {
+          display: none;
+        }
+        
+        .guest-counter-label {
+          font-size: 14px;
+        }
+        
+        .guest-counter-btn {
+          width: 28px;
+          height: 28px;
+          font-size: 12px;
+        }
+        
+        .guest-counter-value {
+          font-size: 16px;
+          min-width: 25px;
+        }
+        
+        .guest-counter-controls {
+          gap: 12px;
+          padding: 3px;
+        }
+      }
+      
+      /* Remove green background/gradient from services section */
+      section.services-section,
+      section.services-section .container,
+      section.services-section .row,
+      section.services-section::before,
+      section.services-section::after {
+        background: transparent !important;
+        background-color: transparent !important;
+        background-image: none !important;
+      }
+      
+      /* Remove any gradient overlays */
+      section.services-section * {
+        background-image: none !important;
+      }
+      
+      section.services-section .container {
+        background: #fff !important;
+      }
+      
+      /* Service Cards - Clickable Styles */
+      .service-card {
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 12px;
+        position: relative;
+        overflow: hidden;
+        pointer-events: auto;
+        isolation: isolate;
+      }
+      
+      /* Override original services hover to prevent conflicts */
+      .service-card.services:hover {
+        background: #f8f9fa !important;
+      }
+      
+      .service-card.services.active:hover {
+        background: #f8f9fa !important;
+      }
+      
+      .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(33, 204, 122, 0.1), transparent);
+        transition: left 0.5s ease;
+        pointer-events: none;
+        z-index: 1;
+      }
+      
+      .service-card:hover::before {
+        left: 100%;
+      }
+      
+      .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(33, 204, 122, 0.2);
+        background: #f8f9fa !important;
+      }
+      
+      .service-card:active {
+        transform: translateY(-2px);
+      }
+      
+      /* Prevent hover on adjacent cards */
+      .service-card:hover ~ .service-card,
+      .service-card ~ .service-card:hover {
+        transform: none;
+        box-shadow: none;
+      }
+      
+      /* Enhanced Icon Visibility */
+      .service-card .icon {
+        background: #fff !important;
+        box-shadow: 0 4px 15px rgba(33, 204, 122, 0.3) !important;
+        border: 3px solid #21cc7a !important;
+        width: 120px !important;
+        height: 120px !important;
+        overflow: visible !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 10px !important;
+      }
+      
+      .service-card .icon span {
+        color: #1ba865 !important;
+        font-size: 56px !important;
+        font-weight: bold !important;
+        text-shadow: 0 2px 4px rgba(33, 204, 122, 0.2) !important;
+        filter: drop-shadow(0 2px 4px rgba(33, 204, 122, 0.3)) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        line-height: 1 !important;
+        width: 100% !important;
+        height: 100% !important;
+      }
+      
+      .service-card:hover .icon {
+        background: #21cc7a !important;
+        box-shadow: 0 6px 20px rgba(33, 204, 122, 0.4) !important;
+        transform: scale(1.05) !important;
+        border-color: #1ba865 !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      }
+      
+      .service-card:hover .icon span {
+        color: #fff !important;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)) !important;
+        transition: color 0.3s ease !important;
+      }
+      
+      /* Ensure only the hovered card's icon changes */
+      .service-card:not(:hover) .icon {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      }
+      
+      .service-card:not(:hover) .icon span {
+        transition: color 0.3s ease !important;
+      }
+      
+      /* Ensure service card container doesn't clip icons */
+      .service-card {
+        overflow: visible !important;
+      }
+      
+      .service-card .d-flex {
+        overflow: visible !important;
+      }
+      
+      /* Fix active class to not interfere with hover */
+      .service-card.services.active {
+        background: #f8f9fa !important;
+      }
+      
+      .service-card.services.active .icon span {
+        color: #1ba865 !important;
+      }
+      
+      .service-card.services.active:hover {
+        background: #f8f9fa !important;
+      }
+      
+      /* Prevent text color changes on hover from original CSS */
+      .service-card:hover h3,
+      .service-card.services:hover h3 {
+        color: #333 !important;
+      }
+      
+      .service-card.services.active:hover h3 {
+        color: #333 !important;
+      }
+      
+      /* Smooth transitions to prevent blinking */
+      .service-card,
+      .service-card .icon,
+      .service-card .icon span,
+      .service-card h3 {
+        will-change: transform, background-color, color;
+        backface-visibility: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+      
+      /* Modern Modal Styles - Enhanced UI & Typography */
+      .service-modal {
+        display: none;
+        position: fixed;
+        z-index: 10000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(8px);
+        animation: fadeIn 0.3s ease;
+        font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      }
+      
+      .service-modal.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      
+      .service-modal-content {
+        background: #ffffff;
+        margin: auto;
+        padding: 0;
+        border-radius: 24px;
+        width: 90%;
+        max-width: 500px;
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+        animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+        position: relative;
+      }
+      
+      .service-modal-header {
+        background: linear-gradient(135deg, #21cc7a 0%, #1ba865 100%);
+        padding: 35px 30px 25px;
+        color: white;
+        position: relative;
+        text-align: center;
+        overflow: hidden;
+      }
+      
+      .service-modal-logo {
+        position: absolute;
+        top: 5px;
+        left: 2px;
+        z-index: 5;
+        opacity: 0.95;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        display: block;
+        width: 120px;
+        height: auto;
+      }
+      
+      .service-modal-logo:hover {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+      
+      .service-modal-logo img {
+        width: 120px;
+        height: auto;
+        display: block;
+        object-fit: contain;
+      }
+      
+      .service-modal-header::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        animation: pulse 3s ease-in-out infinite;
+      }
+      
+      .service-modal-header::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.25);
+      }
+      
+      .service-modal-icon {
+        font-size: 56px;
+        margin-bottom: 15px;
+        display: block;
+        animation: iconBounce 0.6s ease;
+        position: relative;
+        z-index: 1;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+      }
+      
+      .service-modal-title {
+        font-size: 26px;
+        font-weight: 800;
+        margin: 0;
+        text-transform: none;
+        letter-spacing: -0.5px;
+        position: relative;
+        z-index: 1;
+        font-family: 'Nunito Sans', sans-serif;
+        line-height: 1.2;
+      }
+      
+      .service-modal-body {
+        padding: 35px 30px;
+        background: #ffffff;
+      }
+      
+      .service-modal-description {
+        font-size: 15px;
+        line-height: 1.7;
+        color: #4a5568;
+        margin-bottom: 25px;
+        font-weight: 400;
+        font-family: 'Nunito Sans', sans-serif;
+        letter-spacing: 0.2px;
+      }
+      
+      .service-modal-features {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        background: #f8fafc;
+        border-radius: 16px;
+        padding: 15px 20px;
+        border: 1px solid #e2e8f0;
+      }
+      
+      .service-modal-features li {
+        padding: 12px 0 12px 40px;
+        position: relative;
+        font-size: 14px;
+        color: #2d3748;
+        border-bottom: 1px solid #e2e8f0;
+        font-weight: 500;
+        font-family: 'Nunito Sans', sans-serif;
+        transition: all 0.2s ease;
+      }
+      
+      .service-modal-features li:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      
+      .service-modal-features li:first-child {
+        padding-top: 0;
+      }
+      
+      .service-modal-features li:hover {
+        color: #21cc7a;
+        padding-left: 45px;
+      }
+      
+      .service-modal-features li::before {
+        content: '✓';
+        position: absolute;
+        left: 12px;
+        color: #21cc7a;
+        font-weight: 800;
+        font-size: 18px;
+        width: 22px;
+        height: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(33, 204, 122, 0.1);
+        border-radius: 50%;
+        transition: all 0.2s ease;
+      }
+      
+      .service-modal-features li:hover::before {
+        background: rgba(33, 204, 122, 0.2);
+        transform: scale(1.1);
+      }
+      
+      .service-modal-close {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        color: white;
+        font-size: 28px;
+        font-weight: 300;
+        cursor: pointer;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 10;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      
+      .service-modal-close:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: rotate(90deg) scale(1.1);
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+      
+      .service-modal-footer {
+        padding: 25px 30px;
+        background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
+        text-align: center;
+        border-top: 1px solid #e2e8f0;
+      }
+      
+      .service-modal-btn {
+        background: #21cc7a;
+        color: white;
+        border: none;
+        padding: 14px 32px;
+        border-radius: 30px;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 6px 20px rgba(33, 204, 122, 0.35), 0 0 0 0 rgba(33, 204, 122, 0.5);
+        font-family: 'Nunito Sans', sans-serif;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .service-modal-btn::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+      }
+      
+      .service-modal-btn:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+      
+      .service-modal-btn:hover {
+        background: #21cc7a;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(33, 204, 122, 0.45), 0 0 0 4px rgba(33, 204, 122, 0.1);
+      }
+      
+      .service-modal-btn:active {
+        transform: translateY(-1px);
+      }
+      
+      .service-modal-btn span {
+        position: relative;
+        z-index: 1;
+      }
+      
+      @keyframes pulse {
+        0%, 100% {
+          opacity: 0.5;
+        }
+        50% {
+          opacity: 0.8;
+        }
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px) scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      
+      @keyframes iconBounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+      
+      /* Reserve Room Button Enhancement */
+      .reserve-room-btn {
+        background: #2f89fc !important;
+        border: none !important;
+        color: white !important;
+        padding: 14px 35px !important;
+        font-weight: 700 !important;
+        font-size: 16px !important;
+        letter-spacing: 0.5px !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        box-shadow: 0 4px 15px rgba(47, 137, 252, 0.3) !important;
+        text-transform: uppercase !important;
+      }
+      
+      .reserve-room-btn:hover {
+        background: #1e6fd9 !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 20px rgba(47, 137, 252, 0.4) !important;
+        color: white !important;
+      }
+      
+      /* Booking Modal Styles */
+      .booking-modal {
+        display: none;
+        position: fixed;
+        z-index: 10001;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(8px);
+        animation: fadeIn 0.3s ease;
+        font-family: 'Nunito Sans', sans-serif;
+      }
+      
+      .booking-modal.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      
+      .booking-modal-content {
+        background: #ffffff;
+        margin: auto;
+        padding: 0;
+        border-radius: 24px;
+        width: 90%;
+        max-width: 700px;
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+        animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+        position: relative;
+        max-height: 90vh;
+        overflow-y: auto;
+        /* Hide scrollbar */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+      }
+      
+      .booking-modal-content::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+      }
+      
+      .booking-modal-header {
+        background: linear-gradient(135deg, #21cc7a 0%, #1ba865 100%);
+        padding: 40px 35px 30px;
+        color: white;
+        position: relative;
+        text-align: center;
+        overflow: hidden;
+      }
+      
+      .booking-modal-header::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        animation: pulse 3s ease-in-out infinite;
+      }
+      
+      .booking-modal-logo {
+        position: absolute;
+        top: 5px;
+        left: 2px;
+        z-index: 5;
+        opacity: 0.95;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        display: block;
+        width: 120px;
+        height: auto;
+      }
+      
+      .booking-modal-logo:hover {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+      
+      .booking-modal-logo img {
+        width: 120px;
+        height: auto;
+        display: block;
+        object-fit: contain;
+      }
+      
+      .booking-modal-title {
+        font-size: 28px;
+        font-weight: 800;
+        margin: 0 0 10px 0;
+        text-transform: none;
+        letter-spacing: -0.5px;
+        position: relative;
+        z-index: 1;
+        font-family: 'Nunito Sans', sans-serif;
+        line-height: 1.2;
+      }
+      
+      .booking-modal-subtitle {
+        font-size: 15px;
+        opacity: 0.9;
+        font-weight: 400;
+        position: relative;
+        z-index: 1;
+      }
+      
+      .booking-modal-close {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        color: white;
+        font-size: 28px;
+        font-weight: 300;
+        cursor: pointer;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 10;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      
+      .booking-modal-close:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: rotate(90deg) scale(1.1);
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+      
+      .booking-modal-body {
+        padding: 40px 35px;
+        background: #ffffff;
+      }
+      
+      .booking-form-group {
+        margin-bottom: 25px;
+      }
+      
+      .booking-form-label {
+        display: block;
+        font-size: 14px;
+        font-weight: 700;
+        color: #2d3748;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-family: 'Nunito Sans', sans-serif;
+      }
+      
+      .booking-form-input {
+        width: 100%;
+        padding: 14px 16px;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        font-size: 15px;
+        font-family: 'Nunito Sans', sans-serif;
+        transition: all 0.3s ease;
+        background: #f8fafc;
+        color: #2d3748;
+      }
+      
+      .booking-form-input:focus {
+        outline: none;
+        border-color: #21cc7a;
+        background: #ffffff;
+        box-shadow: 0 0 0 4px rgba(33, 204, 122, 0.1);
+      }
+      
+      .booking-form-select {
+        width: 100%;
+        padding: 14px 16px;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        font-size: 15px;
+        font-family: 'Nunito Sans', sans-serif;
+        transition: all 0.3s ease;
+        background: #f8fafc;
+        color: #2d3748;
+        cursor: pointer;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2321cc7a' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 16px center;
+        padding-right: 40px;
+      }
+      
+      .booking-form-select:focus {
+        outline: none;
+        border-color: #21cc7a;
+        background-color: #ffffff;
+        box-shadow: 0 0 0 4px rgba(33, 204, 122, 0.1);
+      }
+      
+      .booking-form-textarea {
+        width: 100%;
+        padding: 14px 16px;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        font-size: 15px;
+        font-family: 'Nunito Sans', sans-serif;
+        transition: all 0.3s ease;
+        background: #f8fafc;
+        color: #2d3748;
+        resize: vertical;
+        min-height: 100px;
+      }
+      
+      .booking-form-textarea:focus {
+        outline: none;
+        border-color: #21cc7a;
+        background: #ffffff;
+        box-shadow: 0 0 0 4px rgba(33, 204, 122, 0.1);
+      }
+      
+      .booking-form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      /* Autocomplete for pickup/drop-off */
+      .booking-form-group {
+        position: relative;
+      }
+
+      .location-suggestions {
+        position: absolute;
+        top: calc(100% + 6px);
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        max-height: 240px;
+        overflow-y: auto;
+        z-index: 30;
+        display: none;
+      }
+
+      .location-suggestions div {
+        padding: 12px 14px;
+        cursor: pointer;
+        font-size: 14px;
+        color: #2d3748;
+        transition: background 0.15s ease, color 0.15s ease;
+      }
+
+      .location-suggestions div:hover {
+        background: #f0fdf4;
+        color: #15803d;
+      }
+      
+      @media (max-width: 768px) {
+        .booking-form-row {
+          grid-template-columns: 1fr;
+        }
+      }
+      
+      .booking-modal-footer {
+        padding: 30px 35px;
+        background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
+        text-align: center;
+        border-top: 1px solid #e2e8f0;
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+      }
+      
+      .booking-modal-btn {
+        padding: 16px 40px;
+        border-radius: 30px;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        font-family: 'Nunito Sans', sans-serif;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        border: none;
+      }
+      
+      .booking-modal-btn-primary {
+        background: #21cc7a;
+        color: white;
+        box-shadow: 0 6px 20px rgba(33, 204, 122, 0.35);
+      }
+      
+      .booking-modal-btn-primary:hover {
+        background: #1ba865;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(33, 204, 122, 0.45);
+      }
+      
+      .booking-modal-btn-secondary {
+        background: #e2e8f0;
+        color: #2d3748;
+      }
+      
+      .booking-modal-btn-secondary:hover {
+        background: #cbd5e0;
+        transform: translateY(-2px);
+      }
+      
+      @media (max-width: 768px) {
+        .booking-modal-content {
+          width: 95%;
+          max-width: 100%;
+        }
+        
+        .booking-modal-body {
+          padding: 30px 25px;
+        }
+        
+        .booking-modal-header {
+          padding: 30px 25px 25px;
+        }
+        
+        .booking-modal-title {
+          font-size: 24px;
+        }
+        
+        .booking-modal-footer {
+          flex-direction: column;
+          padding: 25px;
+        }
+        
+        .booking-modal-btn {
+          width: 100%;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .service-modal-content {
+          width: 95%;
+          max-width: 100%;
+        }
+        
+        .service-modal-body {
+          padding: 25px;
+        }
+        
+        .service-modal-header {
+          padding: 20px;
+        }
+        
+        .service-modal-title {
+          font-size: 22px;
+        }
+      }
+      
+      /* Reduce footer size to half */
+      .ftco-footer {
+        padding: 3em 0 !important;
+      }
+      
+      .ftco-footer .row.mb-5 {
+        margin-bottom: 1.5rem !important;
+      }
+      
+      .ftco-footer-widget {
+        margin-bottom: 1rem !important;
+      }
+      
+      .ftco-footer-widget h2 {
+        font-size: 16px !important;
+        margin-bottom: 12px !important;
+      }
+      
+      .ftco-footer-widget p {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+        margin-bottom: 15px !important;
+      }
+      
+      .ftco-footer-social {
+        margin-top: 1rem !important;
+      }
+      
+      .ftco-footer-social li {
+        margin-right: 8px !important;
+      }
+      
+      .ftco-footer-social li a {
+        height: 35px !important;
+        width: 35px !important;
+      }
+      
+      .ftco-footer-social li a span {
+        font-size: 16px !important;
+      }
+      
+      .ftco-footer-widget ul.list-unstyled li {
+        padding: 3px 0 !important;
+        font-size: 13px !important;
+      }
+      
+      .ftco-footer-widget ul.list-unstyled li a {
+        padding: 3px 0 !important;
+      }
+      
+      .block-23 ul li {
+        padding: 4px 0 !important;
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+      }
+      
+      .block-23 ul li .text {
+        font-size: 13px !important;
+      }
+      
+      .ftco-footer .row:last-child {
+        margin-top: 1rem !important;
+        padding-top: 1rem !important;
+      }
+      
+      .ftco-footer .row:last-child p {
+        font-size: 12px !important;
+        margin-bottom: 0 !important;
+      }
+    </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="index.html">BAHAY <span>KUBO</span></a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav">
+	          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+	          <li class="nav-item"><a href="rooms.html" class="nav-link">Our Rooms</a></li>
+	          <li class="nav-item"><a href="restaurant.html" class="nav-link">Our Food</a></li>
+	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+	        </ul>
+        <div class="nav-item dropdown" id="profileDropdownContainer" style="margin-left: 30px; position: relative; border-left: 1px solid rgba(255, 255, 255, 0.2); padding-left: 20px;">
+          <a class="nav-link dropdown-toggle profile-nav-link" href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left: 0; padding-right: 20px; font-weight: 600; display: flex; align-items: center; gap: 10px;">
+            <span class="nav-profile-picture" style="width: 32px; height: 32px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(255, 255, 255, 0.3); display: flex; align-items: center; justify-content: center; background: #21cc7a; flex-shrink: 0;">
+              <span style="color: #fff; font-weight: 700; font-size: 14px; text-transform: uppercase;">GU</span>
+            </span>
+            <span>Profile (Guest)</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right profile-dropdown-menu" aria-labelledby="profileDropdown" style="right: 0; left: auto;">
+            <a class="dropdown-item" href="login.html">Login / Signup</a>
+            <div class="dropdown-item profile-submenu-toggle" style="cursor: pointer; position: relative; justify-content: space-between;">
+              <span>My Profile</span>
+              <i class="fas fa-chevron-right" style="font-size: 12px; transition: transform 0.3s ease; margin-left: auto;"></i>
+              <div class="profile-submenu">
+                <a class="dropdown-item submenu-item" href="edit_profile.html">Edit Profile</a>
+                <a class="dropdown-item submenu-item" href="transaction.html">Transaction</a>
+              </div>
+            </div>
+            <a class="dropdown-item logout-link" href="#" onclick="handleLogout(); return false;">Log out</a>
+          </div>
+        </div>
+        <div class="nav-item" id="simpleLoginLink" style="margin-left: 30px; position: relative; border-left: 1px solid rgba(255, 255, 255, 0.2); padding-left: 20px; display: none;">
+          <a href="login.html" class="nav-link login-nav-link" style="font-weight: 600; padding-left: 0;">Log in</a>
+        </div>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+		<div class="hero">
+	    <section class="home-slider owl-carousel">
+	      <div class="slider-item" style="background-image:url(images/bg_1.jpg);">
+	      	<div class="overlay"></div>
+	        <div class="container">
+	          <div class="row no-gutters slider-text align-items-center justify-content-end">
+	          <div class="col-md-6 ftco-animate">
+	          	<div class="text">
+	          		<h2>More than a resort... an experience</h2>
+		            <h1 class="mb-3">for the whole family, all year round.</h1>
+	            </div>
+	          </div>
+	        </div>
+	        </div>
+	      </div>
+
+	      <div class="slider-item" style="background-image:url(images/bg_2.jpg);">
+	      	<div class="overlay"></div>
+	        <div class="container">
+	          <div class="row no-gutters slider-text align-items-center justify-content-end">
+	          <div class="col-md-6 ftco-animate">
+	          	<div class="text">
+	          		<h2>BAHAY KUBO Resort</h2>
+		            <h1 class="mb-3">It feels like staying in your own home.</h1>
+	            </div>
+	          </div>
+	        </div>
+	        </div>
+	      </div>
+	    </section>
+	  </div>
+
+		<section class="ftco-section services-section">
+      <div class="container">
+      	<div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading">Welcome to BAHAY KUBO Resort</span>
+            <h2 class="mb-4">You'll Never Want To Leave</h2>
+          </div>
+        </div>  
+        <div class="row d-flex">
+          <div class="col-md pr-md-1 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services py-4 d-block text-center service-card" data-service="friendly-service">
+              <div class="d-flex justify-content-center">
+              	<div class="icon d-flex align-items-center justify-content-center">
+              		<span class="flaticon-reception-bell"></span>
+              	</div>
+              </div>
+              <div class="media-body">
+                <h3 class="heading mb-3">Friendly Service</h3>
+              </div>
+            </div>      
+          </div>
+          <div class="col-md px-md-1 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services active py-4 d-block text-center service-card" data-service="breakfast">
+              <div class="d-flex justify-content-center">
+              	<div class="icon d-flex align-items-center justify-content-center">
+              		<span class="flaticon-serving-dish"></span>
+              	</div>
+              </div>
+              <div class="media-body">
+                <h3 class="heading mb-3">Get Breakfast</h3>
+              </div>
+            </div>    
+          </div>
+          <div class="col-md px-md-1 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services py-4 d-block text-center service-card" data-service="transfer">
+              <div class="d-flex justify-content-center">
+              	<div class="icon d-flex align-items-center justify-content-center">
+              		<span class="flaticon-car"></span>
+              	</div>
+              </div>
+              <div class="media-body">
+                <h3 class="heading mb-3">Transfer Services</h3>
+              </div>
+            </div>      
+          </div>
+          <div class="col-md pl-md-1 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services py-4 d-block text-center service-card" data-service="rooms">
+              <div class="d-flex justify-content-center">
+              	<div class="icon d-flex align-items-center justify-content-center">
+              		<span class="ion-ios-bed"></span>
+              	</div>
+              </div>
+              <div class="media-body">
+                <h3 class="heading mb-3">Cozy Rooms</h3>
+              </div>
+            </div>      
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section ftco-wrap-about ftco-no-pt ftco-no-pb">
+			<div class="container">
+				<div class="row no-gutters">
+					<div class="col-md-7 order-md-last d-flex">
+						<div class="img img-1 mr-md-2 ftco-animate" style="background-image: url(images/about-1.jpg);"></div>
+						<div class="img img-2 ml-md-2 ftco-animate" style="background-image: url(images/about-2.jpg);"></div>
+					</div>
+					<div class="col-md-5 wrap-about pb-md-3 ftco-animate pr-md-5 pb-md-5 pt-md-4">
+	          <div class="heading-section mb-4 my-5 my-md-0">
+	          	<span class="subheading">About BAHAY KUBO Resort</span>
+	            <h2 class="mb-4">BAHAY KUBO Resort the Most Recommended Bahay Kubo All Over the World</h2>
+	          </div>
+	          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+	          <p><button type="button" class="btn btn-secondary rounded reserve-room-btn" id="reserveRoomBtn">Reserve Your Room Now</button></p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+    <section class="testimony-section">
+      <div class="container">
+        <div class="row no-gutters ftco-animate justify-content-center">
+        	<div class="col-md-5 d-flex">
+        		<div class="testimony-img aside-stretch-2" style="background-image: url(images/testimony-img.jpg);"></div>
+        	</div>
+          <div class="col-md-7 py-5 pl-md-5">
+          	<div class="py-md-5">
+	          	<div class="heading-section ftco-animate mb-4">
+	          		<span class="subheading">Feedback</span>
+			          <h2 class="mb-0">Happy Customer</h2>
+			        </div>
+	            <div class="carousel-testimony owl-carousel ftco-animate">
+	              <div class="item">
+	                <div class="testimony-wrap pb-4">
+	                  <div class="text">
+	                    <p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+	                  </div>
+	                  <div class="d-flex">
+		                  <div class="user-img" style="background-image: url(images/person_1.jpg)">
+		                  </div>
+		                  <div class="pos ml-3">
+		                  	<p class="name">Gerald Hodson</p>
+		                    <span class="position">Businessman</span>
+		                  </div>
+		                </div>
+	                </div>
+	              </div>
+	              <div class="item">
+	                <div class="testimony-wrap pb-4">
+	                  <div class="text">
+	                    <p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+	                  </div>
+	                  <div class="d-flex">
+		                  <div class="user-img" style="background-image: url(images/person_2.jpg)">
+		                  </div>
+		                  <div class="pos ml-3">
+		                  	<p class="name">Gerald Hodson</p>
+		                    <span class="position">Businessman</span>
+		                  </div>
+		                </div>
+	                </div>
+	              </div>
+	              <div class="item">
+	                <div class="testimony-wrap pb-4">
+	                  <div class="text">
+	                    <p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+	                  </div>
+	                  <div class="d-flex">
+		                  <div class="user-img" style="background-image: url(images/person_3.jpg)">
+		                  </div>
+		                  <div class="pos ml-3">
+		                  	<p class="name">Gerald Hodson</p>
+		                    <span class="position">Businessman</span>
+		                  </div>
+		                </div>
+	                </div>
+	              </div>
+	              <div class="item">
+	                <div class="testimony-wrap pb-4">
+	                  <div class="text">
+	                    <p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+	                  </div>
+	                  <div class="d-flex">
+		                  <div class="user-img" style="background-image: url(images/person_4.jpg)">
+		                  </div>
+		                  <div class="pos ml-3">
+		                  	<p class="name">Gerald Hodson</p>
+		                    <span class="position">Businessman</span>
+		                  </div>
+		                </div>
+	                </div>
+	              </div>
+	            </div>
+	          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="instagram">
+      <div class="container-fluid">
+        <div class="row no-gutters justify-content-center pb-5">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+          	<span class="subheading">Photos</span>
+            <h2><span>Instagram</span></h2>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-1.jpg" class="insta-img image-popup" style="background-image: url(images/insta-1.jpg);">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-2.jpg" class="insta-img image-popup" style="background-image: url(images/insta-2.jpg);">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-3.jpg" class="insta-img image-popup" style="background-image: url(images/insta-3.jpg);">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-4.jpg" class="insta-img image-popup" style="background-image: url(images/insta-4.jpg);">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-12 col-md ftco-animate">
+            <a href="images/insta-5.jpg" class="insta-img image-popup" style="background-image: url(images/insta-5.jpg);">
+              <div class="icon d-flex justify-content-center">
+                <span class="icon-instagram align-self-center"></span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="ftco-footer ftco-section img" style="background-image: url(images/bg_4.jpg);">
+    	<div class="overlay"></div>
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">BAHAY KUBO</h2>
+              <p>More than a resort... an experience. Bahay Kubo Resort offers a unique blend of traditional Filipino architecture and modern amenities. Experience tranquility and connection with nature in our beautifully landscaped gardens, refreshing swimming pool, and renowned restaurant serving authentic Filipino cuisine.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Useful Links</h2>
+              <ul class="list-unstyled">
+                <li><a href="index.html" class="py-2 d-block">Home</a></li>
+                <li><a href="rooms.html" class="py-2 d-block">Our Rooms</a></li>
+                <li><a href="restaurant.html" class="py-2 d-block">Our Food</a></li>
+                <li><a href="blog.html" class="py-2 d-block">Blog</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Privacy</h2>
+              <ul class="list-unstyled">
+                <li><a href="about.html" class="py-2 d-block">About Us</a></li>
+                <li><a href="contact.html" class="py-2 d-block">Contact Us</a></li>
+                <li><a href="#" class="py-2 d-block">Privacy Policy</a></li>
+                <li><a href="#" class="py-2 d-block">Terms of Service</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">Bahay Kubo Resort, Philippines</span></li>
+	                <li><a href="tel://+639123456789"><span class="icon icon-phone"></span><span class="text">+63 912 345 6789</span></a></li>
+	                <li><a href="mailto:info@bahaykuboresort.com"><span class="icon icon-envelope"></span><span class="text">info@bahaykuboresort.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This system is made by BSIT-3D Group 4 Students
+  </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    
+    // Profile dropdown - click only, no hover
+    $(document).ready(function() {
+      // Update profile display with logged-in user info
+      function updateProfileDisplay() {
+        // Get current user from localStorage or sessionStorage
+        var currentUser = null;
+        var storedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
+        
+        if (storedUser) {
+          try {
+            currentUser = JSON.parse(storedUser);
+          } catch (e) {
+            console.error('Error parsing user data:', e);
+          }
+        }
+        
+        var $profileText = $('#profileDropdown span:last-child');
+        var $profileInitials = $('#profileDropdown .nav-profile-picture span');
+        var $loginLink = $('.profile-dropdown-menu .dropdown-item[href="login.html"]');
+        var $profileContainer = $('#profileDropdownContainer');
+        var $simpleLoginLink = $('#simpleLoginLink');
+        
+        if (currentUser && currentUser.logged_in) {
+          // Show profile dropdown
+          $profileContainer.show();
+          $simpleLoginLink.hide();
+          // User is logged in - show their name
+          var firstName = currentUser.first_name || '';
+          var lastName = currentUser.last_name || '';
+          var fullName = (firstName + ' ' + lastName).trim() || currentUser.username || 'User';
+          
+          // Update profile text
+          $profileText.text('Profile (' + fullName + ')');
+          
+          // Get user data to check for avatar
+          var users = JSON.parse(localStorage.getItem('users') || '[]');
+          var user = users.find(u => u.id === currentUser.user_id);
+          
+          // Check if user has avatar
+          var $profilePicture = $('#profileDropdown .nav-profile-picture');
+          var existingImg = $profilePicture.find('img');
+          
+          if (user && user.avatar) {
+            // User has avatar - show image
+            if (existingImg.length > 0) {
+              existingImg.attr('src', user.avatar);
+            } else {
+              // Remove initials span and add image
+              $profileInitials.remove();
+              $profilePicture.append('<img src="' + user.avatar + '" alt="Profile Picture" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">');
+            }
+            $profilePicture.css('background', 'transparent');
+          } else {
+            // No avatar - show initials
+            if (existingImg.length > 0) {
+              existingImg.remove();
+              $profilePicture.append('<span style="color: #fff; font-weight: 700; font-size: 14px; text-transform: uppercase;"></span>');
+              $profileInitials = $profilePicture.find('span');
+            }
+            $profilePicture.css('background', '#21cc7a');
+            
+            // Update initials (first letter of first name + first letter of last name)
+            var initials = '';
+            if (firstName && lastName) {
+              initials = (firstName.charAt(0) + lastName.charAt(0)).toUpperCase();
+            } else if (currentUser.username) {
+              initials = currentUser.username.substring(0, 2).toUpperCase();
+            } else {
+              initials = 'GU';
+            }
+            $profileInitials.text(initials);
+          }
+          
+          // Hide login link, show My Profile submenu and logout
+          $loginLink.hide();
+          $('.profile-dropdown-menu .profile-submenu-toggle').show();
+          $('.profile-dropdown-menu .logout-link').show();
+        } else {
+          // User is not logged in - hide profile dropdown and show simple login link
+          $profileContainer.hide();
+          $simpleLoginLink.show();
+        }
+      }
+      
+      // Update profile on page load
+      updateProfileDisplay();
+      
+      // Check if user just logged in and wants to reserve a room
+      var pendingAction = localStorage.getItem('pendingAction');
+      if (pendingAction === 'reserve-room') {
+        // Check if user is now logged in
+        var currentUser = null;
+        var storedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
+        
+        if (storedUser) {
+          try {
+            currentUser = JSON.parse(storedUser);
+          } catch (e) {
+            console.error('Error parsing user data:', e);
+          }
+        }
+        
+        if (currentUser && currentUser.logged_in) {
+          // Clear the pending action
+          localStorage.removeItem('pendingAction');
+          
+          // Open booking modal after a short delay to ensure page is fully loaded
+          setTimeout(function() {
+            $('#bookingModal').addClass('active');
+            $('body').css('overflow', 'hidden');
+          }, 300);
+        }
+      }
+      
+      var $profileDropdown = $('#profileDropdown');
+      var $profileMenu = $profileDropdown.next('.profile-dropdown-menu');
+      var $profileContainer = $profileDropdown.closest('.dropdown');
+      
+      // Prevent hover from opening
+      $profileContainer.off('mouseenter mouseleave');
+      
+      // Click to toggle
+      $profileDropdown.on('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        var isOpen = $profileMenu.hasClass('show');
+        
+        // Close all other dropdowns
+        $('.dropdown-menu').not($profileMenu).removeClass('show');
+        $('.dropdown-toggle').not($profileDropdown).attr('aria-expanded', 'false');
+        
+        if (isOpen) {
+          // Close with animation
+          $profileMenu.removeClass('show');
+          $profileDropdown.attr('aria-expanded', 'false');
+        } else {
+          // Open with animation - remove show class first to reset animation
+          $profileMenu.removeClass('show');
+          // Force reflow to restart animation
+          $profileMenu[0].offsetHeight;
+          // Add show class to trigger animation
+          $profileMenu.addClass('show');
+          $profileDropdown.attr('aria-expanded', 'true');
+        }
+      });
+      
+      // Keep dropdown open when hovering over it
+      $profileMenu.on('mouseenter', function() {
+        $(this).addClass('show');
+      });
+      
+      // Close when clicking outside
+      $(document).on('click', function(e) {
+        if (!$(e.target).closest('.dropdown').length) {
+          $profileMenu.removeClass('show');
+          $profileDropdown.attr('aria-expanded', 'false');
+          // Close submenu when clicking outside
+          $('.profile-submenu-toggle').removeClass('active');
+        }
+      });
+      
+      // My Profile submenu toggle
+      $(document).on('click', '.profile-submenu-toggle', function(e) {
+        e.stopPropagation();
+        var $toggle = $(this);
+        var $submenu = $toggle.find('.profile-submenu');
+        
+        // Toggle active class
+        $toggle.toggleClass('active');
+        
+        // Close other submenus if any
+        $('.profile-submenu-toggle').not($toggle).removeClass('active');
+      });
+      
+      // Close submenu when clicking on submenu items
+      $(document).on('click', '.profile-submenu .submenu-item', function() {
+        $('.profile-submenu-toggle').removeClass('active');
+      });
+      
+      // Close submenu when clicking outside the submenu
+      $(document).on('click', function(e) {
+        if (!$(e.target).closest('.profile-submenu-toggle').length && 
+            !$(e.target).closest('.profile-submenu').length) {
+          $('.profile-submenu-toggle').removeClass('active');
+        }
+      });
+      
+      // Logout functionality
+      window.handleLogout = function() {
+        // Show loading overlay
+        var loadingOverlay = document.getElementById('logoutLoadingOverlay');
+        if (loadingOverlay) {
+          loadingOverlay.classList.add('active');
+        }
+        
+        // Clear all stored data
+        localStorage.removeItem('currentUser');
+        sessionStorage.removeItem('currentUser');
+        
+        // Clear any cookies
+        document.cookie.split(";").forEach(function(c) { 
+          document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+        });
+        
+        // Redirect to homepage after a short delay
+        setTimeout(function() {
+          window.location.href = 'index.html';
+        }, 500);
+      };
+    });
+  </script>
+  
+  <style>
+    /* Loading Screen for Logout */
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .loading-overlay.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .loading-container {
+      text-align: center;
+      color: #f5f5dc;
+    }
+
+    .loading-spinner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .spinner-circle {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #4a8c3e 0%, #2d5016 100%);
+      animation: spinner-bounce 1.4s ease-in-out infinite both;
+      box-shadow: 0 4px 12px rgba(74, 140, 62, 0.4);
+    }
+
+    .spinner-circle:nth-child(1) {
+      animation-delay: -0.32s;
+    }
+
+    .spinner-circle:nth-child(2) {
+      animation-delay: -0.16s;
+    }
+
+    .spinner-circle:nth-child(3) {
+      animation-delay: 0s;
+    }
+
+    @keyframes spinner-bounce {
+      0%, 80%, 100% {
+        transform: scale(0.6);
+        opacity: 0.5;
+      }
+      40% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .loading-text {
+      font-size: 24px;
+      font-weight: 600;
+      color: #f5f5dc;
+      margin-bottom: 8px;
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      letter-spacing: 1px;
+      animation: loading-text-pulse 2s ease-in-out infinite;
+    }
+
+    .loading-subtext {
+      font-size: 14px;
+      color: #888;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    @keyframes loading-text-pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.6;
+      }
+    }
+  </style>
+  
+  <!-- Loading Overlay for Logout -->
+  <div class="loading-overlay" id="logoutLoadingOverlay">
+    <div class="loading-container">
+      <div class="loading-spinner">
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+      </div>
+      <div class="loading-text">Logging out...</div>
+      <div class="loading-subtext">Please wait</div>
+    </div>
+  </div>
+  
+  <!-- Service Modals -->
+  <!-- Friendly Service Modal -->
+  <div id="friendly-service-modal" class="service-modal">
+    <div class="service-modal-content">
+      <span class="service-modal-close">&times;</span>
+      <div class="service-modal-header">
+        <a href="index.html" class="service-modal-logo"><img src="logo/logo.png" alt="BAHAY KUBO Resort"></a>
+        <span class="service-modal-icon flaticon-reception-bell"></span>
+        <h2 class="service-modal-title">Friendly Service</h2>
+      </div>
+      <div class="service-modal-body">
+        <p class="service-modal-description">
+          Experience exceptional hospitality with our dedicated team committed to making your stay unforgettable. Our friendly staff is available 24/7 to assist with any request, ensuring your comfort and satisfaction throughout your visit.
+        </p>
+        <ul class="service-modal-features">
+          <li>24/7 Concierge Service</li>
+          <li>Multilingual Staff Support</li>
+          <li>Personalized Guest Assistance</li>
+          <li>Quick Response to Requests</li>
+          <li>Warm and Welcoming Atmosphere</li>
+        </ul>
+      </div>
+      <div class="service-modal-footer">
+        <button class="service-modal-btn" data-redirect-url="contact.html" data-service-action="contact"><span>Contact Us</span></button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Breakfast Modal -->
+  <div id="breakfast-modal" class="service-modal">
+    <div class="service-modal-content">
+      <span class="service-modal-close">&times;</span>
+      <div class="service-modal-header">
+        <a href="index.html" class="service-modal-logo"><img src="logo/logo.png" alt="BAHAY KUBO Resort"></a>
+        <span class="service-modal-icon flaticon-serving-dish"></span>
+        <h2 class="service-modal-title">Get Breakfast</h2>
+      </div>
+      <div class="service-modal-body">
+        <p class="service-modal-description">
+          Start your day right with our delicious breakfast buffet featuring a wide variety of local and international dishes. Fresh ingredients, expertly prepared, served in a beautiful setting.
+        </p>
+        <ul class="service-modal-features">
+          <li>Complimentary Breakfast Buffet</li>
+          <li>Fresh Local & International Cuisine</li>
+          <li>Vegetarian & Vegan Options Available</li>
+          <li>Served Daily 6:00 AM - 10:00 AM</li>
+          <li>Room Service Breakfast Available</li>
+        </ul>
+      </div>
+      <div class="service-modal-footer">
+        <button class="service-modal-btn" data-redirect-url="restaurant.html" data-service-action="view-menu"><span>View Menu</span></button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Transfer Services Modal -->
+  <div id="transfer-modal" class="service-modal">
+    <div class="service-modal-content">
+      <span class="service-modal-close">&times;</span>
+      <div class="service-modal-header">
+        <a href="index.html" class="service-modal-logo"><img src="logo/logo.png" alt="BAHAY KUBO Resort"></a>
+        <span class="service-modal-icon flaticon-car"></span>
+        <h2 class="service-modal-title">Transfer Services</h2>
+      </div>
+      <div class="service-modal-body">
+        <p class="service-modal-description">
+          Enjoy hassle-free transportation with our reliable transfer services. We provide comfortable, air-conditioned vehicles to take you to and from the airport, local attractions, and anywhere you need to go.
+        </p>
+        <ul class="service-modal-features">
+          <li>Airport Pickup & Drop-off</li>
+          <li>24/7 Transportation Service</li>
+          <li>Professional & Licensed Drivers</li>
+          <li>Comfortable & Air-Conditioned Vehicles</li>
+          <li>Competitive Pricing</li>
+        </ul>
+      </div>
+      <div class="service-modal-footer">
+        <button class="service-modal-btn" id="openBookTransferBtn" data-service-action="book-transfer"><span>Book Transfer</span></button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Cozy Rooms Modal -->
+  <div id="rooms-modal" class="service-modal">
+    <div class="service-modal-content">
+      <span class="service-modal-close">&times;</span>
+      <div class="service-modal-header">
+        <a href="index.html" class="service-modal-logo"><img src="logo/logo.png" alt="BAHAY KUBO Resort"></a>
+        <span class="service-modal-icon ion-ios-bed"></span>
+        <h2 class="service-modal-title">Cozy Rooms</h2>
+      </div>
+      <div class="service-modal-body">
+        <p class="service-modal-description">
+          Rest comfortably in our beautifully designed rooms featuring modern amenities, plush bedding, and thoughtful touches. Each room is carefully crafted to provide a peaceful retreat after your day's adventures.
+        </p>
+        <ul class="service-modal-features">
+          <li>Elegantly Furnished Rooms</li>
+          <li>Premium Bedding & Linens</li>
+          <li>Modern Amenities & Technology</li>
+          <li>Stunning Views Available</li>
+          <li>Daily Housekeeping Service</li>
+        </ul>
+      </div>
+      <div class="service-modal-footer">
+        <button class="service-modal-btn" data-redirect-url="rooms.html" data-service-action="view-rooms"><span>View Rooms</span></button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Login Required Modal -->
+  <div id="loginRequiredModal" class="booking-modal">
+    <div class="booking-modal-content">
+      <span class="booking-modal-close">&times;</span>
+      <div class="booking-modal-header">
+        <a href="index.html" class="booking-modal-logo"><img src="logo/logo.png" alt="BAHAY KUBO Resort"></a>
+        <h2 class="booking-modal-title">Login Required</h2>
+        <p class="booking-modal-subtitle">Please log in to check availability</p>
+      </div>
+      <div class="booking-modal-body">
+        <p style="font-size: 15px; line-height: 1.7; color: #4a5568; margin-bottom: 25px; text-align: center;">
+          You need to be logged in to check room availability and make a booking. Please log in to continue.
+        </p>
+        <div style="text-align: center; padding: 20px 0;">
+          <i class="fas fa-lock" style="font-size: 48px; color: #21cc7a; margin-bottom: 15px; display: block;"></i>
+        </div>
+      </div>
+      <div class="booking-modal-footer">
+        <button type="button" class="booking-modal-btn booking-modal-btn-secondary" id="cancelLoginModalBtn">Cancel</button>
+        <button type="button" class="booking-modal-btn booking-modal-btn-primary" id="goToLoginBtn">Go to Login</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Book Transfer Modal -->
+  <div id="bookTransferModal" class="booking-modal">
+    <div class="booking-modal-content">
+      <span class="booking-modal-close">&times;</span>
+      <div class="booking-modal-header">
+        <a href="index.html" class="booking-modal-logo"><img src="logo/logo.png" alt="BAHAY KUBO Resort"></a>
+        <h2 class="booking-modal-title">Book Transfer Service</h2>
+        <p class="booking-modal-subtitle">Reserve your transportation with us</p>
+      </div>
+      <div class="booking-modal-body">
+        <form id="bookTransferForm">
+          <div class="booking-form-group">
+            <label class="booking-form-label" for="transferType">Service Type</label>
+            <select id="transferType" name="transferType" class="booking-form-select" required>
+              <option value="">Select Service Type</option>
+              <option value="airport-pickup">Airport Pickup</option>
+              <option value="airport-dropoff">Airport Drop-off</option>
+              <option value="round-trip">Round Trip (Airport)</option>
+              <option value="local-transfer">Local Transfer</option>
+              <option value="city-tour">City Tour</option>
+            </select>
+          </div>
+          
+          <div class="booking-form-row">
+            <div class="booking-form-group">
+              <label class="booking-form-label" for="pickupLocation">Pickup Location</label>
+              <input type="text" id="pickupLocation" name="pickupLocation" class="booking-form-input" placeholder="Enter pickup address" required>
+            </div>
+            <div class="booking-form-group">
+              <label class="booking-form-label" for="dropoffLocation">Drop-off Location</label>
+              <input type="text" id="dropoffLocation" name="dropoffLocation" class="booking-form-input" placeholder="Enter drop-off address" required>
+            </div>
+          </div>
+          
+          <div class="booking-form-row">
+            <div class="booking-form-group">
+              <label class="booking-form-label" for="transferDate">Transfer Date</label>
+              <input type="date" id="transferDate" name="transferDate" class="booking-form-input" required>
+            </div>
+            <div class="booking-form-group">
+              <label class="booking-form-label" for="transferTime">Transfer Time</label>
+              <input type="time" id="transferTime" name="transferTime" class="booking-form-input" required>
+            </div>
+          </div>
+          
+          <div class="booking-form-group">
+            <label class="booking-form-label" for="vehicleType">Vehicle Type</label>
+            <select id="vehicleType" name="vehicleType" class="booking-form-select" required>
+              <option value="">Select Vehicle Type</option>
+              <option value="sedan" data-price="1500">Sedan (1-3 passengers) - ₱1,500</option>
+              <option value="suv" data-price="2500">SUV (4-6 passengers) - ₱2,500</option>
+              <option value="van" data-price="3500">Van (7-10 passengers) - ₱3,500</option>
+              <option value="luxury" data-price="5000">Luxury Vehicle (1-3 passengers) - ₱5,000</option>
+            </select>
+          </div>
+          
+          <div class="booking-form-row">
+            <div class="booking-form-group">
+              <label class="booking-form-label" for="passengers">Number of Passengers</label>
+              <input type="number" id="passengers" name="passengers" class="booking-form-input" min="1" max="10" value="1" required>
+            </div>
+            <div class="booking-form-group">
+              <label class="booking-form-label" for="luggage">Number of Luggage</label>
+              <input type="number" id="luggage" name="luggage" class="booking-form-input" min="0" max="10" value="0" required>
+            </div>
+          </div>
+          
+          <div class="booking-form-group">
+            <label class="booking-form-label" for="contactNumber">Contact Number</label>
+            <input type="tel" id="contactNumber" name="contactNumber" class="booking-form-input" placeholder="+63 912 345 6789" required>
+          </div>
+          
+          <div class="booking-form-group">
+            <label class="booking-form-label" for="specialInstructions">Special Instructions (Optional)</label>
+            <textarea id="specialInstructions" name="specialInstructions" class="booking-form-textarea" placeholder="Any special requests or instructions..."></textarea>
+          </div>
+          
+          <div class="booking-form-group" style="background: #f8fafc; padding: 20px; border-radius: 12px; margin-top: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <span style="font-weight: 600; color: #2d3748;">Estimated Total:</span>
+              <span id="transferTotal" style="font-size: 24px; font-weight: 700; color: #21cc7a;">₱0.00</span>
+            </div>
+            <p style="font-size: 12px; color: #717171; margin: 0;">Price may vary based on distance and special requests</p>
+          </div>
+        </form>
+      </div>
+      <div class="booking-modal-footer">
+        <button type="button" class="booking-modal-btn booking-modal-btn-secondary" id="cancelTransferBtn">Cancel</button>
+        <button type="button" class="booking-modal-btn booking-modal-btn-primary" id="confirmTransferBtn">Confirm Booking</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking Receipt Modal -->
+  <div id="bookingReceiptModal" class="booking-modal">
+    <div class="booking-modal-content" style="max-width: 600px;">
+      <span class="booking-modal-close">&times;</span>
+      <div class="booking-modal-header">
+        <a href="index.html" class="booking-modal-logo"><img src="logo/logo.png" alt="BAHAY KUBO Resort"></a>
+        <h2 class="booking-modal-title">Booking Confirmed!</h2>
+        <p class="booking-modal-subtitle">Your transfer service has been booked successfully</p>
+      </div>
+      <div class="booking-modal-body">
+        <div style="text-align: center; margin-bottom: 30px;">
+          <div style="width: 80px; height: 80px; margin: 0 auto 20px; background: #d1fae5; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+            <i class="fas fa-check-circle" style="font-size: 48px; color: #21cc7a;"></i>
+          </div>
+          <p style="font-size: 16px; color: #4a5568; margin: 0;">Thank you for your booking!</p>
+        </div>
+
+        <div style="background: #f8fafc; border-radius: 12px; padding: 25px; margin-bottom: 25px;">
+          <div style="text-align: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #e2e8f0;">
+            <p style="font-size: 12px; color: #718096; margin: 0 0 5px; text-transform: uppercase; letter-spacing: 1px;">Booking Reference</p>
+            <p id="receiptBookingRef" style="font-size: 24px; font-weight: 700; color: #2d3748; margin: 0; letter-spacing: 2px;"></p>
+          </div>
+
+          <div style="margin-bottom: 20px;">
+            <h3 style="font-size: 16px; font-weight: 700; color: #2d3748; margin: 0 0 15px; text-transform: uppercase; letter-spacing: 0.5px;">Booking Details</h3>
+            <div style="display: grid; gap: 12px;">
+              <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+                <span style="color: #718096; font-size: 14px;">Service Type:</span>
+                <span id="receiptServiceType" style="color: #2d3748; font-weight: 600; font-size: 14px; text-align: right;"></span>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+                <span style="color: #718096; font-size: 14px;">Pickup Location:</span>
+                <span id="receiptPickup" style="color: #2d3748; font-weight: 600; font-size: 14px; text-align: right;"></span>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+                <span style="color: #718096; font-size: 14px;">Drop-off Location:</span>
+                <span id="receiptDropoff" style="color: #2d3748; font-weight: 600; font-size: 14px; text-align: right;"></span>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+                <span style="color: #718096; font-size: 14px;">Transfer Date:</span>
+                <span id="receiptDate" style="color: #2d3748; font-weight: 600; font-size: 14px; text-align: right;"></span>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+                <span style="color: #718096; font-size: 14px;">Transfer Time:</span>
+                <span id="receiptTime" style="color: #2d3748; font-weight: 600; font-size: 14px; text-align: right;"></span>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+                <span style="color: #718096; font-size: 14px;">Vehicle Type:</span>
+                <span id="receiptVehicle" style="color: #2d3748; font-weight: 600; font-size: 14px; text-align: right;"></span>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+                <span style="color: #718096; font-size: 14px;">Passengers:</span>
+                <span id="receiptPassengers" style="color: #2d3748; font-weight: 600; font-size: 14px; text-align: right;"></span>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+                <span style="color: #718096; font-size: 14px;">Luggage:</span>
+                <span id="receiptLuggage" style="color: #2d3748; font-weight: 600; font-size: 14px; text-align: right;"></span>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+                <span style="color: #718096; font-size: 14px;">Contact Number:</span>
+                <span id="receiptContact" style="color: #2d3748; font-weight: 600; font-size: 14px; text-align: right;"></span>
+              </div>
+              <div id="receiptInstructionsContainer" style="display: none; padding: 10px 0; border-bottom: 1px solid #e2e8f0;">
+                <span style="color: #718096; font-size: 14px; display: block; margin-bottom: 5px;">Special Instructions:</span>
+                <span id="receiptInstructions" style="color: #2d3748; font-size: 14px; font-style: italic;"></span>
+              </div>
+            </div>
+          </div>
+
+          <div style="background: #ffffff; border-radius: 8px; padding: 20px; margin-top: 20px; border: 2px solid #21cc7a;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 18px; font-weight: 700; color: #2d3748;">Total Amount:</span>
+              <span id="receiptAmount" style="font-size: 28px; font-weight: 700; color: #21cc7a;"></span>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: #fff7ed; border-left: 4px solid #f59e0b; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+          <p style="font-size: 13px; color: #92400e; margin: 0; line-height: 1.6;">
+            <i class="fas fa-info-circle" style="margin-right: 8px;"></i>
+            <strong>Status:</strong> Your booking is pending confirmation. You will receive a confirmation email once your booking is approved. You can check your booking status in the Transactions page.
+          </p>
+        </div>
+
+        <div style="text-align: center; padding: 20px 0; border-top: 1px solid #e2e8f0;">
+          <button type="button" id="printReceiptBtn" class="booking-modal-btn booking-modal-btn-secondary" style="margin-right: 10px;">
+            <i class="fas fa-print" style="margin-right: 8px;"></i>Print Receipt
+          </button>
+          <button type="button" id="closeReceiptBtn" class="booking-modal-btn booking-modal-btn-primary">
+            Done
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking Modal -->
+  <div id="bookingModal" class="booking-modal">
+    <div class="booking-modal-content">
+      <span class="booking-modal-close">&times;</span>
+      <div class="booking-modal-header">
+        <a href="index.html" class="booking-modal-logo"><img src="logo/logo.png" alt="BAHAY KUBO Resort"></a>
+        <h2 class="booking-modal-title">Reserve Your Room</h2>
+        <p class="booking-modal-subtitle">Book your perfect stay with us</p>
+      </div>
+      <div class="booking-modal-body">
+        <form id="reserveRoomForm">
+          <div class="booking-form-row">
+            <div class="booking-form-group">
+              <label class="booking-form-label" for="reserveCheckIn">Check-in Date</label>
+              <input type="date" id="reserveCheckIn" name="checkIn" class="booking-form-input" required>
+            </div>
+            <div class="booking-form-group">
+              <label class="booking-form-label" for="reserveCheckOut">Check-out Date</label>
+              <input type="date" id="reserveCheckOut" name="checkOut" class="booking-form-input" required>
+            </div>
+          </div>
+          
+          <div class="booking-form-row">
+            <div class="booking-form-group">
+              <label class="booking-form-label" for="reserveAdults">Adults</label>
+              <select id="reserveAdults" name="adults" class="booking-form-select" required>
+                <option value="1">1 Adult</option>
+                <option value="2" selected>2 Adults</option>
+                <option value="3">3 Adults</option>
+                <option value="4">4 Adults</option>
+                <option value="5">5 Adults</option>
+                <option value="6">6+ Adults</option>
+              </select>
+            </div>
+            <div class="booking-form-group">
+              <label class="booking-form-label" for="reserveChildren">Children</label>
+              <select id="reserveChildren" name="children" class="booking-form-select" required>
+                <option value="0" selected>0 Children</option>
+                <option value="1">1 Child</option>
+                <option value="2">2 Children</option>
+                <option value="3">3 Children</option>
+                <option value="4">4+ Children</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="booking-form-group">
+            <label class="booking-form-label" for="reserveRoomType">Room Type</label>
+            <select id="reserveRoomType" name="roomType" class="booking-form-select" required>
+              <option value="">Select Room Type</option>
+              <option value="king">King Room</option>
+              <option value="suite">Suite Room</option>
+              <option value="family">Family Room</option>
+              <option value="deluxe">Deluxe Room</option>
+              <option value="luxury">Luxury Room</option>
+              <option value="superior">Superior Room</option>
+            </select>
+          </div>
+          
+          <div class="booking-form-group">
+            <label class="booking-form-label" for="reserveSpecialRequests">Special Requests (Optional)</label>
+            <textarea id="reserveSpecialRequests" name="specialRequests" class="booking-form-textarea" placeholder="Any special requests or preferences..."></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="booking-modal-footer">
+        <button type="button" class="booking-modal-btn booking-modal-btn-secondary" id="cancelBookingBtn">Cancel</button>
+        <button type="button" class="booking-modal-btn booking-modal-btn-primary" id="confirmBookingBtn">Confirm Reservation</button>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // Service Modal Functionality
+    $(document).ready(function() {
+      // Service data mapping
+      const serviceModals = {
+        'friendly-service': '#friendly-service-modal',
+        'breakfast': '#breakfast-modal',
+        'transfer': '#transfer-modal',
+        'rooms': '#rooms-modal'
+      };
+      
+      // Open modal when service card is clicked
+      $('.service-card').on('click', function() {
+        const serviceType = $(this).data('service');
+        const modalId = serviceModals[serviceType];
+        
+        if (modalId) {
+          $(modalId).addClass('active');
+          $('body').css('overflow', 'hidden'); // Prevent background scrolling
+        }
+      });
+      
+      // Close modal when close button is clicked
+      $('.service-modal-close').on('click', function() {
+        $(this).closest('.service-modal').removeClass('active');
+        $('body').css('overflow', 'auto'); // Restore scrolling
+      });
+      
+      // Close modal when clicking outside the modal content
+      $('.service-modal').on('click', function(e) {
+        if ($(e.target).hasClass('service-modal')) {
+          $(this).removeClass('active');
+          $('body').css('overflow', 'auto'); // Restore scrolling
+        }
+      });
+      
+      // Close modal with Escape key
+      $(document).on('keydown', function(e) {
+        if (e.key === 'Escape') {
+          $('.service-modal.active').removeClass('active');
+          $('body').css('overflow', 'auto'); // Restore scrolling
+        }
+      });
+      
+      // Handle service modal button clicks with login check
+      $('.service-modal-btn[data-redirect-url]').on('click', function(e) {
+        e.preventDefault();
+        
+        var redirectUrl = $(this).data('redirect-url');
+        var serviceAction = $(this).data('service-action');
+        
+        // Check if user is logged in
+        var currentUser = null;
+        var storedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
+        
+        if (storedUser) {
+          try {
+            currentUser = JSON.parse(storedUser);
+          } catch (e) {
+            console.error('Error parsing user data:', e);
+          }
+        }
+        
+        // If user is not logged in, show login modal
+        if (!currentUser || !currentUser.logged_in) {
+          // Store the intended redirect URL for after login
+          localStorage.setItem('pendingRedirect', redirectUrl);
+          localStorage.setItem('pendingServiceAction', serviceAction || '');
+          
+          // Close current service modal
+          $('.service-modal.active').removeClass('active');
+          
+          // Show login required modal
+          $('#loginRequiredModal').addClass('active');
+          $('body').css('overflow', 'hidden');
+        } else {
+          // User is logged in - proceed with redirect
+          window.location.href = redirectUrl;
+        }
+      });
+      
+      // Handle Book Transfer button click
+      $('#openBookTransferBtn').on('click', function(e) {
+        e.preventDefault();
+        
+        // Check if user is logged in
+        var currentUser = null;
+        var storedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
+        
+        if (storedUser) {
+          try {
+            currentUser = JSON.parse(storedUser);
+          } catch (e) {
+            console.error('Error parsing user data:', e);
+          }
+        }
+        
+        // If user is not logged in, show login modal
+        if (!currentUser || !currentUser.logged_in) {
+          // Store that user wants to book transfer
+          localStorage.setItem('pendingAction', 'book-transfer');
+          
+          // Close current service modal
+          $('.service-modal.active').removeClass('active');
+          
+          // Show login required modal
+          $('#loginRequiredModal').addClass('active');
+          $('body').css('overflow', 'hidden');
+        } else {
+          // User is logged in - open transfer booking modal
+          $('.service-modal.active').removeClass('active');
+          $('#bookTransferModal').addClass('active');
+          $('body').css('overflow', 'hidden');
+        }
+      });
+      
+      // Transfer Booking Modal Functionality
+      // Set minimum date to today
+      var today = new Date().toISOString().split('T')[0];
+      $('#transferDate').attr('min', today);
+      
+      // Calculate and update total price when vehicle type changes
+      $('#vehicleType, #passengers').on('change', function() {
+        updateTransferTotal();
+      });
+      
+      function updateTransferTotal() {
+        var vehicleType = $('#vehicleType option:selected');
+        var basePrice = vehicleType.data('price') || 0;
+        var passengers = parseInt($('#passengers').val()) || 1;
+        
+        // Add extra charge for additional passengers beyond vehicle capacity
+        var extraPassengerCharge = 0;
+        var vehicleCapacity = {
+          'sedan': 3,
+          'suv': 6,
+          'van': 10,
+          'luxury': 3
+        };
+        
+        var selectedVehicle = $('#vehicleType').val();
+        if (selectedVehicle && passengers > vehicleCapacity[selectedVehicle]) {
+          extraPassengerCharge = (passengers - vehicleCapacity[selectedVehicle]) * 200;
+        }
+        
+        var total = parseFloat(basePrice) + extraPassengerCharge;
+        $('#transferTotal').text('₱' + total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+      }
+
+      // Location autocomplete (Luzon only)
+      var philippineLocations = [
+        // Metro Manila
+        'Quezon City, Metro Manila',
+        'Manila, Metro Manila',
+        'Taguig, Metro Manila',
+        'Makati, Metro Manila',
+        'Pasig, Metro Manila',
+        'Caloocan, Metro Manila',
+        'Paranaque, Metro Manila',
+        'Las Pinas, Metro Manila',
+        'Mandaluyong, Metro Manila',
+        'Marikina, Metro Manila',
+        'Pasay, Metro Manila',
+        'Valenzuela, Metro Manila',
+        'Muntinlupa, Metro Manila',
+        'San Juan, Metro Manila',
+        'Malabon, Metro Manila',
+        'Navotas, Metro Manila',
+        'Pateros, Metro Manila',
+        'Ninoy Aquino International Airport (MNL), Pasay',
+        'NAIA Terminal 1, Pasay',
+        'NAIA Terminal 2, Pasay',
+        'NAIA Terminal 3, Pasay',
+        'NAIA Terminal 4, Pasay',
+        'Manila Bay Area',
+        'Roxas Boulevard, Manila',
+        'EDSA, Quezon City',
+        'Ortigas Center, Pasig',
+        'Makati Central Business District',
+        'BGC, Taguig',
+        'SM Mall of Asia, Pasay',
+        'SM Megamall, Mandaluyong',
+        'Greenhills, San Juan',
+        'Eastwood City, Quezon City',
+        'Araneta Center, Quezon City',
+        'Cubao, Quezon City',
+        'Quiapo, Manila',
+        'Binondo, Manila',
+        'Intramuros, Manila',
+        'Malate, Manila',
+        'Ermita, Manila',
+        'Rizal Park, Manila',
+        'Luneta Park, Manila',
+        
+        // Rizal Province
+        'Antipolo, Rizal',
+        'Taytay, Rizal',
+        'Cainta, Rizal',
+        'Angono, Rizal',
+        'Binangonan, Rizal',
+        'Rodriguez, Rizal',
+        'San Mateo, Rizal',
+        'Marikina Heights, Rizal',
+        'Tanay, Rizal',
+        'Baras, Rizal',
+        'Pililla, Rizal',
+        'Jala-Jala, Rizal',
+        'Cardona, Rizal',
+        'Morong, Rizal',
+        'Teresa, Rizal',
+        
+        // Cavite
+        'Bacoor, Cavite',
+        'Imus, Cavite',
+        'Dasmarinas, Cavite',
+        'Tagaytay, Cavite',
+        'General Trias, Cavite',
+        'Trece Martires, Cavite',
+        'Kawit, Cavite',
+        'Noveleta, Cavite',
+        'Rosario, Cavite',
+        'Naic, Cavite',
+        'Tanza, Cavite',
+        'Alfonso, Cavite',
+        'Amadeo, Cavite',
+        'Carmona, Cavite',
+        'General Mariano Alvarez, Cavite',
+        'Indang, Cavite',
+        'Magallanes, Cavite',
+        'Maragondon, Cavite',
+        'Mendez, Cavite',
+        'Silang, Cavite',
+        'Tagaytay Ridge',
+        'Taal Vista, Tagaytay',
+        'People\'s Park, Tagaytay',
+        'Sky Ranch, Tagaytay',
+        
+        // Laguna
+        'Santa Rosa, Laguna',
+        'San Pedro, Laguna',
+        'Binan, Laguna',
+        'Calamba, Laguna',
+        'Los Banos, Laguna',
+        'San Pablo, Laguna',
+        'Cabuyao, Laguna',
+        'Sta. Cruz, Laguna',
+        'Pagsanjan, Laguna',
+        'Lumban, Laguna',
+        'Paete, Laguna',
+        'Pakil, Laguna',
+        'Pangil, Laguna',
+        'Siniloan, Laguna',
+        'Famy, Laguna',
+        'Mabitac, Laguna',
+        'Kalayaan, Laguna',
+        'Bay, Laguna',
+        'Alaminos, Laguna',
+        'Magdalena, Laguna',
+        'Majayjay, Laguna',
+        'Liliw, Laguna',
+        'Nagcarlan, Laguna',
+        'Rizal, Laguna',
+        'Victoria, Laguna',
+        'Pila, Laguna',
+        'Calauan, Laguna',
+        'Alaminos, Laguna',
+        'Pagsanjan Falls',
+        'Enchanted Kingdom, Sta. Rosa',
+        'Nuvali, Sta. Rosa',
+        'UP Los Banos',
+        
+        // Batangas
+        'Batangas City, Batangas',
+        'Lipa, Batangas',
+        'Tanauan, Batangas',
+        'Calaca, Batangas',
+        'Lemery, Batangas',
+        'Taal, Batangas',
+        'Balayan, Batangas',
+        'Nasugbu, Batangas',
+        'Lian, Batangas',
+        'Calatagan, Batangas',
+        'Tuy, Batangas',
+        'Lobo, Batangas',
+        'San Juan, Batangas',
+        'Rosario, Batangas',
+        'Taysan, Batangas',
+        'San Jose, Batangas',
+        'Ibaan, Batangas',
+        'Mabini, Batangas',
+        'Tingloy, Batangas',
+        'Laurel, Batangas',
+        'Agoncillo, Batangas',
+        'San Nicolas, Batangas',
+        'Sta. Teresita, Batangas',
+        'Alitagtag, Batangas',
+        'Cuenca, Batangas',
+        'Mataasnakahoy, Batangas',
+        'Malvar, Batangas',
+        'Padre Garcia, Batangas',
+        'Rosario, Batangas',
+        'San Luis, Batangas',
+        'Santo Tomas, Batangas',
+        'Talisay, Batangas',
+        'Batangas Port',
+        'Batangas Pier',
+        'Taal Volcano',
+        'Taal Lake',
+        'Anilao, Mabini',
+        'Laiya, San Juan',
+        'Matabungkay, Lian',
+        'Calatagan Beach',
+        'Nasugbu Beach',
+        
+        // Quezon Province
+        'Lucena, Quezon',
+        'Tayabas, Quezon',
+        'Candelaria, Quezon',
+        'Sariaya, Quezon',
+        'Lopez, Quezon',
+        'Gumaca, Quezon',
+        'Atimonan, Quezon',
+        'Pagbilao, Quezon',
+        'Mauban, Quezon',
+        'Infanta, Quezon',
+        'Real, Quezon',
+        'General Nakar, Quezon',
+        'Polillo, Quezon',
+        'Burdeos, Quezon',
+        'Jomalig, Quezon',
+        'Panukulan, Quezon',
+        'Patnanungan, Quezon',
+        'Alabat, Quezon',
+        'Quezon, Quezon',
+        'Calauag, Quezon',
+        'Tagkawayan, Quezon',
+        'Guinayangan, Quezon',
+        'Mulanay, Quezon',
+        'San Narciso, Quezon',
+        'San Andres, Quezon',
+        'San Francisco, Quezon',
+        'Unisan, Quezon',
+        'Pitogo, Quezon',
+        'Macalelon, Quezon',
+        'General Luna, Quezon',
+        'Catanauan, Quezon',
+        'Mulanay, Quezon',
+        'Buenavista, Quezon',
+        'San Antonio, Quezon',
+        'Tiaong, Quezon',
+        'Dolores, Quezon',
+        'San Pablo City, Laguna',
+        'Alaminos, Laguna',
+        
+        // Pampanga
+        'Angeles City, Pampanga',
+        'San Fernando, Pampanga',
+        'Mabalacat, Pampanga',
+        'Mexico, Pampanga',
+        'Apalit, Pampanga',
+        'Arayat, Pampanga',
+        'Bacolor, Pampanga',
+        'Candaba, Pampanga',
+        'Floridablanca, Pampanga',
+        'Guagua, Pampanga',
+        'Lubao, Pampanga',
+        'Macabebe, Pampanga',
+        'Magalang, Pampanga',
+        'Masantol, Pampanga',
+        'Minalin, Pampanga',
+        'Porac, Pampanga',
+        'San Luis, Pampanga',
+        'San Simon, Pampanga',
+        'Santa Ana, Pampanga',
+        'Santo Tomas, Pampanga',
+        'Sasmuan, Pampanga',
+        'Clark Freeport Zone, Pampanga',
+        'Clark International Airport (CRK)',
+        'Clark Air Base',
+        'Nayong Pilipino, Clark',
+        'Fontana Leisure Park, Clark',
+        'SM City Pampanga',
+        'Robinsons Pampanga',
+        
+        // Bulacan
+        'Malolos, Bulacan',
+        'Meycauayan, Bulacan',
+        'San Jose del Monte, Bulacan',
+        'Marilao, Bulacan',
+        'Bocaue, Bulacan',
+        'Guiguinto, Bulacan',
+        'Plaridel, Bulacan',
+        'Pulilan, Bulacan',
+        'Calumpit, Bulacan',
+        'Hagonoy, Bulacan',
+        'Paombong, Bulacan',
+        'Obando, Bulacan',
+        'Bulakan, Bulacan',
+        'Pandi, Bulacan',
+        'Bustos, Bulacan',
+        'Balagtas, Bulacan',
+        'Angat, Bulacan',
+        'Norzagaray, Bulacan',
+        'San Rafael, Bulacan',
+        'San Ildefonso, Bulacan',
+        'San Miguel, Bulacan',
+        'Doña Remedios Trinidad, Bulacan',
+        'Barasoa, Bulacan',
+        'Biak-na-Bato, San Miguel',
+        'Barasoain Church, Malolos',
+        
+        // Nueva Ecija
+        'Cabanatuan, Nueva Ecija',
+        'San Jose, Nueva Ecija',
+        'Gapan, Nueva Ecija',
+        'Palayan, Nueva Ecija',
+        'Sta. Rosa, Nueva Ecija',
+        'Talavera, Nueva Ecija',
+        'Guimba, Nueva Ecija',
+        'Muñoz, Nueva Ecija',
+        'Aliaga, Nueva Ecija',
+        'Bongabon, Nueva Ecija',
+        'Cabiao, Nueva Ecija',
+        'Carranglan, Nueva Ecija',
+        'Cuyapo, Nueva Ecija',
+        'Gabaldon, Nueva Ecija',
+        'General Mamerto Natividad, Nueva Ecija',
+        'General Tinio, Nueva Ecija',
+        'Jaen, Nueva Ecija',
+        'Laur, Nueva Ecija',
+        'Licab, Nueva Ecija',
+        'Llanera, Nueva Ecija',
+        'Lupao, Nueva Ecija',
+        'Nampicuan, Nueva Ecija',
+        'Pantabangan, Nueva Ecija',
+        'Peñaranda, Nueva Ecija',
+        'Quezon, Nueva Ecija',
+        'Rizal, Nueva Ecija',
+        'San Antonio, Nueva Ecija',
+        'San Isidro, Nueva Ecija',
+        'San Leonardo, Nueva Ecija',
+        'Sta. Rosa, Nueva Ecija',
+        'Santo Domingo, Nueva Ecija',
+        'Science City of Muñoz',
+        'Minalungao National Park',
+        
+        // Tarlac
+        'Tarlac City, Tarlac',
+        'Capas, Tarlac',
+        'Concepcion, Tarlac',
+        'Gerona, Tarlac',
+        'La Paz, Tarlac',
+        'Victoria, Tarlac',
+        'Bamban, Tarlac',
+        'Camiling, Tarlac',
+        'Moncada, Tarlac',
+        'Paniqui, Tarlac',
+        'Pura, Tarlac',
+        'Ramos, Tarlac',
+        'San Clemente, Tarlac',
+        'San Jose, Tarlac',
+        'San Manuel, Tarlac',
+        'Sta. Ignacia, Tarlac',
+        'Anao, Tarlac',
+        'Mayantoc, Tarlac',
+        'San Nicolas, Tarlac',
+        'Sta. Ignacia, Tarlac',
+        'Capas National Shrine',
+        'Mount Pinatubo',
+        
+        // Zambales
+        'Olongapo, Zambales',
+        'Subic, Zambales',
+        'Castillejos, Zambales',
+        'San Marcelino, Zambales',
+        'San Antonio, Zambales',
+        'San Narciso, Zambales',
+        'San Felipe, Zambales',
+        'Cabangan, Zambales',
+        'Botolan, Zambales',
+        'Iba, Zambales',
+        'Palauig, Zambales',
+        'Masinloc, Zambales',
+        'Candelaria, Zambales',
+        'Sta. Cruz, Zambales',
+        'Subic Bay Freeport Zone',
+        'Subic Bay Airport (SFS)',
+        'Subic Bay Port',
+        'Ocean Adventure, Subic',
+        'Zoobic Safari, Subic',
+        'Anawangin Cove, San Antonio',
+        'Nagsasa Cove, San Antonio',
+        'Capones Island, San Antonio',
+        'Potipot Island, Candelaria',
+        'Crystal Beach, San Narciso',
+        
+        // Bataan
+        'Balanga, Bataan',
+        'Mariveles, Bataan',
+        'Dinalupihan, Bataan',
+        'Hermosa, Bataan',
+        'Orani, Bataan',
+        'Orion, Bataan',
+        'Pilar, Bataan',
+        'Samal, Bataan',
+        'Abucay, Bataan',
+        'Bagac, Bataan',
+        'Morong, Bataan',
+        'Limay, Bataan',
+        'Dinalupihan, Bataan',
+        'Mt. Samat, Pilar',
+        'Dambana ng Kagitingan, Pilar',
+        'Las Casas Filipinas de Acuzar, Bagac',
+        'Bataan Nuclear Power Plant, Morong',
+        'Bataan Technology Park, Morong',
+        
+        // Aurora
+        'Baler, Aurora',
+        'Casiguran, Aurora',
+        'Dilasag, Aurora',
+        'Dinalungan, Aurora',
+        'Dingalan, Aurora',
+        'Dipaculao, Aurora',
+        'Maria Aurora, Aurora',
+        'San Luis, Aurora',
+        'Sabang Beach, Baler',
+        'Diguisit Beach, Baler',
+        'Ermita Hill, Baler',
+        'Museo de Baler',
+        'Aurora Memorial National Park',
+        
+        // Benguet
+        'Baguio, Benguet',
+        'La Trinidad, Benguet',
+        'Itogon, Benguet',
+        'Tuba, Benguet',
+        'Sablan, Benguet',
+        'Bokod, Benguet',
+        'Kabayan, Benguet',
+        'Atok, Benguet',
+        'Kapangan, Benguet',
+        'Kibungan, Benguet',
+        'Mankayan, Benguet',
+        'Buguias, Benguet',
+        'Bakun, Benguet',
+        'Camp John Hay, Baguio',
+        'Burnham Park, Baguio',
+        'Mines View Park, Baguio',
+        'Wright Park, Baguio',
+        'Session Road, Baguio',
+        'SM City Baguio',
+        'Baguio Cathedral',
+        'Lourdes Grotto, Baguio',
+        'Strawberry Farm, La Trinidad',
+        'Bell Church, La Trinidad',
+        'Mount Pulag, Kabayan',
+        'Ambuklao Dam, Bokod',
+        'Binga Dam, Itogon',
+        
+        // Ilocos Norte
+        'Laoag, Ilocos Norte',
+        'Batac, Ilocos Norte',
+        'San Nicolas, Ilocos Norte',
+        'Paoay, Ilocos Norte',
+        'Vintar, Ilocos Norte',
+        'Bacarra, Ilocos Norte',
+        'Pasuquin, Ilocos Norte',
+        'Burgos, Ilocos Norte',
+        'Bangui, Ilocos Norte',
+        'Pagudpud, Ilocos Norte',
+        'Dingras, Ilocos Norte',
+        'Solsona, Ilocos Norte',
+        'Marcos, Ilocos Norte',
+        'Nueva Era, Ilocos Norte',
+        'Piddig, Ilocos Norte',
+        'Sarrat, Ilocos Norte',
+        'Adams, Ilocos Norte',
+        'Carasi, Ilocos Norte',
+        'Dumalneg, Ilocos Norte',
+        'Laoag International Airport (LAO)',
+        'Paoay Church',
+        'Paoay Lake',
+        'Malacañang of the North, Paoay',
+        'Bangui Windmills',
+        'Kapurpurawan Rock Formation, Burgos',
+        'Saud Beach, Pagudpud',
+        'Blue Lagoon, Pagudpud',
+        'Patapat Viaduct, Pagudpud',
+        'Cape Bojeador Lighthouse, Burgos',
+        
+        // Ilocos Sur
+        'Vigan, Ilocos Sur',
+        'Candon, Ilocos Sur',
+        'Narvacan, Ilocos Sur',
+        'Sta. Maria, Ilocos Sur',
+        'Sta. Catalina, Ilocos Sur',
+        'Sta. Cruz, Ilocos Sur',
+        'Sta. Lucia, Ilocos Sur',
+        'Sta. Domingo, Ilocos Sur',
+        'Santiago, Ilocos Sur',
+        'San Esteban, Ilocos Sur',
+        'San Ildefonso, Ilocos Sur',
+        'San Juan, Ilocos Sur',
+        'San Vicente, Ilocos Sur',
+        'Santo Domingo, Ilocos Sur',
+        'Sigay, Ilocos Sur',
+        'Sinait, Ilocos Sur',
+        'Sugpon, Ilocos Sur',
+        'Suyo, Ilocos Sur',
+        'Tagudin, Ilocos Sur',
+        'Vigan Heritage Village',
+        'Calle Crisologo, Vigan',
+        'Vigan Cathedral',
+        'Bantay Bell Tower',
+        'Baluarte, Vigan',
+        'Hidden Garden, Vigan',
+        'Pinsal Falls, Sta. Maria',
+        
+        // La Union
+        'San Fernando, La Union',
+        'Bauang, La Union',
+        'Agoo, La Union',
+        'Aringay, La Union',
+        'Bacnotan, La Union',
+        'Bagulin, La Union',
+        'Balaoan, La Union',
+        'Bangar, La Union',
+        'Bauang, La Union',
+        'Burgos, La Union',
+        'Caba, La Union',
+        'Luna, La Union',
+        'Naguilian, La Union',
+        'Pugo, La Union',
+        'Rosario, La Union',
+        'San Gabriel, La Union',
+        'San Juan, La Union',
+        'Santo Tomas, La Union',
+        'Santol, La Union',
+        'Sudipen, La Union',
+        'Tubao, La Union',
+        'San Juan Beach',
+        'Poro Point, San Fernando',
+        'Thunderbird Resort, Poro Point',
+        'Tangadan Falls, San Gabriel',
+        'Ma-Cho Temple, San Fernando',
+        
+        // Pangasinan
+        'Dagupan, Pangasinan',
+        'Alaminos, Pangasinan',
+        'Urdaneta, Pangasinan',
+        'San Carlos, Pangasinan',
+        'Lingayen, Pangasinan',
+        'Mangaldan, Pangasinan',
+        'Calasiao, Pangasinan',
+        'Manaoag, Pangasinan',
+        'Binmaley, Pangasinan',
+        'Mangatarem, Pangasinan',
+        'Bayambang, Pangasinan',
+        'Malasiqui, Pangasinan',
+        'Villasis, Pangasinan',
+        'Binalonan, Pangasinan',
+        'Pozorrubio, Pangasinan',
+        'Sison, Pangasinan',
+        'San Fabian, Pangasinan',
+        'Manaoag, Pangasinan',
+        'Sta. Barbara, Pangasinan',
+        'Mapandan, Pangasinan',
+        'Sta. Maria, Pangasinan',
+        'Asingan, Pangasinan',
+        'San Manuel, Pangasinan',
+        'San Nicolas, Pangasinan',
+        'Tayug, Pangasinan',
+        'Natividad, Pangasinan',
+        'San Quintin, Pangasinan',
+        'Umingan, Pangasinan',
+        'Laoac, Pangasinan',
+        'Hundred Islands, Alaminos',
+        'Lingayen Beach',
+        'Cape Bolinao Lighthouse, Bolinao',
+        'Patar Beach, Bolinao',
+        'Enchanted Cave, Bolinao',
+        'Manaoag Church',
+        'Our Lady of Manaoag Shrine',
+        
+        // Cagayan
+        'Tuguegarao, Cagayan',
+        'Aparri, Cagayan',
+        'Gonzaga, Cagayan',
+        'Lal-lo, Cagayan',
+        'Lasam, Cagayan',
+        'Pamplona, Cagayan',
+        'Peñablanca, Cagayan',
+        'Piat, Cagayan',
+        'Rizal, Cagayan',
+        'Sanchez-Mira, Cagayan',
+        'Santa Ana, Cagayan',
+        'Santa Praxedes, Cagayan',
+        'Santa Teresita, Cagayan',
+        'Santo Niño, Cagayan',
+        'Solana, Cagayan',
+        'Tuao, Cagayan',
+        'Callao Cave, Peñablanca',
+        'Calvary Hills, Tuguegarao',
+        'St. Peter\'s Cathedral, Tuguegarao',
+        'Palaui Island, Sta. Ana',
+        'Anguib Beach, Sta. Ana',
+        
+        // Isabela
+        'Ilagan, Isabela',
+        'Santiago City, Isabela',
+        'Cauayan, Isabela',
+        'Alicia, Isabela',
+        'Angadanan, Isabela',
+        'Aurora, Isabela',
+        'Benito Soliven, Isabela',
+        'Burgos, Isabela',
+        'Cabagan, Isabela',
+        'Cabatuan, Isabela',
+        'Cordon, Isabela',
+        'Delfin Albano, Isabela',
+        'Dinapigue, Isabela',
+        'Divilacan, Isabela',
+        'Echague, Isabela',
+        'Gamu, Isabela',
+        'Jones, Isabela',
+        'Luna, Isabela',
+        'Maconacon, Isabela',
+        'Mallig, Isabela',
+        'Naguilian, Isabela',
+        'Palanan, Isabela',
+        'Quezon, Isabela',
+        'Quirino, Isabela',
+        'Ramon, Isabela',
+        'Reina Mercedes, Isabela',
+        'Roxas, Isabela',
+        'San Agustin, Isabela',
+        'San Guillermo, Isabela',
+        'San Isidro, Isabela',
+        'San Manuel, Isabela',
+        'San Mariano, Isabela',
+        'San Mateo, Isabela',
+        'San Pablo, Isabela',
+        'Santa Maria, Isabela',
+        'Santo Tomas, Isabela',
+        'Tumauini, Isabela',
+        'Magat Dam, Ramon',
+        'Dicotcotan Beach, Palanan',
+        'Fuyot Springs, Ilagan',
+        
+        // Nueva Vizcaya
+        'Bayombong, Nueva Vizcaya',
+        'Solano, Nueva Vizcaya',
+        'Bambang, Nueva Vizcaya',
+        'Diadi, Nueva Vizcaya',
+        'Dupax del Norte, Nueva Vizcaya',
+        'Dupax del Sur, Nueva Vizcaya',
+        'Kasibu, Nueva Vizcaya',
+        'Kayapa, Nueva Vizcaya',
+        'Quezon, Nueva Vizcaya',
+        'Sta. Fe, Nueva Vizcaya',
+        'Villaverde, Nueva Vizcaya',
+        'Alfonso Castaneda, Nueva Vizcaya',
+        'Ambaguio, Nueva Vizcaya',
+        'Aritao, Nueva Vizcaya',
+        'Bagabag, Nueva Vizcaya',
+        'Imugan Falls, Sta. Fe',
+        'Capisaan Cave, Kasibu',
+        
+        // Quirino
+        'Cabarroguis, Quirino',
+        'Aglipay, Quirino',
+        'Maddela, Quirino',
+        'Nagtipunan, Quirino',
+        'Saguday, Quirino',
+        'Diffun, Quirino',
+        'Governor\'s Rapids, Aglipay',
+        'Aglipay Caves',
+        
+        // Batanes
+        'Basco, Batanes',
+        'Itbayat, Batanes',
+        'Ivana, Batanes',
+        'Mahatao, Batanes',
+        'Sabtang, Batanes',
+        'Uyugan, Batanes',
+        'Mt. Iraya, Basco',
+        'Basco Lighthouse',
+        'Valugan Boulder Beach, Basco',
+        'Marlboro Country, Mahatao',
+        'Chawa View Deck, Mahatao',
+        'Tayid Lighthouse, Mahatao',
+        'Racuh a Payaman, Mahatao',
+        'Songsong Ruins, Ivana',
+        'House of Dakay, Ivana',
+        'San Carlos Borromeo Church, Mahatao',
+        'San Jose de Obrero Church, Ivana',
+        'Sabtang Lighthouse',
+        'Chamantad-Tinyan Viewpoint, Sabtang',
+        'Nakabuang Beach, Sabtang',
+        'Morong Beach, Sabtang',
+        'Savidug Stone Houses, Sabtang',
+        'Chavayan Stone Houses, Sabtang',
+        'Itbayat Island',
+        'Torongan Cave, Itbayat',
+        'Rapang Cliff, Itbayat',
+        'Mt. Karoboban, Itbayat',
+        
+        // Abra
+        'Bangued, Abra',
+        'Boliney, Abra',
+        'Bucay, Abra',
+        'Bucloc, Abra',
+        'Daguioman, Abra',
+        'Danglas, Abra',
+        'Dolores, Abra',
+        'La Paz, Abra',
+        'Lacub, Abra',
+        'Lagangilang, Abra',
+        'Lagayan, Abra',
+        'Langiden, Abra',
+        'Licuan-Baay, Abra',
+        'Luba, Abra',
+        'Malibcong, Abra',
+        'Manabo, Abra',
+        'Peñarrubia, Abra',
+        'Pidigan, Abra',
+        'Pilar, Abra',
+        'Sallapadan, Abra',
+        'San Isidro, Abra',
+        'San Juan, Abra',
+        'San Quintin, Abra',
+        'Tayum, Abra',
+        'Tineg, Abra',
+        'Tubo, Abra',
+        'Villaviciosa, Abra',
+        'Abra River',
+        'Tineg River',
+        
+        // Oriental Mindoro
+        'Calapan, Oriental Mindoro',
+        'Puerto Galera, Oriental Mindoro',
+        'Roxas, Oriental Mindoro',
+        'Baco, Oriental Mindoro',
+        'Bansud, Oriental Mindoro',
+        'Bongabong, Oriental Mindoro',
+        'Bulalacao, Oriental Mindoro',
+        'Gloria, Oriental Mindoro',
+        'Mansalay, Oriental Mindoro',
+        'Naujan, Oriental Mindoro',
+        'Pinamalayan, Oriental Mindoro',
+        'Pola, Oriental Mindoro',
+        'San Teodoro, Oriental Mindoro',
+        'Socorro, Oriental Mindoro',
+        'Victoria, Oriental Mindoro',
+        'Calapan Port',
+        'White Beach, Puerto Galera',
+        'Sabang Beach, Puerto Galera',
+        'Tamaraw Falls, Puerto Galera',
+        'Puerto Galera Yacht Club',
+        'Aninuan Beach, Puerto Galera',
+        'Talipanan Beach, Puerto Galera',
+        'Big La Laguna Beach, Puerto Galera',
+        'Small La Laguna Beach, Puerto Galera',
+        'Mt. Halcon, Baco',
+        'Naujan Lake',
+        
+        // Occidental Mindoro
+        'San Jose, Occidental Mindoro',
+        'Mamburao, Occidental Mindoro',
+        'Abra de Ilog, Occidental Mindoro',
+        'Calintaan, Occidental Mindoro',
+        'Lubang, Occidental Mindoro',
+        'Magsaysay, Occidental Mindoro',
+        'Paluan, Occidental Mindoro',
+        'Rizal, Occidental Mindoro',
+        'Sablayan, Occidental Mindoro',
+        'San Jose, Occidental Mindoro',
+        'Santa Cruz, Occidental Mindoro',
+        'Apo Reef, Sablayan',
+        'Pandan Island, Sablayan',
+        'Mt. Iglit-Baco National Park',
+        
+        // Marinduque
+        'Boac, Marinduque',
+        'Gasan, Marinduque',
+        'Mogpog, Marinduque',
+        'Santa Cruz, Marinduque',
+        'Torrijos, Marinduque',
+        'Buenavista, Marinduque',
+        'Maniwaya Island, Sta. Cruz',
+        'Poctoy White Beach, Torrijos',
+        'Mt. Malindig, Buenavista',
+        'Bathala Caves, Gasan',
+        'Tres Reyes Islands, Gasan',
+        
+        // Romblon
+        'Romblon, Romblon',
+        'Odiongan, Romblon',
+        'San Agustin, Romblon',
+        'Alcantara, Romblon',
+        'Banton, Romblon',
+        'Cajidiocan, Romblon',
+        'Calatrava, Romblon',
+        'Concepcion, Romblon',
+        'Corcuera, Romblon',
+        'Ferrol, Romblon',
+        'Looc, Romblon',
+        'Magdiwang, Romblon',
+        'San Andres, Romblon',
+        'San Fernando, Romblon',
+        'San Jose, Romblon',
+        'Santa Fe, Romblon',
+        'Santa Maria, Romblon',
+        'Bonbon Beach, Romblon',
+        'Tiamban Beach, Romblon',
+        'Cobrador Island, Romblon',
+        'Sibuyan Island',
+        'Mt. Guiting-Guiting, Sibuyan',
+        'Cresta de Gallo, Sibuyan',
+        'Tablas Island',
+        'Carabao Island',
+        
+        // Palawan
+        'Puerto Princesa, Palawan',
+        'El Nido, Palawan',
+        'Coron, Palawan',
+        'Roxas, Palawan',
+        'Taytay, Palawan',
+        'San Vicente, Palawan',
+        'Brooke\'s Point, Palawan',
+        'Narra, Palawan',
+        'Aborlan, Palawan',
+        'Bataraza, Palawan',
+        'Quezon, Palawan',
+        'Rizal, Palawan',
+        'Sofronio Española, Palawan',
+        'Araceli, Palawan',
+        'Balabac, Palawan',
+        'Busuanga, Palawan',
+        'Cagayancillo, Palawan',
+        'Culion, Palawan',
+        'Cuyo, Palawan',
+        'Dumaran, Palawan',
+        'Kalayaan, Palawan',
+        'Linapacan, Palawan',
+        'Magsaysay, Palawan',
+        'Agutaya, Palawan',
+        'Puerto Princesa Airport (PPS)',
+        'Coron Busuanga Airport (USU)',
+        'Puerto Princesa Subterranean River',
+        'Underground River, Puerto Princesa',
+        'Honda Bay, Puerto Princesa',
+        'Iwahig Prison and Penal Farm',
+        'Mitra\'s Ranch, Puerto Princesa',
+        'Baker\'s Hill, Puerto Princesa',
+        'Crocodile Farm, Puerto Princesa',
+        'El Nido Town',
+        'Big Lagoon, El Nido',
+        'Small Lagoon, El Nido',
+        'Secret Lagoon, El Nido',
+        'Hidden Beach, El Nido',
+        'Shimizu Island, El Nido',
+        'Seven Commandos Beach, El Nido',
+        'Nacpan Beach, El Nido',
+        'Las Cabanas Beach, El Nido',
+        'Coron Town',
+        'Kayangan Lake, Coron',
+        'Barracuda Lake, Coron',
+        'Twin Lagoon, Coron',
+        'Siete Pecados, Coron',
+        'Malcapuya Island, Coron',
+        'Banana Island, Coron',
+        'Bulog Dos Island, Coron',
+        'Coral Garden, Coron',
+        'Skeleton Wreck, Coron',
+        'Japanese Shipwreck, Coron',
+        'Mt. Tapyas, Coron',
+        'Maquinit Hot Spring, Coron',
+        'Calauit Safari Park, Busuanga',
+        'Nacpan Beach, El Nido',
+        'Duli Beach, El Nido',
+        'Long Beach, San Vicente',
+        'Port Barton, San Vicente',
+        'Taytay Fort',
+        'Apo Reef, Occidental Mindoro',
+        
+        // Albay
+        'Legazpi, Albay',
+        'Tabaco, Albay',
+        'Ligao, Albay',
+        'Daraga, Albay',
+        'Camalig, Albay',
+        'Guinobatan, Albay',
+        'Jovellar, Albay',
+        'Libon, Albay',
+        'Malilipot, Albay',
+        'Malinao, Albay',
+        'Manito, Albay',
+        'Oas, Albay',
+        'Pio Duran, Albay',
+        'Polangui, Albay',
+        'Rapu-Rapu, Albay',
+        'Santo Domingo, Albay',
+        'Tiwi, Albay',
+        'Legazpi Airport (LGP)',
+        'Mayon Volcano',
+        'Cagsawa Ruins, Daraga',
+        'Lignon Hill, Legazpi',
+        'Sumlang Lake, Camalig',
+        'Quitinday Green Hills, Jovellar',
+        'Hoyop-Hoyopan Cave, Camalig',
+        'Joroan Church, Tiwi',
+        'Daraga Church',
+        'Legazpi Boulevard',
+        'Embarcadero, Legazpi',
+        'Pacific Mall, Legazpi',
+        'Albay Park and Wildlife',
+        'Misibis Bay Resort, Bacacay',
+        'Vera Falls, Malilipot',
+        'Nag-Aso Boiling Lake, Manito',
+        'Kawa-Kawa Hill, Ligao',
+        
+        // Camarines Norte
+        'Daet, Camarines Norte',
+        'Basud, Camarines Norte',
+        'Capalonga, Camarines Norte',
+        'Jose Panganiban, Camarines Norte',
+        'Labo, Camarines Norte',
+        'Mercedes, Camarines Norte',
+        'Paracale, Camarines Norte',
+        'San Lorenzo Ruiz, Camarines Norte',
+        'San Vicente, Camarines Norte',
+        'Santa Elena, Camarines Norte',
+        'Talisay, Camarines Norte',
+        'Vinzons, Camarines Norte',
+        'Bagasbas Beach, Daet',
+        'Calaguas Island, Vinzons',
+        'Mahi-Mahi Beach, Mercedes',
+        'Mercedes Beach',
+        'Sampaguita Beach, Jose Panganiban',
+        'Apuao Grande Island, Mercedes',
+        'Calaguas Group of Islands',
+        
+        // Camarines Sur
+        'Naga, Camarines Sur',
+        'Iriga, Camarines Sur',
+        'Pili, Camarines Sur',
+        'Baao, Camarines Sur',
+        'Balatan, Camarines Sur',
+        'Bato, Camarines Sur',
+        'Bombon, Camarines Sur',
+        'Buhi, Camarines Sur',
+        'Bula, Camarines Sur',
+        'Cabusao, Camarines Sur',
+        'Calabanga, Camarines Sur',
+        'Camaligan, Camarines Sur',
+        'Canaman, Camarines Sur',
+        'Caramoan, Camarines Sur',
+        'Del Gallego, Camarines Sur',
+        'Gainza, Camarines Sur',
+        'Garchitorena, Camarines Sur',
+        'Goa, Camarines Sur',
+        'Lagonoy, Camarines Sur',
+        'Libmanan, Camarines Sur',
+        'Lupi, Camarines Sur',
+        'Magarao, Camarines Sur',
+        'Milaor, Camarines Sur',
+        'Minalabac, Camarines Sur',
+        'Nabua, Camarines Sur',
+        'Ocampo, Camarines Sur',
+        'Pamplona, Camarines Sur',
+        'Pasacao, Camarines Sur',
+        'P presentacion, Camarines Sur',
+        'Ragay, Camarines Sur',
+        'Sagñay, Camarines Sur',
+        'San Fernando, Camarines Sur',
+        'San Jose, Camarines Sur',
+        'Sipocot, Camarines Sur',
+        'Siruma, Camarines Sur',
+        'Tigaon, Camarines Sur',
+        'Tinambac, Camarines Sur',
+        'Naga Airport (WNP)',
+        'Mt. Isarog',
+        'Mt. Asog',
+        'Caramoan Islands',
+        'Gota Beach, Caramoan',
+        'Matukad Island, Caramoan',
+        'Lahos Island, Caramoan',
+        'Lahuy Island, Caramoan',
+        'Cagbalete Island, Mauban',
+        'Calaguas Island, Vinzons',
+        'Naga Cathedral',
+        'Peñafrancia Basilica, Naga',
+        'Cagsawa Ruins, Daraga',
+        'Malabsay Falls, Naga',
+        'Panicuason Hot Spring, Naga',
+        'Lake Buhi',
+        'Lake Baao',
+        'Calabanga Mangrove Forest',
+        
+        // Catanduanes
+        'Virac, Catanduanes',
+        'Bagamanoc, Catanduanes',
+        'Baras, Catanduanes',
+        'Bato, Catanduanes',
+        'Caramoran, Catanduanes',
+        'Gigmoto, Catanduanes',
+        'Pandan, Catanduanes',
+        'Panganiban, Catanduanes',
+        'San Andres, Catanduanes',
+        'San Miguel, Catanduanes',
+        'Viga, Catanduanes',
+        'Virac Airport (VRC)',
+        'Puraran Beach, Baras',
+        'Mamangal Beach, Bato',
+        'Twin Rock Beach Resort, Virac',
+        'Bato Church',
+        'Balacay Point, Virac',
+        'Luyang Cave, San Andres',
+        'Binurong Point, Baras',
+        
+        // Masbate
+        'Masbate City, Masbate',
+        'Aroroy, Masbate',
+        'Baleno, Masbate',
+        'Balud, Masbate',
+        'Batuan, Masbate',
+        'Cataingan, Masbate',
+        'Cawayan, Masbate',
+        'Claveria, Masbate',
+        'Dimasalang, Masbate',
+        'Esperanza, Masbate',
+        'Mandaon, Masbate',
+        'Milagros, Masbate',
+        'Mobo, Masbate',
+        'Monreal, Masbate',
+        'Palanas, Masbate',
+        'Pio V. Corpuz, Masbate',
+        'Placer, Masbate',
+        'San Fernando, Masbate',
+        'San Jacinto, Masbate',
+        'San Fernando, Masbate',
+        'San Pascual, Masbate',
+        'Uson, Masbate',
+        'Buntod Reef Marine Sanctuary',
+        'Ticao Island',
+        'Burias Island',
+        'Tinalisayan Islet',
+        
+        // Sorsogon
+        'Sorsogon City, Sorsogon',
+        'Barcelona, Sorsogon',
+        'Bulan, Sorsogon',
+        'Bulusan, Sorsogon',
+        'Casiguran, Sorsogon',
+        'Castilla, Sorsogon',
+        'Donsol, Sorsogon',
+        'Gubat, Sorsogon',
+        'Irosin, Sorsogon',
+        'Juban, Sorsogon',
+        'Magallanes, Sorsogon',
+        'Matnog, Sorsogon',
+        'Pilar, Sorsogon',
+        'Prieto Diaz, Sorsogon',
+        'Santa Magdalena, Sorsogon',
+        'Matnog Port',
+        'Donsol Whale Shark Interaction',
+        'Bulusan Volcano',
+        'Bulusan Lake',
+        'Rizal Beach, Gubat',
+        'Subic Beach, Matnog',
+        'Tikling Island, Matnog',
+        'Juag Lagoon, Matnog',
+        'Calayucay Beach, Bulusan',
+        'Bacon Beach, Sorsogon City',
+        'Paguriran Island, Bacon',
+        'Bulusan Natural Park'
+      ];
+
+      function attachLocationAutocomplete(inputId) {
+        var $input = $('#' + inputId);
+        if (!$input.length) return;
+
+        var $suggestions = $('<div class="location-suggestions" data-for="' + inputId + '"></div>');
+        $input.after($suggestions);
+
+        function renderSuggestions() {
+          var query = $input.val().toLowerCase();
+          var matches = philippineLocations.filter(function(loc) {
+            return loc.toLowerCase().indexOf(query) !== -1;
+          }).slice(0, 8);
+
+          $suggestions.empty();
+
+          if (!matches.length) {
+            $suggestions.hide();
+            return;
+          }
+
+          matches.forEach(function(loc) {
+            $suggestions.append('<div>' + loc + '</div>');
+          });
+
+          $suggestions.show();
+        }
+
+        $input.on('input focus', renderSuggestions);
+
+        $input.on('blur', function() {
+          setTimeout(function() {
+            $suggestions.hide();
+          }, 120);
+        });
+
+        $suggestions.on('mousedown', 'div', function(e) {
+          e.preventDefault();
+          $input.val($(this).text());
+          $suggestions.hide();
+        });
+      }
+
+      attachLocationAutocomplete('pickupLocation');
+      attachLocationAutocomplete('dropoffLocation');
+      
+      // Open transfer booking modal after login if pending
+      var pendingAction = localStorage.getItem('pendingAction');
+      if (pendingAction === 'book-transfer') {
+        var currentUser = null;
+        var storedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
+        
+        if (storedUser) {
+          try {
+            currentUser = JSON.parse(storedUser);
+          } catch (e) {
+            console.error('Error parsing user data:', e);
+          }
+        }
+        
+        if (currentUser && currentUser.logged_in) {
+          localStorage.removeItem('pendingAction');
+          setTimeout(function() {
+            $('#bookTransferModal').addClass('active');
+            $('body').css('overflow', 'hidden');
+          }, 300);
+        }
+      }
+      
+      // Close transfer booking modal
+      $('#bookTransferModal .booking-modal-close, #cancelTransferBtn').on('click', function() {
+        $('#bookTransferModal').removeClass('active');
+        $('body').css('overflow', 'auto');
+      });
+      
+      // Close transfer booking modal when clicking outside
+      $('#bookTransferModal').on('click', function(e) {
+        if ($(e.target).hasClass('booking-modal')) {
+          $(this).removeClass('active');
+          $('body').css('overflow', 'auto');
+        }
+      });
+      
+      // Close transfer booking modal with Escape key
+      $(document).on('keydown', function(e) {
+        if (e.key === 'Escape' && $('#bookTransferModal').hasClass('active')) {
+          $('#bookTransferModal').removeClass('active');
+          $('body').css('overflow', 'auto');
+        }
+      });
+      
+      // Handle transfer booking form submission
+      $('#confirmTransferBtn').on('click', function() {
+        var form = $('#bookTransferForm')[0];
+        
+        if (form.checkValidity()) {
+          var vehicleType = $('#vehicleType option:selected');
+          var basePrice = vehicleType.data('price') || 0;
+          var passengers = parseInt($('#passengers').val()) || 1;
+          
+          // Calculate extra charges
+          var extraPassengerCharge = 0;
+          var vehicleCapacity = {
+            'sedan': 3,
+            'suv': 6,
+            'van': 10,
+            'luxury': 3
+          };
+          
+          var selectedVehicle = $('#vehicleType').val();
+          if (selectedVehicle && passengers > vehicleCapacity[selectedVehicle]) {
+            extraPassengerCharge = (passengers - vehicleCapacity[selectedVehicle]) * 200;
+          }
+          
+          var totalAmount = parseFloat(basePrice) + extraPassengerCharge;
+          
+          var formData = {
+            transferType: $('#transferType').val(),
+            pickupLocation: $('#pickupLocation').val(),
+            dropoffLocation: $('#dropoffLocation').val(),
+            transferDate: $('#transferDate').val(),
+            transferTime: $('#transferTime').val(),
+            vehicleType: $('#vehicleType').val(),
+            vehicleTypeName: vehicleType.text(),
+            passengers: passengers,
+            luggage: parseInt($('#luggage').val()) || 0,
+            contactNumber: $('#contactNumber').val(),
+            specialInstructions: $('#specialInstructions').val(),
+            amount: totalAmount
+          };
+          
+          // Validate dates
+          var transferDateTime = new Date(formData.transferDate + ' ' + formData.transferTime);
+          var now = new Date();
+          
+          if (transferDateTime <= now) {
+            alert('Transfer date and time must be in the future.');
+            return;
+          }
+          
+          // Get current user
+          var currentUser = null;
+          var storedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
+          
+          if (storedUser) {
+            try {
+              currentUser = JSON.parse(storedUser);
+            } catch (e) {
+              console.error('Error parsing user data:', e);
+            }
+          }
+          
+          if (!currentUser || !currentUser.logged_in) {
+            alert('Please log in to book a transfer service.');
+            window.location.href = 'login.html';
+            return;
+          }
+          
+          // Create transaction
+          var transactions = JSON.parse(localStorage.getItem('transactions') || '[]');
+          var transaction = {
+            id: 'TRF-' + Date.now(),
+            userId: currentUser.user_id,
+            type: 'Transfer Service',
+            status: 'pending',
+            date: new Date().toISOString(),
+            amount: totalAmount,
+            transferType: formData.transferType,
+            pickupLocation: formData.pickupLocation,
+            dropoffLocation: formData.dropoffLocation,
+            transferDate: formData.transferDate,
+            transferTime: formData.transferTime,
+            vehicleType: formData.vehicleType,
+            vehicleTypeName: formData.vehicleTypeName,
+            passengers: formData.passengers,
+            luggage: formData.luggage,
+            contactNumber: formData.contactNumber,
+            specialInstructions: formData.specialInstructions
+          };
+          
+          transactions.push(transaction);
+          localStorage.setItem('transactions', JSON.stringify(transactions));
+          
+          // Format date for display
+          var formatDateDisplay = function(dateString) {
+            var date = new Date(dateString);
+            var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            return months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
+          };
+          
+          // Format time for display
+          var formatTimeDisplay = function(timeString) {
+            var time = timeString.split(':');
+            var hours = parseInt(time[0]);
+            var minutes = time[1];
+            var ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            return hours + ':' + minutes + ' ' + ampm;
+          };
+          
+          // Format service type for display
+          var formatServiceType = function(type) {
+            var types = {
+              'airport-pickup': 'Airport Pickup',
+              'airport-dropoff': 'Airport Drop-off',
+              'round-trip': 'Round Trip (Airport)',
+              'local-transfer': 'Local Transfer',
+              'city-tour': 'City Tour'
+            };
+            return types[type] || type;
+          };
+          
+          // Populate receipt modal
+          $('#receiptBookingRef').text(transaction.id);
+          $('#receiptServiceType').text(formatServiceType(formData.transferType));
+          $('#receiptPickup').text(formData.pickupLocation);
+          $('#receiptDropoff').text(formData.dropoffLocation);
+          $('#receiptDate').text(formatDateDisplay(formData.transferDate));
+          $('#receiptTime').text(formatTimeDisplay(formData.transferTime));
+          $('#receiptVehicle').text(formData.vehicleTypeName);
+          $('#receiptPassengers').text(formData.passengers + (formData.passengers === 1 ? ' passenger' : ' passengers'));
+          $('#receiptLuggage').text(formData.luggage + (formData.luggage === 1 ? ' piece' : ' pieces'));
+          $('#receiptContact').text(formData.contactNumber);
+          
+          if (formData.specialInstructions && formData.specialInstructions.trim()) {
+            $('#receiptInstructionsContainer').show();
+            $('#receiptInstructions').text(formData.specialInstructions);
+          } else {
+            $('#receiptInstructionsContainer').hide();
+          }
+          
+          $('#receiptAmount').text('₱' + totalAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+          
+          // Close booking modal and show receipt
+          $('#bookTransferModal').removeClass('active');
+          $('#bookingReceiptModal').addClass('active');
+          $('body').css('overflow', 'hidden');
+          
+          // Reset form
+          $('#bookTransferForm')[0].reset();
+          $('#transferTotal').text('₱0.00');
+        } else {
+          form.reportValidity();
+        }
+      });
+      
+      // Receipt Modal Handlers
+      $('#bookingReceiptModal .booking-modal-close, #closeReceiptBtn').on('click', function() {
+        $('#bookingReceiptModal').removeClass('active');
+        $('body').css('overflow', 'auto');
+      });
+      
+      // Close receipt modal when clicking outside
+      $('#bookingReceiptModal').on('click', function(e) {
+        if ($(e.target).hasClass('booking-modal')) {
+          $(this).removeClass('active');
+          $('body').css('overflow', 'auto');
+        }
+      });
+      
+      // Close receipt modal with Escape key
+      $(document).on('keydown', function(e) {
+        if (e.key === 'Escape' && $('#bookingReceiptModal').hasClass('active')) {
+          $('#bookingReceiptModal').removeClass('active');
+          $('body').css('overflow', 'auto');
+        }
+      });
+      
+      // Print receipt functionality
+      $('#printReceiptBtn').on('click', function() {
+        var printContent = $('#bookingReceiptModal .booking-modal-content').clone();
+        var printWindow = window.open('', '_blank');
+        
+        printWindow.document.write(`
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>Booking Receipt - ${$('#receiptBookingRef').text()}</title>
+            <style>
+              @media print {
+                body { margin: 0; padding: 20px; font-family: Arial, sans-serif; }
+                .no-print { display: none; }
+              }
+              body { font-family: Arial, sans-serif; padding: 20px; }
+              .receipt-header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #21cc7a; padding-bottom: 20px; }
+              .receipt-header h1 { color: #21cc7a; margin: 0 0 10px; }
+              .receipt-header p { color: #718096; margin: 5px 0; }
+              .booking-ref { text-align: center; margin: 20px 0; padding: 15px; background: #f8fafc; border-radius: 8px; }
+              .booking-ref-label { font-size: 12px; color: #718096; text-transform: uppercase; margin-bottom: 5px; }
+              .booking-ref-value { font-size: 24px; font-weight: bold; color: #2d3748; letter-spacing: 2px; }
+              .details-section { margin: 25px 0; }
+              .details-section h3 { color: #2d3748; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 15px; }
+              .detail-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f1f5f9; }
+              .detail-label { color: #718096; }
+              .detail-value { color: #2d3748; font-weight: 600; text-align: right; }
+              .total-section { background: #f8fafc; padding: 20px; border-radius: 8px; margin: 25px 0; border: 2px solid #21cc7a; }
+              .total-row { display: flex; justify-content: space-between; align-items: center; }
+              .total-label { font-size: 18px; font-weight: 700; color: #2d3748; }
+              .total-value { font-size: 28px; font-weight: 700; color: #21cc7a; }
+              .status-note { background: #fff7ed; border-left: 4px solid #f59e0b; padding: 15px; border-radius: 8px; margin: 20px 0; }
+              .status-note p { margin: 0; color: #92400e; line-height: 1.6; }
+              .footer { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0; color: #718096; font-size: 12px; }
+            </style>
+          </head>
+          <body>
+            <div class="receipt-header">
+              <h1>BAHAY KUBO RESORT</h1>
+              <p>Transfer Service Booking Receipt</p>
+            </div>
+            <div class="booking-ref">
+              <div class="booking-ref-label">Booking Reference</div>
+              <div class="booking-ref-value">${$('#receiptBookingRef').text()}</div>
+            </div>
+            <div class="details-section">
+              <h3>Booking Details</h3>
+              <div class="detail-row">
+                <span class="detail-label">Service Type:</span>
+                <span class="detail-value">${$('#receiptServiceType').text()}</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Pickup Location:</span>
+                <span class="detail-value">${$('#receiptPickup').text()}</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Drop-off Location:</span>
+                <span class="detail-value">${$('#receiptDropoff').text()}</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Transfer Date:</span>
+                <span class="detail-value">${$('#receiptDate').text()}</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Transfer Time:</span>
+                <span class="detail-value">${$('#receiptTime').text()}</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Vehicle Type:</span>
+                <span class="detail-value">${$('#receiptVehicle').text()}</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Passengers:</span>
+                <span class="detail-value">${$('#receiptPassengers').text()}</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Luggage:</span>
+                <span class="detail-value">${$('#receiptLuggage').text()}</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Contact Number:</span>
+                <span class="detail-value">${$('#receiptContact').text()}</span>
+              </div>
+              ${$('#receiptInstructionsContainer').is(':visible') ? `
+              <div class="detail-row">
+                <span class="detail-label">Special Instructions:</span>
+                <span class="detail-value">${$('#receiptInstructions').text()}</span>
+              </div>
+              ` : ''}
+            </div>
+            <div class="total-section">
+              <div class="total-row">
+                <span class="total-label">Total Amount:</span>
+                <span class="total-value">${$('#receiptAmount').text()}</span>
+              </div>
+            </div>
+            <div class="status-note">
+              <p><strong>Status:</strong> Your booking is pending confirmation. You will receive a confirmation email once your booking is approved.</p>
+            </div>
+            <div class="footer">
+              <p>Thank you for choosing Bahay Kubo Resort!</p>
+              <p>For inquiries, contact us at +63 912 345 6789 or info@bahaykuboresort.com</p>
+              <p>Printed on ${new Date().toLocaleString()}</p>
+            </div>
+          </body>
+          </html>
+        `);
+        
+        printWindow.document.close();
+        setTimeout(function() {
+          printWindow.print();
+        }, 250);
+      });
+      
+      // Booking Modal Functionality
+      // Set minimum date to today
+      var today = new Date().toISOString().split('T')[0];
+      $('#reserveCheckIn').attr('min', today);
+      $('#reserveCheckOut').attr('min', today);
+      
+      // Update checkout minimum date when check-in changes
+      $('#reserveCheckIn').on('change', function() {
+        var checkInDate = $(this).val();
+        if (checkInDate) {
+          var nextDay = new Date(checkInDate);
+          nextDay.setDate(nextDay.getDate() + 1);
+          var nextDayStr = nextDay.toISOString().split('T')[0];
+          $('#reserveCheckOut').attr('min', nextDayStr);
+          
+          // If checkout is before new check-in, update it
+          if ($('#reserveCheckOut').val() && $('#reserveCheckOut').val() <= checkInDate) {
+            $('#reserveCheckOut').val(nextDayStr);
+          }
+        }
+      });
+      
+      // Open booking modal with login check
+      $('#reserveRoomBtn').on('click', function() {
+        // Check if user is logged in
+        var currentUser = null;
+        var storedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
+        
+        if (storedUser) {
+          try {
+            currentUser = JSON.parse(storedUser);
+          } catch (e) {
+            console.error('Error parsing user data:', e);
+          }
+        }
+        
+        // If user is not logged in, show login required modal
+        if (!currentUser || !currentUser.logged_in) {
+          // Store that user wants to reserve a room
+          localStorage.setItem('pendingAction', 'reserve-room');
+          
+          // Show login required modal
+          $('#loginRequiredModal').addClass('active');
+          $('body').css('overflow', 'hidden');
+        } else {
+          // User is logged in - open booking modal
+          $('#bookingModal').addClass('active');
+          $('body').css('overflow', 'hidden');
+        }
+      });
+      
+      // Close booking modal
+      $('.booking-modal-close, #cancelBookingBtn').on('click', function() {
+        $('#bookingModal').removeClass('active');
+        $('body').css('overflow', 'auto');
+      });
+      
+      // Close booking modal when clicking outside
+      $('#bookingModal').on('click', function(e) {
+        if ($(e.target).hasClass('booking-modal')) {
+          $(this).removeClass('active');
+          $('body').css('overflow', 'auto');
+        }
+      });
+      
+      // Close booking modal with Escape key
+      $(document).on('keydown', function(e) {
+        if (e.key === 'Escape' && $('#bookingModal').hasClass('active')) {
+          $('#bookingModal').removeClass('active');
+          $('body').css('overflow', 'auto');
+        }
+      });
+      
+      // Login Required Modal handlers
+      // Close login modal
+      $('#loginRequiredModal .booking-modal-close, #cancelLoginModalBtn').on('click', function() {
+        $('#loginRequiredModal').removeClass('active');
+        $('body').css('overflow', 'auto');
+      });
+      
+      // Close login modal when clicking outside
+      $('#loginRequiredModal').on('click', function(e) {
+        if ($(e.target).hasClass('booking-modal')) {
+          $(this).removeClass('active');
+          $('body').css('overflow', 'auto');
+        }
+      });
+      
+      // Close login modal with Escape key
+      $(document).on('keydown', function(e) {
+        if (e.key === 'Escape' && $('#loginRequiredModal').hasClass('active')) {
+          $('#loginRequiredModal').removeClass('active');
+          $('body').css('overflow', 'auto');
+        }
+      });
+      
+      // Go to login page button
+      $('#goToLoginBtn').on('click', function() {
+        // Redirect to login page
+        window.location.href = 'login.html';
+      });
+      
+      // Handle form submission
+      $('#confirmBookingBtn').on('click', function() {
+        var form = $('#reserveRoomForm')[0];
+        
+        if (form.checkValidity()) {
+          var formData = {
+            checkIn: $('#reserveCheckIn').val(),
+            checkOut: $('#reserveCheckOut').val(),
+            adults: $('#reserveAdults').val(),
+            children: $('#reserveChildren').val(),
+            roomType: $('#reserveRoomType').val(),
+            specialRequests: $('#reserveSpecialRequests').val()
+          };
+          
+          // Validate dates
+          if (new Date(formData.checkOut) <= new Date(formData.checkIn)) {
+            alert('Check-out date must be after check-in date.');
+            return;
+          }
+          
+          // Store booking data
+          localStorage.setItem('bookingData', JSON.stringify(formData));
+          
+          // Show success message
+          alert('Reservation request received! Redirecting to rooms page...');
+          
+          // Format dates for URL
+          var formatDate = function(dateString) {
+            return dateString; // Already in YYYY-MM-DD format
+          };
+          
+          // Redirect to rooms page with booking data
+          var url = 'rooms.html?checkin=' + encodeURIComponent(formatDate(formData.checkIn)) + 
+                    '&checkout=' + encodeURIComponent(formatDate(formData.checkOut)) + 
+                    '&adults=' + encodeURIComponent(formData.adults) + 
+                    '&children=' + encodeURIComponent(formData.children) + 
+                    '&room=' + encodeURIComponent(formData.roomType);
+          
+          window.location.href = url;
+        } else {
+          form.reportValidity();
+        }
+      });
+    });
+  </script>
+    
+  </body>
+</html>
+
